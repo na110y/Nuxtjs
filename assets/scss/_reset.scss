@@ -1,0 +1,42 @@
+@import "variables";
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  font-family: $font;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+}
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+input,
+button,
+select {
+  outline: none;
+  border: none;
+}
+button {
+  cursor: pointer;
+}
+

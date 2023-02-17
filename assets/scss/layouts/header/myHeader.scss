@@ -1,0 +1,27 @@
+@import "assets/scss/_variables.scss";
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1920px;
+  gap: 0 50px;
+  height: inherit;
+  width: 100%;
+  height: 80px;
+  background-color: $news-title;
+
+}
+.menu-link {
+
+  a{
+    &.nuxt-link-active{
+      color: $text-color;
+      font-weight: 500;
+    }
+  }
+}
+.menu-item {
+  color: $text-colorRank;
+  font-family: $font;
+  font-weight: 500;
+}
