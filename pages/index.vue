@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="image">
-      zxczxc
+      test git
     </div>
 
     <nuxt/>
