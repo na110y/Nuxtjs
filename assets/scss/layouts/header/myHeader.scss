@@ -1,18 +1,28 @@
 @import "assets/scss/_variables.scss";
-.menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.warper {
   max-width: 1920px;
-  gap: 0 50px;
   height: inherit;
   width: 100%;
-  height: 80px;
-  background-color: $news-title;
 
 }
-.menu-link {
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  height: 93px;
 
+}
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 30px;
+}
+.menu-link {
+cursor: pointer;
   a{
     &.nuxt-link-active{
       color: $text-color;
@@ -24,4 +34,15 @@
   color: $text-colorRank;
   font-family: $font;
   font-weight: 500;
+}
+.btn{
+  color:$bgc-body ;
+  font-weight: 500;
+  padding: 12px 24px;
+  background-color: $text-color;
+  cursor: pointer;
+  &:hover {
+    color:$bgc-body ;
+    opacity: 0.8;
+  }
 }
