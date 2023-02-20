@@ -1,5 +1,4 @@
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'ducthinh',
     htmlAttrs: {
@@ -33,16 +32,13 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   // build swiper
   plugins: [
     // '~/plugins/vue-awesome-swiper.js'
   ],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module'
@@ -68,5 +64,8 @@ export default {
     baseURL: '/'
   },
 
-  build: {}
+  build: {},
+  env: {
+    // baseURL: process.env.BASE_URL
+  }
 }
