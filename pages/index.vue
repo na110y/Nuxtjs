@@ -91,7 +91,7 @@
         </div>
       </div>
       <div class="column-All">
-        <nuxt-link to="/product" >
+        <nuxt-link to="/product/" >
           <div class="column-All-txt">Xem tất cả </div>
         </nuxt-link>
       </div>
