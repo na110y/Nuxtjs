@@ -34,7 +34,6 @@ export default {
 
   // build swiper
   plugins: [
-    // '~/plugins/vue-awesome-swiper.js'
   ],
 
   components: true,

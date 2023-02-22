@@ -2,22 +2,20 @@
   <div>
     <div class="slidePage">
       <b-carousel
-        id="carousel-fade"
+        id="carousel-1"
         fade
         img-width="1920"
         img-height="450"
         :interval="4000"
         controls
-        indicators
-        aria-sort="none"
+        no-animation
       >
-        <b-carousel-slide v-for="(item, index) in homeSlide.data" :key="index">
+        <b-carousel-slide caption="First slide" v-for="(item, index) in homeSlide.data" :key="index" >
           <template #img>
             <div class="slideHome">
               <img
                 :src="
-                  'https://api-map-life.grooo.com.vn/files/media/base/' +
-                  jsonParse(item.image)[0]
+                  'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(item.image)[0]
                 "
                 alt="errorSlide"
                 id="homeSlide"
@@ -72,13 +70,13 @@
                 id="body_column-image"
               />
             </div>
-            <div class="column-txt">
-              <div class="body_column-title">{{ validateTypeFace(item.name) }}</div>
-              <div class="body_column-txt" :class="{ clickText: cssStyle }">
-                {{ validateTypeFace(item.description) }}
+            <div class="column-txt" @click="activeClickType(item.id)">
+              <div class="body_column-title">{{ isType(item.name) }}</div>
+              <div class="body_column-txt" :class="{ activeBGC: activeClick === item.id }">
+                {{ isType(item.description) }}
               </div>
-              <a href="#" class="body_column-last">
-                <p>Xem chi tiết</p>
+              <div class="body_column-last">
+                <p >Xem chi tiết</p>
                 <div class="dropRight">
                   <img
                     src="../assets/img/drop-right.svg"
@@ -86,10 +84,16 @@
                     id="dropRight"
                   />
                 </div>
-              </a>
+              </div>
             </div>
           </div>
+
         </div>
+      </div>
+      <div class="column-All">
+        <nuxt-link to="/product" >
+          <div class="column-All-txt">Xem tất cả </div>
+        </nuxt-link>
       </div>
       <div class="content-service">
         <div class="content-service_column">
@@ -356,14 +360,18 @@
   </div>
 </template>
 <script>
+// import validate from '../utils/validate'
+import { VueperSlides, VueperSlide } from 'vueperslides'
+import 'vueperslides/dist/vueperslides.css'
 export default {
   data () {
     return {
       frontVN: null,
-      cssStyle: false
+      activeClick: null
     }
   },
   computed: {
+
     /**
      * @description: hàm này dùng để lấy ảnh slide page từ store
      * Author: NSDThinh 21/02/2023
@@ -398,8 +406,8 @@ export default {
      * @description: hàm này dùng để hiển thị hết tất cả dòng chữ của text
      * Author: NSDThinh 21/02/2023
      */
-    btnTextClick () {
-      this.cssStyle = !this.cssStyle
+    activeClickType (id) {
+      this.activeClick = id
     },
     // biến đổi sang dạng json
     jsonParse (value) {
@@ -412,14 +420,19 @@ export default {
      * @description: hàm này dùng để bỏ ngoặc string trong text
      * Author: NSDThinh 21/02/2023
      */
-    validateTypeFace (string) {
+    isType (string) {
       JSON.parse(string)
       {
         const obj = JSON.parse(string)
         return obj.vn
       }
     }
-
+  },
+  components: {
+    // eslint-disable-next-line vue/no-unused-components
+    VueperSlides, VueperSlide
+    // eslint-disable-next-line vue/no-unused-components
+    // validate
   }
 }
 </script>
