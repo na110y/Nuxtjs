@@ -66,6 +66,7 @@
 }
 .slidePage {
   position: relative;
+  margin-top: 93px;
 }
 ::v-deep #homeSlide {
   max-width: 1920px;
@@ -115,6 +116,44 @@
     display: none;
   }
 }
+.slide {
+  position: relative;
+
+
+}
+.combbSlide {
+  position: absolute;
+  border: 1px solid #d7d9e2;
+  gap: 30px 0;
+  height: 120px;
+  cursor: pointer;
+  top: 130px;
+  z-index: 1;
+  background-color: #fff;
+  color: #7e7e84;
+  width: 558px;
+  left: 24px;
+  .listDrop {
+    &:hover {
+      background-color: $border;
+      color: #fff;
+    }
+  }
+}
+.combobox-homePage {
+  padding: 10px 12px;
+  color: $text-colorRank;
+  &:hover {
+    background-color: $border;
+    color: $bgc-body;
+
+  }
+}
+.combobox-slide {
+  list-style: none;
+  width: 100%;
+  z-index: 1;
+}
 
 .content-search {
   background: #ffffff;
@@ -163,6 +202,7 @@ span {
     width: calc(589px - 73px);
     height: calc(45px - 24px);
     font-family: $font;
+    border: none;
     @include deptop1290 {
       padding: 10px;
       color: $text-colorRank;
@@ -1216,6 +1256,7 @@ span {
 }
 .slideProduct {
   position: relative;
+  margin-top: 93px;
 }
 .slidee-txt {
   position: absolute;
@@ -1356,6 +1397,7 @@ span {
   border: $bgc-body;
 }
 .condition {
+  background-color: $bgc-condition;
 }
 .condition-list {
   max-width: 1170px;
@@ -1373,6 +1415,13 @@ span {
   align-items: center;
   color: $news-title;
   margin-bottom: 48px;
+}
+.receive-firtLast {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 48px;
+  margin-bottom: 80px;
 }
 .colum {
   display: flex;
@@ -1430,47 +1479,261 @@ span {
 #productLast {
   max-width: 1920px;
   width: 100%;
+
 }
-.productLast {
+.product-last {
   position: relative;
-  &-txt {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    left: 13%;
-    bottom: 0;
-    a {
-      margin-left: 16px;
-    }
+  margin-bottom: 80px;
+  #imageWS {
+    max-width: 1920px;
+    width: 100%;
   }
+}
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  color: $bgc-body;
+  padding-top: 50px;
+  padding-bottom: 33px;
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+}
+.product-last_fixed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.website {
+  position:absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.prodict-posotion {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+}
+.product-ask {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+}
+.product-title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  color: $news-title;
+  margin-bottom: 48px;
+}
+.ask-column {
+  display: flex;
+  gap: 16px 30px;
+  margin-bottom: 16px;
+
+}
+.column-flex {
+  max-width: 570px;
+  width: 100%;
+  background: $bgc-body;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px 0;
+  align-items: center;
+  color: $body-column-title;
+  padding: 19px 24px;
+}
+.product-open {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  color: $body-column-title;
+  border-radius: 50%;
+  padding: 10px;
+  border-color: $body-column-title;
+}
+
+.websitee {
+  margin-top: 30px;
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+  img {
+    margin: 0 auto;
+  }
+}
+.ws {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 48px;
+  color: $body-column-title;
+}
+.product-ask {
+  max-width: 1920px;
+  width: 100%;
+  background-color: $bgc-condition;
+}
+.ask-list {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 0;
+}
+.colum-item_ask {
+  max-width: 570px;
+  width: 100%;
+  background-color: $bgc-body;
+  padding: 40px 24px;
+  border-radius: 4px;
+}
+.item_ask-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 48px;
+  color: $text-color;
+  margin-bottom: 24px;
+}
+.label {
+  display: block;
+  color: $news-title;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.fooAsk {
+  margin-left: 4px;
+  color: #F41436;
+}
+.form-ask-item{
+  display: block;
+}
+input {
+  width: 100%;
+  border: 1px solid #D7D9E2;
+  border-radius: 4px;
+  height: 45px;
+  margin: 8px 0 16px 0;
+  padding: 12px;
+  font-family: $font;
+  color:$text-colorRank ;
+
+  &::placeholder{
+    font-family: $font;
+    color:$text-colorRank ;
+  }
+}
+.form-ask-colum {
+  display: flex;
+  gap: 0 24px;
+}
+.tpofDrop {
+  position: relative;
+}
+#drop {
+  position: absolute;
+  top: 27px;
+  right: 15px;
+  cursor: pointer;
+}
+.btn-radio {
+  display: flex;
+}
+#checkBok {
+  width: 14px;
+  height: 16px;
+  border-color:$border;
+
+}
+.agree-txt {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: $news-title;
+  margin-left: 10px;
+
+}
+.agree {
+  margin-bottom: 40px;
+}
+.btnSubmit {
+  display: flex;
+  justify-content: center;
+}
+.btn-submit {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  color: $bgc-body;
+  padding: 12px 24px;
+  cursor: pointer;
+  background: $text-color;
+  border-radius: 4px;
+}
+.supplementary {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 0 40px 0;
   &-title {
     font-weight: 600;
     font-size: 24px;
     line-height: 36px;
     display: flex;
     align-items: center;
-    color: #FFFFFF;
-    justify-content: center;
-    margin-left: -202px;
+    color: $news-title;
+    margin-bottom: 40px;
   }
 }
-.website {
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-  img {
-    max-width: 800px;
-    width: 100%;
-  }
-}
-.ws {
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 30px;
+::v-deep .vueperslides__track-inner {
+  white-space: nowrap;
+  transition: transform .5s ease-in-out;
+  height: 100%;
   display: flex;
-  align-items: center;
-  color: $body-column-title;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  justify-content: center;
+  gap: 0 30px;
+
+}
+
+.v-expansion-panel {
+  box-shadow: none;
+}
+::V-deep .vueperslide--visible  {
+  &:hover {
+    box-shadow: 0px 14px 50px rgba(255, 123, 33, 0.4);
+  }
+}
+.vueperslide:hover{
+  box-shadow: 0px 14px 50px rgba(255, 123, 33, 0.4);
+
+}
+#dropdownSlide {
+  input {
+    border: none ;
+  }
+}
+.scrollTop {
+  position: fixed;
+  right:10px ;
+  bottom: 50px;
 }

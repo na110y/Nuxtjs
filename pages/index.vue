@@ -37,19 +37,31 @@
               <div class="input-search">
                 <input
                   type="text"
-                  placeholder="Chọn sản phẩm phù hợp với bạn"
+                  :placeholder="placeholder"
+                  v-model="item.key"
                   id="searchBuy"
+                  @click="toggleDrop"
                 />
                 <img
                   src="../assets/img/dropdown.svg"
                   alt="error-dropdown"
                   id="dropSearch"
+                  @click="toggleDrop"
                 />
               </div>
               <div class="btn-search">Khám phá</div>
+              <div class="combbSlide" v-if="isShowDrop">
+                <ul class="combobox-homePage"
+                    v-for="item in records"
+                    :key="item.key"
+                    :value="item.key">
+                  <li class="combobox-item" @click="selectItem(item.key)">{{ item.value }}</li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
+
       </div>
     </div>
     <div class="container">
@@ -292,6 +304,7 @@
                   src="../assets/img/drop-right.svg"
                   alt="error-dropRight"
                   id="dropRight"
+
                 />
               </div>
             </a>
@@ -355,6 +368,12 @@
             </div>
           </div>
         </div>
+
+        <div class="scrollTop">
+          <a href="#">
+            <img src="../assets/img/scrollTop.svg" alt="error">
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -362,15 +381,44 @@
 <script>
 // import validate from '../utils/validate'
 import { VueperSlides, VueperSlide } from 'vueperslides'
+import dropdown from '~/assets/base/dropdown.vue'
 import 'vueperslides/dist/vueperslides.css'
+
 export default {
+  props: {
+    placeholder: {
+      type: String
+    }
+  },
   data () {
     return {
       frontVN: null,
-      activeClick: null
+      activeClick: null,
+      item: {},
+      isShowDrop: false
     }
   },
   computed: {
+    // truyền data cho Combobox thông qua props
+    records () {
+      return [
+        {
+          key: 1,
+          value: 'Sản phẩm nổi bật',
+          placeholder: 'Sản phẩm nổi bật'
+        },
+        {
+          key: 2,
+          value: 'Mua bảo hiểm trực tuyến',
+          placeholder: 'Mua bảo hiểm trực tuyến'
+        },
+        {
+          key: 3,
+          value: 'Tin tức mới nhất',
+          placeholder: 'Tin tức mới nhất'
+        }
+      ]
+    },
 
     /**
      * @description: hàm này dùng để lấy ảnh slide page từ store
@@ -402,6 +450,29 @@ export default {
     this.$store.dispatch('setProduct')
   },
   methods: {
+    isToggle (isShowDrop) {
+      this.isShowDrop = isShowDrop
+    },
+    toggleDrop () {
+      this.isToggle(true)
+    },
+    selectItem (key) {
+      this.item.key = key
+      // this.item('update:modelValue', key)
+      this.item.key = this.formatEnum(key)
+      this.isToggle(false)
+    },
+    // hàm này dùng để format giá trị key của value
+    formatEnum (key) {
+      switch (key) {
+        case 1:
+          return 'Sản phẩm nổi bật'
+        case 2:
+          return 'Mua bảo hiểm trực tuyến'
+        case 3:
+          return 'Tin tức mới nhất'
+      }
+    },
     /**
      * @description: hàm này dùng để hiển thị hết tất cả dòng chữ của text
      * Author: NSDThinh 21/02/2023
@@ -430,7 +501,7 @@ export default {
   },
   components: {
     // eslint-disable-next-line vue/no-unused-components
-    VueperSlides, VueperSlide
+    VueperSlides, VueperSlide, dropdown
     // eslint-disable-next-line vue/no-unused-components
     // validate
   }
