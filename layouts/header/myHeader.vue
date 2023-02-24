@@ -14,7 +14,9 @@
             </nuxt-link>
           </div>
           <div class="menu-link">
-            Dịch vụ khách hàng
+            <nuxt-link to="/service/" class="menu-item">
+              Dịch vụ khách hàng
+            </nuxt-link>
           </div>
           <div class="menu-link">
             <nuxt-link to="/about" class="menu-item">

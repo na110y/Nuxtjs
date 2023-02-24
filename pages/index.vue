@@ -1,3 +1,4 @@
+<script src="../nuxt.config.js"></script>
 <template>
   <div>
     <div class="slidePage">
@@ -10,16 +11,13 @@
         controls
         no-animation
       >
-        <b-carousel-slide caption="First slide" v-for="(item, index) in homeSlide.data" :key="index" >
+        <b-carousel-slide v-for="(homePage, index) in homePage.data" :key="index" caption="First slide">
           <template #img>
-            <div class="slideHome">
-              <img
-                :src="
-                  'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(item.image)[0]
-                "
+            <div class="slideHome" >
+              <img id="homeSlide"
+                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(homePage.image)[0]"
                 alt="errorSlide"
-                id="homeSlide"
-              />
+                />
             </div>
           </template>
         </b-carousel-slide>
@@ -52,10 +50,10 @@
               <div class="btn-search">Khám phá</div>
               <div class="combbSlide" v-if="isShowDrop">
                 <ul class="combobox-homePage"
-                    v-for="item in records"
-                    :key="item.key"
-                    :value="item.key">
-                  <li class="combobox-item" @click="selectItem(item.key)">{{ item.value }}</li>
+                    v-for="drdwn in records"
+                    :key="drdwn.key"
+                    :value="drdwn.key">
+                  <li class="combobox-item" @click="selectItem(drdwn.key)">{{ drdwn.value }}</li>
                 </ul>
               </div>
             </li>
@@ -71,7 +69,7 @@
           <div class="body_title-txt">Khám phá các giải pháp tài chính</div>
         </div>
         <div class="body_column">
-          <div class="body_column-link" v-for="(item, index) in productImage.data" :key="index">
+          <div class="body_column-link" v-for="(item, index) in productPage.data" :key="index" @click="activeClickType(item.id)">
             <div class="body_column-image">
               <img
                 :src="
@@ -82,13 +80,15 @@
                 id="body_column-image"
               />
             </div>
-            <div class="column-txt" @click="activeClickType(item.id)">
+            <div class="column-txt" >
               <div class="body_column-title">{{ isType(item.name) }}</div>
-              <div class="body_column-txt" :class="{ activeBGC: activeClick === item.id }">
+              <div class="body_column-txt" :class="{ 'activeStyle': activeClick === item.id }">
                 {{ isType(item.description) }}
               </div>
               <div class="body_column-last">
-                <p >Xem chi tiết</p>
+                <nuxt-link to="/product/productList">
+                  <p >Xem chi tiết</p>
+                </nuxt-link>
                 <div class="dropRight">
                   <img
                     src="../assets/img/drop-right.svg"
@@ -102,99 +102,51 @@
 
         </div>
       </div>
-      <div class="column-All">
-        <nuxt-link to="/product/" >
-          <div class="column-All-txt">Xem tất cả </div>
-        </nuxt-link>
-      </div>
-      <div class="content-service">
-        <div class="content-service_column">
+      <div class="content-service" >
+        <div class="content-service_column" >
           <div class="column_service">
             <div class="column-service">
               <div class="column-service_title">Dịch vụ khách hàng</div>
               <div class="column-service_txt">
-                Giải đáp những thắc mắc của khách hàng, chúng tôi cam kết mang đến trải
-                nghiệm dịch vụ tối ưu: <span>Nhanh chóng - Hữu ích</span>
+                Giải đáp những thắc mắc của khách hàng, chúng tôi cam kết mang đến trải nghiệm dịch vụ tối ưu: <span>Nhanh chóng - Hữu ích</span>
               </div>
               <div class="column-service_btn">
-                <span class="btn-service">Các dịch vụ khác</span>
+                <nuxt-link to="/service/serviceList" >
+                  <span class="btn-service">Các dịch vụ khác</span>
+                </nuxt-link>
               </div>
             </div>
           </div>
-          <div class="column-serviceLink">
-            <div class="serviceLink-item serviceLink-item2">
-              <div class="serviceLink-item_icon">
+          <div class="serviceLink-item serviceLink-item2"
+               v-for="(item,index) in homeCl.data"
+               :key="index"
+               @click="activeClickType(item.id)">
+            <div class="serviceLink-item_icon">
+              <img
+                :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
+                  jsonParse(item.icon)[0]"
+                alt="error-insurance"
+                id="serviceLink-item_icon"
+              />
+            </div>
+            <div class="serviceLink-item_title">{{ isType(item.name) }}</div>
+            <div class="serviceLink-item_txt"
+                 :class="{ 'activeStyle': activeClick === item.id }"
+            >{{ isType(item.description) }}</div>
+            <div class="serviceLink-item_last">
+              <nuxt-link to="/client/clientList">
+                <p class="serviceLink-item-detail">Xem chi tiết</p>
+              </nuxt-link>
+              <div class="dropRight">
                 <img
-                  srcset="../assets/img/icon-insurance.png 2x"
-                  alt="error-insurance"
-                  id="serviceLink-item_icon"
+                  src="../assets/img/drop-right.svg"
+                  alt="error-dropRight"
+                  id="dropRight"
                 />
               </div>
-              <div class="serviceLink-item_title">Đóng phí bảo hiểm</div>
-              <div class="serviceLink-item_txt">Lorem ipsum dolor sit amet.</div>
-              <a href="#" class="serviceLink-item_last">
-                <p class="serviceLink-item-detail">Xem chi tiết</p>
-                <div class="dropRight">
-                  <img
-                    src="../assets/img/drop-right.svg"
-                    alt="error-dropRight"
-                    id="dropRight"
-                  />
-                </div>
-              </a>
             </div>
           </div>
-          <div class="column-serviceLink">
-            <div class="serviceLink-item serviceLink-item2">
-              <div class="serviceLink-item_icon">
-                <img
-                  srcset="../assets/img/icon-user.png 2x"
-                  alt="error-user"
-                  id="serviceLink-item_icon"
-                />
-              </div>
-              <div class="serviceLink-item_title">Cổng thông tin khách hàng</div>
-              <div class="serviceLink-item_txt">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-              </div>
-              <a href="#" class="serviceLink-item_last">
-                <p class="serviceLink-item-detail">Xem chi tiết</p>
-                <div class="dropRight">
-                  <img
-                    src="../assets/img/drop-right.svg"
-                    alt="error-dropRight"
-                    id="dropRight"
-                  />
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="column-serviceLink">
-            <div class="serviceLink-item serviceLink-item2">
-              <div class="serviceLink-item_icon">
-                <img
-                  srcset="../assets/img/icon-execl.png 2x"
-                  alt="error-iconExecl"
-                  id="serviceLink-item_icon"
-                />
-              </div>
-              <div class="serviceLink-item_title">Giải quyết quyền lợi bảo hiểm</div>
-              <div class="serviceLink-item_txt">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Platea morbi
-                blandit nunc nisl.
-              </div>
-              <a href="#" class="serviceLink-item_last">
-                <p class="serviceLink-item-detail">Xem chi tiết</p>
-                <div class="dropRight">
-                  <img
-                    src="../assets/img/drop-right.svg"
-                    alt="error-dropRight"
-                    id="dropRight"
-                  />
-                </div>
-              </a>
-            </div>
-          </div>
+
         </div>
         <div class="content-service_image">
           <img
@@ -380,11 +332,15 @@
 </template>
 <script>
 // import validate from '../utils/validate'
-import { VueperSlides, VueperSlide } from 'vueperslides'
 import dropdown from '~/assets/base/dropdown.vue'
 import 'vueperslides/dist/vueperslides.css'
 
 export default {
+  components: {
+    // eslint-disable-next-line vue/no-unused-components
+    dropdown
+    // validate
+  },
   props: {
     placeholder: {
       type: String
@@ -419,25 +375,36 @@ export default {
         }
       ]
     },
-
+    /**
+     * @description: hàm này dùng để lấy dữ liệu khách hàng từ store
+     * Author: NSDThinh 21/02/2023
+     */
+    homeCl () {
+      return this.$store.state.clientPage
+    },
     /**
      * @description: hàm này dùng để lấy ảnh slide page từ store
      * Author: NSDThinh 21/02/2023
      */
-    homeSlide () {
+    homePage () {
       return this.$store.state.homeSlide
     },
     /**
      * @description: hàm này dùng để lấy ảnh sản phẩm từ store
      * Author: NSDThinh 21/02/2023
      */
-    productImage () {
+    productPage () {
       return this.$store.state.productImage
     }
   },
   created () {
   },
   mounted () {
+    /**
+     * @description: client ( khách hàng )
+     * Author: NSDThinh 24/02/2023
+     */
+    this.$store.dispatch('setClient')
     /**
      * @description: homeslide
      * Author: NSDThinh 21/02/2023
@@ -458,7 +425,6 @@ export default {
     },
     selectItem (key) {
       this.item.key = key
-      // this.item('update:modelValue', key)
       this.item.key = this.formatEnum(key)
       this.isToggle(false)
     },
@@ -479,6 +445,7 @@ export default {
      */
     activeClickType (id) {
       this.activeClick = id
+      console.log(this.activeClick)
     },
     // biến đổi sang dạng json
     jsonParse (value) {
@@ -498,13 +465,8 @@ export default {
         return obj.vn
       }
     }
-  },
-  components: {
-    // eslint-disable-next-line vue/no-unused-components
-    VueperSlides, VueperSlide, dropdown
-    // eslint-disable-next-line vue/no-unused-components
-    // validate
   }
+
 }
 </script>
 <style lang="scss" scoped>

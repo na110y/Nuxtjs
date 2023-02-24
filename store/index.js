@@ -1,6 +1,7 @@
 export const state = () => ({
   homeSlide: [],
-  productImage: []
+  productImage: [],
+  clientPage: []
 })
 export const mutations = {
   // homeSlide
@@ -10,6 +11,10 @@ export const mutations = {
   // product
   setProduct (state, productImage) {
     state.productImage = productImage
+  },
+  // client
+  setClient (state, clientPage) {
+    state.clientPage = clientPage
   }
 }
 export const actions = {
@@ -34,6 +39,17 @@ export const actions = {
       console.log(error)
       return error
     }
+  },
+  // client
+  async setClient ({ commit }) {
+    try {
+      const res = await this.$axios
+        .get('https://api-map-life.grooo.com.vn/featured-service')
+      commit('setClient', res.data)
+    } catch (error) {
+      console.log(error)
+      return error
+    }
   }
 }
 export const getters = {
@@ -44,5 +60,9 @@ export const getters = {
   // product
   productApi (state) {
     return state.homeSlide
+  },
+  // client
+  clientApi (state) {
+    return state.clientPage
   }
 }

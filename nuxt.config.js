@@ -24,7 +24,7 @@ export default {
       {
         rel: 'icon',
         type: 'image/x-icon',
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap'
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet'
       }
     ]
   },
@@ -40,7 +40,8 @@ export default {
 
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/google-fonts'
   ],
   styleResources: {
     scss: [
