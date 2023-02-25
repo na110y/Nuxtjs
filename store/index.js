@@ -1,12 +1,18 @@
+export * from './about'
 export const state = () => ({
   homeSlide: [],
   productImage: [],
-  clientPage: []
+  clientPage: [],
+  productDetail: {}
 })
 export const mutations = {
   // homeSlide
   setSlideHome (state, homeSlide) {
     state.homeSlide = homeSlide
+  },
+  // homeSlideDetail
+  SET_HOME_PRODUCT_DETAIL (state, data) {
+    state.productDetail = data
   },
   // product
   setProduct (state, productImage) {
@@ -22,7 +28,8 @@ export const actions = {
   async setSlideHome ({ commit }) {
     try {
       const res = await this.$axios
-        .get('https://api-map-life.grooo.com.vn/banner/get-home-banner?sort=order')
+        .get(process.env.baseApiUrl + '/banner/get-home-banner?sort=order')
+
       commit('setSlideHome', res.data)
     } catch (error) {
       console.log(error)
@@ -33,7 +40,7 @@ export const actions = {
   async setProduct ({ commit }) {
     try {
       const res = await this.$axios
-        .get('https://api-map-life.grooo.com.vn/featured-product-categories')
+        .get(process.env.baseApiUrl + '/featured-product-categories')
       commit('setProduct', res.data)
     } catch (error) {
       console.log(error)
@@ -44,7 +51,7 @@ export const actions = {
   async setClient ({ commit }) {
     try {
       const res = await this.$axios
-        .get('https://api-map-life.grooo.com.vn/featured-service')
+        .get(process.env.baseApiUrl + '/featured-service')
       commit('setClient', res.data)
     } catch (error) {
       console.log(error)

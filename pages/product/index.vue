@@ -1,30 +1,34 @@
 <template>
-  <div>
+  <div class="product">
     <div class="product-list">
         <div class="product-list_img">
-          <img src="@/assets/img/spbanner.png" alt="error-SPBanner" id="spbanner">
+          <img src="~/assets/img/spbanner.png" alt="error-SPBanner" id="spbanner">
           <div class="product-list_title">Danh mục sản phẩm</div>
         </div>
     </div>
     <div class="SP-list_column">
-      <div class="SP-list-link" v-for="(item, index) in productPage.data" :key="index" @click="activeClickType(item.id)">
-        <div class="SP-list-image">
-          <img
-            :src="
+        <div class="SP-list-link"
+             v-for="item in productPage.data"
+             :key="item.id">
+          <div class="SP-list-image">
+            <img
+              :src="
                   'https://api-map-life.grooo.com.vn/files/media/base/' +
                   jsonParse(item.image)[0]
                 "
-            alt="error-image"
-            id="body_column-image"
-          />
-        </div>
-        <div class="list_column-txt" >
-          <div class="list_sp-title">{{ isType(item.name) }}</div>
-          <div class="list_sp-txt" :class="{ 'activeStyle': activeClick === item.id }">
-            {{ isType(item.description) }}
+              alt="error-image"
+              id="body_column-image"
+            />
+          </div>
+          <div class="list_column-txt" >
+            <nuxt-link :to="`/product/${item.id}`" >
+            <div class="list_sp-title">{{ isType(item.name) }}</div>
+            </nuxt-link>
+            <div class="list_sp-txt">
+              {{ isType(item.description) }}
+            </div>
           </div>
         </div>
-      </div>
 
     </div>
     <div class="product-ask">
@@ -68,7 +72,7 @@
           </div>
         </div>
         <div class="colum-item">
-          <img src="@/assets/img/lienhe.png" alt="errorLienhe">
+          <img src="~/assets/img/lienhe.png" alt="errorLienhe">
         </div>
       </div>
     </div>
@@ -77,7 +81,6 @@
 
 <script>
 import dropdown from '~/assets/base/dropdown.vue'
-
 export default {
   components: {
     dropdown
@@ -90,7 +93,6 @@ export default {
   data () {
     return {
       frontVN: null,
-      activeClick: null,
       item: {}
     }
   },
@@ -124,6 +126,7 @@ export default {
      * @description: hàm này dùng để lấy ảnh sản phẩm từ store
      * Author: NSDThinh 21/02/2023
      */
+    // eslint-disable-next-line vue/no-dupe-keys
     productPage () {
       return this.$store.state.productImage
     }
@@ -138,14 +141,6 @@ export default {
     this.$store.dispatch('setProduct')
   },
   methods: {
-    /**
-     * @description: hàm này dùng để hiển thị hết tất cả dòng chữ của text
-     * Author: NSDThinh 21/02/2023
-     */
-    activeClickType (id) {
-      this.activeClick = id
-      console.log(this.activeClick)
-    },
     // biến đổi sang dạng json
     jsonParse (value) {
       if (value) {
@@ -169,5 +164,5 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "assets/scss/main";
+@import "../../assets/scss/main";
 </style>

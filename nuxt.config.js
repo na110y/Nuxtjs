@@ -34,6 +34,7 @@ export default {
 
   // build swiper
   plugins: [
+    // 'swiper'
   ],
 
   components: true,
@@ -56,7 +57,6 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios'
-
   ],
 
   axios: {
@@ -66,6 +66,7 @@ export default {
 
   build: {},
   env: {
-    // baseURL: process.env.BASE_URL
+    baseUrl: process.env.BASE_URL || 'http:localhost:3000',
+    baseApiUrl: process.env.BASE_API_URL || 'https://api-map-life.grooo.com.vn'
   }
 }

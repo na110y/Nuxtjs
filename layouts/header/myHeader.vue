@@ -9,7 +9,7 @@
         </li>
         <li class="menu-item">
           <div class="menu-link">
-            <nuxt-link to="/" class="menu-item">
+            <nuxt-link to="/product/" class="menu-item">
               Sản phẩm
             </nuxt-link>
           </div>
@@ -19,7 +19,7 @@
             </nuxt-link>
           </div>
           <div class="menu-link">
-            <nuxt-link to="/about" class="menu-item">
+            <nuxt-link to="/product/_id/productDetail" class="menu-item">
               Về Mirae Asset Prévoir
             </nuxt-link>
           </div>

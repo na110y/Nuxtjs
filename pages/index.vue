@@ -86,7 +86,7 @@
                 {{ isType(item.description) }}
               </div>
               <div class="body_column-last">
-                <nuxt-link to="/product/productList">
+                <nuxt-link to="/product/">
                   <p >Xem chi tiết</p>
                 </nuxt-link>
                 <div class="dropRight">
@@ -333,12 +333,15 @@
 <script>
 // import validate from '../utils/validate'
 import dropdown from '~/assets/base/dropdown.vue'
+// import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'vueperslides/dist/vueperslides.css'
 
 export default {
   components: {
     // eslint-disable-next-line vue/no-unused-components
-    dropdown
+    dropdown,
+    // Swiper,
+    // SwiperSlide
     // validate
   },
   props: {
@@ -445,7 +448,6 @@ export default {
      */
     activeClickType (id) {
       this.activeClick = id
-      console.log(this.activeClick)
     },
     // biến đổi sang dạng json
     jsonParse (value) {
