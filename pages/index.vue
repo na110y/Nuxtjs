@@ -1,6 +1,6 @@
 <script src="../nuxt.config.js"></script>
 <template>
-  <div>
+  <div class="slidePageHome">
     <div class="slidePage">
       <b-carousel
         id="carousel-1"
@@ -36,6 +36,7 @@
                 <input
                   type="text"
                   :placeholder="placeholder"
+                  :link="link"
                   v-model="item.key"
                   id="searchBuy"
                   @click="toggleDrop"
@@ -68,38 +69,33 @@
           <div class="body_title-subject">Sản phẩm nổi bật</div>
           <div class="body_title-txt">Khám phá các giải pháp tài chính</div>
         </div>
-        <div class="body_column">
-          <div class="body_column-link" v-for="(item, index) in productPage.data" :key="index" @click="activeClickType(item.id)">
-            <div class="body_column-image">
-              <img
-                :src="
+        <div class="flex-viewport">
+          <div class="body_column">
+            <div class="body_column-link" v-for="(item, index) in productPage.data" :key="index" @click="activeClickType(item.id)">
+              <div class="body_column-image">
+                <img
+                  :src="
                   'https://api-map-life.grooo.com.vn/files/media/base/' +
                   jsonParse(item.image)[0]
                 "
-                alt="error-image"
-                id="body_column-image"
-              />
-            </div>
-            <div class="column-txt" >
-              <div class="body_column-title">{{ isType(item.name) }}</div>
-              <div class="body_column-txt" :class="{ 'activeStyle': activeClick === item.id }">
-                {{ isType(item.description) }}
+                  alt="error-image"
+                  id="body_column-image"
+                />
               </div>
-              <div class="body_column-last">
-                <nuxt-link to="/product/">
-                  <p >Xem chi tiết</p>
-                </nuxt-link>
-                <div class="dropRight">
-                  <img
-                    src="../assets/img/drop-right.svg"
-                    alt="error-dropRight"
-                    id="dropRight"
-                  />
+              <div class="column-txt" >
+                <div class="body_column-title">{{ isType(item.name) }}</div>
+                <div class="body_column-txt">
+                  {{ isType(item.description) }}
+                </div>
+                <div class="body_column-last">
+                  <nuxt-link to="/product/">
+                    <div class="column-last_txt">Xem chi tiết</div>
+                  </nuxt-link>
                 </div>
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
       <div class="content-service" >
@@ -118,7 +114,7 @@
             </div>
           </div>
           <div class="serviceLink-item serviceLink-item2"
-               v-for="(item,index) in homeCl.data"
+               v-for="(item,index) in ClientPage.data"
                :key="index"
                @click="activeClickType(item.id)">
             <div class="serviceLink-item_icon">
@@ -129,20 +125,15 @@
                 id="serviceLink-item_icon"
               />
             </div>
-            <div class="serviceLink-item_title">{{ isType(item.name) }}</div>
-            <div class="serviceLink-item_txt"
-                 :class="{ 'activeStyle': activeClick === item.id }"
-            >{{ isType(item.description) }}</div>
-            <div class="serviceLink-item_last">
-              <nuxt-link to="/client/clientList">
-                <p class="serviceLink-item-detail">Xem chi tiết</p>
-              </nuxt-link>
-              <div class="dropRight">
-                <img
-                  src="../assets/img/drop-right.svg"
-                  alt="error-dropRight"
-                  id="dropRight"
-                />
+            <div class="serviceLink-item_body">
+              <div class="serviceLink-item_title">{{ isType(item.name) }}</div>
+              <div class="serviceLink-item_txt"
+                   :class="{ 'activeStyle': activeClick === item.id }"
+              >{{ isType(item.description) }}</div>
+              <div class="serviceLink-item_last">
+                <nuxt-link to="/client/clientList">
+                  <p class="serviceLink-item-detail">Xem chi tiết</p>
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -166,104 +157,35 @@
       <div class="content-news">
         <div class="content-news_title">
           <div class="news_title">Tin tức mới nhất</div>
-          <div class="news_txt">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate amet sit.
-          </div>
         </div>
         <div class="content-news_img">
-          <div class="news_img-column">
+          <div class="news_img-column" v-for="(news,index) in newsPage.data" :key="index">
             <div class="img-column">
               <img
-                srcset="../assets/img/news-family.png 2x"
+                :src="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(news.image)[0]"
                 alt="erro-imgFamily"
                 id="img-column"
               />
             </div>
-            <div class="news-title">Tên tin tức</div>
-            <div class="news-txt">Lorem ipsum dolor sit amet</div>
-            <a href="#" class="serviceLink-item_last">
-              <p class="serviceLink-item-detail">Xem chi tiết</p>
-              <div class="dropRight">
-                <img
-                  src="../assets/img/drop-right.svg"
-                  alt="error-dropRight"
-                  id="dropRight"
-                />
+            <div class="news-item_body">
+              <div class="news-item">
+                <div class="news-title">{{ isType(news.title) }}</div>
+                <div class="news-txt">{{ isType(news.description) }}</div>
               </div>
-            </a>
-          </div>
-          <div class="news_img-column">
-            <div class="img-column">
-              <img
-                srcset="../assets/img/news-oto.png 2x"
-                alt="erro-imgOto"
-                id="img-column"
-              />
+              <a href="#" class="post-item__link">
+                <nuxt-link :to="`/news/${news.id}`">
+                  <div class="post-item__link-txt">Xem chi tiết</div>
+                </nuxt-link>
+              </a>
             </div>
-            <div class="news-title">Tên tin tức</div>
-            <div class="news-txt">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </div>
-            <a href="#" class="serviceLink-item_last">
-              <p class="serviceLink-item-detail">Xem chi tiết</p>
-              <div class="dropRight">
-                <img
-                  src="../assets/img/drop-right.svg"
-                  alt="error-dropRight"
-                  id="dropRight"
-                />
-              </div>
-            </a>
-          </div>
-          <div class="news_img-column">
-            <div class="img-column">
-              <img
-                srcset="../assets/img/news-money.png 2x"
-                alt="erro-imgMoney"
-                id="img-column"
-              />
-            </div>
-            <div class="news-title">Tên tin tức</div>
-            <div class="news-txt">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper viverra
-              sagittis
-            </div>
-            <a href="#" class="serviceLink-item_last">
-              <p class="serviceLink-item-detail">Xem chi tiết</p>
-              <div class="dropRight">
-                <img
-                  src="../assets/img/drop-right.svg"
-                  alt="error-dropRight"
-                  id="dropRight"
-                />
-              </div>
-            </a>
-          </div>
-          <div class="news_img-column">
-            <div class="img-column">
-              <img
-                srcset="../assets/img/news-measure.png 2x"
-                alt="erro-imgMeasure"
-                id="img-column"
-              />
-            </div>
-            <div class="news-title">Tên tin tức</div>
-            <div class="news-txt">Lorem ipsum dolor sit amet.</div>
-            <a href="#" class="serviceLink-item_last news-title_detial">
-              <p class="serviceLink-item-detail">Xem chi tiết</p>
-              <div class="dropRight">
-                <img
-                  src="../assets/img/drop-right.svg"
-                  alt="error-dropRight"
-                  id="dropRight"
-
-                />
-              </div>
-            </a>
           </div>
         </div>
         <div class="news-detailAll">
-          <a href="#" class="detailAll">Xem tất cả tin tức</a>
+          <nuxt-link to="/news/">
+            <div class="newsList-All">
+              <div class="newsList-all_txt">Xem tất cả tin tức</div>
+            </div>
+          </nuxt-link>
         </div>
       </div>
       <div class="content-last">
@@ -298,8 +220,7 @@
           </div>
           <div class="content-last_txt">
             <div class="title-review">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque, viverra
-              sagittis vitae amet, eu elit.
+              Dễ dàng quản lý hợp đồng, thanh toán phí bảo hiểm, tích điểm đổi quà cùng nhiều tiện ích khác tại Ứng dụng di động phục vụ khách hàng MAP Life App.
             </div>
             <div class="txt-review">Ứng dụng phục vụ khách hàng</div>
             <div class="shopPhone">
@@ -364,7 +285,8 @@ export default {
         {
           key: 1,
           value: 'Sản phẩm nổi bật',
-          placeholder: 'Sản phẩm nổi bật'
+          placeholder: 'Sản phẩm nổi bật',
+          link: `<nuxt-link :to="/product/"></nuxt-link>`
         },
         {
           key: 2,
@@ -382,7 +304,7 @@ export default {
      * @description: hàm này dùng để lấy dữ liệu khách hàng từ store
      * Author: NSDThinh 21/02/2023
      */
-    homeCl () {
+    ClientPage () {
       return this.$store.state.clientPage
     },
     /**
@@ -393,11 +315,18 @@ export default {
       return this.$store.state.homeSlide
     },
     /**
-     * @description: hàm này dùng để lấy ảnh sản phẩm từ store
+     * @description: hàm này dùng để giá trị sản phẩm từ store
      * Author: NSDThinh 21/02/2023
      */
     productPage () {
       return this.$store.state.productImage
+    },
+    /**
+     * @description: hàm này dùng để giá trị từ store
+     * Author: NSDThinh 25/02/2023
+     */
+    newsPage () {
+      return this.$store.state.newsPage
     }
   },
   created () {
@@ -409,15 +338,20 @@ export default {
      */
     this.$store.dispatch('setClient')
     /**
-     * @description: homeslide
+     * @description: homeslide ( imageSlide )
      * Author: NSDThinh 21/02/2023
      */
     this.$store.dispatch('setSlideHome')
     /**
-     * @description: product
+     * @description: product ( sản phẩm )
      * Author: NSDThinh 21/02/2023
      */
     this.$store.dispatch('setProduct')
+    /**
+     * @description: news ( tin tức mới nhất )
+     * Author: NSDThinh 25/02/2023
+     */
+    this.$store.dispatch('setNewsPage')
   },
   methods: {
     isToggle (isShowDrop) {

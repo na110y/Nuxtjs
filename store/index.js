@@ -1,62 +1,60 @@
 export * from './about'
+export * from './homeSlide'
+export * from './news'
+export * from './product'
 export const state = () => ({
   homeSlide: [],
+  newsPage: [],
   productImage: [],
   clientPage: [],
   productDetail: {}
 })
 export const mutations = {
-  // homeSlide
-  setSlideHome (state, homeSlide) {
+  // SET_SLIDE_HOME
+  SET_SLIDE_HOME (state, homeSlide) {
     state.homeSlide = homeSlide
   },
-  // homeSlideDetail
-  SET_HOME_PRODUCT_DETAIL (state, data) {
+  // homeSProductDetail
+  SET_PRODUCT_DETAIL (state, data) {
     state.productDetail = data
   },
-  // product
-  setProduct (state, productImage) {
+  // SET_PRODUCT
+  SET_PRODUCT (state, productImage) {
     state.productImage = productImage
   },
-  // client
-  setClient (state, clientPage) {
+  // SET_CLIENT
+  SET_CLIENT (state, clientPage) {
     state.clientPage = clientPage
+  },
+  // SET_NEWS
+  SET_NEWS (state, newsPage) {
+    state.newsPage = newsPage
   }
 }
 export const actions = {
-  // homeSlide
+  // setSlideHome
   async setSlideHome ({ commit }) {
-    try {
-      const res = await this.$axios
-        .get(process.env.baseApiUrl + '/banner/get-home-banner?sort=order')
-
-      commit('setSlideHome', res.data)
-    } catch (error) {
-      console.log(error)
-      return error
-    }
+    const res = await this.$axios
+      .get(process.env.baseApiUrl + '/banner/get-home-banner?sort=order')
+    commit('SET_SLIDE_HOME', res.data)
   },
-  // product
+  // setProduct
   async setProduct ({ commit }) {
-    try {
-      const res = await this.$axios
-        .get(process.env.baseApiUrl + '/featured-product-categories')
-      commit('setProduct', res.data)
-    } catch (error) {
-      console.log(error)
-      return error
-    }
+    const res = await this.$axios
+      .get(process.env.baseApiUrl + '/featured-product-categories')
+    commit('SET_PRODUCT', res.data)
   },
-  // client
+  // setClient
   async setClient ({ commit }) {
-    try {
-      const res = await this.$axios
-        .get(process.env.baseApiUrl + '/featured-service')
-      commit('setClient', res.data)
-    } catch (error) {
-      console.log(error)
-      return error
-    }
+    const res = await this.$axios
+      .get(process.env.baseApiUrl + '/featured-service')
+    commit('SET_CLIENT', res.data)
+  },
+  // setNews
+  async setNewsPage ({ commit }) {
+    const res = await this.$axios
+      .get(process.env.baseApiUrl + '/fe-get-post')
+    commit('SET_NEWS', res.data)
   }
 }
 export const getters = {
@@ -64,12 +62,16 @@ export const getters = {
   homeSlide (state) {
     return state.homeSlide
   },
-  // product
+  // productApi
   productApi (state) {
-    return state.homeSlide
+    return state.productImage
   },
-  // client
+  // clientApi
   clientApi (state) {
     return state.clientPage
+  },
+  // newsApi
+  newsApi (state) {
+    return state.newsPage
   }
 }

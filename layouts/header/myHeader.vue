@@ -19,12 +19,21 @@
             </nuxt-link>
           </div>
           <div class="menu-link">
-            <nuxt-link to="/product/_id/productDetail" class="menu-item">
+            <nuxt-link to="/product/" class="menu-item">
               Về Mirae Asset Prévoir
+            </nuxt-link>
+          </div>
+          <div class="menu-link">
+            <nuxt-link to="/news/" class="menu-item">
+              Tin tức
             </nuxt-link>
           </div>
           <div class="menu-link btn">
             Mua bảo hiểm trực tuyến
+          </div>
+          <div class="menu-link item-language">
+            <img src="@/assets/img/language.svg" alt="error-Language">
+            <img src="@/assets/img/dropdown.svg" alt="error-dropdown" id="dropdown">
           </div>
         </li>
       </ul>

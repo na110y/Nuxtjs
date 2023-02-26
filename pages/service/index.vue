@@ -15,7 +15,6 @@
         </div>
       </div>
     </div>
-
     <b-card no-body>
       <b-tabs card>
         <b-tab title="Đặc điểm sản phẩm" active>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="header">
     <my-header/>
     <nuxt-child />
     <my-footer />
