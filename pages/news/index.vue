@@ -1,7 +1,7 @@
 <template>
   <div class="newsList">
     <div class="newsSlide">
-      <img src="@/assets/img/news.png" alt="error-SlideNews" id="newsSlideList">
+      <img id="newsSlideList" src="@/assets/img/news.png" alt="error-SlideNews">
       <div class="banner__title">
         <div class="container">
           <div class="newsSlide-title">
@@ -9,61 +9,93 @@
           </div>
         </div>
       </div>
-
     </div>
     <div class="contener">
       <div class="newsList_img">
-        <div class="news_imgage-column" v-for="(news,index) in newsPage.data" :key="index">
+        <div v-for="(news,index) in filteredList" :key="index" class="news_imgage-column">
           <div class="newsList-column">
             <img
-              :src="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(news.image)[0]"
-              alt="erro-imgFamily"
               id="img-column"
-            />
+              :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(news.image)[0]"
+              alt="error-imgFamily"
+            >
           </div>
           <div class="newsList-body">
             <div class="newsList-item">
-              <div class="newsList-title">{{ isType(news.title) }}</div>
-              <div class="newsList-txt">{{ isType(news.description) }}</div>
+              <nuxt-link :to="`/news/${ isType(news.slug)}`">
+                <div class="newsList-title">
+                  {{ isType(news.title) }}
+                </div>
+              </nuxt-link>
+              <div class="newsList-txt">
+                {{ isType(news.description) }}
+              </div>
             </div>
             <a href="#" class="post-item__link">
-              <nuxt-link :to="`/news/${news.id}`">
+              <nuxt-link :to="`/news/${isType(news.slug)}`">
                 <div class="post-item__link-txt">Xem chi tiết</div>
               </nuxt-link>
             </a>
           </div>
         </div>
       </div>
-
+      <div class="overflow-auto">
+        <b-pagination
+          v-model="current_page"
+          :total-rows="rows"
+          :per-page="pageSize"
+          aria-controls="my-table"
+        />
+        <b-table
+          id="my-table"
+          :per-page="pageSize"
+          :current-page="current_page"
+          small
+        />
+      </div>
     </div>
   </div>
 </template>
 <script>
+
 export default {
-  components: {},
+  components: {
+  },
   props: {},
   data () {
-    return {}
+    return {
+      listNews: [],
+      current_page: 1,
+      pageSize: 5
+    }
   },
   computed: {
-    /**
-     * @description: hàm này dùng để giá trị từ store
-     * Author: NSDThinh 25/02/2023
-     */
-    newsPage () {
-      return this.$store.state.newsPage
+    rows () {
+      return this.listNews.length
+    },
+    filteredList () {
+      const star = (this.current_page - 1) * this.pageSize
+      const end = this.current_page * this.pageSize
+      const result = this.listNews.slice(star, end)
+      return result
     }
   },
   created () {
+    this.getListPagingNews()
   },
-  mounted () {
-    /**
-     * @description: news ( tin tức mới nhất )
-     * Author: NSDThinh 25/02/2023
-     */
-    this.$store.dispatch('setNewsPage')
-  },
+  mounted () {},
   methods: {
+    async getListPagingNews () {
+      const me = this
+      try {
+        const res = await me.$axios.get(
+          process.env.baseApiUrl + '/post/fe-list-post?limit')
+        me.listNews = res.data.data.data
+        console.log(res.data.data.data)
+      } catch (error) {
+        console.log(error)
+      }
+    },
     // biến đổi sang dạng json
     jsonParse (value) {
       if (value) {
@@ -132,6 +164,7 @@ export default {
 #img-column {
   width: 100%;
   height: 210px;
+  object-fit: cover;
 }
 .newsList-title {
   margin-top: 10px;
@@ -143,6 +176,10 @@ export default {
   overflow: hidden;
   -webkit-line-clamp: 2;
   height: 60px;
+  &:hover {
+    transition: all .5s ease-in-out;
+    color: $text-colorRank;
+  }
 }
 .newsList-body {
   width: 75%;
@@ -153,10 +190,37 @@ export default {
   line-height: 21px;
   color: $text-colorRank;
   display: -webkit-box;
-  display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
   -webkit-line-clamp: 2;
   margin-bottom: 50px;
+}
+::v-deep .pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 0 8px;
+}
+::v-deep .page-item:not(:first-child) .page-link {
+  background-color: $bgc-body;
+  color: $news-title;
+  border-radius: 4px;
+}
+::v-deep .page-item.active .page-link {
+  background-color: $text-color;
+  color: $bgc-body;
+  border-color: $text-color;
+}
+::v-deep .page-item:not(:first-child) .page-link .active {
+  background-color: $bgc-body;
+  color: $news-title;
+  border-radius: 4px;
+}
+::v-deep .active > .page-link {
+  background-color: $text-color;
+  color: $bgc-body;
+  border-radius: 4px;
+  border-color: $border;
+  box-shadow: none;
 }
 </style>

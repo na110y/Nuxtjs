@@ -1,36 +1,46 @@
 <template>
-    <div class="product-detail">
-        <div class="product-list">
-          <div class="product-list_img">
-            <img src="~/assets/img/spbanner.png" alt="error-SPBanner" id="spbanner">
-            <div class="product-list_title">Danh mục sản phẩm</div>
-          </div>
+  <div class="product-detail">
+    <div class="product-list">
+      <div class="product-list_img">
+        <img id="spbanner" src="~/assets/img/spbanner.png" alt="error-SPBanner">
+        <div class="product-list_title">
+          Danh mục sản phẩm
         </div>
-      <div class="product-detail_body">
-        <b-card no-body class="flex-card">
-          <b-tabs card>
-            <b-tab title="Đặc điểm sản phẩm">
-              <b-card-text>
-                <div class="product-item_characteristic">
-                  <div class="product-charactersitic">
-                    <div class="card-image">
-                      <img :src="
-                    'https://api-map-life.grooo.com.vn/files/media/base/'
-                    + jsonParse(product.image)[0]"
-                           alt="error-image"
-                           id="imageItemProduct">
+      </div>
+    </div>
+    <div class="product-detail_body">
+      <b-card no-body class="flex-card">
+        <b-tabs card>
+          <b-tab title="Đặc điểm sản phẩm">
+            <b-card-text>
+              <div class="product-item_characteristic">
+                <div class="product-charactersitic">
+                  <div class="card-image">
+                    <img
+                      id="imageItemProduct"
+                      :src="
+                        'https://api-map-life.grooo.com.vn/files/media/base/'
+                          + jsonParse(product.image)"
+                      alt="error-image"
+                    >
+                  </div>
+                  <div class="bodyItem-txt">
+                    <div class="bodyItem_title">
+                      {{ isType(product.name) }}
                     </div>
-                    <div class="bodyItem-txt">
-                      <div class="bodyItem_title"> {{ isType(product.name) }}</div>
-                      <div class="bodyItem_txt"> {{ isType(product.description) }}</div>
+                    <div class="bodyItem_txt">
+                      {{ isType(product.description) }}
                     </div>
                   </div>
                 </div>
-                <div class="product-condition">
-                  <div class="contener">
-                    <div class="product-condition_title">Điều kiện tham gia</div>
-                    <table class="product-condition_table">
-                      <tbody>
+              </div>
+              <div class="product-condition">
+                <div class="contener">
+                  <div class="product-condition_title">
+                    Điều kiện tham gia
+                  </div>
+                  <table class="product-condition_table">
+                    <tbody>
                       <tr>
                         <td><strong>Tuổi tham gia</strong></td>
                         <td>18 - 55 tuổi</td>
@@ -43,145 +53,19 @@
                         <td><strong>Thời hạn hợp đồng</strong></td>
                         <td> 5-10 năm</td>
                       </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="product-advantage">
-                  <div class="product-advantage_title">Quyền lợi bảo hiểm</div>
-                  <div class="product-advantage_txt">Quyền lợi bảo hiểm cơ bản:</div>
-                    <table class="product-advantage_table">
-                      <tbody>
-                      <tr>
-                        <td><strong>Lựa chọn</strong></td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Số tiền bảo hiểm cơ bản</strong></td>
-                        <td>20.000.000</td>
-                        <td>50.000.000</td>
-                        <td>100.000.000</td>
-                        <td>150.000.000</td>
-                        <td>200.000.000</td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  <div class="product-advantage_txt">Quyền lợi bảo hiểm bổ sung do tai nạn:</div>
-                  <table class="product-advantage_table">
-                    <tbody>
-                    <tr>
-                      <td><strong>Lựa chọn</strong></td>
-                      <td>1</td>
-                      <td>2</td>
-                      <td>3</td>
-                      <td>4</td>
-                      <td>5</td>
-                      <td>6</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Số tiền bảo hiểm bổ sung do tai nạn</strong></td>
-                      <td>50.000.000</td>
-                      <td>100.000.000</td>
-                      <td>50.000.000</td>
-                      <td>200.000.000</td>
-                      <td>300.000.000</td>
-                      <td>400.000.000</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Phí bảo hiểm rủi ro hàng năm</strong></td>
-                      <td>65.000</td>
-                      <td>130.000</td>
-                      <td>260.000 </td>
-                      <td>390.000 </td>
-                      <td>520.000</td>
-                      <td>650.000</td>
-                    </tr>
                     </tbody>
                   </table>
                 </div>
-                <div class="product-ask">
-                  <div class="ask-list">
-                    <div class="colum-item_ask">
-                      <div class="item_ask-title">Liên hệ với chúng tôi</div>
-                      <div class="form-ask-item">
-                        <label for="ht">Họ và tên <span class="fooAsk">*</span></label>
-                        <input id="ht" type="text" placeholder="Nhập họ và tên">
-                      </div>
-                      <div class="form-ask-colum">
-                        <div class="sdt">
-                          <label for="sdt">Số điện thoại <span class="fooAsk">*</span></label>
-                          <input id="sdt" type="text" placeholder="Nhập họ và tên">
-                        </div>
-                        <div class="city">
-                          <label for="tp">Chọn thành phố <span class="fooAsk">*</span></label>
-                          <dropdown
-                            v-model="item.key"
-                            :data="records"
-                            :prop-key="item.key"
-                            :prop-value="item.value"
-                            :placeholder="placeholder"
-                          />
-                        </div>
-                      </div>
-                      <div class="form-ask-item">
-                        <label for="email">Địa chỉ email <span class="fooAsk">*</span></label>
-                        <input id="email" type="email" placeholder="Nhập địa chỉ email">
-                      </div>
-                      <div class="agree">
-                        <div class="btn-radio">
-                          <input type="checkbox" id="checkBok">
-                          <div class="agree-txt">
-                            Tôi đã đọc<span class="checkbox-txt">Chính sách bảo mật</span> và đồng ý để <span class="checkbox-txt">Mirae Asset Prévoir</span> được liên hệ cho các mục đích tư vấn, quảng cáo các sản phẩm, dịch vụ.
-                          </div>
-                        </div>
-                      </div>
-                      <div class="btnSubmit">
-                        <div class="btn-submit">Gửi thông tin</div>
-                      </div>
-                    </div>
-                    <div class="colum-item">
-                      <img src="~/assets/img/lienhe.png" alt="errorLienhe">
-                    </div>
-                  </div>
+              </div>
+              <div class="product-advantage">
+                <div class="product-advantage_title">
+                  Quyền lợi bảo hiểm
                 </div>
-              </b-card-text>
-            </b-tab>
-            <b-tab title="Điều kiện tham gia">
-              <b-card-text>
-                <div class="product-condition">
-                  <div class="contener">
-                    <div class="product-condition_title">Điều kiện tham gia</div>
-                    <table class="product-condition_table">
-                      <tbody>
-                      <tr>
-                        <td><strong>Tuổi tham gia</strong></td>
-                        <td>18 - 55 tuổi</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Tuổi kết thúc Hợp đồng bảo hiểm</strong></td>
-                        <td> 60 tuổi</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Thời hạn hợp đồng</strong></td>
-                        <td> 5-10 năm</td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                <div class="product-advantage_txt">
+                  Quyền lợi bảo hiểm cơ bản:
                 </div>
-              </b-card-text>
-            </b-tab>
-            <b-tab title="Quyền lợi bảo hiểm">
-              <b-card-text>
-                <div class="product-advantage">
-                  <div class="product-advantage_title">Quyền lợi bảo hiểm</div>
-                  <div class="product-advantage_txt">Quyền lợi bảo hiểm cơ bản:</div>
-                  <table class="product-advantage_table">
-                    <tbody>
+                <table class="product-advantage_table">
+                  <tbody>
                     <tr>
                       <td><strong>Lựa chọn</strong></td>
                       <td>1</td>
@@ -198,11 +82,13 @@
                       <td>150.000.000</td>
                       <td>200.000.000</td>
                     </tr>
-                    </tbody>
-                  </table>
-                  <div class="product-advantage_txt">Quyền lợi bảo hiểm bổ sung do tai nạn:</div>
-                  <table class="product-advantage_table">
-                    <tbody>
+                  </tbody>
+                </table>
+                <div class="product-advantage_txt">
+                  Quyền lợi bảo hiểm bổ sung do tai nạn:
+                </div>
+                <table class="product-advantage_table">
+                  <tbody>
                     <tr>
                       <td><strong>Lựa chọn</strong></td>
                       <td>1</td>
@@ -230,31 +116,170 @@
                       <td>520.000</td>
                       <td>650.000</td>
                     </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="product-ask">
+                <div class="ask-list">
+                  <div class="colum-item_ask">
+                    <div class="item_ask-title">
+                      Liên hệ với chúng tôi
+                    </div>
+                    <div class="form-ask-item">
+                      <label for="ht">Họ và tên <span class="fooAsk">*</span></label>
+                      <input id="ht" type="text" placeholder="Nhập họ và tên">
+                    </div>
+                    <div class="form-ask-colum">
+                      <div class="sdt">
+                        <label for="sdt">Số điện thoại <span class="fooAsk">*</span></label>
+                        <input id="sdt" type="text" placeholder="Nhập họ và tên">
+                      </div>
+                      <div class="city">
+                        <label for="tp">Chọn thành phố <span class="fooAsk">*</span></label>
+                        <dropdown
+                          v-model="item.key"
+                          :data="records"
+                          :prop-key="item.key"
+                          :prop-value="item.value"
+                          :placeholder="placeholder"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-ask-item">
+                      <label for="email">Địa chỉ email <span class="fooAsk">*</span></label>
+                      <input id="email" type="email" placeholder="Nhập địa chỉ email">
+                    </div>
+                    <div class="agree">
+                      <div class="btn-radio">
+                        <input id="checkBok" type="checkbox">
+                        <div class="agree-txt">
+                          Tôi đã đọc<span class="checkbox-txt">Chính sách bảo mật</span> và đồng ý để <span class="checkbox-txt">Mirae Asset Prévoir</span> được liên hệ cho các mục đích tư vấn, quảng cáo các sản phẩm, dịch vụ.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="btnSubmit">
+                      <div class="btn-submit">
+                        Gửi thông tin
+                      </div>
+                    </div>
+                  </div>
+                  <div class="colum-item">
+                    <img src="~/assets/img/lienhe.png" alt="errorLienhe">
+                  </div>
+                </div>
+              </div>
+            </b-card-text>
+          </b-tab>
+          <b-tab title="Điều kiện tham gia">
+            <b-card-text>
+              <div class="product-condition">
+                <div class="contener">
+                  <div class="product-condition_title">
+                    Điều kiện tham gia
+                  </div>
+                  <table class="product-condition_table">
+                    <tbody>
+                      <tr>
+                        <td><strong>Tuổi tham gia</strong></td>
+                        <td>18 - 55 tuổi</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Tuổi kết thúc Hợp đồng bảo hiểm</strong></td>
+                        <td> 60 tuổi</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Thời hạn hợp đồng</strong></td>
+                        <td> 5-10 năm</td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
-              </b-card-text>
-            </b-tab>
-          </b-tabs>
-          <b-tabs card>
-          </b-tabs>
-        </b-card>
-
-      </div>
-
+              </div>
+            </b-card-text>
+          </b-tab>
+          <b-tab title="Quyền lợi bảo hiểm">
+            <b-card-text>
+              <div class="product-advantage">
+                <div class="product-advantage_title">
+                  Quyền lợi bảo hiểm
+                </div>
+                <div class="product-advantage_txt">
+                  Quyền lợi bảo hiểm cơ bản:
+                </div>
+                <table class="product-advantage_table">
+                  <tbody>
+                    <tr>
+                      <td><strong>Lựa chọn</strong></td>
+                      <td>1</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>4</td>
+                      <td>5</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Số tiền bảo hiểm cơ bản</strong></td>
+                      <td>20.000.000</td>
+                      <td>50.000.000</td>
+                      <td>100.000.000</td>
+                      <td>150.000.000</td>
+                      <td>200.000.000</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="product-advantage_txt">
+                  Quyền lợi bảo hiểm bổ sung do tai nạn:
+                </div>
+                <table class="product-advantage_table">
+                  <tbody>
+                    <tr>
+                      <td><strong>Lựa chọn</strong></td>
+                      <td>1</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>6</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Số tiền bảo hiểm bổ sung do tai nạn</strong></td>
+                      <td>50.000.000</td>
+                      <td>100.000.000</td>
+                      <td>50.000.000</td>
+                      <td>200.000.000</td>
+                      <td>300.000.000</td>
+                      <td>400.000.000</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Phí bảo hiểm rủi ro hàng năm</strong></td>
+                      <td>65.000</td>
+                      <td>130.000</td>
+                      <td>260.000 </td>
+                      <td>390.000 </td>
+                      <td>520.000</td>
+                      <td>650.000</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </b-card-text>
+          </b-tab>
+        </b-tabs>
+        <b-tabs card />
+      </b-card>
     </div>
-
+  </div>
 </template>
-<script >
+<script>
 // import axios from 'axios'
 import dropdown from '~/assets/base/dropdown.vue'
 
 export default {
-  name: 'product-detail',
+  name: 'ProductDetail',
   components: {
     dropdown
   },
   props: {
+    // eslint-disable-next-line vue/require-default-prop
     placeholder: {
       type: String
     }
@@ -265,7 +290,6 @@ export default {
       item: {}
     }
   },
-  watch: {},
   computed: {
     // truyền data cho Combobox
     records () {
@@ -293,6 +317,7 @@ export default {
       ]
     }
   },
+  watch: {},
   created () {},
   mounted () {
     /**
@@ -304,9 +329,9 @@ export default {
   methods: {
     async getDataProductDetail () {
       const res = await this.$axios
-        .get(process.env.baseApiUrl + '/featured-product-categories', { params: { id: this.$route.params.id } })
+        .get(process.env.baseApiUrl + '/featured-product-categories', { params: { id: this.$route.params.slug } })
       if (res) {
-        this.product = res.data.data[0]
+        this.product = res.data.data
       }
     },
     jsonParse (value) {
@@ -315,10 +340,6 @@ export default {
       }
       return ''
     },
-    /**
-     * @description: hàm này dùng để bỏ ngoặc string trong text
-     * Author: NSDThinh 21/02/2023
-     */
     isType (string) {
       JSON.parse(string)
       {
@@ -342,7 +363,6 @@ export default {
   color: $body-column-title;
   font-weight: 500;
   &:hover {
-    border-color: $bgc-body;
     border-color: $bgc-body;
   }
 }
@@ -440,9 +460,8 @@ export default {
 }
 table {
   width: 100%;
-  margin: auto;
   border: 1px solid $border-table;
-  margin-bottom: 20px;
+  margin: auto auto 20px;
 }
 tr td {
   border: 1px solid $border-table;

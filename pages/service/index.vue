@@ -319,70 +319,76 @@
               </div>
             </div>
             <div class="product-ask">
-                <div class="ask-list">
-                  <div class="colum-item_ask">
-                    <div class="item_ask-title">Liên hệ với chúng tôi</div>
-                    <div class="form-ask-item">
-                      <label for="ht">Họ và tên <span class="fooAsk">*</span></label>
-                      <input id="ht" type="text" placeholder="Nhập họ và tên">
+              <div class="ask-list">
+                <div class="colum-item_ask">
+                  <div class="item_ask-title">
+                    Liên hệ với chúng tôi
+                  </div>
+                  <div class="form-ask-item">
+                    <label for="ht">Họ và tên <span class="fooAsk">*</span></label>
+                    <input id="ht" type="text" placeholder="Nhập họ và tên">
+                  </div>
+                  <div class="form-ask-colum">
+                    <div class="sdt">
+                      <label for="sdt">Số điện thoại <span class="fooAsk">*</span></label>
+                      <input id="sdt" type="text" placeholder="Nhập họ và tên">
                     </div>
-                    <div class="form-ask-colum">
-                      <div class="sdt">
-                        <label for="sdt">Số điện thoại <span class="fooAsk">*</span></label>
-                        <input id="sdt" type="text" placeholder="Nhập họ và tên">
-                      </div>
-                      <div class="city">
-                        <label for="tp">Chọn thành phố <span class="fooAsk">*</span></label>
-                        <dropdown
-                          v-model="item.key"
-                          :data="records"
-                          :prop-key="item.key"
-                          :prop-value="item.value"
-                          :placeholder="placeholder"
-                        />
-                      </div>
-                    </div>
-                    <div class="form-ask-item">
-                      <label for="email">Địa chỉ email <span class="fooAsk">*</span></label>
-                      <input id="email" type="email" placeholder="Nhập địa chỉ email">
-                    </div>
-                    <div class="agree">
-                      <div class="btn-radio">
-                        <input type="checkbox" id="checkBok">
-                        <div class="agree-txt">
-                          Tôi đã đọc<span class="checkbox-txt">Chính sách bảo mật</span> và đồng ý để <span class="checkbox-txt">Mirae Asset Prévoir</span> được liên hệ cho các mục đích tư vấn, quảng cáo các sản phẩm, dịch vụ.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="btnSubmit">
-                      <div class="btn-submit">Gửi thông tin</div>
+                    <div class="city">
+                      <label for="tp">Chọn thành phố <span class="fooAsk">*</span></label>
+                      <dropdown
+                        v-model="item.key"
+                        :data="records"
+                        :prop-key="item.key"
+                        :prop-value="item.value"
+                        :placeholder="placeholder"
+                      />
                     </div>
                   </div>
-                  <div class="colum-item">
-                    <img src="~/assets/img/lienhe.png" alt="errorLienhe">
+                  <div class="form-ask-item">
+                    <label for="email">Địa chỉ email <span class="fooAsk">*</span></label>
+                    <input id="email" type="email" placeholder="Nhập địa chỉ email">
+                  </div>
+                  <div class="agree">
+                    <div class="btn-radio">
+                      <input id="checkBok" type="checkbox">
+                      <div class="agree-txt">
+                        Tôi đã đọc<span class="checkbox-txt">Chính sách bảo mật</span> và đồng ý để <span class="checkbox-txt">Mirae Asset Prévoir</span> được liên hệ cho các mục đích tư vấn, quảng cáo các sản phẩm, dịch vụ.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="btnSubmit">
+                    <div class="btn-submit">
+                      Gửi thông tin
+                    </div>
                   </div>
                 </div>
+                <div class="colum-item">
+                  <img src="~/assets/img/lienhe.png" alt="errorLienhe">
+                </div>
+              </div>
             </div>
             <div class="supplementary">
-              <div class="supplementary-title">Các sản phẩm bổ trợ</div>
+              <div class="supplementary-title">
+                Các sản phẩm bổ trợ
+              </div>
               <div class="supplementary-item">
                 <vueper-slides
-                  ref="vueperslides1"
+                  ref="depersonalises1"
                   class="no-shadow"
                   :visible-slides="3"
                   :slide-ratio="1 / 4"
                   :dragging-distance="200"
                   slide-multiple
-                  :arrows="false">
+                  :arrows="false"
+                >
                   <vueper-slide
                     v-for="(item, index) in productImage.data"
                     :key="index"
-                    :image="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(item.image)[0]" >
-                  </vueper-slide>
+                    :image="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(item.image)[0]"
+                  />
                 </vueper-slides>
               </div>
             </div>
-
           </b-card-text>
         </b-tab>
         <b-tab title="Điều kiện">
@@ -521,7 +527,9 @@
             <div class="product-ask">
               <div class="ask-list">
                 <div class="colum-item_ask">
-                  <div class="item_ask-title">Liên hệ với chúng tôi</div>
+                  <div class="item_ask-title">
+                    Liên hệ với chúng tôi
+                  </div>
                   <div class="form-ask-item">
                     <label for="ht">Họ và tên <span class="fooAsk">*</span></label>
                     <input id="ht" type="text" placeholder="Nhập họ và tên">
@@ -548,14 +556,16 @@
                   </div>
                   <div class="agree">
                     <div class="btn-radio">
-                      <input type="checkbox" id="checkBok">
+                      <input id="checkBok" type="checkbox">
                       <div class="agree-txt">
                         Tôi đã đọc<span class="checkbox-txt">Chính sách bảo mật</span> và đồng ý để <span class="checkbox-txt">Mirae Asset Prévoir</span> được liên hệ cho các mục đích tư vấn, quảng cáo các sản phẩm, dịch vụ.
                       </div>
                     </div>
                   </div>
                   <div class="btnSubmit">
-                    <div class="btn-submit">Gửi thông tin</div>
+                    <div class="btn-submit">
+                      Gửi thông tin
+                    </div>
                   </div>
                 </div>
                 <div class="colum-item">
@@ -584,6 +594,7 @@ export default {
     dropdown, VueperSlides, VueperSlide
   },
   props: {
+    // eslint-disable-next-line vue/require-default-prop
     placeholder: {
       type: String
     }

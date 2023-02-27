@@ -55,7 +55,6 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios'
   ],
 
@@ -67,6 +66,7 @@ export default {
   build: {},
   env: {
     baseUrl: process.env.BASE_URL || 'http:localhost:3000',
-    baseApiUrl: process.env.BASE_API_URL || 'https://api-map-life.grooo.com.vn'
+    baseApiUrl: process.env.BASE_API_URL || 'https://api-map-life.grooo.com.vn',
+    baseApiServer: process.env.BASE_API_SERVER || 'https://api-map-life.grooo.com.vn/files/media/base'
   }
 }

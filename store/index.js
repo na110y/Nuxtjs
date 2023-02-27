@@ -14,7 +14,7 @@ export const mutations = {
   SET_SLIDE_HOME (state, homeSlide) {
     state.homeSlide = homeSlide
   },
-  // homeSProductDetail
+  // SET_PRODUCT_DETAIL
   SET_PRODUCT_DETAIL (state, data) {
     state.productDetail = data
   },
@@ -56,6 +56,7 @@ export const actions = {
       .get(process.env.baseApiUrl + '/fe-get-post')
     commit('SET_NEWS', res.data)
   }
+
 }
 export const getters = {
   // homeSlide

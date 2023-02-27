@@ -1048,12 +1048,16 @@ display: flex;
 #shopPhone {
   margin-right: 16px;
   cursor: pointer;
+  width: 200px;
+  height: auto;
   @include deptop1290 {
     width: 150px;
   }
 }
 #googlePlay {
   cursor: pointer;
+  width: 200px;
+  height: auto;
   @include deptop1290 {
     width: 150px;
   }

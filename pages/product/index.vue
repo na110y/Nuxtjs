@@ -1,40 +1,47 @@
 <template>
   <div class="product">
     <div class="product-list">
-        <div class="product-list_img">
-          <img src="~/assets/img/spbanner.png" alt="error-SPBanner" id="spbanner">
-          <div class="product-list_title">Danh mục sản phẩm</div>
+      <div class="product-list_img">
+        <img id="spbanner" src="~/assets/img/spbanner.png" alt="error-SPBanner">
+        <div class="product-list_title">
+          Danh mục sản phẩm
         </div>
+      </div>
     </div>
     <div class="SP-list_column">
-        <div class="SP-list-link"
-             v-for="item in productPage.data"
-             :key="item.id">
-          <div class="SP-list-image">
-            <img
-              :src="
-                  'https://api-map-life.grooo.com.vn/files/media/base/' +
-                  jsonParse(item.image)[0]
-                "
-              alt="error-image"
-              id="body_column-image"
-            />
-          </div>
-          <div class="list_column-txt" >
-            <nuxt-link :to="`/product/${item.id}`" >
-            <div class="list_sp-title">{{ isType(item.name) }}</div>
-            </nuxt-link>
-            <div class="list_sp-txt">
-              {{ isType(item.description) }}
+      <div
+        v-for="(item,index) in productPage.data"
+        :key="index.id"
+        class="SP-list-link"
+      >
+        <div class="SP-list-image">
+          <img
+            id="body_column-image"
+            :src="
+              'https://api-map-life.grooo.com.vn/files/media/base/' +
+                jsonParse(item.image)[0]
+            "
+            alt="error-image"
+          >
+        </div>
+        <div class="list_column-txt">
+          <nuxt-link :to="`/product/${isType(item.slug)}`">
+            <div class="list_sp-title">
+              {{ isType(item.name) }}
             </div>
+          </nuxt-link>
+          <div class="list_sp-txt">
+            {{ isType(item.description) }}
           </div>
         </div>
-
+      </div>
     </div>
     <div class="product-ask">
       <div class="ask-list">
         <div class="colum-item_ask">
-          <div class="item_ask-title">Liên hệ với chúng tôi</div>
+          <div class="item_ask-title">
+            Liên hệ với chúng tôi
+          </div>
           <div class="form-ask-item">
             <label for="ht">Họ và tên <span class="fooAsk">*</span></label>
             <input id="ht" type="text" placeholder="Nhập họ và tên">
@@ -61,14 +68,16 @@
           </div>
           <div class="agree">
             <div class="btn-radio">
-              <input type="checkbox" id="checkBok">
+              <input id="checkBok" type="checkbox">
               <div class="agree-txt">
                 Tôi đã đọc<span class="checkbox-txt">Chính sách bảo mật</span> và đồng ý để <span class="checkbox-txt">Mirae Asset Prévoir</span> được liên hệ cho các mục đích tư vấn, quảng cáo các sản phẩm, dịch vụ.
               </div>
             </div>
           </div>
           <div class="btnSubmit">
-            <div class="btn-submit">Gửi thông tin</div>
+            <div class="btn-submit">
+              Gửi thông tin
+            </div>
           </div>
         </div>
         <div class="colum-item">
@@ -86,6 +95,7 @@ export default {
     dropdown
   },
   props: {
+    // eslint-disable-next-line vue/require-default-prop
     placeholder: {
       type: String
     }
@@ -148,10 +158,6 @@ export default {
       }
       return ''
     },
-    /**
-     * @description: hàm này dùng để bỏ ngoặc string trong text
-     * Author: NSDThinh 21/02/2023
-     */
     isType (string) {
       JSON.parse(string)
       {

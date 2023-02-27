@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <my-header/>
+    <my-header />
     <nuxt-child />
     <my-footer />
   </div>
@@ -10,7 +10,7 @@ import myHeader from '../layouts/header/myHeader.vue'
 import myFooter from '../layouts/footer/myFooter.vue'
 
 export default {
-  name: 'default',
+  name: 'Default',
   components: { myFooter, myHeader }
 }
 </script>

@@ -19,7 +19,7 @@
             </nuxt-link>
           </div>
           <div class="menu-link">
-            <nuxt-link to="/product/" class="menu-item">
+            <nuxt-link to="#" class="menu-item">
               Về Mirae Asset Prévoir
             </nuxt-link>
           </div>
@@ -33,12 +33,11 @@
           </div>
           <div class="menu-link item-language">
             <img src="@/assets/img/language.svg" alt="error-Language">
-            <img src="@/assets/img/dropdown.svg" alt="error-dropdown" id="dropdown">
+            <img id="dropdown" src="@/assets/img/dropdown.svg" alt="error-dropdown">
           </div>
         </li>
       </ul>
     </div>
-
   </header>
 </template>
 <script>
