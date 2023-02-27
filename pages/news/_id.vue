@@ -16,7 +16,7 @@
           <img
             id="thumbnail_img"
             :src="
-              'https://api-map-life.grooo.com.vn/files/media/base/' + itemNews.image"
+              'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(itemNews.image)"
             alt="errorItem"
           >
         </div>
@@ -39,9 +39,7 @@ export default {
   props: {},
   data () {
     return {
-      news: {},
       itemNews: {}
-
     }
   },
   computed: {},
@@ -57,10 +55,9 @@ export default {
     async getDataNewDetail () {
       const res = await this.$axios
         // eslint-disable-next-line no-undef
-        .get(process.env.baseApiUrl + '/post/fe-get-detail?slug=' + `${this.isType(itemNews.slug)}`, { params: { id: this.$route.params.slug } })
+        .get(process.env.baseApiUrl + `/post/fe-get-detail?slug=${this.$route.params.id}`)
       if (res) {
-        this.itemNews = res.data.data.data.slug
-        console.log(this.itemNews)
+        this.itemNews = res.data.data
       }
     },
     jsonParse (value) {

@@ -91,7 +91,6 @@ export default {
         const res = await me.$axios.get(
           process.env.baseApiUrl + '/post/fe-list-post?limit')
         me.listNews = res.data.data.data
-        console.log(res.data.data.data)
       } catch (error) {
         console.log(error)
       }
