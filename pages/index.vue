@@ -120,7 +120,7 @@
                 Giải đáp những thắc mắc của khách hàng, chúng tôi cam kết mang đến trải nghiệm dịch vụ tối ưu: <span>Nhanh chóng - Hữu ích</span>
               </div>
               <div class="column-service_btn">
-                <nuxt-link to="/service/serviceList">
+                <nuxt-link to="/service/">
                   <span class="btn-service">Các dịch vụ khác</span>
                 </nuxt-link>
               </div>
@@ -151,7 +151,7 @@
                 {{ isType(item.description) }}
               </div>
               <div class="serviceLink-item_last">
-                <nuxt-link to="/client/clientList">
+                <nuxt-link to="/service/">
                   <p class="serviceLink-item-detail">
                     Xem chi tiết
                   </p>

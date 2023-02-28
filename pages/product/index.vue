@@ -25,7 +25,7 @@
           >
         </div>
         <div class="list_column-txt">
-          <nuxt-link :to="`/product/${isType(item.slug)}`">
+          <nuxt-link :to="`/product/${ item.id}`">
             <div class="list_sp-title">
               {{ isType(item.name) }}
             </div>

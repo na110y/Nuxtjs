@@ -19,7 +19,7 @@
             </nuxt-link>
           </div>
           <div class="menu-link">
-            <nuxt-link to="#" class="menu-item">
+            <nuxt-link to="/about/" class="menu-item">
               Về Mirae Asset Prévoir
             </nuxt-link>
           </div>

@@ -7,7 +7,8 @@ export const state = () => ({
   newsPage: [],
   productImage: [],
   clientPage: [],
-  productDetail: {}
+  productDetail: {},
+  manganer: []
 })
 export const mutations = {
   // SET_SLIDE_HOME
@@ -29,6 +30,10 @@ export const mutations = {
   // SET_NEWS
   SET_NEWS (state, newsPage) {
     state.newsPage = newsPage
+  },
+  // SET_MANGANER
+  SET_MANGANER (state, manganer) {
+    state.manganer = manganer
   }
 }
 export const actions = {
@@ -55,8 +60,12 @@ export const actions = {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/fe-get-post')
     commit('SET_NEWS', res.data)
+  },
+  async setManganAbout ({ commit }) {
+    const res = await this.$axios
+      .get(process.env.baseApiUrl + '/bod/fe-list-bod')
+    commit('SET_MANGANER', res.data)
   }
-
 }
 export const getters = {
   // homeSlide
@@ -74,5 +83,9 @@ export const getters = {
   // newsApi
   newsApi (state) {
     return state.newsPage
+  },
+  // manganerApi
+  newsManganerApi (state) {
+    return state.manganer
   }
 }

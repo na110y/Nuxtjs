@@ -20,7 +20,7 @@
                       id="imageItemProduct"
                       :src="
                         'https://api-map-life.grooo.com.vn/files/media/base/'
-                          + jsonParse(product.image)"
+                          + jsonParse(product.image)[0]"
                       alt="error-image"
                     >
                   </div>
@@ -329,9 +329,10 @@ export default {
   methods: {
     async getDataProductDetail () {
       const res = await this.$axios
-        .get(process.env.baseApiUrl + '/featured-product-categories', { params: { id: this.$route.params.slug } })
+        .get(process.env.baseApiUrl +
+          `/featured-product-categories?id=${this.$route.params.id}`)
       if (res) {
-        this.product = res.data.data
+        this.product = res.data.data[0]
       }
     },
     jsonParse (value) {
@@ -348,7 +349,6 @@ export default {
       }
     }
   }
-
 }
 </script>
 <style lang="scss" scoped>
@@ -359,12 +359,14 @@ export default {
   width: 100%;
   height: auto;
 }
+::v-deep .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  background-color: $bgc-product;
+  border: none;
+}
 ::v-deep .nav-link {
   color: $body-column-title;
   font-weight: 500;
-  &:hover {
-    border-color: $bgc-body;
-  }
+
 }
 ::v-deep .card {
   border: none;
@@ -372,13 +374,10 @@ export default {
 ::v-deep .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
   color: $text-color;
   font-weight: 500;
-  border-color: #fff;
-
 }
 ::v-deep .nav-tabs .nav-link, .nav-tabs .nav-item.show .nav-link {
   color: $text-colorRank;
   font-weight: 500;
-  border-color: #fff;
   padding: 0;
 }
 ::v-deep .card-header {

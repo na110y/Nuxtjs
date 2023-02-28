@@ -1705,11 +1705,11 @@ color: $text-colorRank;
 width: 10px;
 height: 10px;
 border-radius: 12px;
-border: 1px solid $text-color;
 background-color: transparent;
 box-shadow: 0 0 1px rgb(215 30 30 / 50%), 0 0 3px rgb(0 0 0 / 30%);
 transition: .4s ease-in-out;
 box-sizing: border-box;
+  border-color: #f58220;
 }
 ::v-deep .vueperslides__bullet--active {;
 outline: none;
