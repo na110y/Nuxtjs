@@ -26,10 +26,14 @@
           </div>
           <div class="container">
             <div class="txt-p">
-              Là thành viên của Công ty bảo hiểm nhân thọ Mirae Asset (Hàn Quốc) và Tập đoàn Prévoir (Pháp), Mirae Asset Prévoir là công ty bảo hiểm nhân thọ hàng đầu, cung cấp tập hợp các giải pháp tài chính toàn diện và bền vững cho khách hàng và đối tác.
+              Là thành viên của Công ty bảo hiểm nhân thọ Mirae Asset (Hàn Quốc) và Tập đoàn Prévoir (Pháp), Mirae Asset
+              Prévoir là công ty bảo hiểm nhân thọ hàng đầu, cung cấp tập hợp các giải pháp tài chính toàn diện và bền
+              vững cho khách hàng và đối tác.
               <br>
               <br>
-              Mirae Asset Prévoir tập trung nâng cao sự hiểu biết sâu sắc về nhu cầu của khách hàng, xây dựng nền tảng vững mạnh về tài chính và tăng cường xây dựng các kênh phân phối đa dạng giúp khách hàng đưa ra quyết định dễ dàng hơn và sống tốt hơn với phương châm “Cho ngày mai tốt hơn, từ hôm nay".
+              Mirae Asset Prévoir tập trung nâng cao sự hiểu biết sâu sắc về nhu cầu của khách hàng, xây dựng nền tảng
+              vững mạnh về tài chính và tăng cường xây dựng các kênh phân phối đa dạng giúp khách hàng đưa ra quyết định
+              dễ dàng hơn và sống tốt hơn với phương châm “Cho ngày mai tốt hơn, từ hôm nay".
             </div>
           </div>
         </div>
@@ -46,12 +50,14 @@
               <div
                 v-for="(use,index) in manganerAbout.data"
                 :key="index"
-                class="bod-slider">
+                class="bod-slider"
+              >
                 <div class="bod-slider_img">
                   <img
                     id="iconManganer"
                     :src="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(use.image)[0]"
-                    alt="error-manganer">
+                    alt="error-manganer"
+                  >
                 </div>
                 <div class="bod-slider_info">
                   <div class="bod-slider_title">
@@ -71,94 +77,133 @@
           <div class="distribution-title">
             Kênh phân phối
           </div>
-          <div class="distribution-txt">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio tincidunt cum
-            risus morbi adipiscing mauris non.
-          </div>
         </div>
         <div class="btn_bank">
-          <button class="btn-bank">
-            Kênh hợp tác ngân hàng
-          </button>
-          <button class="btn-bank">
-            Tổ chức tài chính
-          </button>
-          <button class="btn-bank">
-            Tổ chức doanh nghiệp
-          </button>
-        </div>
-        <div class="about-bank">
-          <ul class="bank-about">
-            <li class="list-bank">
-              <div v-for="(item, index) in bank" :key="index" class="ncb-bank">
-                <div class="bank-nc">
-                  <img id="ncb-img" :src="item.img" alt="error-ncb">
-                  <div class="ncb-title">
-                    {{ item.title }}
+          <b-card no-body>
+            <b-tabs card>
+              <b-tab title="Kênh hợp tác ngân hàng" active>
+                <b-card-text>
+                  <div class="container">
+                    <ul class="bankAbout-List">
+                      <li
+                        v-for="bank in bankAboutApi"
+                        :key="bank"
+                        class="bankAbout-item"
+                      >
+                        <nuxt-link to="">
+                          <img id="iconBank" :src="bank.img" alt="errorBank">
+                        </nuxt-link>
+                        <div class="bankAbout-info">
+                          <div class="bankAbout-title">
+                            {{ bank.title }}
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
                   </div>
-                  <div class="ncb-txt">
-                    {{ item.txt }}
+                </b-card-text>
+              </b-tab>
+              <b-tab title="Tổ chức tài chính">
+                <b-card-text>
+                  <div class="container">
+                    <nuxt-link to="">
+                      <img id="iconBank" src="@/assets/img/f88.png" alt="errorBank">
+                    </nuxt-link>
+                    <div class="bankAbout-info">
+                      <div class="bankAbout-title">
+                        Công ty CP Kinh doanh F88
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </li>
-          </ul>
+                </b-card-text>
+              </b-tab>
+              <b-tab title="Tổ chức doanh nghiệp">
+                <b-card-text>
+                  <div class="container">
+                    <nuxt-link to="">
+                      <img id="iconBank" src="@/assets/img/abv.png" alt="errorBank">
+                    </nuxt-link>
+                    <div class="bankAbout-info">
+                      <div class="bankAbout-title">
+                        TẬP ĐOÀN ÂN BÌNH VIÊN
+                      </div>
+                    </div>
+                  </div>
+                </b-card-text>
+              </b-tab>
+            </b-tabs>
+          </b-card>
         </div>
         <div class="abou-Notification">
           <div class="abou-Notification_txt">
-            <div class="Notification-title">
+            <div class="Notificati-title">
               Thông cáo báo chí
             </div>
           </div>
           <div class="abou-Notification_img">
             <ul class="Notification-img">
               <li class="list-Notification">
-                  <div class="Notification-ttxt" v-for="(item, index) in pressReleaseAbout"
-                       :key="index">
-                    <img id="Notification-img" :src="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(item.image)[0]" alt="error-ncb">
+                <div
+                  v-for="(notifi, index) in pressReleaseAbout.data"
+                  :key="index"
+                  class="Notification-ttxt"
+                >
+                  <img
+                    id="Notification-img"
+                    :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
+                      jsonParse(notifi.image)[0]"
+                    alt="error-ncb"
+                  >
+                  <nuxt-link :to="`/about/${isType(notifi.slug)}`">
                     <div class="ncb-title Notification-title">
-                      {{ isType(item.title) }}
+                      {{ isType(notifi.title) }}
                     </div>
-                    <div class="ncb-txt Notification-txt">
-                      {{ isType(item.description) }}
-                    </div>
-                    <div class="icon-chiteit">
-                      <div class="chitiet-txt">
-                        {{ item.chitiet }}
-                      </div>
-                      <div class="chitiet-icon">
-                        <img :src="item.icon" alt="">
-                      </div>
-                    </div>
+                  </nuxt-link>
+                  <div class="ncb-txt Notification-txt">
+                    {{ isType(notifi.description) }}
                   </div>
+                </div>
               </li>
-              <div class="NotificationAll">
-                <a href="#" class="allNotifion">Xem tất cả</a>
-              </div>
+              <li>
+                <div class="NotificationAll">
+                  <nuxt-link to="/about/pressReleaseList">
+                    <a href="#" class="allNotifion">Xem tất cả</a>
+                  </nuxt-link>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
         <div class="finance">
           <ul class="finance-img">
-            <li v-for="(item, index) in finance" :key="index" class="list-finance">
+            <li class="list-finance">
               <div class="finance-colum">
                 <div class="finance-colum_img">
-                  <img :src="item.img" alt="error-finance">
+                  <img src="https://map-life.grooo.com.vn/images/svg/finance.svg" alt="error-finance">
                 </div>
                 <div class="finance-colum_title">
-                  {{ item.title }}
+                  Báo cáo tài chính
                 </div>
-                <div class="finance-colum_txt">
-                  {{ item.txt }}
-                </div>
-                <div class="finance-colum_detail">
-                  <div class="colum_detail-txt">
-                    {{ item.detail }}
+                <nuxt-link to="#">
+                  <div class="finance-colum_txt">
+                    Xem chi tiết
                   </div>
-                  <div class="colum_detail-img">
-                    <img :src="item.icon" alt="">
-                  </div>
+                </nuxt-link>
+              </div>
+            </li>
+            <li class="list-finance">
+              <div class="finance-colum">
+                <div class="finance-colum_img">
+                  <img src="https://map-life.grooo.com.vn/images/svg/award.svg" alt="error-finance">
                 </div>
+                <div class="finance-colum_title">
+                  Giải thưởng
+                </div>
+                <nuxt-link to="/about/prizeList/">
+                  <div class="finance-colum_txt">
+                    Xem chi tiết
+                  </div>
+                </nuxt-link>
               </div>
             </li>
           </ul>
@@ -169,21 +214,31 @@
               <div class="about-title">
                 Videos & ảnh
               </div>
-              <div class="about-txt">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate amet
-                sit.
-              </div>
             </div>
             <ul class="about-video">
-              <li class="list-video">
-              </li>
-              <div class="NotificationAll">
-                <div class="video-nextIcon">
-                  <ul class="dots">
-                  </ul>
+              <li
+                v-for="(about,index) in aboutVideoApi.data"
+                :key="index"
+                class="list-video"
+              >
+                <img
+                  :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
+                    jsonParse(about.image)[0]"
+                  alt="errorImage"
+                >
+                <div class="list_icon-title">
+                  {{ isType(about.title) }}
                 </div>
-                <a href="#" class="allNotifion">Xem tất cả</a>
-              </div>
+              </li>
+
+              <li>
+                <div class="NotificationAll">
+                  <div class="video-nextIcon">
+                    <ul class="dots" />
+                  </div>
+                  <a href="#" class="allNotifion">Xem tất cả</a>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
@@ -197,12 +252,9 @@
 // const $ = require("jquery");
 // window.$ = $;
 export default {
-  components: {
-
-  },
+  components: {},
   data () {
-    return {
-    }
+    return {}
   },
   computed: {
     /**
@@ -214,6 +266,12 @@ export default {
     },
     pressReleaseAbout () {
       return this.$store.state.pressRelease
+    },
+    bankAboutApi () {
+      return this.$store.state.bankAbout
+    },
+    aboutVideoApi () {
+      return this.$store.state.video
     }
   },
   mounted () {
@@ -223,8 +281,10 @@ export default {
      */
     this.$store.dispatch('setManganAbout')
     this.$store.dispatch('setPressRelease')
+    this.$store.dispatch('setVideo')
   },
-  created () {},
+  created () {
+  },
   methods: {
     // biến đổi sang dạng json
     jsonParse (value) {

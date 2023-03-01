@@ -289,7 +289,6 @@
 import dropdown from '~/assets/base/dropdown.vue'
 // import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'vueperslides/dist/vueperslides.css'
-
 export default {
   components: {
     // eslint-disable-next-line vue/no-unused-components
@@ -432,7 +431,6 @@ export default {
       }
     }
   }
-
 }
 </script>
 <style lang="scss" scoped>
