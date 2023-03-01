@@ -1,0 +1,63 @@
+@import "assets/scss/_variables.scss";
+.warper {
+  max-width: 1920px;
+  height: inherit;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  box-shadow: 0 5px 5px rgb(0 0 0 / 10%);
+}
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+  height: inherit;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+}
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 30px;
+}
+.menu-link {
+cursor: pointer;
+  a{
+    &.nuxt-link-active{
+      color: $text-color;
+      font-weight: 500;
+    }
+  }
+}
+.menu-item {
+  color: $text-colorRank;
+  font-family: $font;
+  font-weight: 500;
+}
+.btn{
+  color:$bgc-body ;
+  font-weight: 500;
+  padding: 12px 24px;
+  background-color: $text-color;
+  cursor: pointer;
+  &:hover {
+    color:$bgc-body ;
+    opacity: 0.8;
+  }
+}
+.item-language {
+  display: flex;
+}
+#dropdown {
+  margin-left: 8px;
+  cursor: pointer;
+}
+

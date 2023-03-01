@@ -906,3 +906,56 @@ vueper-slide {
     background-color: $text-color;
   }
 }
+.container {
+  max-width: 1170px;
+  width: 100%;
+  margin: auto;
+}
+.bod-slider_img {
+  width: 100%;
+}
+.bod-slider {
+  width: calc(100% / 3 - 30px);
+}
+#iconManganer {
+  width: 100%;
+}
+.bod-wrap {
+  display: flex;
+  position: relative;
+  gap: 0 30px;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  -webkit-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+}
+.bod-slider_title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: $news-title;
+  margin-top: 24px;
+}
+.bod-slider_txt {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: $text-colorRank;
+  margin-top: 4px;
+}
+::v-deep .carousel-caption {
+  display: none;
+}
+::v-deep .sr-only {
+  display: none;
+}
+::v-deep .active {
+}

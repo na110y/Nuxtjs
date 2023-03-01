@@ -1,0 +1,14 @@
+@import "reset";
+@import "variables";
+@import "global";
+@import "./assets/scss/layouts/header/myHeader";
+@import "./assets/scss/layouts/content/myContent";
+@import "./assets/scss/layouts/footer/myFooter";
+@import "mixins";
+@import "./assets/scss/base/service";
+.warper {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+
+}

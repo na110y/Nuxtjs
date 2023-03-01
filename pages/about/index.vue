@@ -43,7 +43,24 @@
         <div class="maganer-Icon">
           <div class="container">
             <div class="bod-wrap">
-              <div class="bod-slider">
+              <div
+                v-for="(use,index) in manganerAbout.data"
+                :key="index"
+                class="bod-slider">
+                <div class="bod-slider_img">
+                  <img
+                    id="iconManganer"
+                    :src="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(use.image)[0]"
+                    alt="error-manganer">
+                </div>
+                <div class="bod-slider_info">
+                  <div class="bod-slider_title">
+                    {{ isType(use.name) }}
+                  </div>
+                  <div class="bod-slider_txt">
+                    {{ isType(use.position) }}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -92,26 +109,18 @@
             <div class="Notification-title">
               Thông cáo báo chí
             </div>
-            <div class="Notification-txt">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate amet sit.
-            </div>
           </div>
-
           <div class="abou-Notification_img">
             <ul class="Notification-img">
               <li class="list-Notification">
-                <div
-                  v-for="(item, index) in notification"
-                  :key="index"
-                  class="img-Notification"
-                >
-                  <div class="Notification-ttxt">
-                    <img id="Notification-img" :src="item.img" alt="error-ncb">
+                  <div class="Notification-ttxt" v-for="(item, index) in pressReleaseAbout"
+                       :key="index">
+                    <img id="Notification-img" :src="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(item.image)[0]" alt="error-ncb">
                     <div class="ncb-title Notification-title">
-                      {{ item.title }}
+                      {{ isType(item.title) }}
                     </div>
                     <div class="ncb-txt Notification-txt">
-                      {{ item.txt }}
+                      {{ isType(item.description) }}
                     </div>
                     <div class="icon-chiteit">
                       <div class="chitiet-txt">
@@ -122,7 +131,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
               </li>
               <div class="NotificationAll">
                 <a href="#" class="allNotifion">Xem tất cả</a>
@@ -172,13 +180,6 @@
               <div class="NotificationAll">
                 <div class="video-nextIcon">
                   <ul class="dots">
-                    <!--  -->
-                    <li
-                      v-for="(dot, index) in slides"
-                      :key="index"
-                      :class="{ active: ++index === active }"
-                      @click="activeClickNex(index)"
-                    />
                   </ul>
                 </div>
                 <a href="#" class="allNotifion">Xem tất cả</a>
@@ -191,12 +192,14 @@
   </div>
 </template>
 
-<script>
-import 'vueperslides/dist/vueperslides.css'
+<script lang="ts">
+
 // const $ = require("jquery");
 // window.$ = $;
 export default {
-  components: {},
+  components: {
+
+  },
   data () {
     return {
     }
@@ -208,6 +211,9 @@ export default {
      */
     manganerAbout () {
       return this.$store.state.manganer
+    },
+    pressReleaseAbout () {
+      return this.$store.state.pressRelease
     }
   },
   mounted () {
@@ -216,9 +222,29 @@ export default {
      * Author: NSDThinh 28/02/2023
      */
     this.$store.dispatch('setManganAbout')
+    this.$store.dispatch('setPressRelease')
   },
   created () {},
-  methods: {}
+  methods: {
+    // biến đổi sang dạng json
+    jsonParse (value) {
+      if (value) {
+        return JSON.parse(value)
+      }
+      return ''
+    },
+    /**
+     * @description: hàm này dùng để bỏ ngoặc string trong text
+     * Author: NSDThinh 21/02/2023
+     */
+    isType (string) {
+      JSON.parse(string)
+      {
+        const obj = JSON.parse(string)
+        return obj.vn
+      }
+    }
+  }
 }
 </script>
 

@@ -8,7 +8,8 @@ export const state = () => ({
   productImage: [],
   clientPage: [],
   productDetail: {},
-  manganer: []
+  manganer: [],
+  pressRelease: [] // thông cáo báo trí
 })
 export const mutations = {
   // SET_SLIDE_HOME
@@ -34,6 +35,10 @@ export const mutations = {
   // SET_MANGANER
   SET_MANGANER (state, manganer) {
     state.manganer = manganer
+  },
+  // SET_PRESSRELEASE
+  SET_PRESSRELEASE (state, pressRelease) {
+    state.pressRelease = pressRelease
   }
 }
 export const actions = {
@@ -65,6 +70,11 @@ export const actions = {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/bod/fe-list-bod')
     commit('SET_MANGANER', res.data)
+  },
+  async setPressRelease ({ commit }) {
+    const res = await this.$axios
+      .get(process.env.baseApiUrl + '/post/fe-press-release')
+    commit('SET_PRESSRELEASE', res.data)
   }
 }
 export const getters = {
@@ -87,5 +97,9 @@ export const getters = {
   // manganerApi
   newsManganerApi (state) {
     return state.manganer
+  },
+  // pressReleaseApi
+  pressReleaseApi (state) {
+    return state.pressRelease
   }
 }

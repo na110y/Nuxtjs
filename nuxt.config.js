@@ -34,7 +34,8 @@ export default {
 
   // build swiper
   plugins: [
-    // 'swiper'
+    // '~/plugins/vue-awesome-swiper',
+    // '~/plugins/vue-tooltip.js'
   ],
 
   components: true,
@@ -63,7 +64,8 @@ export default {
     baseURL: '/'
   },
 
-  build: {},
+  build: {
+  },
   env: {
     baseUrl: process.env.BASE_URL || 'http:localhost:3000',
     baseApiUrl: process.env.BASE_API_URL || 'https://api-map-life.grooo.com.vn',
