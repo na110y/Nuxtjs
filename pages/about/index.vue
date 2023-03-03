@@ -49,14 +49,10 @@
             <div class="bod-wrap">
               <carousel
                 :per-page="3"
-                :autoplay-timeout="false"
-                :autoplay="false"
-                :navigation-next-label="true"
-                :navigation-prev-label="true"
                 :pagination-enabled="false"
               >
                 <slide
-                  v-for="(use,index) in manganerAbout.data"
+                  v-for="(use,index) in manganerAbout"
                   :key="index"
                 >
                   <div class="bod-slider">
@@ -96,8 +92,8 @@
                   <div class="container">
                     <ul class="bankAbout-List">
                       <li
-                        v-for="bank in bankAboutApi"
-                        :key="bank"
+                        v-for="(bank,index) in bankAboutApi"
+                        :key="index"
                         class="bankAbout-item"
                       >
                         <nuxt-link to="">
@@ -151,45 +147,33 @@
             </div>
           </div>
           <div class="abou-Notification_img">
-            <carousel
-              :per-page="3"
-              :autoplay-timeout="false"
-              :autoplay="false"
-              :pagination-enabled="false"
-            >
-              <slide
-                v-for="(notifi, index) in pressReleaseAbout.data"
-                :key="index"
-              >
-                <ul class="Notification-img">
-                  <li class="list-Notification">
-                    <div
-                      class="Notification-ttxt"
-                    >
-                      <img
-                        id="Notification-img"
-                        :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
-                          jsonParse(notifi.image)[0]"
-                        alt="error-ncb"
-                      >
-                      <nuxt-link :to="`/about/notificationList/${ isType(notifi.slug)}`">
-                        <div class="ncb-title Notification-title">
-                          {{ isType(notifi.title) }}
-                        </div>
-                      </nuxt-link>
-                      <div class="ncb-txt Notification-txt">
-                        {{ isType(notifi.description) }}
-                      </div>
-                      <nuxt-link :to="`/about/notificationList/${ isType(notifi.slug)}`" class="Notification_link">
-                        <div class="Notification-last_txt">
-                          Xem chi tiết
-                        </div>
-                      </nuxt-link>
+            <ul class="Notification-img">
+              <li v-for="(notifi, index) in pressReleaseAbout.data" :key="index" class="list-Notification">
+                <div
+                  class="Notification-ttxt"
+                >
+                  <img
+                    id="Notification-img"
+                    :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
+                      jsonParse(notifi.image)[0]"
+                    alt="error-ncb"
+                  >
+                  <nuxt-link :to="`/about/notificationList/${ isType(notifi.slug)}`">
+                    <div class="ncb-title Notification-title">
+                      {{ isType(notifi.title) }}
                     </div>
-                  </li>
-                </ul>
-              </slide>
-            </carousel>
+                  </nuxt-link>
+                  <div class="ncb-txt Notification-txt">
+                    {{ isType(notifi.description) }}
+                  </div>
+                  <nuxt-link :to="`/about/notificationList/${ isType(notifi.slug)}`" class="Notification_link">
+                    <div class="Notification-last_txt">
+                      Xem chi tiết
+                    </div>
+                  </nuxt-link>
+                </div>
+              </li>
+            </ul>
             <div class="NotificationAll">
               <nuxt-link to="/about/notificationList/">
                 <a href="#" class="allNotifion">Xem tất cả</a>
@@ -231,40 +215,49 @@
             </li>
           </ul>
         </div>
-        <!--        <div class="aboutvideo">-->
-        <!--          <div class="aboutvideo-item">-->
-        <!--            <div class="about-video">-->
-        <!--              <div class="about-title">-->
-        <!--                Videos & ảnh-->
-        <!--              </div>-->
-        <!--            </div>-->
-        <!--            <ul class="about-video">-->
-        <!--              <li-->
-        <!--                v-for="(item,index) in videoAboutApi"-->
-        <!--                :key="index"-->
-        <!--                class="list-video"-->
-        <!--              >-->
-        <!--                <img-->
-        <!--                  :src="'https://api-map-life.grooo.com.vn/files/media/base/' +-->
-        <!--                      jsonParse(notifi.image)[0]"-->
-        <!--                  alt="errorImage"-->
-        <!--                >-->
-        <!--                <div class="list_icon-title">-->
-        <!--                  {{ isType(item.title) }}-->
-        <!--                </div>-->
-        <!--              </li>-->
-        <!--              <li>-->
-        <!--                <div class="NotificationAll">-->
-        <!--                  <nuxt-link to="">-->
-        <!--                    <div class="allNotifion">-->
-        <!--                      Xem tất cả-->
-        <!--                    </div>-->
-        <!--                  </nuxt-link>-->
-        <!--                </div>-->
-        <!--              </li>-->
-        <!--            </ul>-->
-        <!--          </div>-->
-        <!--        </div>-->
+        <div class="aboutvideo">
+          <div class="aboutvideo-item">
+            <div class="about-video">
+              <div class="about-title">
+                Videos & ảnh
+              </div>
+            </div>
+            <carousel
+              id="listvideo"
+              :per-page="3"
+              :pagination-enabled="true"
+            >
+              <slide
+                v-for="(vd,index) in listVideo"
+                id="itemVideo"
+                :key="index"
+              >
+                <div class="list-video">
+                  <nuxt-link :to="`/about/video/listVideo/${ isType(vd.slug)}`">
+                    <img
+                      id="imageVideo"
+                      :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
+                        jsonParse(vd.poster)[0]"
+                      alt="errorImage"
+                    >
+                  </nuxt-link>
+                  <nuxt-link to="/about/video/listVideo/" class="list_icon-title">
+                    <div class="list_icon-title">
+                      {{ isType(vd.name) }}
+                    </div>
+                  </nuxt-link>
+                </div>
+              </slide>
+            </carousel>
+            <div class="NotificationAll">
+              <nuxt-link to="/about/video/listVideo/">
+                <div class="centerAllVideo">
+                  <span class="allNotifion">Xem tất cả</span>
+                </div>
+              </nuxt-link>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -277,15 +270,26 @@ export default {
     Carousel,
     Slide
   },
+  props: {
+    slides: {
+      type: Array,
+      required: true
+    },
+    perPage: {
+      type: Number,
+      default: 1
+    },
+    autoplay: {
+      type: Boolean,
+      default: true
+    }
+  },
   data () {
     return {
+      listVideo: []
     }
   },
   computed: {
-    /**
-     * @description: hàm này dùng để lấy giá trị từ store
-     * Author: NSDThinh 28/02/2023
-     */
     manganerAbout () {
       return this.$store.state.manganer
     },
@@ -294,34 +298,32 @@ export default {
     },
     bankAboutApi () {
       return this.$store.state.bankAbout
-    },
-    videoAboutApi () {
-      return this.$store.state.videoApi
     }
   },
   mounted () {
-    /**
-     * @description: manganer ( giám đốc )
-     * Author: NSDThinh 28/02/2023
-     */
     this.$store.dispatch('setManganAbout')
     this.$store.dispatch('setPressRelease')
-    this.$store.dispatch('setVideoApi')
   },
   created () {
+    this.getListVideo()
   },
   methods: {
-    // biến đổi sang dạng json
+    async getListVideo () {
+      const me = this
+      try {
+        const res = await me.$axios.get(
+          process.env.baseApiUrl + '/library/fe-get-libraries?limit=9')
+        me.listVideo = res.data.data.data
+      } catch (error) {
+        console.log(error)
+      }
+    },
     jsonParse (value) {
       if (value) {
         return JSON.parse(value)
       }
       return ''
     },
-    /**
-     * @description: hàm này dùng để bỏ ngoặc string trong text
-     * Author: NSDThinh 21/02/2023
-     */
     isType (string) {
       JSON.parse(string)
       {

@@ -3,7 +3,6 @@ export * from './homeSlide'
 export * from './news'
 export * from './product'
 export const state = () => ({
-  videoApi: [],
   homeSlide: [],
   newsPage: [],
   productImage: [],
@@ -75,10 +74,6 @@ export const mutations = {
   // SET_PRESSRELEASE
   SET_PRESSRELEASE (state, pressRelease) {
     state.pressRelease = pressRelease
-  },
-  // SET_VIDEO
-  SET_VIDEO (state, videoApi) {
-    state.videoApi = videoApi
   }
 }
 export const actions = {
@@ -115,12 +110,8 @@ export const actions = {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/post/fe-press-release')
     commit('SET_PRESSRELEASE', res.data)
-  },
-  async setVideoApi ({ commit }) {
-    const res = await this.$axios
-      .get(process.env.baseApiUrl + '/library/fe-about-library')
-    commit('SET_VIDEO', res.data.data)
   }
+
 }
 export const getters = {
   // homeSlide
@@ -146,9 +137,6 @@ export const getters = {
   // pressReleaseApi
   pressReleaseApi (state) {
     return state.pressRelease
-  },
-  // videoApi
-  videoAbout (state) {
-    return state.videoApi
   }
+
 }
