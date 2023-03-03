@@ -3,6 +3,7 @@ export * from './homeSlide'
 export * from './news'
 export * from './product'
 export const state = () => ({
+  videoApi: [],
   homeSlide: [],
   newsPage: [],
   productImage: [],
@@ -10,40 +11,39 @@ export const state = () => ({
   productDetail: {},
   manganer: [],
   pressRelease: [], // thông cáo báo trí
-  video: [],
   bankAbout: [
     {
-      id:1,
-      img:'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/ncb.png',
-      title:'Ngân hàng Quốc Dân - NCB',
+      id: 1,
+      img: 'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/ncb.png',
+      title: 'Ngân hàng Quốc Dân - NCB'
     },
     {
-      id:2,
-      img:'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/abb.png',
-      title:'Ngân hàng An Bình - ABBank',
+      id: 2,
+      img: 'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/abb.png',
+      title: 'Ngân hàng An Bình - ABBank'
 
     },
     {
-      id:3,
-      img:'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/acb.png',
-      title:'Ngân hàng Á Châu - ACB'
+      id: 3,
+      img: 'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/acb.png',
+      title: 'Ngân hàng Á Châu - ACB'
     },
     {
-      id:4,
-      img:'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/msb.jpg',
-      title:'Ngân hàng Hàng Hải - MSB'
+      id: 4,
+      img: 'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/msb.jpg',
+      title: 'Ngân hàng Hàng Hải - MSB'
 
     },
     {
-      id:5,
-      img:'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/pvc.png',
-      title:'Ngân hàng Đại Chúng - PVCombank'
+      id: 5,
+      img: 'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/pvc.png',
+      title: 'Ngân hàng Đại Chúng - PVCombank'
 
     },
     {
-      id:6,
-      img:'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/tpb.png',
-      title:'Ngân hàng Tiên Phong - TPBank'
+      id: 6,
+      img: 'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/tpb.png',
+      title: 'Ngân hàng Tiên Phong - TPBank'
     }
   ]
 })
@@ -77,8 +77,8 @@ export const mutations = {
     state.pressRelease = pressRelease
   },
   // SET_VIDEO
-  SET_VIDEO (state, video) {
-    state.video = video
+  SET_VIDEO (state, videoApi) {
+    state.videoApi = videoApi
   }
 }
 export const actions = {
@@ -116,15 +116,15 @@ export const actions = {
       .get(process.env.baseApiUrl + '/post/fe-press-release')
     commit('SET_PRESSRELEASE', res.data)
   },
-  async setVideo ({ commit }) {
+  async setVideoApi ({ commit }) {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/library/fe-about-library')
-    commit('SET_VIDEO', res.data)
+    commit('SET_VIDEO', res.data.data)
   }
 }
 export const getters = {
   // homeSlide
-  homeSlide (state) {
+  homeSlideApi (state) {
     return state.homeSlide
   },
   // productApi
@@ -149,6 +149,6 @@ export const getters = {
   },
   // videoApi
   videoAbout (state) {
-    return state.video
-  },
+    return state.videoApi
+  }
 }

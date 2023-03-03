@@ -47,27 +47,37 @@
         <div class="maganer-Icon">
           <div class="container">
             <div class="bod-wrap">
-              <div
-                v-for="(use,index) in manganerAbout.data"
-                :key="index"
-                class="bod-slider"
+              <carousel
+                :per-page="3"
+                :autoplay-timeout="4000"
+                :autoplay="true"
+                :navigation-next-label="true"
+                :navigation-prev-label="true"
+                :pagination-enabled="false"
               >
-                <div class="bod-slider_img">
-                  <img
-                    id="iconManganer"
-                    :src="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(use.image)[0]"
-                    alt="error-manganer"
-                  >
-                </div>
-                <div class="bod-slider_info">
-                  <div class="bod-slider_title">
-                    {{ isType(use.name) }}
+                <slide
+                  v-for="(use,index) in manganerAbout.data"
+                  :key="index"
+                >
+                  <div class="bod-slider">
+                    <div class="bod-slider_img">
+                      <img
+                        id="iconManganer"
+                        :src="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(use.image)[0]"
+                        alt="error-manganer"
+                      >
+                    </div>
+                    <div class="bod-slider_info">
+                      <div class="bod-slider_title">
+                        {{ isType(use.name) }}
+                      </div>
+                      <div class="bod-slider_txt">
+                        {{ isType(use.position) }}
+                      </div>
+                    </div>
                   </div>
-                  <div class="bod-slider_txt">
-                    {{ isType(use.position) }}
-                  </div>
-                </div>
-              </div>
+                </slide>
+              </carousel>
             </div>
           </div>
         </div>
@@ -141,37 +151,47 @@
             </div>
           </div>
           <div class="abou-Notification_img">
-            <ul class="Notification-img">
-              <li class="list-Notification">
-                <div
-                  v-for="(notifi, index) in pressReleaseAbout.data"
-                  :key="index"
-                  class="Notification-ttxt"
-                >
-                  <img
-                    id="Notification-img"
-                    :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
-                      jsonParse(notifi.image)[0]"
-                    alt="error-ncb"
-                  >
-                  <nuxt-link :to="`/about/${isType(notifi.slug)}`">
-                    <div class="ncb-title Notification-title">
-                      {{ isType(notifi.title) }}
+            <carousel
+              :per-page="3"
+              :autoplay-timeout="false"
+              :autoplay="false"
+              :navigation-next-label="true"
+              :navigation-prev-label="true"
+              :pagination-enabled="false"
+            >
+              <slide
+                v-for="(notifi, index) in pressReleaseAbout.data"
+                :key="index"
+              >
+                <ul class="Notification-img">
+                  <li class="list-Notification">
+                    <div
+                      class="Notification-ttxt"
+                    >
+                      <img
+                        id="Notification-img"
+                        :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
+                          jsonParse(notifi.image)[0]"
+                        alt="error-ncb"
+                      >
+                      <nuxt-link :to="`/about/${isType(notifi.slug)}`">
+                        <div class="ncb-title Notification-title">
+                          {{ isType(notifi.title) }}
+                        </div>
+                      </nuxt-link>
+                      <div class="ncb-txt Notification-txt">
+                        {{ isType(notifi.description) }}
+                      </div>
                     </div>
-                  </nuxt-link>
-                  <div class="ncb-txt Notification-txt">
-                    {{ isType(notifi.description) }}
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="NotificationAll">
-                  <nuxt-link to="/about/pressReleaseList">
-                    <a href="#" class="allNotifion">Xem tất cả</a>
-                  </nuxt-link>
-                </div>
-              </li>
-            </ul>
+                  </li>
+                </ul>
+              </slide>
+            </carousel>
+            <div class="NotificationAll">
+              <nuxt-link to="/about/pressReleaseList">
+                <a href="#" class="allNotifion">Xem tất cả</a>
+              </nuxt-link>
+            </div>
           </div>
         </div>
         <div class="finance">
@@ -208,53 +228,55 @@
             </li>
           </ul>
         </div>
-        <div class="aboutvideo">
-          <div class="aboutvideo-item">
-            <div class="about-video">
-              <div class="about-title">
-                Videos & ảnh
-              </div>
-            </div>
-            <ul class="about-video">
-              <li
-                v-for="(about,index) in aboutVideoApi.data"
-                :key="index"
-                class="list-video"
-              >
-                <img
-                  :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
-                    jsonParse(about.image)[0]"
-                  alt="errorImage"
-                >
-                <div class="list_icon-title">
-                  {{ isType(about.title) }}
-                </div>
-              </li>
-
-              <li>
-                <div class="NotificationAll">
-                  <div class="video-nextIcon">
-                    <ul class="dots" />
-                  </div>
-                  <a href="#" class="allNotifion">Xem tất cả</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <!--        <div class="aboutvideo">-->
+        <!--          <div class="aboutvideo-item">-->
+        <!--            <div class="about-video">-->
+        <!--              <div class="about-title">-->
+        <!--                Videos & ảnh-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--            <ul class="about-video">-->
+        <!--              <li-->
+        <!--                v-for="(item,index) in videoAboutApi"-->
+        <!--                :key="index"-->
+        <!--                class="list-video"-->
+        <!--              >-->
+        <!--                <img-->
+        <!--                  :src="'https://api-map-life.grooo.com.vn/files/media/base/' +-->
+        <!--                      jsonParse(notifi.image)[0]"-->
+        <!--                  alt="errorImage"-->
+        <!--                >-->
+        <!--                <div class="list_icon-title">-->
+        <!--                  {{ isType(item.title) }}-->
+        <!--                </div>-->
+        <!--              </li>-->
+        <!--              <li>-->
+        <!--                <div class="NotificationAll">-->
+        <!--                  <nuxt-link to="">-->
+        <!--                    <div class="allNotifion">-->
+        <!--                      Xem tất cả-->
+        <!--                    </div>-->
+        <!--                  </nuxt-link>-->
+        <!--                </div>-->
+        <!--              </li>-->
+        <!--            </ul>-->
+        <!--          </div>-->
+        <!--        </div>-->
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-
-// const $ = require("jquery");
-// window.$ = $;
+import { Carousel, Slide } from 'vue-carousel'
 export default {
-  components: {},
+  components: {
+    Carousel,
+    Slide
+  },
   data () {
-    return {}
+    return {
+    }
   },
   computed: {
     /**
@@ -270,8 +292,8 @@ export default {
     bankAboutApi () {
       return this.$store.state.bankAbout
     },
-    aboutVideoApi () {
-      return this.$store.state.video
+    videoAboutApi () {
+      return this.$store.state.videoApi
     }
   },
   mounted () {
@@ -281,7 +303,7 @@ export default {
      */
     this.$store.dispatch('setManganAbout')
     this.$store.dispatch('setPressRelease')
-    this.$store.dispatch('setVideo')
+    this.$store.dispatch('setVideoApi')
   },
   created () {
   },

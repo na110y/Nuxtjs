@@ -30,10 +30,12 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+  ],
 
   // build swiper
   plugins: [
+    { src: '~/plugins/vue-carousel', ssr: false }
   ],
 
   components: true,
@@ -61,7 +63,9 @@ export default {
     baseURL: '/'
   },
 
-  build: {},
+  build: {
+    transpile: ['swiper']
+  },
   env: {
     baseUrl: process.env.BASE_URL || 'http:localhost:3000',
     baseApiUrl: process.env.BASE_API_URL || 'https://api-map-life.grooo.com.vn',
