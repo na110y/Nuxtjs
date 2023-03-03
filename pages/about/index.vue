@@ -155,8 +155,6 @@
               :per-page="3"
               :autoplay-timeout="false"
               :autoplay="false"
-              :navigation-next-label="true"
-              :navigation-prev-label="true"
               :pagination-enabled="false"
             >
               <slide
@@ -174,7 +172,7 @@
                           jsonParse(notifi.image)[0]"
                         alt="error-ncb"
                       >
-                      <nuxt-link :to="`/about/${isType(notifi.slug)}`">
+                      <nuxt-link :to="`/about/notificationList/${ isType(notifi.slug)}`">
                         <div class="ncb-title Notification-title">
                           {{ isType(notifi.title) }}
                         </div>
@@ -182,7 +180,7 @@
                       <div class="ncb-txt Notification-txt">
                         {{ isType(notifi.description) }}
                       </div>
-                      <nuxt-link to="/product/">
+                      <nuxt-link :to="`/about/notificationList/${ isType(notifi.slug)}`" class="Notification_link">
                         <div class="Notification-last_txt">
                           Xem chi tiết
                         </div>
@@ -193,7 +191,7 @@
               </slide>
             </carousel>
             <div class="NotificationAll">
-              <nuxt-link to="/about/pressReleaseList">
+              <nuxt-link to="/about/notificationList/">
                 <a href="#" class="allNotifion">Xem tất cả</a>
               </nuxt-link>
             </div>

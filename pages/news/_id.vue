@@ -13,6 +13,9 @@
     <div class="container">
       <div class="newsList-thumbnail">
         <div class="newsItem-thumbnail_img">
+          <div class="newsItem-thumbnail__title">
+            Tin tức gần đây
+          </div>
           <div v-for="(news,index) in listNews" :key="index" class="news_imgage-column">
             <div class="newsList-column">
               <img
@@ -114,7 +117,12 @@ export default {
   object-fit: cover;
   max-width: unset;
 }
-
+.newsItem-thumbnail__title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: $titleListID;
+}
 .newsList-thumbnail {
   display: flex;
   margin: 50px 0;
@@ -123,6 +131,7 @@ export default {
 
 .newsItem-thumbnail_img {
   width: 30%;
+  margin-top: 35px;
 }
 
 .newsItem-thumbnail-column {

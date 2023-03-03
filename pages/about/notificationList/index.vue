@@ -1,11 +1,11 @@
 <template>
   <div class="newsList">
     <div class="newsSlide">
-      <img id="newsSlideList" src="~/assets/img/news.png" alt="error-SlideNews">
+      <img id="newsSlideList" src="@/assets/img/news.png" alt="error-SlideNews">
       <div class="banner__title">
         <div class="container">
           <div class="newsSlide-title">
-            Thông cáo báo trí
+            Thông cáo báo chí
           </div>
         </div>
       </div>
@@ -22,7 +22,7 @@
           </div>
           <div class="newsList-body">
             <div class="newsList-item">
-              <nuxt-link :to="`/about/pressReleaseList/${ isType(item.slug)}`">
+              <nuxt-link :to="`/about/notificationList/${ isType(item.slug)}`">
                 <div class="newsList-title">
                   {{ isType(item.title) }}
                 </div>
@@ -32,7 +32,7 @@
               </div>
             </div>
             <a href="#" class="post-item__link">
-              <nuxt-link :to="`/about/pressReleaseList/${isType(item.slug)}`">
+              <nuxt-link :to="`/about/notificationList/${isType(item.slug)}`">
                 <div class="post-item__link-txt">Xem chi tiết</div>
               </nuxt-link>
             </a>
@@ -89,9 +89,8 @@ export default {
       const me = this
       try {
         const res = await me.$axios.get(
-          process.env.baseApiUrl + '/post/fe-press-release')
-        me.listNews = res.data.data
-        console.log(me.listNews)
+          process.env.baseApiUrl + '/post/fe-list-press-release')
+        me.listNews = res.data.data.data
       } catch (error) {
         console.log(error)
       }
@@ -118,18 +117,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import "../../../assets/scss/variables";
+@import "assets/scss/variables";
 #newsSlideList {
   width: 100%;
   height: auto;
   object-fit: cover;
   position: relative;
-}
-.post-item__link-txt {
-  color:$body-column-title;
-}
-.post-item__link-txt::after{
-  color:$body-column-title;
 }
 .banner__title {
   position: absolute;

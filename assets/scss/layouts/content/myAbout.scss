@@ -984,7 +984,7 @@ vueper-slide {
 }
 
 .bod-slider {
-  //width: calc(100% / 3 - 30px);
+  //width: calc(100% / 3 - 30px);https://api-map-life.grooo.com.vn/post/fe-latest-post
 }
 .VueCarousel-slide {
   width: calc(100% / 3 - 30px);
@@ -992,6 +992,7 @@ vueper-slide {
 ::v-deep .VueCarousel-inner {
   display: flex;
   gap: 0 30px;
+  margin-bottom: 20px;
 }
 #iconManganer {
   max-width: 370px;
@@ -1096,11 +1097,12 @@ ul, li {
   margin-bottom: 30px;
 }
 
-.nuxt-link-active {
+.nuxt-link-exact-active {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 
 ::v-deep .nav-tabs .nav-link {
   border: 1px solid $border;
@@ -1157,6 +1159,11 @@ ul, li {
   color: $body-column-title;
   position: relative;
   display: inline-block;
+
+}
+.Notification_link {
+  display: flex;
+  justify-content: initial;
 }
 .Notification-last_txt::after {
   position: absolute;
@@ -1171,4 +1178,16 @@ ul, li {
   top: 50%;
   right: -16px;
   font-weight: 400;
+}
+::v-deep .VueCarousel-dot-container {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+::v-deep .VueCarousel-dot {
+  &--active {
+    padding: 10px;
+    width: 10px;
+    height: 10px;
+    background-color: $text-color !important;
+  }
 }
