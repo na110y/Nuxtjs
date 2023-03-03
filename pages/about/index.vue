@@ -49,8 +49,8 @@
             <div class="bod-wrap">
               <carousel
                 :per-page="3"
-                :autoplay-timeout="4000"
-                :autoplay="true"
+                :autoplay-timeout="false"
+                :autoplay="false"
                 :navigation-next-label="true"
                 :navigation-prev-label="true"
                 :pagination-enabled="false"
@@ -182,6 +182,11 @@
                       <div class="ncb-txt Notification-txt">
                         {{ isType(notifi.description) }}
                       </div>
+                      <nuxt-link to="/product/">
+                        <div class="Notification-last_txt">
+                          Xem chi tiết
+                        </div>
+                      </nuxt-link>
                     </div>
                   </li>
                 </ul>
