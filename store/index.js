@@ -1,7 +1,3 @@
-export * from './about'
-export * from './homeSlide'
-export * from './news'
-export * from './product'
 export const state = () => ({
   homeSlide: [],
   newsPage: [],

@@ -235,7 +235,7 @@
                 :key="index"
               >
                 <div class="list-video">
-                  <nuxt-link :to="`/about/video/listVideo/${ isType(videoItem.slug)}`">
+                  <nuxt-link :to="`/about/video/${ isType(videoItem.slug)}`">
                     <img
                       id="imageVideo"
                       :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
@@ -243,7 +243,7 @@
                       alt="errorImage"
                     >
                   </nuxt-link>
-                  <nuxt-link to="/about/video/listVideo/" class="list_icon-title">
+                  <nuxt-link :to="`/about/video/${ isType(videoItem.slug)}`" class="list_icon-title">
                     <div class="list_icon-title">
                       {{ isType(videoItem.name) }}
                     </div>

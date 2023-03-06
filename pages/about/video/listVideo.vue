@@ -23,14 +23,14 @@
           </div>
           <div class="newsList-body">
             <div class="newsList-item">
-              <nuxt-link :to="`/about/video/listVideo/${ isType(news.slug)}`">
+              <nuxt-link :to="`/about/video/${ isType(news.slug)}`">
                 <div class="newsList-title">
                   {{ isType(news.name) }}
                 </div>
               </nuxt-link>
             </div>
             <a href="#" class="post-item__link">
-              <nuxt-link :to="`/news/${isType(news.slug)}`">
+              <nuxt-link :to="`/about/video/${ isType(news.slug)}`">
                 <div class="post-item__link-txt">Xem chi tiết</div>
               </nuxt-link>
             </a>

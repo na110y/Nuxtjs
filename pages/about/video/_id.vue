@@ -14,38 +14,32 @@
       <div class="newsList-thumbnail">
         <div class="newsItem-thumbnail_img">
           <div class="newsItem-thumbnail__title">
-            Ảnh & video gần đây
+            Video & ảnh gần đây
           </div>
           <div v-for="(news,index) in listNews" :key="index" class="news_imgage-column">
+            <div class="newsList-column">
+              <img
+                id="img-column"
+                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(news.poster)[0]"
+                alt="error-imgFamily"
+              >
+            </div>
             <div class="newsList-body">
               <div class="newsList-item">
-                <nuxt-link :to="`/about/video/listVideo/${ isType(news.slug)}`">
-                  <div class="newsList-title">
-                    <img
-                      id="img-column"
-                      :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(news.poster)[0]"
-                      alt="error-imgFamily"
-                    >
+                <nuxt-link :to="`/about/video/${ isType(news.slug)}`">
+                  <div class="newVideo-txt">
+                    {{ isType(news.name) }}
                   </div>
                 </nuxt-link>
-                <div class="newsList-txt">
-                  {{ isType(news.name) }}
-                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="newsItem-thumbnail-column">
           <div class="newsItem-thumbnail_title">
-            GIẢI THƯỞNG, THÀNH TỰU
+            {{ isType(itemNews.name) }}
           </div>
-          <div class="newsItem-thumbnail_txt">
-            <source
-              id="img-column"
-              :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(itemNews.video)[0]"
-              alt="error-imgFamily"
-            >
-          </div>
+          <iframe :src="itemNews.video" />
         </div>
       </div>
     </div>
@@ -66,20 +60,15 @@ export default {
   created () {
   },
   mounted () {
-    /**
-     * @description: news ( tin tức mới nhất )
-     * Author: NSDThinh 25/02/2023
-     */
     this.getDataNewDetail()
     this.getListPagingNews()
   },
   methods: {
     async getListPagingNews () {
-      const me = this
-      const res = await me.$axios.get(
-        process.env.baseApiUrl + '/library/fe-about-library?limit=5')
-      me.listNews = res.data.data.data
-      console.log(me.listNews)
+      const res = await this.$axios.get(
+        process.env.baseApiUrl + '/library/fe-latest-library?slug')
+      this.listNews = res.data.data
+      console.log(this.listNews)
     },
     async getDataNewDetail () {
       const res = await this.$axios
@@ -87,7 +76,6 @@ export default {
         .get(process.env.baseApiUrl + `/library/fe-get-detail?slug=${this.$route.params.id}`)
       if (res) {
         this.itemNews = res.data.data
-        console.log(this.itemNews)
       }
     },
     jsonParse (value) {
@@ -118,11 +106,28 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "assets/scss/variables";
-
+iframe {
+  width: 100%;
+  height: 100%
+}
 ::v-deep .container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
   --bs-gutter-x: 0;
 }
-
+.newVideo-txt {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
+  color: #282832;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  &:hover {
+    transition: all .5s ease-in-out;
+    color: $text-color;
+  }
+}
 #img-column {
   width: 100%;
   height: auto;
@@ -246,10 +251,6 @@ export default {
   font-size: 14px;
   line-height: 19px;
   color: $news-title;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  height: 60px;
   &:hover {
     transition: all .5s ease-in-out;
     color: $text-color;
