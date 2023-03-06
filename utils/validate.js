@@ -11,6 +11,12 @@ function isType (string) {
     return obj.vn
   }
 }
+function jsonParse (value) {
+  if (value) {
+    return JSON.parse(value)
+  }
+  return ''
+}
 // hàm này dùng để validEmail
 function isEmail (email) {
   // eslint-disable-next-line no-useless-escape
@@ -18,5 +24,6 @@ function isEmail (email) {
 }
 export default {
   isType,
-  isEmail
+  isEmail,
+  jsonParse
 }

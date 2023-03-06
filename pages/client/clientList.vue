@@ -1,7 +1,6 @@
 <template>
   <div>
-    <div class="">
-    </div>
+    <div class="" />
   </div>
 </template>
 <script>
@@ -34,20 +33,26 @@ export default {
   methods: {
     // biến đổi sang dạng json
     jsonParse (value) {
-      if (value) {
-        return JSON.parse(value)
+      try {
+        if (value) {
+          return JSON.parse(value)
+        }
+        return ''
+      } catch (err) {
+        console.error(`Failed to parse JSON data: ${err.message}`)
+        return null
       }
-      return ''
     },
-    /**
-     * @description: hàm này dùng để bỏ ngoặc string trong text
-     * Author: NSDThinh 21/02/2023
-     */
     isType (string) {
-      JSON.parse(string)
-      {
-        const obj = JSON.parse(string)
-        return obj.vn
+      try {
+        JSON.parse(string)
+        {
+          const obj = JSON.parse(string)
+          return obj.vn
+        }
+      } catch (err) {
+        console.error(`Failed to parse JSON data: ${err.message}`)
+        return null
       }
     }
   }

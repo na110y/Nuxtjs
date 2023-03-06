@@ -35,7 +35,7 @@ export default {
 
   // build swiper
   plugins: [
-    { src: '~/plugins/vue-carousel', ssr: false }
+    { src: '~/plugins/vue-carousel.js', ssr: false }
   ],
 
   components: true,

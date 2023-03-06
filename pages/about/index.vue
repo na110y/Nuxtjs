@@ -52,26 +52,28 @@
                 :pagination-enabled="false"
               >
                 <slide
-                  v-for="(use,index) in manganerAbout"
+                  v-for="(use,index) in manganerAbout.data"
                   :key="index"
                 >
-                  <div class="bod-slider">
-                    <div class="bod-slider_img">
-                      <img
-                        id="iconManganer"
-                        :src="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(use.image)[0]"
-                        alt="error-manganer"
-                      >
-                    </div>
-                    <div class="bod-slider_info">
-                      <div class="bod-slider_title">
-                        {{ isType(use.name) }}
+                  <nuxt-link :to="`/about/managanerList/${use.id}`">
+                    <div class="bod-slider">
+                      <div class="bod-slider_img">
+                        <img
+                          id="iconManganer"
+                          :src="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(use.image)[0]"
+                          alt="error-manganer"
+                        >
                       </div>
-                      <div class="bod-slider_txt">
-                        {{ isType(use.position) }}
+                      <div class="bod-slider_info">
+                        <div class="bod-slider_title">
+                          {{ isType(use.name) }}
+                        </div>
+                        <div class="bod-slider_txt">
+                          {{ isType(use.position) }}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </nuxt-link>
                 </slide>
               </carousel>
             </div>
@@ -228,22 +230,22 @@
               :pagination-enabled="true"
             >
               <slide
-                v-for="(vd,index) in listVideo"
+                v-for="(videoItem,index) in listVideo"
                 id="itemVideo"
                 :key="index"
               >
                 <div class="list-video">
-                  <nuxt-link :to="`/about/video/listVideo/${ isType(vd.slug)}`">
+                  <nuxt-link :to="`/about/video/listVideo/${ isType(videoItem.slug)}`">
                     <img
                       id="imageVideo"
                       :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
-                        jsonParse(vd.poster)[0]"
+                        jsonParse(videoItem.poster)[0]"
                       alt="errorImage"
                     >
                   </nuxt-link>
                   <nuxt-link to="/about/video/listVideo/" class="list_icon-title">
                     <div class="list_icon-title">
-                      {{ isType(vd.name) }}
+                      {{ isType(videoItem.name) }}
                     </div>
                   </nuxt-link>
                 </div>
@@ -259,30 +261,19 @@
           </div>
         </div>
       </div>
+      <v-modal />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Carousel, Slide } from 'vue-carousel'
+import VModal from '~/components/base/VModal.vue'
 export default {
   components: {
     Carousel,
-    Slide
-  },
-  props: {
-    slides: {
-      type: Array,
-      required: true
-    },
-    perPage: {
-      type: Number,
-      default: 1
-    },
-    autoplay: {
-      type: Boolean,
-      default: true
-    }
+    Slide,
+    VModal
   },
   data () {
     return {
@@ -309,26 +300,31 @@ export default {
   },
   methods: {
     async getListVideo () {
-      const me = this
-      try {
-        const res = await me.$axios.get(
-          process.env.baseApiUrl + '/library/fe-get-libraries?limit=9')
-        me.listVideo = res.data.data.data
-      } catch (error) {
-        console.log(error)
-      }
+      const res = await this.$axios.get(
+        process.env.baseApiUrl + '/library/fe-get-libraries?limit=9')
+      this.listVideo = res.data.data.data
     },
     jsonParse (value) {
-      if (value) {
-        return JSON.parse(value)
+      try {
+        if (value) {
+          return JSON.parse(value)
+        }
+        return ''
+      } catch (err) {
+        console.error(`Failed to parse JSON data: ${err.message}`)
+        return null
       }
-      return ''
     },
     isType (string) {
-      JSON.parse(string)
-      {
-        const obj = JSON.parse(string)
-        return obj.vn
+      try {
+        JSON.parse(string)
+        {
+          const obj = JSON.parse(string)
+          return obj.vn
+        }
+      } catch (err) {
+        console.error(`Failed to parse JSON data: ${err.message}`)
+        return null
       }
     }
   }

@@ -654,10 +654,15 @@ export default {
   methods: {
     // biến đổi sang dạng json
     jsonParse (value) {
-      if (value) {
-        return JSON.parse(value)
+      try {
+        if (value) {
+          return JSON.parse(value)
+        }
+        return ''
+      } catch (err) {
+        console.error(`Failed to parse JSON data: ${err.message}`)
+        return null
       }
-      return ''
     }
   }
 
