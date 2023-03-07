@@ -20,15 +20,15 @@
             <div class="newsList-column">
               <img
                 id="img-column"
-                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(item.image)[0]"
+                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(item.image)[0]"
                 alt="error-imgFamily"
               >
             </div>
             <div class="newsList-body">
               <div class="newsList-item">
-                <nuxt-link :to="`/about/notificationList/${isType(item.slug)}`">
+                <nuxt-link :to="`/about/notificationList/${$validate.isType(item.slug)}`">
                   <div class="newsList-title">
-                    {{ isType(item.title) }}
+                    {{ $validate.isType(item.title) }}
                   </div>
                 </nuxt-link>
                 <div class="newsList-txt">
@@ -40,12 +40,12 @@
         </div>
         <div class="newsItem-thumbnail-column">
           <div class="newsItem-thumbnail_title">
-            {{ isType(itemNews.title) }}
+            {{ $validate.isType(itemNews.title) }}
           </div>
           <div class="newsItem-thumbnail_txt">
-            {{ isType(itemNews.description) }}
+            {{ $validate.isType(itemNews.description) }}
           </div>
-          <div class="newsItem-thumbnail_txt" v-html="isType(itemNews.content)" />
+          <div class="newsItem-thumbnail_txt" v-html="$validate.isType(itemNews.content)" />
         </div>
       </div>
     </div>
@@ -86,29 +86,6 @@ export default {
         .get(process.env.baseApiUrl + `/post/fe-press-release-detail?slug=${this.$route.params.id}`)
       if (res) {
         this.itemNews = res.data.data
-      }
-    },
-    jsonParse (value) {
-      try {
-        if (value) {
-          return JSON.parse(value)
-        }
-        return ''
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
-    },
-    isType (string) {
-      try {
-        JSON.parse(string)
-        {
-          const obj = JSON.parse(string)
-          return obj.vn
-        }
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
       }
     }
   }
@@ -195,7 +172,7 @@ export default {
   position: absolute;
   z-index: 1;
   width: 100%;
-  top: 35%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -204,7 +181,9 @@ export default {
   max-width: 1170px;
   margin: auto;
 }
-
+.newsSlide {
+  position: relative;
+}
 .newsSlide-title {
   text-align: center;
   font-size: 32px;

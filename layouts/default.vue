@@ -6,8 +6,8 @@
   </div>
 </template>
 <script>
-import myHeader from '../layouts/header/myHeader.vue'
-import myFooter from '../layouts/footer/myFooter.vue'
+import myFooter from './footer/my-footer.vue'
+import myHeader from './header/my-header.vue'
 
 export default {
   name: 'Default',

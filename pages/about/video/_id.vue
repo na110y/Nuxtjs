@@ -20,15 +20,15 @@
             <div class="newsList-column">
               <img
                 id="img-column"
-                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(news.poster)[0]"
+                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(news.poster)[0]"
                 alt="error-imgFamily"
               >
             </div>
             <div class="newsList-body">
               <div class="newsList-item">
-                <nuxt-link :to="`/about/video/${ isType(news.slug)}`">
+                <nuxt-link :to="`${ $validate.isType(news.slug)}`">
                   <div class="newVideo-txt">
-                    {{ isType(news.name) }}
+                    {{ $validate.isType(news.name) }}
                   </div>
                 </nuxt-link>
               </div>
@@ -37,7 +37,7 @@
         </div>
         <div class="newsItem-thumbnail-column">
           <div class="newsItem-thumbnail_title">
-            {{ isType(itemNews.name) }}
+            {{ $validate.isType(itemNews.name) }}
           </div>
           <iframe :src="itemNews.video" />
         </div>
@@ -68,7 +68,6 @@ export default {
       const res = await this.$axios.get(
         process.env.baseApiUrl + '/library/fe-latest-library?slug')
       this.listNews = res.data.data
-      console.log(this.listNews)
     },
     async getDataNewDetail () {
       const res = await this.$axios
@@ -77,30 +76,8 @@ export default {
       if (res) {
         this.itemNews = res.data.data
       }
-    },
-    jsonParse (value) {
-      try {
-        if (value) {
-          return JSON.parse(value)
-        }
-        return ''
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
-    },
-    isType (string) {
-      try {
-        JSON.parse(string)
-        {
-          const obj = JSON.parse(string)
-          return obj.vn
-        }
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
     }
+
   }
 }
 </script>
@@ -127,6 +104,9 @@ iframe {
     transition: all .5s ease-in-out;
     color: $text-color;
   }
+}
+.newsSlide {
+  position: relative;
 }
 #img-column {
   width: 100%;
@@ -207,7 +187,7 @@ iframe {
   position: absolute;
   z-index: 1;
   width: 100%;
-  top: 35%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

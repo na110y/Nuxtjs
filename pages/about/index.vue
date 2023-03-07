@@ -60,16 +60,16 @@
                       <div class="bod-slider_img">
                         <img
                           id="iconManganer"
-                          :src="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(use.image)[0]"
+                          :src="'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(use.image)[0]"
                           alt="error-manganer"
                         >
                       </div>
                       <div class="bod-slider_info">
                         <div class="bod-slider_title">
-                          {{ isType(use.name) }}
+                          {{ $validate.isType(use.name) }}
                         </div>
                         <div class="bod-slider_txt">
-                          {{ isType(use.position) }}
+                          {{ $validate.isType(use.position) }}
                         </div>
                       </div>
                     </div>
@@ -98,12 +98,13 @@
                         :key="index"
                         class="bankAbout-item"
                       >
-                        <nuxt-link to="">
-                          <img id="iconBank" :src="bank.img" alt="errorBank">
+                        <nuxt-link :to="`/bank/${ $validate.isType(bank.slug)}`">
+                          <!--                          {{ bank.name }}-->
+                          <img id="iconBank" :src="'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(bank.image)" alt="errorBank">
                         </nuxt-link>
                         <div class="bankAbout-info">
                           <div class="bankAbout-title">
-                            {{ bank.title }}
+                            <!--                            {{ bank.channels.data.name }}-->
                           </div>
                         </div>
                       </li>
@@ -157,18 +158,18 @@
                   <img
                     id="Notification-img"
                     :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
-                      jsonParse(notifi.image)[0]"
+                      $validate.jsonParse(notifi.image)[0]"
                     alt="error-ncb"
                   >
-                  <nuxt-link :to="`/about/notificationList/${ isType(notifi.slug)}`">
+                  <nuxt-link :to="`/about/notificationList/${ $validate.isType(notifi.slug)}`">
                     <div class="ncb-title Notification-title">
-                      {{ isType(notifi.title) }}
+                      {{ $validate.isType(notifi.title) }}
                     </div>
                   </nuxt-link>
                   <div class="ncb-txt Notification-txt">
-                    {{ isType(notifi.description) }}
+                    {{ $validate.isType(notifi.description) }}
                   </div>
-                  <nuxt-link :to="`/about/notificationList/${ isType(notifi.slug)}`" class="Notification_link">
+                  <nuxt-link :to="`/about/notificationList/${ $validate.isType(notifi.slug)}`" class="Notification_link">
                     <div class="Notification-last_txt">
                       Xem chi tiết
                     </div>
@@ -193,7 +194,7 @@
                 <div class="finance-colum_title">
                   Báo cáo tài chính
                 </div>
-                <nuxt-link to="#">
+                <nuxt-link to="/about/financialReportList/">
                   <div class="finance-colum_txt">
                     Xem chi tiết
                   </div>
@@ -235,17 +236,17 @@
                 :key="index"
               >
                 <div class="list-video">
-                  <nuxt-link :to="`/about/video/${ isType(videoItem.slug)}`">
+                  <nuxt-link :to="`/about/video/${ $validate.isType(videoItem.slug)}`">
                     <img
                       id="imageVideo"
                       :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
-                        jsonParse(videoItem.poster)[0]"
+                        $validate.jsonParse(videoItem.poster)[0]"
                       alt="errorImage"
                     >
                   </nuxt-link>
-                  <nuxt-link :to="`/about/video/${ isType(videoItem.slug)}`" class="list_icon-title">
+                  <nuxt-link :to="`/about/video/${ $validate.isType(videoItem.slug)}`" class="list_icon-title">
                     <div class="list_icon-title">
-                      {{ isType(videoItem.name) }}
+                      {{ $validate.isType(videoItem.name) }}
                     </div>
                   </nuxt-link>
                 </div>
@@ -294,6 +295,7 @@ export default {
   mounted () {
     this.$store.dispatch('setManganAbout')
     this.$store.dispatch('setPressRelease')
+    this.$store.dispatch('setBank')
   },
   created () {
     this.getListVideo()
@@ -303,30 +305,8 @@ export default {
       const res = await this.$axios.get(
         process.env.baseApiUrl + '/library/fe-get-libraries?limit=9')
       this.listVideo = res.data.data.data
-    },
-    jsonParse (value) {
-      try {
-        if (value) {
-          return JSON.parse(value)
-        }
-        return ''
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
-    },
-    isType (string) {
-      try {
-        JSON.parse(string)
-        {
-          const obj = JSON.parse(string)
-          return obj.vn
-        }
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
     }
+
   }
 }
 </script>

@@ -3,10 +3,8 @@
     <div class="newsSlide">
       <img id="newsSlideList" src="@/assets/img/news.png" alt="error-SlideNews">
       <div class="banner__title">
-        <div class="container">
-          <div class="newsSlide-title">
-            Thư viện
-          </div>
+        <div class="newsSlide-title">
+          Thư viện
         </div>
       </div>
     </div>
@@ -17,20 +15,20 @@
             <img
               id="img-column"
               :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
-                jsonParse(news.poster)[0]"
+                $validate.jsonParse(news.poster)[0]"
               alt="error-imgFamily"
             >
           </div>
           <div class="newsList-body">
             <div class="newsList-item">
-              <nuxt-link :to="`/about/video/${ isType(news.slug)}`">
+              <nuxt-link :to="`/about/video/${ $validate.isType(news.slug)}`">
                 <div class="newsList-title">
-                  {{ isType(news.name) }}
+                  {{ $validate.isType(news.name) }}
                 </div>
               </nuxt-link>
             </div>
             <a href="#" class="post-item__link">
-              <nuxt-link :to="`/about/video/${ isType(news.slug)}`">
+              <nuxt-link :to="`/about/video/${ $validate.isType(news.slug)}`">
                 <div class="post-item__link-txt">Xem chi tiết</div>
               </nuxt-link>
             </a>
@@ -92,29 +90,6 @@ export default {
       } catch (error) {
         console.log(error)
       }
-    },
-    jsonParse (value) {
-      try {
-        if (value) {
-          return JSON.parse(value)
-        }
-        return ''
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
-    },
-    isType (string) {
-      try {
-        JSON.parse(string)
-        {
-          const obj = JSON.parse(string)
-          return obj.vn
-        }
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
     }
   }
 }
@@ -127,11 +102,14 @@ export default {
   object-fit: cover;
   position: relative;
 }
+.newsSlide {
+  position: relative;
+}
 .banner__title {
   position: absolute;
   z-index: 1;
   width: 100%;
-  top: 35%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -159,6 +137,7 @@ export default {
   display: flex;
   gap: 0 30px;
   margin-bottom: 30px;
+  height: 210px;
 }
 .newsList-column {
   width: 25%;

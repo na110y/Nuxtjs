@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="service">
     <div class="slideProduct">
       <img id="productIM" src="../../assets/img/productImg.png" alt="errorProduct">
       <div class="slide-txt">
@@ -384,7 +384,7 @@
                   <vueper-slide
                     v-for="(item, index) in productImage.data"
                     :key="index"
-                    :image="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(item.image)[0]"
+                    :image="'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(item.image)[0]"
                   />
                 </vueper-slides>
               </div>
@@ -652,18 +652,6 @@ export default {
     this.$store.dispatch('setProduct')
   },
   methods: {
-    // biến đổi sang dạng json
-    jsonParse (value) {
-      try {
-        if (value) {
-          return JSON.parse(value)
-        }
-        return ''
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
-    }
   }
 
 }

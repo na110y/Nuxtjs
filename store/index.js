@@ -5,42 +5,10 @@ export const state = () => ({
   clientPage: [],
   productDetail: {},
   manganer: [],
+  financialReport: [],
   pressRelease: [], // thông cáo báo trí
-  bankAbout: [
-    {
-      id: 1,
-      img: 'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/ncb.png',
-      title: 'Ngân hàng Quốc Dân - NCB'
-    },
-    {
-      id: 2,
-      img: 'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/abb.png',
-      title: 'Ngân hàng An Bình - ABBank'
-
-    },
-    {
-      id: 3,
-      img: 'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/acb.png',
-      title: 'Ngân hàng Á Châu - ACB'
-    },
-    {
-      id: 4,
-      img: 'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/msb.jpg',
-      title: 'Ngân hàng Hàng Hải - MSB'
-
-    },
-    {
-      id: 5,
-      img: 'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/pvc.png',
-      title: 'Ngân hàng Đại Chúng - PVCombank'
-
-    },
-    {
-      id: 6,
-      img: 'https://api-map-life.grooo.com.vn/files/media/base/999f323a415cccc39eba96321d7345f5a888ed8d/K%C3%AAnh%20Ph%C3%A2n%20Ph%E1%BB%91i/tpb.png',
-      title: 'Ngân hàng Tiên Phong - TPBank'
-    }
-  ]
+  bankAbout: [],
+  prizeList: []
 })
 export const mutations = {
   // SET_SLIDE_HOME
@@ -70,6 +38,18 @@ export const mutations = {
   // SET_PRESSRELEASE
   SET_PRESSRELEASE (state, pressRelease) {
     state.pressRelease = pressRelease
+  },
+  // SET_FINANCIAL
+  SET_FINANCIAL (state, financialReport) {
+    state.financialReport = financialReport
+  },
+  // SET_PRIZELIST
+  SET_PRIZELIST (state, prizeList) {
+    state.prizeList = prizeList
+  },
+  // SET_BANK
+  SET_BANK (state, bankAbout) {
+    state.bankAbout = bankAbout
   }
 }
 export const actions = {
@@ -106,6 +86,21 @@ export const actions = {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/post/fe-press-release')
     commit('SET_PRESSRELEASE', res.data)
+  },
+  async setFinancial ({ commit }) {
+    const res = await this.$axios
+      .get(process.env.baseApiUrl + '/financial-report/fe-list-report?limit=10')
+    commit('SET_FINANCIAL', res.data.data)
+  },
+  async setPrizeList ({ commit }) {
+    const res = await this.$axios
+      .get(process.env.baseApiUrl + '/post/fe-list-award?limit=8')
+    commit('SET_PRIZELIST', res.data.data)
+  },
+  async setBank ({ commit }) {
+    const res = await this.$axios
+      .get(process.env.baseApiUrl + '/distributor/fe-channel-category')
+    commit('SET_BANK', res.data.data)
   }
 
 }
@@ -133,6 +128,17 @@ export const getters = {
   // pressReleaseApi
   pressReleaseApi (state) {
     return state.pressRelease
+  },
+  // financialReport
+  financialApi (state) {
+    return state.financialReport
+  },
+  // financialReport
+  prizeListApi (state) {
+    return state.prizeList
+  },
+  // financialReport
+  bankApi (state) {
+    return state.prizeList
   }
-
 }

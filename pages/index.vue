@@ -15,7 +15,7 @@
             <div class="slideHome">
               <img
                 id="homeSlide"
-                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(homePage.image)[0]"
+                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(homePage.image)[0]"
                 alt="errorSlide"
               >
             </div>
@@ -85,17 +85,17 @@
                   id="body_column-image"
                   :src="
                     'https://api-map-life.grooo.com.vn/files/media/base/' +
-                      jsonParse(item.image)[0]
+                      $validate.jsonParse(item.image)[0]
                   "
                   alt="error-image"
                 >
               </div>
               <div class="column-txt">
                 <div class="body_column-title">
-                  {{ isType(item.name) }}
+                  {{ $validate.isType(item.name) }}
                 </div>
                 <div class="body_column-txt">
-                  {{ isType(item.description) }}
+                  {{ $validate.isType(item.description) }}
                 </div>
                 <div class="body_column-last">
                   <nuxt-link to="/product/">
@@ -136,19 +136,19 @@
               <img
                 id="serviceLink-item_icon"
                 :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
-                  jsonParse(item.icon)[0]"
+                  $validate.jsonParse(item.icon)[0]"
                 alt="error-insurance"
               >
             </div>
             <div class="serviceLink-item_body">
               <div class="serviceLink-item_title">
-                {{ isType(item.name) }}
+                {{ $validate.isType(item.name) }}
               </div>
               <div
                 class="serviceLink-item_txt"
                 :class="{ 'activeStyle': activeClick === item.id }"
               >
-                {{ isType(item.description) }}
+                {{ $validate.isType(item.description) }}
               </div>
               <div class="serviceLink-item_last">
                 <nuxt-link to="/service/">
@@ -188,21 +188,21 @@
             <div class="img-column">
               <img
                 id="img-column"
-                :src="'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(news.image)[0]"
+                :src="'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(news.image)[0]"
                 alt="error-imgFamily"
               >
             </div>
             <div class="news-item_body">
               <div class="news-item">
                 <div class="news-title">
-                  {{ isType(news.title) }}
+                  {{ $validate.isType(news.title) }}
                 </div>
                 <div class="news-txt">
-                  {{ isType(news.description) }}
+                  {{ $validate.isType(news.description) }}
                 </div>
               </div>
               <a href="#" class="post-item__link">
-                <nuxt-link :to="`/news/${isType(news.slug)}`">
+                <nuxt-link :to="`/news/${ $validate.isType(news.slug)}`">
                   <div class="post-item__link-txt">Xem chi tiết</div>
                 </nuxt-link>
               </a>
@@ -411,31 +411,8 @@ export default {
      */
     activeClickType (id) {
       this.activeClick = id
-    },
-    // biến đổi sang dạng json
-    jsonParse (value) {
-      try {
-        if (value) {
-          return JSON.parse(value)
-        }
-        return ''
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
-    },
-    isType (string) {
-      try {
-        JSON.parse(string)
-        {
-          const obj = JSON.parse(string)
-          return obj.vn
-        }
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
     }
+
   }
 }
 </script>

@@ -16,23 +16,23 @@
           <div class="newsList-column">
             <img
               id="img-column"
-              :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(news.image)[0]"
+              :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(news.image)[0]"
               alt="error-imgFamily"
             >
           </div>
           <div class="newsList-body">
             <div class="newsList-item">
-              <nuxt-link :to="`/news/${ isType(news.slug)}`">
+              <nuxt-link :to="`/news/${ $validate.isType(news.slug)}`">
                 <div class="newsList-title">
-                  {{ isType(news.title) }}
+                  {{ $validate.isType(news.title) }}
                 </div>
               </nuxt-link>
               <div class="newsList-txt">
-                {{ isType(news.description) }}
+                {{ $validate.isType(news.description) }}
               </div>
             </div>
             <a href="#" class="post-item__link">
-              <nuxt-link :to="`/news/${isType(news.slug)}`">
+              <nuxt-link :to="`/news/${$validate.isType(news.slug)}`">
                 <div class="post-item__link-txt">Xem chi tiết</div>
               </nuxt-link>
             </a>
@@ -94,29 +94,6 @@ export default {
       } catch (error) {
         console.log(error)
       }
-    },
-    jsonParse (value) {
-      try {
-        if (value) {
-          return JSON.parse(value)
-        }
-        return ''
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
-    },
-    isType (string) {
-      try {
-        JSON.parse(string)
-        {
-          const obj = JSON.parse(string)
-          return obj.vn
-        }
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
     }
   }
 }
@@ -127,13 +104,12 @@ export default {
   width: 100%;
   height: auto;
   object-fit: cover;
-  position: relative;
 }
 .banner__title {
   position: absolute;
   z-index: 1;
   width: 100%;
-  top: 38%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -141,12 +117,16 @@ export default {
   max-width: 1170px;
   margin: auto;
 }
+.newsSlide {
+  position: relative;
+}
 .newsSlide-title {
   text-align: center;
   font-size: 32px;
   font-weight: bold;
   line-height: 48px;
   color: $bgc-body;
+  position: relative;
 }
 .newsList {
   margin-top: 93px;

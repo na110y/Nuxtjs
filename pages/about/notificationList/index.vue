@@ -16,23 +16,23 @@
           <div class="newsList-column">
             <img
               id="img-column"
-              :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + jsonParse(item.image)[0]"
+              :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(item.image)[0]"
               alt="error-imgFamily"
             >
           </div>
           <div class="newsList-body">
             <div class="newsList-item">
-              <nuxt-link :to="`/about/notificationList/${ isType(item.slug)}`">
+              <nuxt-link :to="`/about/notificationList/${ $validate.isType(item.slug)}`">
                 <div class="newsList-title">
-                  {{ isType(item.title) }}
+                  {{ $validate.isType(item.title) }}
                 </div>
               </nuxt-link>
               <div class="newsList-txt">
-                {{ isType(item.description) }}
+                {{ $validate.isType(item.description) }}
               </div>
             </div>
             <a href="#" class="post-item__link">
-              <nuxt-link :to="`/about/notificationList/${isType(item.slug)}`">
+              <nuxt-link :to="`/about/notificationList/${ $validate.isType(item.slug) }`">
                 <div class="post-item__link-txt">Xem chi tiết</div>
               </nuxt-link>
             </a>
@@ -94,29 +94,6 @@ export default {
       } catch (error) {
         console.log(error)
       }
-    },
-    jsonParse (value) {
-      try {
-        if (value) {
-          return JSON.parse(value)
-        }
-        return ''
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
-    },
-    isType (string) {
-      try {
-        JSON.parse(string)
-        {
-          const obj = JSON.parse(string)
-          return obj.vn
-        }
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
     }
   }
 }
@@ -129,11 +106,14 @@ export default {
   object-fit: cover;
   position: relative;
 }
+.newsSlide {
+  position: relative;
+}
 .banner__title {
   position: absolute;
   z-index: 1;
   width: 100%;
-  top: 35%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

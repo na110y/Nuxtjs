@@ -5,7 +5,7 @@
       <div class="banner__title">
         <div class="container">
           <div class="newsSlide-title">
-            Tin tức
+            Giải thưởng
           </div>
         </div>
       </div>
@@ -26,13 +26,13 @@
             </div>
             <div class="newsList-body">
               <div class="newsList-item">
-                <nuxt-link :to="`/news/${ $validate.isType(news.slug)}`">
+                <nuxt-link :to="`/about/prizeList/${ $validate.isType(news.slug)}`">
                   <div class="newsList-title">
                     {{ $validate.isType(news.title) }}
                   </div>
                 </nuxt-link>
                 <div class="newsList-txt">
-                  {{ news.public_date }}
+                  {{ $validate.formatDate(news.updated_at) }}
                 </div>
               </div>
             </div>
@@ -77,13 +77,13 @@ export default {
     async getListPagingNews () {
       const me = this
       const res = await me.$axios.get(
-        process.env.baseApiUrl + '/post/fe-list-post?limit=5')
-      me.listNews = res.data.data.data
+        process.env.baseApiUrl + '/post/fe-latest-award')
+      me.listNews = res.data.data
     },
     async getDataNewDetail () {
       const res = await this.$axios
         // eslint-disable-next-line no-undef
-        .get(process.env.baseApiUrl + `/post/fe-get-detail?slug=${this.$route.params.id}`)
+        .get(process.env.baseApiUrl + `/post/fe-award-detail?slug=${this.$route.params.id}`)
       if (res) {
         this.itemNews = res.data.data
       }

@@ -20,16 +20,16 @@
                       id="imageItemProduct"
                       :src="
                         'https://api-map-life.grooo.com.vn/files/media/base/'
-                          + jsonParse(product.image)[0]"
+                          + $validate.jsonParse(product.image)[0]"
                       alt="error-image"
                     >
                   </div>
                   <div class="bodyItem-txt">
                     <div class="bodyItem_title">
-                      {{ isType(product.name) }}
+                      {{ $validate.isType(product.name) }}
                     </div>
                     <div class="bodyItem_txt">
-                      {{ isType(product.description) }}
+                      {{ $validate.isType(product.description) }}
                     </div>
                   </div>
                 </div>
@@ -333,29 +333,6 @@ export default {
           `/featured-product-categories?id=${this.$route.params.id}`)
       if (res) {
         this.product = res.data.data[0]
-      }
-    },
-    jsonParse (value) {
-      try {
-        if (value) {
-          return JSON.parse(value)
-        }
-        return ''
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
-    },
-    isType (string) {
-      try {
-        JSON.parse(string)
-        {
-          const obj = JSON.parse(string)
-          return obj.vn
-        }
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
       }
     }
   }

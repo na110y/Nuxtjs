@@ -19,7 +19,7 @@
             id="body_column-image"
             :src="
               'https://api-map-life.grooo.com.vn/files/media/base/' +
-                jsonParse(item.image)[0]
+                $validate.jsonParse(item.image)[0]
             "
             alt="error-image"
           >
@@ -27,11 +27,11 @@
         <div class="list_column-txt">
           <nuxt-link :to="`/product/${ item.id}`">
             <div class="list_sp-title">
-              {{ isType(item.name) }}
+              {{ $validate.isType(item.name) }}
             </div>
           </nuxt-link>
           <div class="list_sp-txt">
-            {{ isType(item.description) }}
+            {{ $validate.isType(item.description) }}
           </div>
         </div>
       </div>
@@ -151,30 +151,6 @@ export default {
     this.$store.dispatch('setProduct')
   },
   methods: {
-    // biến đổi sang dạng json
-    jsonParse (value) {
-      try {
-        if (value) {
-          return JSON.parse(value)
-        }
-        return ''
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
-    },
-    isType (string) {
-      try {
-        JSON.parse(string)
-        {
-          const obj = JSON.parse(string)
-          return obj.vn
-        }
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
-    }
   }
 
 }
