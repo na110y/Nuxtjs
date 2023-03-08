@@ -37,7 +37,6 @@ export default {
   plugins: [
     { src: '~/plugins/vue-carousel.js', ssr: false },
     '~/plugins/utils/validate.js'
-
   ],
 
   components: true,

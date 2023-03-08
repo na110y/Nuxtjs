@@ -47,6 +47,9 @@
         <div class="maganer-Icon">
           <div class="container">
             <div class="bod-wrap">
+              <!--              :navigation-enabled="true"-->
+              <!--              :navigation-next-label="next"-->
+              <!--              :navigation-prev-label="prev"-->
               <carousel
                 :per-page="3"
                 :pagination-enabled="false"
@@ -55,29 +58,30 @@
                   v-for="(use,index) in manganerAbout.data"
                   :key="index"
                 >
-                  <nuxt-link :to="`/about/managanerList/${use.id}`">
-                    <div class="bod-slider">
-                      <div class="bod-slider_img">
-                        <img
-                          id="iconManganer"
-                          :src="'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(use.image)[0]"
-                          alt="error-manganer"
-                        >
+                  <div class="bod-slider">
+                    <div class="bod-slider_img" @click="btnShowModal(use)">
+                      <img
+                        id="iconManganer"
+                        :src="'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(use.image)[0]"
+                        alt="error-manganer"
+                        class="carousel-image"
+                      >
+                    </div>
+
+                    <div class="bod-slider_info">
+                      <div class="bod-slider_title">
+                        {{ $validate.isType(use.name) }}
                       </div>
-                      <div class="bod-slider_info">
-                        <div class="bod-slider_title">
-                          {{ $validate.isType(use.name) }}
-                        </div>
-                        <div class="bod-slider_txt">
-                          {{ $validate.isType(use.position) }}
-                        </div>
+                      <div class="bod-slider_txt">
+                        {{ $validate.isType(use.position) }}
                       </div>
                     </div>
-                  </nuxt-link>
+                  </div>
                 </slide>
               </carousel>
             </div>
           </div>
+          <my-modal :is-show-modal="isShowModal" :item-selected-i-d="itemSelectedID" @closeModal="showModal" />
         </div>
       </div>
       <div class="about-distribution">
@@ -92,23 +96,27 @@
               <b-tab title="Kênh hợp tác ngân hàng" active>
                 <b-card-text>
                   <div class="container">
-                    <ul class="bankAbout-List">
-                      <li
-                        v-for="(bank,index) in bankAboutApi"
-                        :key="index"
-                        class="bankAbout-item"
-                      >
-                        <nuxt-link :to="`/bank/${ $validate.isType(bank.slug)}`">
-                          <!--                          {{ bank.name }}-->
-                          <img id="iconBank" :src="'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(bank.image)" alt="errorBank">
-                        </nuxt-link>
-                        <div class="bankAbout-info">
-                          <div class="bankAbout-title">
-                            <!--                            {{ bank.channels.data.name }}-->
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
+                    <!--                    <ul class="bankAbout-List">-->
+                    <!--                      <li-->
+                    <!--                        v-for="(bank,index) in bankAboutApi"-->
+                    <!--                        :key="index"-->
+                    <!--                        class="bankAbout-item"-->
+                    <!--                      >-->
+                    <!--                        <nuxt-link to="">-->
+                    <!--                          <img-->
+                    <!--                            id="iconBank"-->
+                    <!--                            :src="'https://api-map-life.grooo.com.vn/files/media/base/'-->
+                    <!--                              + $validate.jsonParse(bank.image)"-->
+                    <!--                            alt="errorBank"-->
+                    <!--                          >-->
+                    <!--                        </nuxt-link>-->
+                    <!--                        <div class="bankAbout-info">-->
+                    <!--                          <div class="bankAbout-title">-->
+                    <!--                            {{ $validate.isType(bank.name) }}-->
+                    <!--                          </div>-->
+                    <!--                        </div>-->
+                    <!--                      </li>-->
+                    <!--                    </ul>-->
                   </div>
                 </b-card-text>
               </b-tab>
@@ -262,23 +270,26 @@
           </div>
         </div>
       </div>
-      <v-modal />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Carousel, Slide } from 'vue-carousel'
-import VModal from '~/components/base/VModal.vue'
+import MyModal from '~/plugins/base/modal.vue'
+
 export default {
   components: {
+    MyModal,
     Carousel,
-    Slide,
-    VModal
+    Slide
   },
   data () {
     return {
-      listVideo: []
+      listVideo: [],
+      itemSelectedID: null,
+      itemSelected: {},
+      isShowModal: false
     }
   },
   computed: {
@@ -301,12 +312,19 @@ export default {
     this.getListVideo()
   },
   methods: {
+    showModal (isShowModal) {
+      this.isShowModal = isShowModal
+    },
+    btnShowModal (use) {
+      this.itemSelected = use
+      this.itemSelectedID = use.id
+      this.showModal(true)
+    },
     async getListVideo () {
       const res = await this.$axios.get(
         process.env.baseApiUrl + '/library/fe-get-libraries?limit=9')
       this.listVideo = res.data.data.data
     }
-
   }
 }
 </script>

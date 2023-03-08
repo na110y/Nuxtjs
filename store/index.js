@@ -100,7 +100,7 @@ export const actions = {
   async setBank ({ commit }) {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/distributor/fe-channel-category')
-    commit('SET_BANK', res.data.data)
+    commit('SET_BANK', res.data.data[0].channels[0])
   }
 
 }
