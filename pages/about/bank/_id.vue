@@ -19,21 +19,17 @@
                 <img
                   id="img-column"
                   :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(itemNews.image)"
-                  alt="error-imgFamily"
+                  alt="error-imgBank"
                 >
               </div>
-              <div class="bank-txt">
-                {{ $validate.isType(itemNews.introduction) }}
-              </div>
+              <div class="bank-txt" v-html="$validate.isType(itemNews.introduction)" />
             </div>
           </b-card-text>
         </b-tab>
         <b-tab title="Điều kiện">
           <b-card-text>
             <div class="contener">
-              <div class="bank-contact">
-                {{ $validate.isType(itemNews.contact_info) }}
-              </div>
+              <div class="bank-contact" v-html="$validate.isType(itemNews.contact_info)" />
             </div>
           </b-card-text>
         </b-tab>
@@ -62,9 +58,10 @@ export default {
     async getDataNewDetail () {
       const res = await this.$axios
         // eslint-disable-next-line no-undef
-        .get(process.env.baseApiUrl + `/distributor/fe-get-detail?slug=${this.$route.params.id}`)
+        .get(`https://api-map-life.grooo.com.vn/distributor/fe-get-detail?slug=${this.$route.params.id}`)
       if (res) {
-        this.itemNews = res.data.data
+        this.itemNews = res.data[0].channels
+        console.log(this.itemNews)
       }
     }
 

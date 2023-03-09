@@ -16,13 +16,7 @@
               <div class="product-item_characteristic">
                 <div class="product-charactersitic">
                   <div class="card-image">
-                    <img
-                      id="imageItemProduct"
-                      :src="
-                        'https://api-map-life.grooo.com.vn/files/media/base/'
-                          + $validate.jsonParse(product.image)[0]"
-                      alt="error-image"
-                    >
+                    {{ $validate.isType(product.name) }}
                   </div>
                   <div class="bodyItem-txt">
                     <div class="bodyItem_title">
@@ -168,6 +162,45 @@
                   </div>
                 </div>
               </div>
+              <div class="supplementary">
+                <div class="supplementary-title">
+                  Các sản phẩm bổ trợ
+                </div>
+                <div class="supplementary-item">
+                  <carousel
+                    id="listvideo"
+                    :per-page="3"
+                    :pagination-enabled="true"
+                  >
+                    <slide
+                      v-for="(item, index) in productImage.data"
+                      id="itemVideo"
+                      :key="index"
+                    >
+                      <div class="list-video">
+                        <nuxt-link to="/product/">
+                          <img
+                            id="imageVideo"
+                            :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
+                              $validate.jsonParse(item.image)"
+                            alt="errorImage"
+                          >
+                        </nuxt-link>
+                        <nuxt-link to="/product/" class="list_icon-title">
+                          <div class="list_icon-txt">
+                            <div class="list_icon-title">
+                              {{ $validate.isType(item.name) }}
+                            </div>
+                            <div class="list_icon-description">
+                              {{ $validate.isType(item.description) }}
+                            </div>
+                          </div>
+                        </nuxt-link>
+                      </div>
+                    </slide>
+                  </carousel>
+                </div>
+              </div>
             </b-card-text>
           </b-tab>
           <b-tab title="Điều kiện tham gia">
@@ -271,12 +304,16 @@
 </template>
 <script>
 // import axios from 'axios'
-import dropdown from '~/assets/base/dropdown.vue'
-
+import { Carousel, Slide } from 'vue-carousel'
+import dropdown from '~/components/base/dropdown.vue'
 export default {
   name: 'ProductDetail',
   components: {
-    dropdown
+    dropdown,
+    // eslint-disable-next-line vue/no-unused-components
+    Carousel,
+    // eslint-disable-next-line vue/no-unused-components
+    Slide
   },
   props: {
     // eslint-disable-next-line vue/require-default-prop
@@ -315,6 +352,13 @@ export default {
           placeholder: 'Nha Trang'
         }
       ]
+    },
+    /**
+     * @description: hàm này dùng để lấy ảnh sản phẩm từ store
+     * Author: NSDThinh 21/02/2023
+     */
+    productImage () {
+      return this.$store.state.productImage
     }
   },
   watch: {},
@@ -325,14 +369,15 @@ export default {
      * Author: NSDThinh 21/02/2023
      */
     this.getDataProductDetail()
+    this.$store.dispatch('setProduct')
   },
   methods: {
     async getDataProductDetail () {
       const res = await this.$axios
         .get(process.env.baseApiUrl +
-          `/featured-product-categories?id=${this.$route.params.id}`)
+          `/fe-product-detail?slug=${this.$route.params.id}`)
       if (res) {
-        this.product = res.data.data[0]
+        this.product = res.data.product_features
       }
     }
   }
@@ -389,12 +434,99 @@ export default {
   color:$bgc-body;
   border-radius: 4px;
 }
+.list_icon-txt {
+  padding: 0 24px;
+}
 .product-item_characteristic {
   max-width: 1170px;
   width: 100%;
   margin: auto;
 
 }
+.list_icon-description {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 400;
+  color: #7E7E84;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+}
+.list_icon-title {
+  color: $news-title;
+  font-weight: 600;
+  font-size: 16px;
+  position: relative;
+}
+.list_icon-title::after {
+  position: absolute;
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: transparent;
+  border-right: 2px solid $news-title;
+  border-bottom: 2px solid $news-title;
+  transform: rotate(-45deg);
+  margin-top: -5px;
+  top: 50%;
+  right: 10px;
+  margin-right: 2px;
+  font-weight: 400;
+}
+::v-deep .VueCarousel-navigation-button{
+  top: 38%;
+  padding: 8px;
+  background: $body-column-title;
+  color: $bgc-body;
+}
+::v-deep .VueCarousel-dot-container {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+::v-deep .VueCarousel-dot {
+  &--active {
+    padding: 10px;
+    width: 10px;
+    height: 10px;
+    background-color: $text-color !important;
+  }
+}
+::v-deep .VueCarousel-inner {
+  display: flex;
+  gap: 0 30px;
+  margin-bottom: 20px;
+  max-width: 1170px;
+
+}
+::v-deep .VueCarousel-slide {
+  width: calc( 100% / 3 - 30px ) !important;
+  border: 1px solid #d7d9e2;
+  background-color: #ffffff;
+  position: relative;
+  padding: 24px 0;
+}
+::v-deep .nuxt-link-active::after {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  background: transparent;
+  border-right: 0px solid $news-title;
+  border-bottom: 0px solid $news-title;
+  transform: rotate(-45deg);
+  margin-top: -5px;
+  top: 50%;
+  right: 10px;
+  margin-right: 2px;
+  font-weight: 400;
+}
+#imageVideo {
+  width: 100% !important;
+  height: 200px!important;
+  margin-bottom: 24px;
+}
+
 .product-charactersitic {
   display: flex;
   gap: 0 30px;

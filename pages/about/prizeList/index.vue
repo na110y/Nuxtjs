@@ -38,7 +38,7 @@
               </div>
             </div>
             <a href="#" class="post-item__link">
-              <nuxt-link :to="`//about/prizeList/${$validate.isType(news.slug)}`">
+              <nuxt-link :to="`/about/prizeList/${$validate.isType(news.slug)}`">
                 <div class="post-item__link-txt">Xem chi tiết</div>
               </nuxt-link>
             </a>

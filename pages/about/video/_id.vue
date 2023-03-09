@@ -27,7 +27,7 @@
             <div class="newsList-body">
               <div class="newsList-item">
                 <nuxt-link :to="`${ $validate.isType(news.slug)}`">
-                  <div class="newVideo-txt">
+                  <div class="newVideo-txt" @click.prevent="btnClickItem(index)">
                     {{ $validate.isType(news.name) }}
                   </div>
                 </nuxt-link>
@@ -64,6 +64,10 @@ export default {
     this.getListPagingNews()
   },
   methods: {
+    btnClickItem (index) {
+      this.itemNews = this.listNews[index]
+      this.$router.push({ query: { slug: index } })
+    },
     async getListPagingNews () {
       const res = await this.$axios.get(
         process.env.baseApiUrl + '/library/fe-latest-library?slug')

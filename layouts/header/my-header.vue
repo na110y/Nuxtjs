@@ -32,8 +32,11 @@
             Mua bảo hiểm trực tuyến
           </div>
           <div class="menu-link item-language">
-            <img src="@/assets/img/language.svg" alt="error-Language">
-            <img id="dropdown" src="@/assets/img/dropdown.svg" alt="error-dropdown">
+            <div class="language-List">
+              <img id="vn" src="@/assets/img/vn.gif" alt="error-VN">
+              <!--              <img id="en" src="@/assets/img/language.svg" alt="error-Language">-->
+              <!--              <b-form-select v-model="selected" :options="options" />-->
+            </div>
           </div>
         </li>
       </ul>
@@ -42,8 +45,20 @@
 </template>
 <script>
 export default {
+  name: 'MyHeader',
+  data () {
+    return {
+      selected: null
+      // options: [
+      //   { text: 'Vietnamese' },
+      //   { text: 'English' }
+      // ]
+    }
+  },
   methods: {
-
+    // switchLanguage(locale) {
+    //   this.$i18n.locale = locale
+    // }
   }
 }
 </script>

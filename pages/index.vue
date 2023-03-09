@@ -286,7 +286,7 @@
 </template>
 <script>
 // import validate from '../utils/validate'
-import dropdown from '~/assets/base/dropdown.vue'
+import dropdown from '~/components/base/dropdown.vue'
 // import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'vueperslides/dist/vueperslides.css'
 export default {

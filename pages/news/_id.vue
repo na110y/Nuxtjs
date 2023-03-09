@@ -27,7 +27,7 @@
             <div class="newsList-body">
               <div class="newsList-item">
                 <nuxt-link :to="`/news/${ $validate.isType(news.slug)}`">
-                  <div class="newsList-title">
+                  <div class="newsList-title" @click.prevent="btnClickItem(index)">
                     {{ $validate.isType(news.title) }}
                   </div>
                 </nuxt-link>
@@ -61,10 +61,7 @@ export default {
       listNews: []
     }
   },
-  computed: {
-  },
-  created () {
-  },
+
   mounted () {
     /**
      * @description: news ( tin tức mới nhất )
@@ -74,6 +71,10 @@ export default {
     this.getListPagingNews()
   },
   methods: {
+    btnClickItem (index) {
+      this.itemNews = this.listNews[index]
+      this.$router.push({ query: { slug: index } })
+    },
     async getListPagingNews () {
       const me = this
       const res = await me.$axios.get(

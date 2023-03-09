@@ -27,7 +27,7 @@
             <div class="newsList-body">
               <div class="newsList-item">
                 <nuxt-link :to="`/about/prizeList/${ $validate.isType(news.slug)}`">
-                  <div class="newsList-title">
+                  <div class="newsList-title" @click.prevent="btnClickItem(index)">
                     {{ $validate.isType(news.title) }}
                   </div>
                 </nuxt-link>
@@ -74,6 +74,10 @@ export default {
     this.getListPagingNews()
   },
   methods: {
+    btnClickItem (index) {
+      this.itemNews = this.listNews[index]
+      this.$router.push({ query: { slug: index } })
+    },
     async getListPagingNews () {
       const me = this
       const res = await me.$axios.get(
@@ -222,10 +226,12 @@ export default {
   font-size: 14px;
   line-height: 19px;
   color: $news-title;
+  display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
   -webkit-line-clamp: 2;
-  height: 60px;
+  cursor: pointer;
+  margin-bottom:  8px;
   &:hover {
     transition: all .5s ease-in-out;
     color: $text-color;

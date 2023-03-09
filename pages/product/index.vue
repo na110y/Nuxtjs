@@ -25,7 +25,7 @@
           >
         </div>
         <div class="list_column-txt">
-          <nuxt-link :to="`/product/${ item.id}`">
+          <nuxt-link :to="`/product/${ $validate.isType(item.slug)}`">
             <div class="list_sp-title">
               {{ $validate.isType(item.name) }}
             </div>
@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import dropdown from '~/assets/base/dropdown.vue'
+import dropdown from '~/components/base/dropdown.vue'
 export default {
   components: {
     dropdown

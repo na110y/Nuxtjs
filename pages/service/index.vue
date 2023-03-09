@@ -367,28 +367,6 @@
                 </div>
               </div>
             </div>
-            <div class="supplementary">
-              <div class="supplementary-title">
-                Các sản phẩm bổ trợ
-              </div>
-              <div class="supplementary-item">
-                <vueper-slides
-                  ref="depersonalises1"
-                  class="no-shadow"
-                  :visible-slides="3"
-                  :slide-ratio="1 / 4"
-                  :dragging-distance="200"
-                  slide-multiple
-                  :arrows="false"
-                >
-                  <vueper-slide
-                    v-for="(item, index) in productImage.data"
-                    :key="index"
-                    :image="'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(item.image)[0]"
-                  />
-                </vueper-slides>
-              </div>
-            </div>
           </b-card-text>
         </b-tab>
         <b-tab title="Điều kiện">
@@ -585,13 +563,15 @@
   </div>
 </template>
 <script>
-import { VueperSlides, VueperSlide } from 'vueperslides'
-import dropdown from '../../assets/base/dropdown.vue'
+// import { VueperSlides, VueperSlide } from 'vueperslides'
+
+import dropdown from '../../components/base/dropdown.vue'
 import 'vueperslides/dist/vueperslides.css'
 export default {
   components: {
     // eslint-disable-next-line vue/no-unused-components
-    dropdown, VueperSlides, VueperSlide
+    dropdown
+
   },
   props: {
     // eslint-disable-next-line vue/require-default-prop
@@ -629,15 +609,8 @@ export default {
           placeholder: 'Nha Trang'
         }
       ]
-    },
-
-    /**
-     * @description: hàm này dùng để lấy ảnh sản phẩm từ store
-     * Author: NSDThinh 21/02/2023
-     */
-    productImage () {
-      return this.$store.state.productImage
     }
+
   },
   mounted () {
     /**

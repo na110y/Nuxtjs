@@ -20,19 +20,19 @@
             <div class="newsList-column">
               <img
                 id="img-column"
-                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(item.image)[0]"
+                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(item.image)"
                 alt="error-imgFamily"
               >
             </div>
             <div class="newsList-body">
               <div class="newsList-item">
                 <nuxt-link :to="`/about/notificationList/${$validate.isType(item.slug)}`">
-                  <div class="newsList-title">
+                  <div class="newsList-title" @click.prevent="btnClickItem(index)">
                     {{ $validate.isType(item.title) }}
                   </div>
                 </nuxt-link>
                 <div class="newsList-txt">
-                  {{ item.public_date }}
+                  {{ $validate.formatDate(item.public_date) }}
                 </div>
               </div>
             </div>
@@ -59,26 +59,23 @@ export default {
     return {
       itemNews: {},
       listNews: []
+
     }
   },
-  computed: {
-  },
-  created () {
-  },
   mounted () {
-    /**
-     * @description: news ( tin tức mới nhất )
-     * Author: NSDThinh 25/02/2023
-     */
     this.getDataNewDetail()
     this.getListPagingNews()
   },
   methods: {
+    btnClickItem (index) {
+      this.itemNews = this.listNews[index]
+      this.$router.push({ query: { slug: index } })
+    },
     async getListPagingNews () {
       const me = this
       const res = await me.$axios.get(
-        process.env.baseApiUrl + '/post/fe-list-press-release')
-      me.listNews = res.data.data.data
+        process.env.baseApiUrl + '/post/fe-latest-press-release')
+      me.listNews = res.data.data
     },
     async getDataNewDetail () {
       const res = await this.$axios
@@ -224,10 +221,12 @@ export default {
   font-size: 14px;
   line-height: 19px;
   color: $news-title;
+  display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
   -webkit-line-clamp: 2;
-  height: 60px;
+  margin-bottom: 8px;
+  cursor: pointer;
   &:hover {
     transition: all .5s ease-in-out;
     color: $text-color;
