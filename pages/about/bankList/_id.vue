@@ -161,6 +161,12 @@ export default {
   color:$bgc-body;
   border-radius: 4px;
 }
+::v-deep span {
+  color: $text-colorRank;
+}
+::v-deep p {
+  color: $text-colorRank;
+}
 
 .banner__title {
   position: absolute;

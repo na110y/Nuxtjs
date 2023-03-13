@@ -145,7 +145,6 @@
                         </div>
                       </div>
                     </li>
-                    </li">
                   </ul>
                 </div>
               </b-card-text>
