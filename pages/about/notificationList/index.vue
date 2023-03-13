@@ -87,13 +87,9 @@ export default {
   methods: {
     async getListPagingNews () {
       const me = this
-      try {
-        const res = await me.$axios.get(
-          process.env.baseApiUrl + '/post/fe-list-press-release')
-        me.listNews = res.data.data.data
-      } catch (error) {
-        console.log(error)
-      }
+      const res = await me.$axios.get(
+        process.env.baseApiUrl + '/post/fe-list-press-release')
+      me.listNews = res.data.data.data
     }
   }
 }

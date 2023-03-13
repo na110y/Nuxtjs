@@ -66,7 +66,7 @@ export default {
   methods: {
     btnClickItem (index) {
       this.itemNews = this.listNews[index]
-      this.$router.push({ query: { slug: this.$route.params.id } })
+      // this.$router.push({ query: { slug: this.$route.params.id } })
     },
     async getListPagingNews () {
       const res = await this.$axios.get(

@@ -16,10 +16,10 @@
               <div class="product-item_characteristic">
                 <div class="product-charactersitic">
                   <div class="bodyItem_title bodyitem-Header">
-                    {{ $validate.isType(product.product_features[0].name) }}
+                    {{ $validate.isType(product?.product_features?.[0].name) }}
                   </div>
                   <div class="bodyItem-txt">
-                    <div class="bodyItem_txt" v-html="$validate.isType(product.product_features[0].content)" />
+                    <div class="bodyItem_txt" v-html="$validate.isType(product?.product_features?.[0].content)" />
                   </div>
                 </div>
               </div>
@@ -27,10 +27,10 @@
                 <div class="contener">
                   <div class="product-charactersitic">
                     <div class="bodyItem_title">
-                      {{ $validate.isType(product.product_features[1].name) }}
+                      {{ $validate.isType(product?.product_features?.[1].name) }}
                     </div>
                     <div class="bodyItem-txt">
-                      <div class="bodyItem_txt" v-html="$validate.isType(product.product_features[1].content)" />
+                      <div class="bodyItem_txt" v-html="$validate.isType(product?.product_features?.[1].content)" />
                     </div>
                   </div>
                 </div>
@@ -38,10 +38,10 @@
               <div class="product-advantage">
                 <div class="product-charactersitic">
                   <div class="bodyItem_title">
-                    {{ $validate.isType(product.product_features[2].name) }}
+                    {{ $validate.isType(product?.product_features?.[2].name) }}
                   </div>
                   <div class="bodyItem-txt">
-                    <div class="bodyItem_txt" v-html="$validate.isType(product.product_features[2].content)" />
+                    <div class="bodyItem_txt" v-html="$validate.isType(product?.product_features?.[2].content)" />
                   </div>
                 </div>
               </div>
@@ -105,11 +105,11 @@
                     :pagination-enabled="true"
                   >
                     <slide
-                      v-for="(item, index) in productList.data"
+                      v-for="(item, index) in productList"
                       id="itemVideo"
                       :key="index"
                     >
-                      <div class="list-video">
+                      <div class="list-video" @click="scrollToTop">
                         <nuxt-link :to="`/product/${ $validate.isType(item.slug)}`">
                           <img
                             id="imageVideo"
@@ -119,16 +119,16 @@
                             @click.prevent="btnClickItem(index)"
                           >
                         </nuxt-link>
-                        <nuxt-link :to="`/product/${ $validate.isType(item.slug)}`" class="list_icon-title">
-                          <div class="list_icon-txt">
+                        <div class="list_icon-txt">
+                          <nuxt-link :to="`/product/${ $validate.isType(item.slug)}`" class="list_icon-title">
                             <div class="list_icon-title" @click.prevent="btnClickItem(index)">
                               {{ $validate.isType(item.name) }}
                             </div>
                             <div class="list_icon-description" @click.prevent="btnClickItem(index)">
                               {{ $validate.isType(item.description) }}
                             </div>
-                          </div>
-                        </nuxt-link>
+                          </nuxt-link>
+                        </div>
                       </div>
                     </slide>
                   </carousel>
@@ -143,10 +143,10 @@
                   <div class="contener">
                     <div class="product-charactersitic">
                       <div class="bodyItem_title">
-                        {{ $validate.isType(product.product_features[0].name) }}
+                        {{ $validate.isType(product?.product_features?.[0].name) }}
                       </div>
                       <div class="bodyItem-txt">
-                        <div class="bodyItem_txt" v-html="$validate.isType(product.product_features[0].content)" />
+                        <div class="bodyItem_txt" v-html="$validate.isType(product?.product_features?.[0].content)" />
                       </div>
                     </div>
                   </div>
@@ -160,10 +160,10 @@
                 <div class="product-advantage">
                   <div class="product-charactersitic">
                     <div class="bodyItem_title">
-                      {{ $validate.isType(product.product_features[1].name) }}
+                      {{ $validate.isType(product?.product_features?.[1].name) }}
                     </div>
                     <div class="bodyItem-txt">
-                      <div class="bodyItem_txt" v-html="$validate.isType(product.product_features[1].content)" />
+                      <div class="bodyItem_txt" v-html="$validate.isType(product?.product_features?.[1].content)" />
                     </div>
                   </div>
                 </div>
@@ -173,6 +173,9 @@
         </b-tabs>
         <b-tabs card />
       </b-card>
+    </div>
+    <div class="scrollTop" @click="scrollToTop">
+      <img src="~/assets/img/scrollTop.svg" alt="error">
     </div>
   </div>
 </template>
@@ -242,9 +245,21 @@ export default {
     this.getDataProductDetail()
   },
   methods: {
+    /**
+     * @description: sau khi click trang sẽ được di chuyển lên đầu
+     * Author: NSDThinh 21/02/2023
+     */
+    scrollToTop () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    },
     btnClickItem (index) {
       this.product = this.productList[index]
-      this.$router.push({ query: { slug: this.$route.params.id } })
+      // if (product) {
+      //   this.$router.push({ path: `/product/${this.isType(product.slug)}` })
+      // }
     },
     async getDataProductDetail () {
       const res = await this.$axios
@@ -259,7 +274,19 @@ export default {
         .get(process.env.baseApiUrl +
           '/fe-product-list?paging=1&limit=9&category_id=1&page=1')
       if (res) {
-        this.productList = res.data.data
+        this.productList = res.data.data.data
+      }
+    },
+    isType (string) {
+      try {
+        JSON.parse(string)
+        {
+          const obj = JSON.parse(string)
+          return obj.vn
+        }
+      } catch (err) {
+        console.error(`Failed to parse JSON data: ${err.message}`)
+        return null
       }
     }
   }

@@ -69,8 +69,7 @@ export default {
   methods: {
     btnClickItem (index) {
       this.itemNews = this.listNews[index]
-      this.$router.push({ path: `/about/notificationList/${this.isType(this.itemNews.slug)}` })
-      console.log(this.$router.push({ path: `/about/notificationList/${this.isType(this.itemNews.slug)}` }))
+      // this.$router.push({ path: `/about/notificationList/${this.isType(this.itemNews.slug)}` })
     },
     async getListPagingNews () {
       const me = this

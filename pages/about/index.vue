@@ -100,8 +100,8 @@
                     class="bankAbout-List"
                   >
                     <li
-                      v-for="bank in bankAboutApi?.data?.[0].channels"
-                      :key="bank"
+                      v-for="(bank,index) in bankAboutApi?.data?.[0].channels"
+                      :key="index"
                       class="bankAbout-item"
                     >
                       <nuxt-link :to="`/about/bankList/${ $validate.isType(bank.slug)}`">
@@ -127,8 +127,8 @@
                 <div class="container">
                   <ul class="bankAbout-List">
                     <li
-                      v-for="bankFinance in bankAboutApi?.data?.[1].channels"
-                      :key="bankFinance"
+                      v-for="(bankFinance,index) in bankAboutApi?.data?.[1].channels"
+                      :key="index"
                       class="bankAbout-item"
                     >
                       <nuxt-link :to="`/about/bankList/${ $validate.isType(bankFinance.slug)}`">
@@ -154,8 +154,8 @@
                 <div class="container">
                   <ul class="bankAbout-List">
                     <li
-                      v-for="bankItem in bankAboutApi?.data?.[2].channels"
-                      :key="bankItem"
+                      v-for="(bankItem,index) in bankAboutApi?.data?.[2].channels"
+                      :key="index"
                       class="bankAbout-item"
                     >
                       <nuxt-link :to="`/about/bankList/${ $validate.isType(bankItem.slug)}`">
@@ -322,9 +322,6 @@ export default {
     }
   },
   computed: {
-    tabIndex () {
-      return index => this.currentTab === index ? 0 : -1
-    },
     manganerAbout () {
       return this.$store.state.manganer
     },
@@ -344,9 +341,6 @@ export default {
     this.getListVideo()
   },
   methods: {
-    onTabChange (newTab) {
-      this.currentTab = newTab
-    },
     btnClickItem (index) {
       this.itemSelected = this.listVideo[index]
       this.$router.push({ query: { slug: index } })
@@ -354,6 +348,7 @@ export default {
     showModal (isShowModal) {
       this.isShowModal = isShowModal
     },
+    // hàm này dùng để hiển thị chi tiết giám đốc khi chọn
     btnShowModal (use) {
       this.itemSelected = use
       this.itemSelectedID = use.id

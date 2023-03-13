@@ -1,6 +1,6 @@
 export default {
   head: {
-    title: 'ducthinh',
+    title: 'Công Ty TNHH Bảo Biểm Nhân Thọ',
     htmlAttrs: {
       lang: 'en'
     },
@@ -25,7 +25,8 @@ export default {
         rel: 'icon',
         type: 'image/x-icon',
         href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet'
-      }
+      },
+      { rel: 'icon', type: 'image/png', href: '/bhnt.png' }
     ]
   },
 
@@ -64,16 +65,6 @@ export default {
     '@nuxtjs/axios',
     'bootstrap-vue/nuxt'
   ],
-  i18n: {
-    locales: [
-      { code: 'en', iso: 'en-US', file: 'en.js' },
-      { code: 'fr', iso: 'fr-FR', file: 'fr.js' }
-    ],
-    defaultLocale: 'en',
-    strategy: 'prefix',
-    lazy: true,
-    langDir: 'lang/'
-  },
 
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308

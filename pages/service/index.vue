@@ -555,10 +555,8 @@
         </b-tab>
       </b-tabs>
     </b-card>
-    <div class="scrollTop">
-      <a href="#">
-        <img src="~/assets/img/scrollTop.svg" alt="error">
-      </a>
+    <div class="scrollTop" @click="scrollToTop">
+      <img src="~/assets/img/scrollTop.svg" alt="error">
     </div>
   </div>
 </template>
@@ -625,6 +623,16 @@ export default {
     this.$store.dispatch('setProduct')
   },
   methods: {
+    /**
+     * @description: sau khi click trang sẽ được di chuyển lên đầu
+     * Author: NSDThinh 21/02/2023
+     */
+    scrollToTop () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    }
   }
 
 }
@@ -634,6 +642,9 @@ export default {
 ::v-deep .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
   background-color: $bgc-product;
   border: none;
+}
+.product-features {
+  margin-top: 50px;
 }
 ::v-deep .nav-tabs .nav-link {
   border: none;

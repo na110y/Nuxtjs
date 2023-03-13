@@ -275,10 +275,8 @@
           </div>
         </div>
 
-        <div class="scrollTop">
-          <a href="#">
-            <img src="../assets/img/scrollTop.svg" alt="error">
-          </a>
+        <div class="scrollTop" @click="scrollToTop">
+          <img src="../assets/img/scrollTop.svg" alt="error">
         </div>
       </div>
     </div>
@@ -383,6 +381,16 @@ export default {
     this.$store.dispatch('setNewsPage')
   },
   methods: {
+    /**
+     * @description: sau khi click trang sẽ được di chuyển lên đầu
+     * Author: NSDThinh 21/02/2023
+     */
+    scrollToTop () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    },
     isToggle (isShowDrop) {
       this.isShowDrop = isShowDrop
     },
