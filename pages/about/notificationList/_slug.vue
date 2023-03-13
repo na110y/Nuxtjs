@@ -5,7 +5,7 @@
       <div class="banner__title">
         <div class="container">
           <div class="newsSlide-title">
-            Thư viện
+            Thông cáo báo chí
           </div>
         </div>
       </div>
@@ -14,32 +14,38 @@
       <div class="newsList-thumbnail">
         <div class="newsItem-thumbnail_img">
           <div class="newsItem-thumbnail__title">
-            Video & ảnh gần đây
+            Thông cáo báo chí gần đây
           </div>
-          <div v-for="(news,index) in listNews" :key="index" class="news_imgage-column">
+          <div v-for="(item,index) in listNews" :key="index" class="news_imgage-column">
             <div class="newsList-column">
               <img
                 id="img-column"
-                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(news.poster)[0]"
+                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(item.image)"
                 alt="error-imgFamily"
               >
             </div>
             <div class="newsList-body">
               <div class="newsList-item">
-                <nuxt-link :to="`${ $validate.isType(news.slug)}`">
-                  <div class="newVideo-txt" @click.prevent="btnClickItem(index)">
-                    {{ $validate.isType(news.name) }}
+                <nuxt-link :to="`/about/notificationList/${$validate.isType(item.slug)}`">
+                  <div class="newsList-title" @click.prevent="btnClickItem(index)">
+                    {{ $validate.isType(item.title) }}
                   </div>
                 </nuxt-link>
+                <div class="newsList-txt">
+                  {{ $validate.formatDate(item.public_date) }}
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="newsItem-thumbnail-column">
           <div class="newsItem-thumbnail_title">
-            {{ $validate.isType(itemNews.name) }}
+            {{ $validate.isType(itemNews.title) }}
           </div>
-          <iframe :src="itemNews.video" />
+          <div class="newsItem-thumbnail_txt">
+            {{ $validate.isType(itemNews.description) }}
+          </div>
+          <div class="newsItem-thumbnail_txt" v-html="$validate.isType(itemNews.content)" />
         </div>
       </div>
     </div>
@@ -53,11 +59,8 @@ export default {
     return {
       itemNews: {},
       listNews: []
+
     }
-  },
-  computed: {
-  },
-  created () {
   },
   mounted () {
     this.getDataNewDetail()
@@ -66,64 +69,40 @@ export default {
   methods: {
     btnClickItem (index) {
       this.itemNews = this.listNews[index]
-      this.$router.push({ query: { slug: this.$route.params.id } })
+      console.log()
+      this.$router.push({ query: { slug: process.env.baseApiUrl + `/about/notificationList/${$validate.isType(index)}` } })
     },
     async getListPagingNews () {
-      const res = await this.$axios.get(
-        process.env.baseApiUrl + '/library/fe-latest-library?slug')
-      this.listNews = res.data.data
+      const me = this
+      const res = await me.$axios.get(
+        process.env.baseApiUrl + '/post/fe-latest-press-release')
+      me.listNews = res.data.data
     },
     async getDataNewDetail () {
       const res = await this.$axios
         // eslint-disable-next-line no-undef
-        .get(process.env.baseApiUrl + `/library/fe-get-detail?slug=${this.$route.params.id}`)
+        .get(process.env.baseApiUrl + `/post/fe-press-release-detail?slug=${this.$route.params.id}`)
       if (res) {
         this.itemNews = res.data.data
       }
     }
-
   }
 }
 </script>
 <style lang="scss" scoped>
 @import "assets/scss/variables";
-iframe {
-  width: 100%;
-  height: 100%
-}
+
 ::v-deep .container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
   --bs-gutter-x: 0;
 }
-.newVideo-txt {
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 24px;
-  color: #282832;
-  margin-bottom: 8px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  &:hover {
-    transition: all .5s ease-in-out;
-    color: $text-color;
-  }
-}
-.newsSlide {
-  position: relative;
-}
+
 #img-column {
   width: 100%;
   height: auto;
   object-fit: cover;
   max-width: unset;
 }
-.newsItem-thumbnail__title {
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 30px;
-  color: $titleListID;
-}
+
 .newsList-thumbnail {
   display: flex;
   margin: 50px 0;
@@ -131,8 +110,8 @@ iframe {
 }
 
 .newsItem-thumbnail_img {
-  width: 30%;
   margin-top: 35px;
+  width: 30%;
 }
 
 .newsItem-thumbnail-column {
@@ -200,7 +179,9 @@ iframe {
   max-width: 1170px;
   margin: auto;
 }
-
+.newsSlide {
+  position: relative;
+}
 .newsSlide-title {
   text-align: center;
   font-size: 32px;
@@ -208,10 +189,15 @@ iframe {
   line-height: 48px;
   color: $bgc-body;
 }
+.newsItem-thumbnail__title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: $titleListID;
+}
 
 .newsList {
   margin-top: 93px;
-  margin-bottom: 120px;
 }
 
 .contener {
@@ -236,6 +222,12 @@ iframe {
   font-size: 14px;
   line-height: 19px;
   color: $news-title;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  margin-bottom: 8px;
+  cursor: pointer;
   &:hover {
     transition: all .5s ease-in-out;
     color: $text-color;

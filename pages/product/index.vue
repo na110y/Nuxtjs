@@ -19,7 +19,7 @@
             id="body_column-image"
             :src="
               'https://api-map-life.grooo.com.vn/files/media/base/' +
-                $validate.jsonParse(item.image)[0]
+                $validate.jsonParse(item.image)
             "
             alt="error-image"
           >

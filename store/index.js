@@ -62,8 +62,8 @@ export const actions = {
   // setProduct
   async setProduct ({ commit }) {
     const res = await this.$axios
-      .get(process.env.baseApiUrl + '/featured-product-categories')
-    commit('SET_PRODUCT', res.data)
+      .get(process.env.baseApiUrl + '/fe-product-list?paging=1&limit=9&category_id=1&page=1')
+    commit('SET_PRODUCT', res.data.data)
   },
   // setClient
   async setClient ({ commit }) {

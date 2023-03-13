@@ -12,8 +12,6 @@ export default ({ app }, inject) => {
           return obj.vn
         }
       } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
       }
     },
     // thay đổi kiểu giá trị của chữ
@@ -24,8 +22,6 @@ export default ({ app }, inject) => {
         }
         return ''
       } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
       }
     },
     // hàm này dùng để validEmail

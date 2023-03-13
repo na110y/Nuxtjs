@@ -631,4 +631,70 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "../../assets/scss/main";
+::v-deep .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  background-color: $bgc-product;
+  border: none;
+}
+::v-deep .nav-tabs .nav-link {
+  border: none;
+}
+::v-deep .nav-item:focus {
+  border: none;
+  outline: none;
+}
+::v-deep .nav-item:hover {
+  border: none;
+  outline: none;
+}
+::v-deep .VueCarousel-dot:focus {
+  border: none;
+  outline:none
+}
+::v-deep .nav-tabs {
+
+}
+::v-deep .nav-link {
+  color: $body-column-title;
+  font-weight: 500;
+
+}
+::v-deep .card {
+  border: none;
+}
+::v-deep .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: $text-color;
+  font-weight: 500;
+  border-bottom: 3px solid #F58220;
+  border-radius: 1.5px;
+
+}
+::v-deep .nav-tabs .nav-link, .nav-tabs .nav-item.show .nav-link {
+  color: $text-colorRank;
+  font-weight: 500;
+  padding: 24px 0;
+  background-color: $bgc-body !important;
+}
+::v-deep .card-header {
+  border-bottom:1px solid $border;
+  background-color:$bgc-body;
+  padding: 0;
+}
+::v-deep .nav {
+  max-width: 1170px;
+  margin: auto;
+  gap: 0 30px;
+
+}
+::v-deep .card {
+  --bs-card-spacer-y: 0;
+  --bs-card-spacer-x: 0;
+  --bs-card-title-spacer-y: 0;
+}
+::v-deep #tuvan___BV_tab_button__ {
+  margin-left: 350px;
+  padding: 12px 24px;
+  background-color: $text-color;
+  color:$bgc-body;
+  border-radius: 4px;
+}
 </style>

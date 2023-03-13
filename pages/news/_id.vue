@@ -73,7 +73,7 @@ export default {
   methods: {
     btnClickItem (index) {
       this.itemNews = this.listNews[index]
-      this.$router.push({ query: { slug: index } })
+      this.$router.push({ query: { slug: this.$route.params.id } })
     },
     async getListPagingNews () {
       const me = this

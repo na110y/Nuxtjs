@@ -1212,6 +1212,15 @@ ul, li {
   right: -16px;
   font-weight: 400;
 }
+::v-deep .VueCarousel-dot:focus {
+  border: none;
+  outline:none
+}
+::v-deep b-tabs:focus {
+  outline:none;
+  border: none;
+}
+
 ::v-deep .VueCarousel-dot-container {
   margin-top: 0;
   margin-bottom: 20px;

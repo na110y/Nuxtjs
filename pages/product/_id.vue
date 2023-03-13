@@ -15,103 +15,35 @@
             <b-card-text>
               <div class="product-item_characteristic">
                 <div class="product-charactersitic">
-                  <div class="card-image">
-                    {{ $validate.isType(product.name) }}
+                  <div class="bodyItem_title bodyitem-Header">
+                    {{ $validate.isType(product.product_features[0].name) }}
                   </div>
                   <div class="bodyItem-txt">
-                    <div class="bodyItem_title">
-                      {{ $validate.isType(product.name) }}
-                    </div>
-                    <div class="bodyItem_txt">
-                      {{ $validate.isType(product.description) }}
-                    </div>
+                    <div class="bodyItem_txt" v-html="$validate.isType(product.product_features[0].content)" />
                   </div>
                 </div>
               </div>
               <div class="product-condition">
                 <div class="contener">
-                  <div class="product-condition_title">
-                    Điều kiện tham gia
+                  <div class="product-charactersitic">
+                    <div class="bodyItem_title">
+                      {{ $validate.isType(product.product_features[1].name) }}
+                    </div>
+                    <div class="bodyItem-txt">
+                      <div class="bodyItem_txt" v-html="$validate.isType(product.product_features[1].content)" />
+                    </div>
                   </div>
-                  <table class="product-condition_table">
-                    <tbody>
-                      <tr>
-                        <td><strong>Tuổi tham gia</strong></td>
-                        <td>18 - 55 tuổi</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Tuổi kết thúc Hợp đồng bảo hiểm</strong></td>
-                        <td> 60 tuổi</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Thời hạn hợp đồng</strong></td>
-                        <td> 5-10 năm</td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </div>
               </div>
               <div class="product-advantage">
-                <div class="product-advantage_title">
-                  Quyền lợi bảo hiểm
+                <div class="product-charactersitic">
+                  <div class="bodyItem_title">
+                    {{ $validate.isType(product.product_features[2].name) }}
+                  </div>
+                  <div class="bodyItem-txt">
+                    <div class="bodyItem_txt" v-html="$validate.isType(product.product_features[2].content)" />
+                  </div>
                 </div>
-                <div class="product-advantage_txt">
-                  Quyền lợi bảo hiểm cơ bản:
-                </div>
-                <table class="product-advantage_table">
-                  <tbody>
-                    <tr>
-                      <td><strong>Lựa chọn</strong></td>
-                      <td>1</td>
-                      <td>2</td>
-                      <td>3</td>
-                      <td>4</td>
-                      <td>5</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Số tiền bảo hiểm cơ bản</strong></td>
-                      <td>20.000.000</td>
-                      <td>50.000.000</td>
-                      <td>100.000.000</td>
-                      <td>150.000.000</td>
-                      <td>200.000.000</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="product-advantage_txt">
-                  Quyền lợi bảo hiểm bổ sung do tai nạn:
-                </div>
-                <table class="product-advantage_table">
-                  <tbody>
-                    <tr>
-                      <td><strong>Lựa chọn</strong></td>
-                      <td>1</td>
-                      <td>2</td>
-                      <td>3</td>
-                      <td>4</td>
-                      <td>5</td>
-                      <td>6</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Số tiền bảo hiểm bổ sung do tai nạn</strong></td>
-                      <td>50.000.000</td>
-                      <td>100.000.000</td>
-                      <td>50.000.000</td>
-                      <td>200.000.000</td>
-                      <td>300.000.000</td>
-                      <td>400.000.000</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Phí bảo hiểm rủi ro hàng năm</strong></td>
-                      <td>65.000</td>
-                      <td>130.000</td>
-                      <td>260.000 </td>
-                      <td>390.000 </td>
-                      <td>520.000</td>
-                      <td>650.000</td>
-                    </tr>
-                  </tbody>
-                </table>
               </div>
               <div class="product-ask">
                 <div class="ask-list">
@@ -173,25 +105,26 @@
                     :pagination-enabled="true"
                   >
                     <slide
-                      v-for="(item, index) in productImage.data"
+                      v-for="(item, index) in productList.data"
                       id="itemVideo"
                       :key="index"
                     >
                       <div class="list-video">
-                        <nuxt-link to="/product/">
+                        <nuxt-link :to="`/product/${ $validate.isType(item.slug)}`">
                           <img
                             id="imageVideo"
                             :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
                               $validate.jsonParse(item.image)"
                             alt="errorImage"
+                            @click.prevent="btnClickItem(index)"
                           >
                         </nuxt-link>
-                        <nuxt-link to="/product/" class="list_icon-title">
+                        <nuxt-link :to="`/product/${ $validate.isType(item.slug)}`" class="list_icon-title">
                           <div class="list_icon-txt">
-                            <div class="list_icon-title">
+                            <div class="list_icon-title" @click.prevent="btnClickItem(index)">
                               {{ $validate.isType(item.name) }}
                             </div>
-                            <div class="list_icon-description">
+                            <div class="list_icon-description" @click.prevent="btnClickItem(index)">
                               {{ $validate.isType(item.description) }}
                             </div>
                           </div>
@@ -206,26 +139,17 @@
           <b-tab title="Điều kiện tham gia">
             <b-card-text>
               <div class="product-condition">
-                <div class="contener">
-                  <div class="product-condition_title">
-                    Điều kiện tham gia
+                <div class="product-condition">
+                  <div class="contener">
+                    <div class="product-charactersitic">
+                      <div class="bodyItem_title">
+                        {{ $validate.isType(product.product_features[0].name) }}
+                      </div>
+                      <div class="bodyItem-txt">
+                        <div class="bodyItem_txt" v-html="$validate.isType(product.product_features[0].content)" />
+                      </div>
+                    </div>
                   </div>
-                  <table class="product-condition_table">
-                    <tbody>
-                      <tr>
-                        <td><strong>Tuổi tham gia</strong></td>
-                        <td>18 - 55 tuổi</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Tuổi kết thúc Hợp đồng bảo hiểm</strong></td>
-                        <td> 60 tuổi</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Thời hạn hợp đồng</strong></td>
-                        <td> 5-10 năm</td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </div>
               </div>
             </b-card-text>
@@ -233,66 +157,16 @@
           <b-tab title="Quyền lợi bảo hiểm">
             <b-card-text>
               <div class="product-advantage">
-                <div class="product-advantage_title">
-                  Quyền lợi bảo hiểm
+                <div class="product-advantage">
+                  <div class="product-charactersitic">
+                    <div class="bodyItem_title">
+                      {{ $validate.isType(product.product_features[1].name) }}
+                    </div>
+                    <div class="bodyItem-txt">
+                      <div class="bodyItem_txt" v-html="$validate.isType(product.product_features[1].content)" />
+                    </div>
+                  </div>
                 </div>
-                <div class="product-advantage_txt">
-                  Quyền lợi bảo hiểm cơ bản:
-                </div>
-                <table class="product-advantage_table">
-                  <tbody>
-                    <tr>
-                      <td><strong>Lựa chọn</strong></td>
-                      <td>1</td>
-                      <td>2</td>
-                      <td>3</td>
-                      <td>4</td>
-                      <td>5</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Số tiền bảo hiểm cơ bản</strong></td>
-                      <td>20.000.000</td>
-                      <td>50.000.000</td>
-                      <td>100.000.000</td>
-                      <td>150.000.000</td>
-                      <td>200.000.000</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="product-advantage_txt">
-                  Quyền lợi bảo hiểm bổ sung do tai nạn:
-                </div>
-                <table class="product-advantage_table">
-                  <tbody>
-                    <tr>
-                      <td><strong>Lựa chọn</strong></td>
-                      <td>1</td>
-                      <td>2</td>
-                      <td>3</td>
-                      <td>4</td>
-                      <td>5</td>
-                      <td>6</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Số tiền bảo hiểm bổ sung do tai nạn</strong></td>
-                      <td>50.000.000</td>
-                      <td>100.000.000</td>
-                      <td>50.000.000</td>
-                      <td>200.000.000</td>
-                      <td>300.000.000</td>
-                      <td>400.000.000</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Phí bảo hiểm rủi ro hàng năm</strong></td>
-                      <td>65.000</td>
-                      <td>130.000</td>
-                      <td>260.000 </td>
-                      <td>390.000 </td>
-                      <td>520.000</td>
-                      <td>650.000</td>
-                    </tr>
-                  </tbody>
-                </table>
               </div>
             </b-card-text>
           </b-tab>
@@ -324,7 +198,8 @@ export default {
   data () {
     return {
       product: {},
-      item: {}
+      item: {},
+      productList: []
     }
   },
   computed: {
@@ -352,32 +227,39 @@ export default {
           placeholder: 'Nha Trang'
         }
       ]
-    },
-    /**
-     * @description: hàm này dùng để lấy ảnh sản phẩm từ store
-     * Author: NSDThinh 21/02/2023
-     */
-    productImage () {
-      return this.$store.state.productImage
     }
+
   },
   watch: {},
-  created () {},
+  created () {
+    this.getProductList()
+  },
   mounted () {
     /**
      * @description: product
      * Author: NSDThinh 21/02/2023
      */
     this.getDataProductDetail()
-    this.$store.dispatch('setProduct')
   },
   methods: {
+    btnClickItem (index) {
+      this.product = this.productList[index]
+      this.$router.push({ query: { slug: this.$route.params.id } })
+    },
     async getDataProductDetail () {
       const res = await this.$axios
         .get(process.env.baseApiUrl +
           `/fe-product-detail?slug=${this.$route.params.id}`)
       if (res) {
-        this.product = res.data.product_features
+        this.product = res.data.data
+      }
+    },
+    async getProductList () {
+      const res = await this.$axios
+        .get(process.env.baseApiUrl +
+          '/fe-product-list?paging=1&limit=9&category_id=1&page=1')
+      if (res) {
+        this.productList = res.data.data
       }
     }
   }
@@ -395,6 +277,24 @@ export default {
   background-color: $bgc-product;
   border: none;
 }
+::v-deep .nav-tabs .nav-link {
+  border: none;
+}
+::v-deep .nav-item:focus {
+  border: none;
+  outline: none;
+}
+::v-deep .nav-item:hover {
+  border: none;
+  outline: none;
+}
+::v-deep .VueCarousel-dot:focus {
+  border: none;
+  outline:none
+}
+::v-deep .nav-tabs {
+
+}
 ::v-deep .nav-link {
   color: $body-column-title;
   font-weight: 500;
@@ -406,20 +306,25 @@ export default {
 ::v-deep .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
   color: $text-color;
   font-weight: 500;
+  border-bottom: 3px solid #F58220;
+  border-radius: 1.5px;
+
 }
 ::v-deep .nav-tabs .nav-link, .nav-tabs .nav-item.show .nav-link {
   color: $text-colorRank;
   font-weight: 500;
-  padding: 0;
+  padding: 24px 0;
+  background-color: $bgc-body !important;
 }
 ::v-deep .card-header {
-  border-bottom: $border;
-  display: flex;
-  justify-content: center;
-  padding: 22px 0;
+  border-bottom:1px solid $border;
+  background-color:$bgc-body;
+  padding: 0;
 }
 ::v-deep .nav {
-  gap: 0 40px;
+  max-width: 1170px;
+  margin: auto;
+  gap: 0 30px;
 
 }
 ::v-deep .card {
@@ -435,8 +340,9 @@ export default {
   border-radius: 4px;
 }
 .list_icon-txt {
-  padding: 0 24px;
+  padding: 0 24px 24px;
 }
+
 .product-item_characteristic {
   max-width: 1170px;
   width: 100%;
@@ -460,7 +366,7 @@ export default {
   font-size: 16px;
   position: relative;
 }
-.list_icon-title::after {
+a .list_icon-title::after {
   position: absolute;
   content: "";
   width: 8px;
@@ -471,7 +377,7 @@ export default {
   transform: rotate(-45deg);
   margin-top: -5px;
   top: 50%;
-  right: 10px;
+  right: 0;
   margin-right: 2px;
   font-weight: 400;
 }
@@ -495,9 +401,10 @@ export default {
 }
 ::v-deep .VueCarousel-inner {
   display: flex;
-  gap: 0 30px;
-  margin-bottom: 20px;
   max-width: 1170px;
+  margin: auto;
+  gap: 0 30px;
+  padding-bottom: 20px;
 
 }
 ::v-deep .VueCarousel-slide {
@@ -505,7 +412,12 @@ export default {
   border: 1px solid #d7d9e2;
   background-color: #ffffff;
   position: relative;
-  padding: 24px 0;
+  flex-basis:auto;
+  &:hover {
+    border: none;
+    box-shadow: 0px 2px 2px rgba(245, 130, 32, 0.25);
+    cursor: pointer;
+  }
 }
 ::v-deep .nuxt-link-active::after {
   position: absolute;
@@ -525,41 +437,64 @@ export default {
   width: 100% !important;
   height: 200px!important;
   margin-bottom: 24px;
+  object-fit: cover;
 }
 
 .product-charactersitic {
-  display: flex;
-  gap: 0 30px;
   margin-bottom: 40px;
 }
 .card-image {
   margin-top: 50px;
 }
 .card-image {
-  width: 40%;
 }
 .bodyItem-txt {
-  width: 60%;
-  margin-top: 45px;
+  width: 100%;
 }
 #imageItemProduct {
   width: 100%;
   height: auto;
 }
+span {
+  color: $text-colorRank ;
+  font-size: 15px;
+}
+p {
+  color: $text-colorRank;
+  font-size: 15px;
+}
+::v-deep table {
+  width: 100%;
+  border: 1px solid $border-table ;
+  margin: auto auto 20px ;
+}
+::v-deep tr td {
+  border: 1px solid $border-table !important;
+  padding: 16px;
+  font-family: $font !important;
+  color: $text-colorRank !important;
+}
 .bodyItem_title {
   font-family: $font;
   font-size: 24px;
   font-weight: 700;
-  color: $body-column-title;
+  color: $news-title;
   margin-bottom: 8px;
 }
-.bodyItem_txt {
-  font-family: $font;
-  font-size: 16px;
-  font-weight: 400;
-  color: $text-colorRank;
-  margin-bottom: 8px;
+.bodyitem-Header {
+  margin-top: 30px;
 }
+::v-deep span {
+  color: $text-colorRank ;
+  font-size: 15px ;
+  font-weight: 500;
+  padding: 10px 0;
+}
+
+::v-deep p {
+  margin-bottom: 0;
+}
+
 .product-condition {
   width: 100%;
   padding: 50px;
@@ -576,17 +511,7 @@ export default {
   color: $news-title;
   margin-bottom: 20px;
 }
-table {
-  width: 100%;
-  border: 1px solid $border-table;
-  margin: auto auto 20px;
-}
-tr td {
-  border: 1px solid $border-table;
-  padding: 16px;
-  font-family: $font;
-  color: $text-colorRank;
-}
+
 .product-advantage {
   max-width: 1170px;
   width: 100%;

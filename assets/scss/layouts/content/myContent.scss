@@ -603,6 +603,12 @@ overflow: hidden;
   padding: 32px 16px;
   width: 100%;
 }
+
+.serviceLink-item2:hover {
+  transition: all .5s ease-in-out;
+  box-shadow: 0px 14px 50px rgba(255, 123, 33, 0.4);
+  cursor: pointer;
+}
 .serviceLink-item-detail {
 font-weight: 500;
 font-size: 14px;
@@ -923,7 +929,7 @@ text-align: center;
 .ipad_txt {
   background-color: $body-column-title;
   padding: 12px 28px;
-  color: #ffffff;
+  color: #ffffff !important;
   border-radius: 3.63245px;
   @include deptop1290 {
     background-color: $body-column-title;
@@ -941,7 +947,7 @@ text-align: center;
 .ip_txt {
   background-color: $body-column-title;
   padding: 12px 28px;
-  color: #ffffff;
+  color: #ffffff !important;
   border-radius: 3.63245px;
   @include deptop1290 {
     background-color: $body-column-title;
@@ -1129,7 +1135,6 @@ height: 450px;
 }
 .slideProduct {
 position: relative;
-margin-top: 93px;
 }
 .slidee-txt {
 position: absolute;
@@ -1665,7 +1670,7 @@ width: calc(100% /3 - 30px );
 border: 1px solid #d7d9e2;
 background-color: #ffffff;
 position: relative;
-height: 450px;
+height: 370px;
 
 }
 .list_column-txt {
@@ -1699,6 +1704,10 @@ font-weight: 400;
 font-size: 16px;
 line-height: 24px;
 color: $text-colorRank;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 ::v-deep .vueperslides__bullet .default {

@@ -48,7 +48,7 @@
           <div class="container">
             <div class="bod-wrap">
               <carousel
-                :per-page="3"
+                :per-page="2"
                 :pagination-enabled="false"
                 :navigation-enabled="true"
                 :navigation-next-icon="'bi bi-chevron-right'"
@@ -91,91 +91,93 @@
           </div>
         </div>
         <div class="btn_bank">
-          <b-card no-body>
-            <b-tabs card>
-              <b-tab title="Kênh hợp tác ngân hàng" active>
-                <b-card-text>
-                  <div class="container">
-                    <ul class="bankAbout-List">
-                      <li
-                        v-for="(bank,index) in bankAboutApi.data[0].channels"
-                        :key="index"
-                        class="bankAbout-item"
-                      >
-                        <nuxt-link :to="`/about/bank/${ $validate.isType(bank.slug)}`">
-                          <img
-                            id="iconBank"
-                            :src="'https://api-map-life.grooo.com.vn/files/media/base/'
-                              + $validate.jsonParse(bank.image)"
-                            alt="errorBank"
-                          >
-                        </nuxt-link>
-                        <div class="bankAbout-info">
-                          <div class="bankAbout-title">
-                            {{ $validate.isType(bank.name) }}
-                          </div>
+          <b-tabs card>
+            <b-tab title="Kênh hợp tác ngân hàng">
+              <b-card-text>
+                <div class="container">
+                  <ul
+
+                    class="bankAbout-List"
+                  >
+                    <li
+                      v-for="bank in bankAboutApi?.data?.[0].channels"
+                      :key="bank"
+                      class="bankAbout-item"
+                    >
+                      <nuxt-link :to="`/about/bankList/${ $validate.isType(bank.slug)}`">
+                        <img
+                          id="iconBank"
+                          :src="'https://api-map-life.grooo.com.vn/files/media/base/'
+                            + $validate.jsonParse(bank.image)"
+                          alt="errorBank"
+                        >
+                      </nuxt-link>
+                      <div class="bankAbout-info">
+                        <div class="bankAbout-title">
+                          {{ $validate.isType(bank.name) }}
                         </div>
-                      </li>
-                    </ul>
-                  </div>
-                </b-card-text>
-              </b-tab>
-              <b-tab title="Tổ chức tài chính">
-                <b-card-text>
-                  <div class="container">
-                    <ul class="bankAbout-List">
-                      <li
-                        v-for="(bank,index) in bankAboutApi.data[1].channels"
-                        :key="index"
-                        class="bankAbout-item"
-                      >
-                        <nuxt-link :to="`/about/bank/${ $validate.isType(bank.slug)}`">
-                          <img
-                            id="iconBank"
-                            :src="'https://api-map-life.grooo.com.vn/files/media/base/'
-                              + $validate.jsonParse(bank.image)"
-                            alt="errorBank"
-                          >
-                        </nuxt-link>
-                        <div class="bankAbout-info">
-                          <div class="bankAbout-title">
-                            {{ $validate.isType(bank.name) }}
-                          </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </b-card-text>
+            </b-tab>
+            <b-tab title="Tổ chức tài chính">
+              <b-card-text>
+                <div class="container">
+                  <ul class="bankAbout-List">
+                    <li
+                      v-for="bankFinance in bankAboutApi?.data?.[1].channels"
+                      :key="bankFinance"
+                      class="bankAbout-item"
+                    >
+                      <nuxt-link :to="`/about/bankList/${ $validate.isType(bankFinance.slug)}`">
+                        <img
+                          id="iconBank"
+                          :src="'https://api-map-life.grooo.com.vn/files/media/base/'
+                            + $validate.jsonParse(bankFinance.image)"
+                          alt="errorBank"
+                        >
+                      </nuxt-link>
+                      <div class="bankAbout-info">
+                        <div class="bankAbout-title">
+                          {{ $validate.isType(bankFinance.name) }}
                         </div>
-                      </li>
-                    </ul>
-                  </div>
-                </b-card-text>
-              </b-tab>
-              <b-tab title="Tổ chức doanh nghiệp">
-                <b-card-text>
-                  <div class="container">
-                    <ul class="bankAbout-List">
-                      <li
-                        v-for="(bank,index) in bankAboutApi.data[2].channels"
-                        :key="index"
-                        class="bankAbout-item"
-                      >
-                        <nuxt-link :to="`/about/bank/${ $validate.isType(bank.slug)}`">
-                          <img
-                            id="iconBank"
-                            :src="'https://api-map-life.grooo.com.vn/files/media/base/'
-                              + $validate.jsonParse(bank.image)"
-                            alt="errorBank"
-                          >
-                        </nuxt-link>
-                        <div class="bankAbout-info">
-                          <div class="bankAbout-title" @click.prevent="btnClickItem(index)">
-                            {{ $validate.isType(bank.name) }}
-                          </div>
+                      </div>
+                    </li>
+                    </li">
+                  </ul>
+                </div>
+              </b-card-text>
+            </b-tab>
+            <b-tab title="Tổ chức doanh nghiệp">
+              <b-card-text>
+                <div class="container">
+                  <ul class="bankAbout-List">
+                    <li
+                      v-for="bankItem in bankAboutApi?.data?.[2].channels"
+                      :key="bankItem"
+                      class="bankAbout-item"
+                    >
+                      <nuxt-link :to="`/about/bankList/${ $validate.isType(bankItem.slug)}`">
+                        <img
+                          id="iconBank"
+                          :src="'https://api-map-life.grooo.com.vn/files/media/base/'
+                            + $validate.jsonParse(bankItem.image)"
+                          alt="errorBank"
+                        >
+                      </nuxt-link>
+                      <div class="bankAbout-info">
+                        <div class="bankAbout-title">
+                          {{ $validate.isType(bankItem.name) }}
                         </div>
-                      </li>
-                    </ul>
-                  </div>
-                </b-card-text>
-              </b-tab>
-            </b-tabs>
-          </b-card>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </b-card-text>
+            </b-tab>
+          </b-tabs>
         </div>
         <div class="abou-Notification">
           <div class="abou-Notification_txt">
@@ -301,9 +303,9 @@
 </template>
 
 <script lang="ts">
+
 import { Carousel, Slide } from 'vue-carousel'
 import MyModal from '~/plugins/base/modal.vue'
-
 export default {
   components: {
     MyModal,
@@ -316,10 +318,14 @@ export default {
       itemSelectedID: null,
       itemSelected: {},
       isShowModal: false,
-      navigationNextLabel: null
+      navigationNextLabel: null,
+      currentTab: 0
     }
   },
   computed: {
+    tabIndex () {
+      return index => this.currentTab === index ? 0 : -1
+    },
     manganerAbout () {
       return this.$store.state.manganer
     },
@@ -339,6 +345,9 @@ export default {
     this.getListVideo()
   },
   methods: {
+    onTabChange (newTab) {
+      this.currentTab = newTab
+    },
     btnClickItem (index) {
       this.itemSelected = this.listVideo[index]
       this.$router.push({ query: { slug: index } })
