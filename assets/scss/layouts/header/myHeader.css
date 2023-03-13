@@ -1,17 +1,302 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 1 | @import "assets/scss/_variables.scss";
- *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- *   '
- *   myHeader.scss 1:9  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import \"assets/scss/_variables.scss\";\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   myHeader.scss 1:9  root stylesheet";
+.warper {
+  max-width: 1920px;
+  height: inherit;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
 }
+
+#vn {
+  width: 20px;
+  height: auto;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+  height: inherit;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+@media only screen and (max-width: 1160px) {
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1170px;
+    width: 100%;
+    gap: 0 30px;
+    margin: 0 auto;
+    height: inherit;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+@media only screen and (max-width: 1120px) {
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    width: 100%;
+    gap: 0 30px;
+    margin: 0 auto;
+    height: inherit;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+.menu-mobile {
+  display: none;
+}
+@media only screen and (max-width: 1120px) {
+  .menu-mobile {
+    display: block;
+  }
+}
+
+::v-deep .text-dark {
+  border: none;
+  background-color: #f8f9fa;
+}
+
+::v-deep .b-sidebar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  width: 98%;
+  max-width: 100%;
+  height: 100vh;
+  max-height: 100%;
+  margin: 0;
+  outline: 0;
+  transform: translateX(0);
+  border-radius: 20px;
+}
+
+@media only screen and (max-width: 1160px) {
+  #logoHeader {
+    max-width: 250px;
+    max-height: 57px;
+  }
+}
+@media only screen and (max-width: 1120px) {
+  #logoHeader {
+    max-width: 250px;
+    max-height: 57px;
+    margin-left: 30px;
+  }
+}
+@media only screen and (max-width: 650px) {
+  #logoHeader {
+    max-width: 160px;
+    max-height: 36px;
+    margin-left: 30px;
+  }
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 30px;
+  color: #7e7e84;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+@media only screen and (max-width: 1160px) {
+  .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0 20px;
+    color: #7e7e84;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 1120px) {
+  .itemMenu {
+    display: none;
+  }
+}
+.menu-icon_mobile {
+  display: none;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1120px) {
+  .menu-icon_mobile {
+    display: block;
+  }
+}
+@media only screen and (max-width: 821px) {
+  .menu-icon_mobile {
+    display: block;
+  }
+}
+
+.menu-link {
+  cursor: pointer;
+}
+.menu-link a.nuxt-link-active {
+  color: #f58220;
+  font-weight: 500;
+}
+@media only screen and (max-width: 1230px) {
+  .menu-link {
+    gap: 0 20px;
+  }
+}
+@media only screen and (max-width: 1190px) {
+  .menu-link {
+    gap: 0 30px;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .menu-link {
+    gap: 0 20px;
+  }
+}
+@media only screen and (max-width: 821px) {
+  .menu-link {
+    gap: 0 300px;
+  }
+}
+@media only screen and (max-width: 395px) {
+  .menu-link {
+    gap: 0 110px;
+  }
+}
+
+.btn {
+  color: #ffffff;
+  font-weight: 500;
+  padding: 12px 24px;
+  background-color: #f58220;
+  cursor: pointer;
+}
+.btn:hover {
+  color: #ffffff;
+  opacity: 0.8;
+}
+@media only screen and (max-width: 1160px) {
+  .btn {
+    color: #ffffff;
+    font-weight: 500;
+    padding: 12px 24px;
+    background-color: #f58220;
+    cursor: pointer;
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .btn {
+    color: #ffffff;
+    font-weight: 500;
+    padding: 5px 10px;
+    background-color: #f58220;
+    cursor: pointer;
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 475px) {
+  .btn {
+    display: none;
+  }
+}
+
+.item-language {
+  display: flex;
+}
+
+#dropdown {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1120px) {
+  ::v-deep .b-sidebar-body {
+    padding: 20px;
+  }
+  ::v-deep .b-sidebar-body .item-link {
+    color: #7e7e84;
+    padding: 10px 0;
+  }
+  ::v-deep .b-sidebar-body .menu-link {
+    display: block;
+  }
+  ::v-deep .b-sidebar-body .menu-link .mobile-item {
+    color: #7e7e84;
+    padding: 15px 0;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  ::v-deep .b-sidebar-body .menu-link .mobile-item:hover {
+    background: #d7d9e2;
+    opacity: 0.8;
+  }
+  ::v-deep .b-sidebar-body .menu-link .mobile-item_product {
+    color: #7e7e84;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  ::v-deep .b-sidebar-body .menu-link .mobile-item_product:hover {
+    background: #d7d9e2;
+    opacity: 0.8;
+  }
+  ::v-deep .b-sidebar-body .menu-link .mobile-item_service {
+    color: #7e7e84;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  ::v-deep .b-sidebar-body .menu-link .mobile-item_service:hover {
+    background: #d7d9e2;
+    opacity: 0.8;
+  }
+  ::v-deep .b-sidebar-body .menu-link .mobile-item_aboutMirae {
+    color: #7e7e84;
+    font-weight: 400;
+    font-size: 18px;
+  }
+  ::v-deep .b-sidebar-body .menu-link .mobile-item_aboutMirae:hover {
+    background: #d7d9e2;
+    opacity: 0.8;
+  }
+  ::v-deep .b-sidebar-body .menu-link .mobile-item_news {
+    color: #7e7e84;
+    font-weight: 400;
+    font-size: 18px;
+  }
+  ::v-deep .b-sidebar-body .menu-link .mobile-item_news:hover {
+    background: #d7d9e2;
+    opacity: 0.8;
+  }
+  ::v-deep .b-sidebar-body .menu-link .closeMenu {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    cursor: pointer;
+  }
+  ::v-deep .b-sidebar-body .menu-link .closeMenu #closeMobile {
+    width: 30px;
+    height: 30px;
+  }
+  ::v-deep .b-sidebar-body .menu-link .btn-buy_insurance {
+    color: #7e7e84;
+    font-weight: 400;
+    font-size: 18px;
+  }
+}
+
+/*# sourceMappingURL=myHeader.css.map */

@@ -1,4 +1,5 @@
-@import "assets/scss/_variables.scss";
+@import "../../variables";
+@import "../../mixins";
 .warper {
   max-width: 1920px;
   height: inherit;
@@ -24,15 +25,109 @@
   height: inherit;
   padding-top: 15px;
   padding-bottom: 15px;
+  @include deptop1160 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1170px;
+    width: 100%;
+    gap: 0 30px;
+    margin: 0 auto;
+    height: inherit;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  @include deptop1120 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    width: 100%;
+    gap: 0 30px;
+    margin: 0 auto;
+    height: inherit;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
 
+}
+.menu-mobile {
+  display: none;
+  @include deptop1120 {
+    display: block;
+
+  }
+}
+::v-deep .text-dark {
+  border: none;
+  background-color: $menu-mobile;
+}
+::v-deep .b-sidebar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  width: 98%;
+  max-width: 100%;
+  height: 100vh;
+  max-height: 100%;
+  margin: 0;
+  outline: 0;
+  transform: translateX(0);
+  border-radius: 20px;
+}
+#logoHeader {
+  @include deptop1160 {
+    max-width: 250px;
+    max-height: 57px;
+  }
+  @include deptop1120 {
+    max-width: 250px;
+    max-height: 57px;
+    margin-left: 30px;
+  }
+  @include deptop650 {
+    max-width: 160px;
+    max-height: 36px;
+    margin-left: 30px;
+  }
 }
 .menu-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0 30px;
+  color: $text-colorRank;
+  font-family: $font;
+  font-weight: 500;
+  @include deptop1160 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0 20px;
+    color: $text-colorRank;
+    font-family: $font;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
 }
-.menu-link {
+@include deptop1120 {
+    .itemMenu{
+      display: none;
+    }
+  }
+.menu-icon_mobile {
+    display: none;
+    cursor: pointer;
+  @include deptop1120 {
+    display: block;
+  }
+  @include deptop820 {
+      display: block;
+  }
+  }
+ .menu-link {
 cursor: pointer;
   a{
     &.nuxt-link-active{
@@ -40,12 +135,23 @@ cursor: pointer;
       font-weight: 500;
     }
   }
+  @include deptop1230 {
+    gap: 0 20px; // khoảng cách giữa các item
+  }
+  @include deptop1190 {
+    gap: 0 30px; // khoảng cách giữa các item
+  }
+  @include deptop1000 {
+    gap: 0 20px; // khoảng cách giữa các item
+  }
+  @include deptop820 {
+    gap: 0 300px; // khoảng cách giữa các item
+  }
+  @include deptop390 {
+    gap: 0 110px; // khoảng cách giữa các item
+  }
 }
-.menu-item {
-  color: $text-colorRank;
-  font-family: $font;
-  font-weight: 500;
-}
+
 .btn{
   color:$bgc-body ;
   font-weight: 500;
@@ -56,6 +162,25 @@ cursor: pointer;
     color:$bgc-body ;
     opacity: 0.8;
   }
+  @include deptop1160 {
+    color:$bgc-body ;
+    font-weight: 500;
+    padding: 12px 24px;
+    background-color: $text-color;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  @include deptop650 {
+    color: #ffffff;
+    font-weight: 500;
+    padding: 5px 10px;
+    background-color: #f58220;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  @include deptop475 {
+    display: none;
+  }
 }
 .item-language {
   display: flex;
@@ -65,3 +190,88 @@ cursor: pointer;
   cursor: pointer;
 }
 
+@include deptop1120 {
+  ::v-deep .b-sidebar-body {
+    padding: 20px;
+      .item-link {
+        color: $text-colorRank;
+        padding: 10px 0;
+      }
+      .menu-link {
+        display: block;
+        .mobile-item {
+          color: $text-colorRank;
+          padding: 15px 0;
+          border: 1px solid rgba(255, 255, 255, 0.16);
+          &:hover {
+            background: $border;
+            opacity: .8;
+          }
+          &_product {
+            color: $text-colorRank;
+            font-weight: 500;
+            font-size: 18px;
+
+            &:hover {
+              background: $border;
+              opacity: .8;
+
+
+            }
+          }
+          &_service {
+            color: $text-colorRank;
+            font-weight: 500;
+            font-size: 18px;
+
+            &:hover {
+              background: $border;
+              opacity: .8;
+
+
+            }
+          }
+          &_aboutMirae {
+            color: $text-colorRank;
+            font-weight: 400;
+            font-size: 18px;
+
+            &:hover {
+              background: $border;
+              opacity: .8;
+
+
+            }
+          }
+          &_news {
+            color: $text-colorRank;
+            font-weight: 400;
+            font-size: 18px;
+
+            &:hover {
+              background: $border;
+              opacity: .8;
+
+            }
+          }
+        }
+
+      .closeMenu {
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+        cursor: pointer;
+        #closeMobile {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      .btn-buy_insurance {
+        color:  $text-colorRank;
+        font-weight: 400;
+        font-size: 18px;
+      }
+    }
+  }
+
+}

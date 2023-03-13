@@ -196,7 +196,11 @@
                       $validate.jsonParse(notifi.image)[0]"
                     alt="error-ncb"
                   >
-                  <nuxt-link :to="`/about/notificationList/${ $validate.isType(notifi.slug)}`">
+                  <nuxt-link
+                    v-bind="$attrs"
+                    :title="$validate.isType(notifi.title)"
+                    :to="`/about/notificationList/${ $validate.isType(notifi.slug)}`"
+                  >
                     <div class="ncb-title Notification-title">
                       {{ $validate.isType(notifi.title) }}
                     </div>
@@ -280,7 +284,7 @@
                     >
                   </nuxt-link>
                   <nuxt-link :to="`/about/video/${ $validate.isType(videoItem.slug)}`" class="list_icon-title">
-                    <div class="list_icon-title">
+                    <div class="list_icon-title" :title="$validate.isType(videoItem.name)">
                       {{ $validate.isType(videoItem.name) }}
                     </div>
                   </nuxt-link>

@@ -46,6 +46,11 @@
     @content;
   }
 }
+@mixin deptop1160 {
+  @media only screen and (max-width: 1160px) {
+    @content;
+  }
+}
 @mixin deptop1120 {
   @media only screen and (max-width: 1120px) {
     @content;
@@ -64,6 +69,16 @@
 }
 @mixin deptop820 {
   @media only screen and (max-width: 821px) {
+    @content;
+  }
+}
+@mixin deptop650 {
+  @media only screen and (max-width: 650px) {
+    @content;
+  }
+}
+@mixin deptop475 {
+  @media only screen and (max-width: 475px) {
     @content;
   }
 }

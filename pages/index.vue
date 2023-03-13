@@ -194,7 +194,7 @@
             </div>
             <div class="news-item_body">
               <div class="news-item">
-                <div class="news-title">
+                <div class="news-title" :title="$validate.isType(news.title)">
                   {{ $validate.isType(news.title) }}
                 </div>
                 <div class="news-txt">
