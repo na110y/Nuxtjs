@@ -8,96 +8,103 @@ export const state = () => ({
   financialReport: [],
   pressRelease: [], // thông cáo báo trí
   bankAbout: [],
-  prizeList: []
+  prizeList: [],
+  locales: ['vi', 'en'],
+  locale: 'vi'
 })
 export const mutations = {
   // SET_SLIDE_HOME
-  SET_SLIDE_HOME (state, homeSlide) {
+  SET_SLIDE_HOME(state, homeSlide) {
     state.homeSlide = homeSlide
   },
   // SET_PRODUCT_DETAIL
-  SET_PRODUCT_DETAIL (state, data) {
+  SET_PRODUCT_DETAIL(state, data) {
     state.productDetail = data
   },
   // SET_PRODUCT
-  SET_PRODUCT (state, productImage) {
+  SET_PRODUCT(state, productImage) {
     state.productImage = productImage
   },
   // SET_CLIENT
-  SET_CLIENT (state, clientPage) {
+  SET_CLIENT(state, clientPage) {
     state.clientPage = clientPage
   },
   // SET_NEWS
-  SET_NEWS (state, newsPage) {
+  SET_NEWS(state, newsPage) {
     state.newsPage = newsPage
   },
   // SET_MANGANER
-  SET_MANGANER (state, manganer) {
+  SET_MANGANER(state, manganer) {
     state.manganer = manganer
   },
   // SET_PRESSRELEASE
-  SET_PRESSRELEASE (state, pressRelease) {
+  SET_PRESSRELEASE(state, pressRelease) {
     state.pressRelease = pressRelease
   },
   // SET_FINANCIAL
-  SET_FINANCIAL (state, financialReport) {
+  SET_FINANCIAL(state, financialReport) {
     state.financialReport = financialReport
   },
   // SET_PRIZELIST
-  SET_PRIZELIST (state, prizeList) {
+  SET_PRIZELIST(state, prizeList) {
     state.prizeList = prizeList
   },
   // SET_BANK
-  SET_BANK (state, bankAbout) {
+  SET_BANK(state, bankAbout) {
     state.bankAbout = bankAbout
+  },
+  SET_LANG(state, locale) {
+    if (state.locales.includes(locale)) {
+      state.locale = locale
+    }
   }
 }
 export const actions = {
   // setSlideHome
-  async setSlideHome ({ commit }) {
+  async setSlideHome({ commit }) {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/banner/get-home-banner?sort=order')
     commit('SET_SLIDE_HOME', res.data)
   },
   // setProduct
-  async setProduct ({ commit }) {
+  async setProduct({ commit }) {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/fe-product-list?paging=1&limit=9&category_id=1&page=1')
     commit('SET_PRODUCT', res.data.data)
   },
   // setClient
-  async setClient ({ commit }) {
+  async setClient({ commit }) {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/featured-service')
     commit('SET_CLIENT', res.data)
   },
   // setNews
-  async setNewsPage ({ commit }) {
+  async setNewsPage({ commit }) {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/fe-get-post')
     commit('SET_NEWS', res.data)
   },
-  async setManganAbout ({ commit }) {
+  async setManganAbout({ commit }) {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/bod/fe-list-bod')
     commit('SET_MANGANER', res.data)
   },
-  async setPressRelease ({ commit }) {
+  async setPressRelease({ commit }) {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/post/fe-press-release')
     commit('SET_PRESSRELEASE', res.data)
   },
-  async setFinancial ({ commit }) {
+  async setFinancial({ commit }) {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/financial-report/fe-list-report?limit=10')
     commit('SET_FINANCIAL', res.data.data)
   },
-  async setPrizeList ({ commit }) {
+  async setPrizeList({ commit }) {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/post/fe-list-award?limit=8')
     commit('SET_PRIZELIST', res.data.data)
   },
-  async setBank ({ commit }) {
+  async setBank({ commit }) {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/distributor/fe-channel-category')
     commit('SET_BANK', res.data)
@@ -106,39 +113,42 @@ export const actions = {
 }
 export const getters = {
   // homeSlide
-  homeSlideApi (state) {
+  homeSlideApi(state) {
     return state.homeSlide
   },
   // productApi
-  productApi (state) {
+  productApi(state) {
     return state.productImage
   },
   // clientApi
-  clientApi (state) {
+  clientApi(state) {
     return state.clientPage
   },
   // newsApi
-  newsApi (state) {
+  newsApi(state) {
     return state.newsPage
   },
   // manganerApi
-  newsManganerApi (state) {
+  newsManganerApi(state) {
     return state.manganer
   },
   // pressReleaseApi
-  pressReleaseApi (state) {
+  pressReleaseApi(state) {
     return state.pressRelease
   },
   // financialReport
-  financialApi (state) {
+  financialApi(state) {
     return state.financialReport
   },
   // financialReport
-  prizeListApi (state) {
+  prizeListApi(state) {
     return state.prizeList
   },
   // financialReport
-  bankApi (state) {
+  bankApi(state) {
     return state.prizeList
-  }
+  },
+  locales: state => state.locales,
+  locale: state => state.locales
+
 }

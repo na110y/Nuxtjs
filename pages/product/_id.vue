@@ -90,7 +90,7 @@
                     </div>
                   </div>
                   <div class="colum-item">
-                    <img src="~/assets/img/lienhe.png" alt="errorLienhe">
+                    <img id="colum-item_img" src="~/assets/img/lienhe.png" alt="errorLienhe">
                   </div>
                 </div>
               </div>
@@ -198,7 +198,7 @@ export default {
       type: String
     }
   },
-  data () {
+  data() {
     return {
       product: {},
       item: {},
@@ -207,7 +207,7 @@ export default {
   },
   computed: {
     // truyền data cho Combobox
-    records () {
+    records() {
       return [
         {
           key: 1,
@@ -234,10 +234,10 @@ export default {
 
   },
   watch: {},
-  created () {
+  created() {
     this.getProductList()
   },
-  mounted () {
+  mounted() {
     /**
      * @description: product
      * Author: NSDThinh 21/02/2023
@@ -249,19 +249,19 @@ export default {
      * @description: sau khi click trang sẽ được di chuyển lên đầu
      * Author: NSDThinh 21/02/2023
      */
-    scrollToTop () {
+    scrollToTop() {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       })
     },
-    btnClickItem (index) {
+    btnClickItem(index) {
       this.product = this.productList[index]
       // if (product) {
       //   this.$router.push({ path: `/product/${this.isType(product.slug)}` })
       // }
     },
-    async getDataProductDetail () {
+    async getDataProductDetail() {
       const res = await this.$axios
         .get(process.env.baseApiUrl +
           `/fe-product-detail?slug=${this.$route.params.id}`)
@@ -269,7 +269,7 @@ export default {
         this.product = res.data.data
       }
     },
-    async getProductList () {
+    async getProductList() {
       const res = await this.$axios
         .get(process.env.baseApiUrl +
           '/fe-product-list?paging=1&limit=9&category_id=1&page=1')
@@ -277,7 +277,7 @@ export default {
         this.productList = res.data.data.data
       }
     },
-    isType (string) {
+    isType(string) {
       try {
         JSON.parse(string)
         {
@@ -285,7 +285,6 @@ export default {
           return obj.vn
         }
       } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
         return null
       }
     }
@@ -294,11 +293,66 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "assets/scss/variables";
+@import "assets/scss/mixins";
 .product-detail {
 }
 #spbanner {
   width: 100%;
   height: auto;
+}
+#colum-item_img {
+  @include deptop412 {
+    max-width: 414px;
+  }
+  @include deptop390 {
+    max-width: 350px;
+  }
+  @include deptop375 {
+    width: 100%;
+  }
+}
+.fooAsk {
+  color: $primary-color !important;
+}
+.item_ask-title {
+  @include deptop390 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 48px;
+    color: #f58220;
+    margin-bottom: 24px;
+  }
+  @include deptop412 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 48px;
+    color: #f58220;
+    margin-bottom: 24px;
+  }
+}
+
+.ask-list {
+  @include deptop1024 {
+    padding: 30px;
+  }
+  @include deptop920 {
+    padding: 20px 30px;
+  }
+  @include deptop820 {
+    padding: 30px;
+  }
+  @include deptop412 {
+    padding: 30px 25px;
+  }
+  @include deptop390 {
+    padding: 0;
+  }
 }
 ::v-deep .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
   background-color: $bgc-product;
@@ -330,12 +384,24 @@ export default {
 ::v-deep .card {
   border: none;
 }
+// active border bottom
 ::v-deep .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
   color: $text-color;
   font-weight: 500;
   border-bottom: 3px solid #F58220;
   border-radius: 1.5px;
-
+  @include deptop540 {
+    border-bottom:0;
+  }
+  @include deptop412 {
+    border-bottom:0;
+  }
+  @include deptop390 {
+    border-bottom:0;
+  }
+  @include deptop375 {
+    border-bottom:0;
+  }
 }
 ::v-deep .nav-tabs .nav-link, .nav-tabs .nav-item.show .nav-link {
   color: $text-colorRank;
@@ -352,7 +418,40 @@ export default {
   max-width: 1170px;
   margin: auto;
   gap: 0 30px;
-
+  @include deptop1024 {
+    max-width: 1024px;
+    gap: 0 30px;
+    padding: 0 30px;
+  }
+  @include deptop920 {
+    max-width: 920px;
+    gap: 0 30px;
+    padding: 0 30px;
+  }
+  @include deptop820 {
+    max-width: 820px;
+    margin: auto;
+    gap: 0 30px;
+    padding: 0 30px;
+  }
+  @include deptop540 {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+  }
+  @include deptop412 {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+  }
+  @include deptop390 {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+  }
 }
 ::v-deep .card {
   --bs-card-spacer-y: 0;
@@ -368,13 +467,52 @@ export default {
 }
 .list_icon-txt {
   padding: 0 24px 24px;
+  @include deptop820 {
+    padding: 0 15px 15px;
+  }
+  @include deptop390 {
+    padding: 0 24px 24px;
+  }
+  @include deptop375 {
+    padding: 0 12px 15px;
+  }
 }
 
 .product-item_characteristic {
   max-width: 1170px;
   width: 100%;
   margin: auto;
-
+  padding: 30px 0;
+  @include deptop1024 {
+    max-width: 1024px;
+    width: 100%;
+    margin: auto;
+    padding: 0 30px;
+  }
+  @include deptop920 {
+    max-width: 820px;
+    width: 100%;
+    margin: auto;
+    padding:0;
+  }
+  @include deptop820 {
+    max-width: 820px;
+    width: 100%;
+    margin: auto;
+    padding:0 30px;
+  }
+  @include deptop412 {
+    max-width: calc( 375px - 15px );
+    width: 100%;
+    margin: auto;
+    padding:0;
+  }
+  @include deptop375 {
+    max-width: calc( 375px - 15px );
+    width: 100%;
+    margin: auto;
+    padding: 20px 0;
+  }
 }
 .list_icon-description {
   margin-top: 8px;
@@ -386,12 +524,22 @@ export default {
   -webkit-box-orient: vertical;
   overflow: hidden;
   -webkit-line-clamp: 2;
+  @include deptop375 {
+    max-width: 320px;
+  }
 }
 .list_icon-title {
   color: $news-title;
   font-weight: 600;
   font-size: 16px;
   position: relative;
+  @include deptop820 {
+    color: $news-title;
+    font-weight: 600;
+    font-size: 14px;
+    position: relative;
+  }
+
 }
 a .list_icon-title::after {
   position: absolute;
@@ -407,6 +555,36 @@ a .list_icon-title::after {
   right: 0;
   margin-right: 2px;
   font-weight: 400;
+  @include deptop390 {
+    position: absolute;
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: transparent;
+    border-right: 2px solid $news-title;
+    border-bottom: 2px solid $news-title;
+    transform: rotate(-45deg);
+    margin-top: -5px;
+    top: 50%;
+    right: 15px;
+    margin-right: 2px;
+    font-weight: 400;
+  }
+  @include deptop375 {
+    position: absolute;
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: transparent;
+    border-right: 2px solid $news-title;
+    border-bottom: 2px solid $news-title;
+    transform: rotate(-45deg);
+    margin-top: -5px;
+    top: 50%;
+    right: 50px;
+    margin-right: 2px;
+    font-weight: 400;
+  }
 }
 ::v-deep .VueCarousel-navigation-button{
   top: 38%;
@@ -417,6 +595,12 @@ a .list_icon-title::after {
 ::v-deep .VueCarousel-dot-container {
   margin-top: 0;
   margin-bottom: 20px;
+  @include deptop412 {
+    display: none;
+  }
+  @include deptop390 {
+    display: none;
+  }
 }
 ::v-deep .VueCarousel-dot {
   &--active {
@@ -432,7 +616,44 @@ a .list_icon-title::after {
   margin: auto;
   gap: 0 30px;
   padding-bottom: 20px;
-
+  @include deptop1024 {
+    display: flex;
+    max-width: 1170px;
+    margin: auto;
+    padding-left: 30px;
+    gap: 0 30px;
+    padding-bottom:0;
+  }
+  @include deptop820 {
+    display: flex;
+    max-width: 1170px;
+    margin: auto;
+    gap: 0 30px;
+    padding-bottom:0;
+  }
+  @include deptop540 {
+    display: block;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-right: 30px;
+    margin: 0;
+  }
+  @include deptop412 {
+    display: block;
+    max-width: 412px;
+    padding-bottom: 20px;
+    padding-right: 0;
+  }
+  @include deptop390 {
+    display: block;
+    max-width: 370px;
+    padding-bottom: 20px;
+  }
+  @include deptop280 {
+    display: block;
+    width: 280px !important;
+    padding-bottom: 20px;
+  }
 }
 ::v-deep .VueCarousel-slide {
   width: calc( 100% / 3 - 30px ) !important;
@@ -440,19 +661,43 @@ a .list_icon-title::after {
   background-color: #ffffff;
   position: relative;
   flex-basis:auto;
+  @include deptop540 {
+    width: 100% !important;
+    border: 1px solid #d7d9e2;
+    background-color: #ffffff;
+    position: relative;
+    flex-basis:auto;
+    margin-bottom: 20px;
+  }
+  @include deptop412 {
+    width: 100% !important;
+    border: 1px solid #d7d9e2;
+    background-color: #ffffff;
+    position: relative;
+    flex-basis:auto;
+    margin-bottom: 20px;
+  }
+  @include deptop390 {
+    width: 100% !important;
+    border: 1px solid #d7d9e2;
+    background-color: #ffffff;
+    position: relative;
+    flex-basis:auto;
+    margin-bottom: 20px;
+  }
   &:hover {
     border: none;
-    box-shadow: 0px 2px 2px rgba(245, 130, 32, 0.25);
+    box-shadow: 0 2px 2px rgba(245, 130, 32, 0.25);
     cursor: pointer;
   }
 }
 ::v-deep .nuxt-link-active::after {
   position: absolute;
-  width: 0px;
-  height: 0px;
+  width: 0;
+  height: 0;
   background: transparent;
-  border-right: 0px solid $news-title;
-  border-bottom: 0px solid $news-title;
+  border-right: 0 solid $news-title;
+  border-bottom: 0 solid $news-title;
   transform: rotate(-45deg);
   margin-top: -5px;
   top: 50%;
@@ -462,70 +707,104 @@ a .list_icon-title::after {
 }
 #imageVideo {
   width: 100% !important;
-  height: 200px!important;
+  height: 200px !important;
   margin-bottom: 24px;
   object-fit: cover;
+  @include deptop820 {
+    width: 100%;
+    height: auto !important;
+    margin-bottom: 24px;
+    object-fit: cover;
+  }
+  @include deptop390 {
+    width: 100%;
+    height: auto;
+    margin-bottom: 24px;
+    object-fit: cover;
+  }
+  @include deptop375 {
+    max-width: 350px;
+    height: auto;
+    margin-bottom: 24px;
+    object-fit: cover;
+  }
 }
-
-.product-charactersitic {
+::v-deep .product-charactersitic {
   margin-bottom: 40px;
 }
 .card-image {
   margin-top: 50px;
 }
-.card-image {
-}
+
 .bodyItem-txt {
   width: 100%;
 }
+
 #imageItemProduct {
   width: 100%;
   height: auto;
 }
-span {
-  color: $text-colorRank ;
-  font-size: 15px;
-}
-p {
-  color: $text-colorRank;
-  font-size: 15px;
-}
-::v-deep table {
-  width: 100%;
-  border: 1px solid $border-table ;
-  margin: auto auto 20px ;
-}
-::v-deep tr td {
-  border: 1px solid $border-table !important;
-  padding: 16px;
-  font-family: $font !important;
-  color: $text-colorRank !important;
-}
-.bodyItem_title {
-  font-family: $font;
-  font-size: 24px;
-  font-weight: 700;
-  color: $news-title;
-  margin-bottom: 8px;
-}
-.bodyitem-Header {
-  margin-top: 30px;
-}
 ::v-deep span {
-  color: $text-colorRank ;
-  font-size: 15px ;
-  font-weight: 500;
-  padding: 10px 0;
+  color: $text-colorRank !important;
+  font-size: 15px;
+  @include deptop412 {
+    color: $text-colorRank !important;
+    font-size: 12px;
+    padding: 15px;
+  }
+  @include deptop375 {
+    color: $text-colorRank;
+    font-size: 12px;
+    padding: 15px;
+  }
 }
-
-::v-deep p {
-  margin-bottom: 0;
+  ::v-deep p {
+  color: $text-colorRank !important;
+  font-size: 15px;
+  @include deptop412 {
+    color: $text-colorRank ;
+    font-size: 12px;
+  }
+  @include deptop375 {
+    color: $text-colorRank;
+    font-size: 12px;
+  }
 }
 
 .product-condition {
   width: 100%;
   padding: 50px;
   background-color: $bgc-condition;
+  @include deptop1024 {
+    width: 100%;
+    padding: 20px 30px;
+    background-color: $bgc-condition;
+  }
+  @include deptop920 {
+    width: 100%;
+    margin: auto;
+    background-color: $bgc-condition;
+  }
+  @include deptop820 {
+    width: 100%;
+    padding: 20px 30px;
+    background-color: $bgc-condition;
+  }
+  @include deptop412 {
+    width: 100%;
+    padding: 15px 25px;
+    background-color: $bgc-condition;
+  }
+  @include deptop390 {
+    width: 100%;
+    padding: 20px 15px;
+    background-color: $bgc-condition;
+  }
+  @include deptop375 {
+    width: 100%;
+    padding: 20px 15px;
+    background-color: $bgc-condition;
+  }
 }
 .contener {
   max-width: 1170px;
@@ -537,13 +816,193 @@ p {
   font-weight: 600;
   color: $news-title;
   margin-bottom: 20px;
-}
 
+}
+.bodyitem-Header {
+  margin-top: 30px;
+  @include deptop375 {
+    margin-top: 15px;
+    font-family: $font;
+    color: $news-title;
+    margin-bottom: 8px;
+  }
+}
+.bodyItem_title {
+  font-family: $font !important;
+  font-size: 24px;
+  font-weight: 700;
+  color: $news-title !important;
+  margin-bottom: 8px;
+  @include deptop412 {
+    font-family: $font !important;
+    font-size: 16px;
+    font-weight: 600;
+    color: $news-title !important;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+  }
+  @include deptop390 {
+    font-family: $font !important;
+    font-size: 16px;
+    font-weight: 600;
+    color: $news-title !important;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+  }
+  @include deptop375 {
+    font-family: $font !important;
+    font-size: 16px;
+    font-weight: 600;
+    color: $news-title !important;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+  }
+}
+.colum-item_ask {
+  @include deptop1024 {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px 15px;
+    border-radius: 20px;
+  }
+  @include deptop920 {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px 15px;
+    border-radius: 20px;
+  }
+  @include deptop820 {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px 15px;
+    border-radius: 20px;
+  }
+  @include deptop412 {
+    padding:30px;
+  }
+  @include deptop390 {
+    padding:0 12px;
+  }
+}
+::v-deep table {
+  width: 100%;
+  border: 1px solid $border-table ;
+  margin: auto auto 20px ;
+}
+::v-deep tr td {
+  border: 1px solid $border-table ;
+  padding: 16px;
+  font-family: $font ;
+  color: $text-colorRank ;
+}
+.supplementary-title {
+  @include deptop1024 {
+    padding-left: 30px;
+    margin-top: 20px;
+  }
+  @include deptop412 {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  @include deptop390 {
+    padding: 0 12px;
+  }
+  @include deptop280 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+}
+::v-deep span {
+  color: $text-colorRank ;
+  font-size: 15px ;
+  font-weight: 500;
+  padding: 10px 0;
+}
+.list-video {
+  @include deptop412 {
+    width: 100%;
+  }
+  @include deptop390 {
+    width: 100%;
+  }
+
+  @include deptop375 {
+    width: 100%;
+  }
+}
+::v-deep p {
+  margin-bottom: 0;
+}
+::v-deep ul{
+  @include deptop412 {
+    margin: 0;
+    padding: 0;
+  }
+  @include deptop375 {
+    margin: 0;
+    padding: 0;
+  }
+}
+.agree-txt ::v-deep span {
+  @include deptop820 {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: $text-color !important;
+    margin-left: 10px;
+  }
+  @include deptop412 {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: $text-color !important;
+    margin-left: 10px;
+  }
+  @include deptop375 {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: $text-color !important;
+    margin-left: 10px;
+  }
+}
 .product-advantage {
   max-width: 1170px;
   width: 100%;
   margin: auto;
   padding: 50px 0;
+  @include deptop1024 {
+    max-width: 1024px;
+    width: 100%;
+    margin: auto;
+    padding: 20px 30px;
+  }
+  @include deptop920 {
+    max-width: 820px;
+    width: 100%;
+    margin: auto;
+    padding: 30px 0;
+  }
+  @include deptop820 {
+    width: 100%;
+    margin: auto;
+    padding: 20px 30px;
+  }
+  @include deptop412 {
+    width: 100%;
+    margin: auto;
+    padding: 20px 25px;
+  }
+  @include deptop375 {
+    width: 100%;
+    margin: auto;
+    padding: 20px 0;
+  }
   &_title {
     font-family: $font;
     font-size: 24px;
@@ -552,7 +1011,8 @@ p {
     color: $news-title;
     margin-bottom: 20px;
   }
-  &_txt{
+
+  &_txt {
     font-family: $font;
     font-size: 16px;
     line-height: 24px;
@@ -560,7 +1020,42 @@ p {
     color: $news-title;
     margin-bottom: 20px;
   }
-
 }
 
+.bodyItem_txt {
+  @include deptop375 {
+    max-width: calc(375px - 25px );
+    margin: auto;
+  }
+}
+.supplementary {
+  @include deptop920 {
+    width: 100%;
+    padding: 30px 0 40px 30px;
+  }
+  @include deptop820 {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 0 40px 30px;
+  }
+  @include deptop412 {
+    max-width: 390px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  @include deptop390 {
+    max-width: 390px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0 20px 0;
+  }
+  @include deptop375 {
+    max-width: 390px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 12px;
+  }
+}
 </style>

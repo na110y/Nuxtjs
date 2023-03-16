@@ -13,5 +13,11 @@ module.exports = {
     '@nuxt/eslint-config'
   ],
   // add your custom rules here
-  rules: {}
+  rules: {
+    'space-before-function-paren': ['error', {
+      anonymous: 'always',
+      named: 'never',
+      asyncArrow: 'always'
+    }]
+  },
 }

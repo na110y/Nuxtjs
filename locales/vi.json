@@ -1,0 +1,15 @@
+{
+  "common" : {
+    "lang": "vietnam"
+  },
+  "header": {
+      "product": "Sản Phẩm",
+      "service": "Dịch vụ khách hàng",
+      "about": "Về Mirae Asset Prévoir",
+      "news": "Tin tức",
+      "insurance": "Mua bảo hiểm trực tuyến"
+  },
+    "content": {
+    },
+    "footer": {}
+}

@@ -81,7 +81,7 @@
           </div>
         </div>
         <div class="colum-item">
-          <img src="~/assets/img/lienhe.png" alt="errorLienhe">
+          <img id="colum-item_img" src="~/assets/img/lienhe.png" alt="errorLienhe">
         </div>
       </div>
     </div>
@@ -100,7 +100,7 @@ export default {
       type: String
     }
   },
-  data () {
+  data() {
     return {
       frontVN: null,
       item: {}
@@ -108,7 +108,7 @@ export default {
   },
   computed: {
     // truyền data cho Combobox
-    records () {
+    records() {
       return [
         {
           key: 1,
@@ -137,13 +137,13 @@ export default {
      * Author: NSDThinh 21/02/2023
      */
     // eslint-disable-next-line vue/no-dupe-keys
-    productPage () {
+    productPage() {
       return this.$store.state.productImage
     }
   },
-  created () {
+  created() {
   },
-  mounted () {
+  mounted() {
     /**
      * @description: product
      * Author: NSDThinh 21/02/2023

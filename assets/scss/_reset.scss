@@ -7,10 +7,15 @@
 
 body {
   font-family: $font;
+  color: $text-colorRank;
   font-weight: 400;
 }
 p {
   font-size: 15px;
+}
+span {
+  font-family: $font;
+  color: $text-colorRank;
 }
 
 a {

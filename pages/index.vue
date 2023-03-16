@@ -10,12 +10,12 @@
         controls
         no-animation
       >
-        <b-carousel-slide v-for="( homePage, index ) in homePage.data" :key="index" caption="First slide">
+        <b-carousel-slide v-for="( slidePage, index ) in homePage.data" :key="index" caption="First slide">
           <template #img>
             <div class="slideHome">
               <img
                 id="homeSlide"
-                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(homePage.image)[0]"
+                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(slidePage.image)[0]"
                 alt="errorSlide"
               >
             </div>
@@ -47,17 +47,21 @@
                   @click="toggleDrop"
                 >
               </div>
-              <div class="btn-search">
+
+              <div class="btn-search" @click="goToPage">
                 Khám phá
               </div>
               <div v-if="isShowDrop" class="combbSlide">
                 <ul
                   v-for="drdwn in records"
-                  :key="drdwn.key"
+                  :key="drdwn.url"
+                  :value="drdwn.url"
                   class="combobox-homePage"
-                  :value="drdwn.key"
                 >
-                  <li class="combobox-item" @click="selectItem(drdwn.key)">
+                  <li
+                    class="combobox-item"
+                    @click="selectItem(drdwn.key)"
+                  >
                     {{ drdwn.value }}
                   </li>
                 </ul>
@@ -298,32 +302,43 @@ export default {
       type: String
     }
   },
-  data () {
+  data() {
     return {
       frontVN: null,
       activeClick: null,
-      item: {},
+      item: {
+        key: ''
+      },
       isShowDrop: false
     }
   },
   computed: {
     // truyền data cho Combobox thông qua props
-    records () {
+    records() {
       return [
         {
           key: 1,
           value: 'Sản phẩm nổi bật',
-          placeholder: 'Sản phẩm nổi bật'
+          placeholder: 'Sản phẩm nổi bật',
+          url: '/product/'
         },
         {
           key: 2,
-          value: 'Mua bảo hiểm trực tuyến',
-          placeholder: 'Mua bảo hiểm trực tuyến'
+          value: 'Tin tức mới nhất',
+          placeholder: 'Tin tức mới nhất',
+          url: '/news/'
         },
         {
           key: 3,
-          value: 'Tin tức mới nhất',
-          placeholder: 'Tin tức mới nhất'
+          value: 'Dịch vụ khách hàng',
+          placeholder: 'Dịch vụ khách hàng',
+          url: '/service/'
+        },
+        {
+          key: 4,
+          value: 'Về Mirae Asset Presvoir',
+          placeholder: 'Về Mirae Asset Presvoir',
+          url: '/about/'
         }
       ]
     },
@@ -331,34 +346,34 @@ export default {
      * @description: hàm này dùng để lấy dữ liệu khách hàng từ store
      * Author: NSDThinh 21/02/2023
      */
-    ClientPage () {
+    ClientPage() {
       return this.$store.state.clientPage
     },
     /**
      * @description: hàm này dùng để lấy ảnh slide page từ store
      * Author: NSDThinh 21/02/2023
      */
-    homePage () {
+    homePage() {
       return this.$store.state.homeSlide
     },
     /**
      * @description: hàm này dùng để giá trị sản phẩm từ store
      * Author: NSDThinh 21/02/2023
      */
-    productPage () {
+    productPage() {
       return this.$store.state.productImage
     },
     /**
      * @description: hàm này dùng để giá trị từ store
      * Author: NSDThinh 25/02/2023
      */
-    newsPage () {
+    newsPage() {
       return this.$store.state.newsPage
     }
   },
-  created () {
+  created() {
   },
-  mounted () {
+  mounted() {
     /**
      * @description: client ( khách hàng )
      * Author: NSDThinh 24/02/2023
@@ -381,43 +396,39 @@ export default {
     this.$store.dispatch('setNewsPage')
   },
   methods: {
-    /**
-     * @description: sau khi click trang sẽ được di chuyển lên đầu
-     * Author: NSDThinh 21/02/2023
-     */
-    scrollToTop () {
+
+    goToPage(key) {
+      const record = this.records.find(r => r.key === key)
+      this.$router.push(record.url)
+    },
+    // sau khi click trang sẽ được di chuyển lên đầu
+    scrollToTop() {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       })
     },
-    isToggle (isShowDrop) {
+    // gán sự kiện show hide cho danh sách tìm kiếm
+    isToggle(isShowDrop) {
       this.isShowDrop = isShowDrop
     },
-    toggleDrop () {
+    toggleDrop() {
       this.isToggle(true)
     },
-    selectItem (key) {
+    // click chuột chọn đến danh sách tìm kiếm sản phẩm
+    selectItem(key) {
       this.item.key = key
-      this.item.key = this.formatEnum(key)
+      this.item.key = this.$validate.formatEnum(key)
+      const record = this.records.find(r => r.key === key)
+      this.$router.push(record.url)
       this.isToggle(false)
     },
-    // hàm này dùng để format giá trị key của value
-    formatEnum (key) {
-      switch (key) {
-        case 1:
-          return 'Sản phẩm nổi bật'
-        case 2:
-          return 'Mua bảo hiểm trực tuyến'
-        case 3:
-          return 'Tin tức mới nhất'
-      }
-    },
+
     /**
      * @description: hàm này dùng để hiển thị hết tất cả dòng chữ của text
      * Author: NSDThinh 21/02/2023
      */
-    activeClickType (id) {
+    activeClickType(id) {
       this.activeClick = id
     }
 

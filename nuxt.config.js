@@ -14,10 +14,6 @@ export default {
         hid: 'description',
         name: 'description',
         content: ''
-      },
-      {
-        name: 'format-detection',
-        content: 'telephone=no'
       }
     ],
     link: [
@@ -29,23 +25,46 @@ export default {
       { rel: 'icon', type: 'image/png', href: '/bhnt.png' }
     ]
   },
-
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
-
+  eslint: {
+    fix: true,
+  },
+  prettier: {
+    eslintIntegration: true,
+  },
   // build swiper
   plugins: [
-    {
-      src:
-        '~/plugins/vue-carousel.js',
-      mode: 'client'
-    },
-    '~/plugins/utils/validate.js'
-    // '~/plugins/utils/language/i18n.js'
-
+    { src: '~/plugins/vue-carousel.js', mode: 'client' },
+    '~/plugins/utils/validate.js',
+    { src: '~/plugins/i18n.js', ssr: true }
   ],
-
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        name: 'English',
+        iso: 'en-US',
+        file: 'en-US.js'
+      },
+      {
+        code: 'vi',
+        name: 'Vietnamese',
+        iso: 'vi-VN',
+        file: 'vi-VN.js'
+      }
+    ],
+    defaultLocale: 'en',
+    lazy: true,
+    langDir: 'lang/',
+    vueI18n: {
+      fallbackLocale: 'en'
+    }
+  },
+  router: {
+    middleware: ['i18n']
+  },
   components: true,
 
   buildModules: [
@@ -63,9 +82,8 @@ export default {
   // build library
   modules: [
     '@nuxtjs/axios',
-    'bootstrap-vue/nuxt'
+    'bootstrap-vue/nuxt',
   ],
-
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/'

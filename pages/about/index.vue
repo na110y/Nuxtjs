@@ -48,11 +48,12 @@
           <div class="container">
             <div class="bod-wrap">
               <carousel
-                :per-page="2"
+                :per-page="1"
                 :pagination-enabled="false"
                 :navigation-enabled="true"
                 :navigation-next-icon="'bi bi-chevron-right'"
                 :navigation-prev-icon="'fas fa-chevron-right'"
+                :vue-carousel-slide-center="true"
               >
                 <slide
                   v-for="(use,index) in manganerAbout.data"
@@ -266,7 +267,7 @@
             </div>
             <carousel
               id="listvideo"
-              :per-page="3"
+              :per-page="1"
               :pagination-enabled="true"
             >
               <slide
@@ -315,7 +316,7 @@ export default {
     Carousel,
     Slide
   },
-  data () {
+  data() {
     return {
       listVideo: [],
       itemSelectedID: null,
@@ -326,39 +327,39 @@ export default {
     }
   },
   computed: {
-    manganerAbout () {
+    manganerAbout() {
       return this.$store.state.manganer
     },
-    pressReleaseAbout () {
+    pressReleaseAbout() {
       return this.$store.state.pressRelease
     },
-    bankAboutApi () {
+    bankAboutApi() {
       return this.$store.state.bankAbout
     }
   },
-  mounted () {
+  mounted() {
     this.$store.dispatch('setManganAbout')
     this.$store.dispatch('setPressRelease')
     this.$store.dispatch('setBank')
   },
-  created () {
+  created() {
     this.getListVideo()
   },
   methods: {
-    btnClickItem (index) {
+    btnClickItem(index) {
       this.itemSelected = this.listVideo[index]
       this.$router.push({ query: { slug: index } })
     },
-    showModal (isShowModal) {
+    showModal(isShowModal) {
       this.isShowModal = isShowModal
     },
     // hàm này dùng để hiển thị chi tiết giám đốc khi chọn
-    btnShowModal (use) {
+    btnShowModal(use) {
       this.itemSelected = use
       this.itemSelectedID = use.id
       this.showModal(true)
     },
-    async getListVideo () {
+    async getListVideo() {
       const res = await this.$axios.get(
         process.env.baseApiUrl + '/library/fe-get-libraries?limit=9')
       this.listVideo = res.data.data.data

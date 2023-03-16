@@ -1,0 +1,18 @@
+{
+  "common" : {
+    "lang": "English"
+  },
+  "home": {
+  },
+  "lang": {
+    "product": "product",
+    "service": "Customer service",
+    "about": "Về Mirae Asset Prévoir",
+    "news": "news",
+    "insurance": "buy insurance online"
+  },
+  "content": {
+  },
+  "footer": {}
+
+}

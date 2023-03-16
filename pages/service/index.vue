@@ -577,14 +577,14 @@ export default {
       type: String
     }
   },
-  data () {
+  data() {
     return {
       item: {}
     }
   },
   computed: {
     // truyền data cho Combobox
-    records () {
+    records() {
       return [
         {
           key: 1,
@@ -610,7 +610,7 @@ export default {
     }
 
   },
-  mounted () {
+  mounted() {
     /**
      * @description: homeslide
      * Author: NSDThinh 21/02/2023
@@ -627,7 +627,7 @@ export default {
      * @description: sau khi click trang sẽ được di chuyển lên đầu
      * Author: NSDThinh 21/02/2023
      */
-    scrollToTop () {
+    scrollToTop() {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'

@@ -1,15 +1,60 @@
 @import "../../variables";
 @import "../../mixins";
 .warper {
-  max-width: 1920px;
+  max-width: 1920px ;
   height: inherit;
   width: 100%;
+  margin: auto ;
   background: #fff;
   overflow: hidden;
   position: fixed;
   top: 0;
   z-index: 99;
   box-shadow: 0 5px 5px rgb(0 0 0 / 10%);
+  @include deptop540 {
+    max-width:540px;
+    height: inherit;
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    box-shadow: 0 5px 5px rgb(0 0 0 / 10%);
+  }
+  @include deptop390 {
+    max-width: 412px;
+    height: inherit;
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    box-shadow: 0 5px 5px rgb(0 0 0 / 10%);
+  }
+  @include deptop412 {
+    max-width: 412px;
+    height: inherit;
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    box-shadow: 0 5px 5px rgb(0 0 0 / 10%);
+  }
+  @include deptop280 {
+    max-width: calc( 100% - 12px) !important;
+    height: inherit;
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    box-shadow: 0 5px 5px rgb(0 0 0 / 10%);
+  }
 }
 #vn {
   width: 20px;
@@ -21,7 +66,7 @@
   align-items: center;
   max-width: 1170px;
   width: 100%;
-  margin: 0 auto;
+  margin: auto;
   height: inherit;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -42,6 +87,54 @@
     justify-content: space-between;
     align-items: center;
     max-width: 1000px;
+    width: 100%;
+    gap: 0 30px;
+    margin: 0 auto;
+    height: inherit;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  @include deptop540 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: calc(540px - 12px );
+    width: 100%;
+    gap: 0 30px;
+    margin: 0 auto;
+    height: inherit;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  @include deptop412 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: calc(100% - 12px ) !important;
+    width: 100%;
+    gap: 0 30px;
+    margin: 0 auto;
+    height: inherit;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  @include deptop390 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: calc(100% - 12px ) !important;
+    width: 100%;
+    gap: 0 30px;
+    margin: 0 auto;
+    height: inherit;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  @include deptop280 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: calc(100% - 12px );
     width: 100%;
     gap: 0 30px;
     margin: 0 auto;
@@ -77,6 +170,12 @@
   border-radius: 20px;
 }
 #logoHeader {
+  @include deptop1190 {
+    max-width: 250px;
+    max-height: 57px;
+    margin-left: 30px;
+
+  }
   @include deptop1160 {
     max-width: 250px;
     max-height: 57px;
@@ -92,6 +191,7 @@
     margin-left: 30px;
   }
 }
+
 .menu-item {
   display: flex;
   align-items: center;
@@ -100,6 +200,26 @@
   color: $text-colorRank;
   font-family: $font;
   font-weight: 500;
+  @include deptop1280 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0 20px;
+    color: $text-colorRank;
+    font-family: $font;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  @include deptop1190 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0 15px;
+    color: $text-colorRank;
+    font-family: $font;
+    font-weight: 500;
+    font-size: 14px;
+  }
   @include deptop1160 {
     display: flex;
     align-items: center;
@@ -125,7 +245,9 @@
   }
   @include deptop820 {
       display: block;
+    margin-right: 30px;
   }
+
   }
  .menu-link {
 cursor: pointer;
@@ -182,15 +304,63 @@ cursor: pointer;
     display: none;
   }
 }
-.item-language {
-  display: flex;
+.menuLang {
+  @include deptop1120 {
+    display: none;
+  }
+  @include deptop920 {
+    margin-right: 30px;
+  }
+
+  @include deptop820 {
+    display: none;
+  }
 }
+.custom-select {
+  cursor: pointer;
+  border: none;
+  color: $text-colorRank;
+  background-color: $menu-mobile;
+}
+
+select option {
+  padding: 10px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: left center;
+  font-size: 16px;
+}
+
+select option img {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+.item-language {
+  padding: 10px 0;
+  @include deptop1190 {
+    margin-right: 30px;
+  }
+  @include deptop1120 {
+    display: none;
+  }
+}
+
+
 #dropdown {
   margin-left: 8px;
   cursor: pointer;
 }
 
 @include deptop1120 {
+  .mobile-Language {
+      display: block;
+  }
+  .border-Mobile {
+    padding-bottom: 10px;
+    border-bottom: 1px solid $border;
+  }
   ::v-deep .b-sidebar-body {
     padding: 20px;
       .item-link {
@@ -202,57 +372,25 @@ cursor: pointer;
         .mobile-item {
           color: $text-colorRank;
           padding: 15px 0;
-          border: 1px solid rgba(255, 255, 255, 0.16);
-          &:hover {
-            background: $border;
-            opacity: .8;
-          }
           &_product {
             color: $text-colorRank;
             font-weight: 500;
             font-size: 18px;
-
-            &:hover {
-              background: $border;
-              opacity: .8;
-
-
-            }
           }
           &_service {
             color: $text-colorRank;
             font-weight: 500;
             font-size: 18px;
-
-            &:hover {
-              background: $border;
-              opacity: .8;
-
-
-            }
           }
           &_aboutMirae {
             color: $text-colorRank;
             font-weight: 400;
             font-size: 18px;
-
-            &:hover {
-              background: $border;
-              opacity: .8;
-
-
-            }
           }
           &_news {
             color: $text-colorRank;
             font-weight: 400;
             font-size: 18px;
-
-            &:hover {
-              background: $border;
-              opacity: .8;
-
-            }
           }
         }
 
@@ -274,4 +412,19 @@ cursor: pointer;
     }
   }
 
+}
+.menu-item_product {
+  color: $text-colorRank;
+}
+.menu-item_service {
+  color: $text-colorRank;
+}
+.menu-link {
+  cursor: pointer;
+  a {
+    &.nuxt-link-active {
+      color: $text-color;
+      font-weight: 500;
+    }
+  }
 }

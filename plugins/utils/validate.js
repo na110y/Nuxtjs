@@ -49,6 +49,19 @@ export default ({ app }, inject) => {
         dob = ''
       }
       return dob
+    },
+    // hàm này dùng để format giá trị key của value
+    formatEnum (key) {
+      switch (key) {
+        case 1:
+          return 'Sản phẩm nổi bật'
+        case 2:
+          return 'Tin tức mới nhất'
+        case 3:
+          return 'Dịch vụ khách hàng'
+        case 4:
+          return 'Về Mirae Asset Presvoir'
+      }
     }
   })
 }
