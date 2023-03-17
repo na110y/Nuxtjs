@@ -36,13 +36,13 @@ export default {
     'isShowModal',
     'itemSelectedID'
   ],
-  data () {
+  data() {
     return {
       use: {}
     }
   },
   watch: {
-    itemSelectedID (value) {
+    itemSelectedID(value) {
       if (value) {
         this.$axios
           .get(process.env.baseApiUrl + `/bod/fe-list-bod?id=${this.itemSelectedID}`)
@@ -56,7 +56,7 @@ export default {
     }
   },
   methods: {
-    btnCloseModal () {
+    btnCloseModal() {
       this.$emit('closeModal', false)
     }
   }
@@ -64,6 +64,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "assets/scss/variables";
+@import "assets/scss/mixins";
 .modalItem {
   position: fixed;
   top: 0;
@@ -73,6 +74,37 @@ export default {
   height: 100%;
   overflow: hidden;
   outline: 0;
+  @include deptop1024 {
+
+  }
+  @include deptop920 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+    padding: 0 20px;
+  }
+  @include deptop820 {
+
+  }
+  @include deptop540 {
+
+  }
+  @include deptop412 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+    padding: 0 20px;
+  }
 }
 .modal-body {
   display: flex;
@@ -122,6 +154,7 @@ export default {
   padding:20px;
 
 }
+
 .modal-content {
 
   font-size: 14px;
@@ -136,6 +169,24 @@ export default {
   color: $text-colorRank !important;
   overflow: auto;
   margin-top: 10px;
+  @include deptop1024 {
+
+  }
+  @include deptop920 {
+
+  }
+  @include deptop820 {
+
+  }
+  @include deptop540 {
+
+  }
+  @include deptop412 {
+    font-size: 12px !important;
+    color: $text-colorRank !important;
+    overflow: auto;
+    margin-top: 10px;
+  }
 }
 ::-webkit-scrollbar {
   width: 8px;
@@ -168,6 +219,42 @@ export default {
   z-index: 999;
   opacity: 1;
   border-radius: 0.3rem;
+  @include deptop1024 {
+
+  }
+  @include deptop920 {
+    position: relative;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    max-width: 900px;
+    height: auto;
+    background-color: #fff;
+    z-index: 999;
+    opacity: 1;
+    border-radius: 0.3rem;
+  }
+  @include deptop820 {
+
+  }
+  @include deptop540 {
+
+  }
+  @include deptop412 {
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    max-width: 900px;
+    height: auto;
+    background-color: #fff;
+    z-index: 999;
+    opacity: 1;
+    border-radius: 0.3rem;
+  }
+  @include deptop375 {
+
+  }
   .modalheader {
     color: $news-title;
     font-size: 20px;

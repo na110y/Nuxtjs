@@ -233,7 +233,9 @@ export default {
     }
 
   },
-  watch: {},
+  watch: {
+
+  },
   created() {
     this.getProductList()
   },
@@ -245,6 +247,16 @@ export default {
     this.getDataProductDetail()
   },
   methods: {
+    btnClickItem(index) {
+      this.product = this.productList[index]
+      const newSlug = this.isType(this.product.slug)
+      const productRoute = {
+        name: 'product-id',
+        params: { id: newSlug }
+      }
+      this.$router.replace(productRoute)
+    },
+
     /**
      * @description: sau khi click trang sẽ được di chuyển lên đầu
      * Author: NSDThinh 21/02/2023
@@ -254,12 +266,6 @@ export default {
         top: 0,
         behavior: 'smooth'
       })
-    },
-    btnClickItem(index) {
-      this.product = this.productList[index]
-      // if (product) {
-      //   this.$router.push({ path: `/product/${this.isType(product.slug)}` })
-      // }
     },
     async getDataProductDetail() {
       const res = await this.$axios
@@ -642,12 +648,14 @@ a .list_icon-title::after {
     display: block;
     max-width: 412px;
     padding-bottom: 20px;
-    padding-right: 0;
+    padding-right: 30px;
   }
   @include deptop390 {
     display: block;
     max-width: 370px;
     padding-bottom: 20px;
+    padding-right: 30px;
+    margin: auto;
   }
   @include deptop280 {
     display: block;

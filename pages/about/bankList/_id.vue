@@ -43,18 +43,18 @@
 export default {
   components: {
   },
-  data () {
+  data() {
     return {
       bankItem: {}
     }
   },
   computed: {
   },
-  mounted () {
+  mounted() {
     this.getDataNewDetail()
   },
   methods: {
-    async getDataNewDetail () {
+    async getDataNewDetail() {
       const res = await this.$axios
         .get(process.env.baseApiUrl + `/distributor/fe-get-detail?slug=${this.$route.params.id}`)
       if (res) {
@@ -68,8 +68,34 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "assets/scss/variables";
+@import "assets/scss/mixins";
 .newsSlide {
   position: relative;
+  @include deptop1024 {
+    position: relative;
+  }
+  @include deptop920 {
+    position: relative;
+  }
+  @include deptop820 {
+    position: relative;
+  }
+  @include deptop412 {
+    position: relative;
+    margin-top: 65px;
+  }
+  @include deptop390 {
+    position: relative;
+    margin-top: 65px;
+  }
+  @include deptop375 {
+    position: relative;
+    margin-top: 65px;
+  }
+  @include deptop360 {
+    position: relative;
+    margin-top: 65px;
+  }
 }
 #newsSlideList {
   width: 100%;
@@ -79,12 +105,65 @@ export default {
 .bank-contact {
   color: $text-colorRank;
   margin: 50px 0;
+  @include deptop1024 {
+    margin: 30px 20px;
+  }
+  @include deptop920 {
+    margin: 30px 20px;
+  }
+  @include deptop820 {
+    margin: 30px 20px;
+  }
+  @include deptop412 {
+    margin: 30px 20px;
+  }
+  @include deptop390 {
+    margin: 30px 20px;
+  }
+  @include deptop375 {
+    margin: 30px 20px;
+  }
+  @include deptop360 {
 
+  }
 }
 .bank-Item {
   display: flex;
   gap: 0 30px;
   margin: 50px 0;
+  @include deptop1024 {
+    display: flex;
+    gap: 0 30px;
+    margin: 30px 20px;
+  }
+  @include deptop920 {
+    display: flex;
+    gap: 0 30px;
+    margin: 30px 20px;
+  }
+  @include deptop820 {
+    display: flex;
+    gap: 0 30px;
+    margin: 30px 20px;
+  }
+  @include deptop412 {
+    display: flex;
+    gap: 0 30px;
+    margin: 30px 20px;
+  }
+  @include deptop390 {
+    display: flex;
+    gap: 0 30px;
+    margin: 30px 20px;
+  }
+  @include deptop375 {
+    display: flex;
+    gap: 0 30px;
+    margin: 30px 20px;
+  }
+  @include deptop360 {
+
+  }
 }
 .bank-txt {
   color: $text-colorRank;
@@ -94,6 +173,48 @@ export default {
   height: auto;
   max-height: 350px;
   max-width: unset;
+  @include deptop1024 {
+    width: 170px;
+    height: auto;
+    max-height: 350px;
+    max-width: unset;
+  }
+  @include deptop920 {
+    width: 170px;
+    height: auto;
+    max-height: 350px;
+    max-width: unset;
+  }
+  @include deptop820 {
+    width: 170px;
+    height: auto;
+    max-height: 350px;
+    max-width: unset;
+  }
+  @include deptop412 {
+    width: 130px;
+    height: auto;
+    max-height: 350px;
+    max-width: unset;
+  }
+  @include deptop390 {
+    width: 120px;
+    height: auto;
+    max-height: 350px;
+    max-width: unset;
+  }
+  @include deptop375 {
+    width: 120px;
+    height: auto;
+    max-height: 350px;
+    max-width: unset;
+  }
+  @include deptop360 {
+    width: 120px;
+    height: auto;
+    max-height: 350px;
+    max-width: unset;
+  }
 }
 ::v-deep .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
   background-color: $bgc-product;
@@ -182,5 +303,54 @@ export default {
   font-weight: bold;
   line-height: 48px;
   color: $bgc-body;
+  @include deptop1024 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop920 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop820 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop412 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop390 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop375 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop360 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
 }
 </style>

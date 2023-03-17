@@ -50,17 +50,17 @@
 export default {
   components: { },
   props: {},
-  data () {
+  data() {
     return {
     }
   },
   computed: {
-    financialApi () {
+    financialApi() {
       return this.$store.state.financialReport
     }
   },
-  created () {},
-  mounted () {
+  created() {},
+  mounted() {
     this.$store.dispatch('setFinancial')
   },
   methods: {
@@ -69,9 +69,32 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "assets/scss/variables";
+@import "assets/scss/mixins";
 .banner__item {
   max-width: 1170px;
   margin: auto;
+  @include deptop1024 {
+    padding: 0 30px;
+  }
+  @include deptop920 {
+    padding: 0 30px;
+  }
+  @include deptop820 {
+    padding: 0 30px;
+  }
+  @include deptop412 {
+    padding: 0 20px;
+
+  }
+  @include deptop390 {
+    padding: 0 20px;
+  }
+  @include deptop375 {
+    padding: 0 20px;
+  }
+  @include deptop360 {
+    padding: 0 20px;
+  }
 }
 table {
   width: 100%;
@@ -107,7 +130,69 @@ table {
   font-weight: 700;
   color: $news-title;
   padding: 80px 0;
-
+  @include deptop1024 {
+    max-width: 1170px;
+    margin: auto;
+    font-size: 30px;
+    line-height: 48px;
+    font-weight: 700;
+    color: $news-title;
+    padding: 50px 30px;
+  }
+  @include deptop920 {
+    max-width: 1170px;
+    margin: auto;
+    font-size: 24px;
+    line-height: 48px;
+    font-weight: 700;
+    color: $news-title;
+    padding: 50px 30px;
+  }
+  @include deptop820 {
+    max-width: 1170px;
+    margin: auto;
+    font-size: 20px;
+    line-height: 48px;
+    font-weight: 700;
+    color: $news-title;
+    padding: 50px 30px;
+  }
+  @include deptop412 {
+    max-width: 1170px;
+    margin: auto;
+    font-size: 16px;
+    line-height: 48px;
+    font-weight: 700;
+    color: $news-title;
+    padding:20px;
+  }
+  @include deptop390 {
+    max-width: 1170px;
+    margin: auto;
+    font-size: 16px;
+    line-height: 48px;
+    font-weight: 700;
+    color: $news-title;
+    padding:20px;
+  }
+  @include deptop375 {
+    max-width: 1170px;
+    margin: auto;
+    font-size: 16px;
+    line-height: 48px;
+    font-weight: 700;
+    color: $news-title;
+    padding:20px;
+  }
+  @include deptop360 {
+    max-width: 1170px;
+    margin: auto;
+    font-size: 16px;
+    line-height: 48px;
+    font-weight: 700;
+    color: $news-title;
+    padding:20px;
+  }
 }
 tbody {
   display: flex;
@@ -128,9 +213,94 @@ ol, ul, dl {
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
+  @include deptop1280 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @include deptop1024 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @include deptop920 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 14%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @include deptop820 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @include deptop412 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 13%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @include deptop390 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 13%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @include deptop375 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 17%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @include deptop360 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 .financialReport {
   margin-top: 93px;
+  @include deptop1024 {
+    margin-top: 65px;
+  }
+  @include deptop920 {
+    margin-top: 65px;
+  }
+  @include deptop820 {
+    margin-top: 65px;
+  }
+  @include deptop412 {
+    margin-top: 65px;
+  }
+  @include deptop390 {
+    margin-top: 65px;
+  }
+  @include deptop375 {
+    margin-top: 65px;
+  }
+  @include deptop360 {
+    margin-top: 65px;
+  }
 }
 .newsSlide-title {
   text-align: center;
@@ -138,6 +308,55 @@ ol, ul, dl {
   font-weight: bold;
   line-height: 48px;
   color: $bgc-body;
+  @include deptop1024 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop920 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop820 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop412 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop390 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop375 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop360 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
 }
 #newsSlideList {
   width: 100%;

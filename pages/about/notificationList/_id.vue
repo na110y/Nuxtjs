@@ -24,7 +24,7 @@
                 alt="error-imgFamily"
               >
             </div>
-            <div class="newsList-body">
+            <div class="newsList-body" @click="scrollToTop">
               <div class="newsList-item">
                 <nuxt-link :to="`/about/notificationList/${$validate.isType(item.slug)}`">
                   <div class="newsList-title" @click.prevent="btnClickItem(index)">
@@ -55,29 +55,44 @@
 export default {
   components: {},
   props: {},
-  data () {
+  data() {
     return {
       itemNews: {},
       listNews: []
 
     }
   },
-  mounted () {
+  mounted() {
     this.getDataNewDetail()
     this.getListPagingNews()
   },
   methods: {
-    btnClickItem (index) {
-      this.itemNews = this.listNews[index]
-      // this.$router.push({ path: `/about/notificationList/${this.isType(this.itemNews.slug)}` })
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
     },
-    async getListPagingNews () {
+    btnClickItem(index) {
+      try {
+        this.itemNews = this.listNews[index]
+        const newSlug = this.isType(this.itemNews.slug)
+        const newRoute = {
+          name: 'notificationList-id',
+          params: { id: newSlug }
+        }
+        this.$router.replace(newRoute)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async getListPagingNews() {
       const me = this
       const res = await me.$axios.get(
         process.env.baseApiUrl + '/post/fe-latest-press-release')
       me.listNews = res.data.data
     },
-    async getDataNewDetail () {
+    async getDataNewDetail() {
       const res = await this.$axios
         // eslint-disable-next-line no-undef
         .get(process.env.baseApiUrl + `/post/fe-press-release-detail?slug=${this.$route.params.id}`)
@@ -85,7 +100,7 @@ export default {
         this.itemNews = res.data.data
       }
     },
-    isType (string) {
+    isType(string) {
       try {
         JSON.parse(string)
         {
@@ -103,7 +118,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "assets/scss/variables";
-
+@import "assets/scss/mixins";
 ::v-deep .container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
   --bs-gutter-x: 0;
 }
@@ -119,15 +134,103 @@ export default {
   display: flex;
   margin: 50px 0;
   gap: 0 30px;
+  @include deptop1024 {
+    display: flex;
+    margin: 30px;
+    gap: 0 30px;
+  }
+  @include deptop920 {
+    display: flex;
+    margin: 30px;
+    gap: 0 30px;
+  }
+  @include deptop820 {
+    display: flex;
+    margin: 30px;
+    gap: 0 30px;
+  }
+  @include deptop412 {
+    display: flex;
+    margin: 20px;
+    gap: 0 20px;
+    flex-wrap: wrap-reverse;
+  }
+  @include deptop390 {
+    display: flex;
+    margin: 20px;
+    gap: 0 20px;
+    flex-wrap: wrap-reverse;
+  }
+  @include deptop375 {
+    display: flex;
+    margin: 20px;
+    gap: 0 20px;
+    flex-wrap: wrap-reverse;
+  }
+  @include deptop360 {
+    display: flex;
+    margin: 20px;
+    gap: 0 20px;
+    flex-wrap: wrap-reverse;
+  }
 }
 
 .newsItem-thumbnail_img {
   margin-top: 35px;
   width: 30%;
+  @include deptop1024 {
+    margin-top: 35px;
+    width: 30%;
+  }
+  @include deptop920 {
+    margin-top: 35px;
+    width: 30%;
+  }
+  @include deptop820 {
+    margin-top: 35px;
+    width: 30%;
+  }
+  @include deptop412 {
+    margin-top: 20px;
+    width: 100%;
+  }
+  @include deptop390 {
+    margin-top: 20px;
+    width: 100%;
+  }
+  @include deptop375 {
+    margin-top: 20px;
+    width: 100%;
+  }
+  @include deptop360 {
+    margin-top: 20px;
+    width: 100%;
+  }
 }
 
 .newsItem-thumbnail-column {
   width: 70%;
+  @include deptop1024 {
+    width: 70%;
+  }
+  @include deptop920 {
+    width: 70%;
+  }
+  @include deptop820 {
+    width: 70%;
+  }
+  @include deptop412 {
+    width: 100%;
+  }
+  @include deptop390 {
+    width: 100%;
+  }
+  @include deptop375 {
+    width: 100%;
+  }
+  @include deptop360 {
+    width: 100%;
+  }
 }
 
 .newsItem-thumbnail_title {
@@ -137,6 +240,62 @@ export default {
   font-weight: 700;
   margin-bottom: 24px;
   line-height: 32px;
+  @include deptop1024 {
+    font-size: 20px;
+    font-family: $font;
+    color: $news-title;
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 32px;
+  }
+  @include deptop920 {
+    font-size: 20px;
+    font-family: $font;
+    color: $news-title;
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 32px;
+  }
+  @include deptop820 {
+    font-size: 16px;
+    font-family: $font;
+    color: $news-title;
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 32px;
+  }
+  @include deptop412 {
+    font-size: 16px;
+    font-family: $font;
+    color: $news-title;
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 24px;
+  }
+  @include deptop390 {
+    font-size: 16px;
+    font-family: $font;
+    color: $news-title;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 24px;
+  }
+  @include deptop375 {
+    font-size: 16px;
+    font-family: $font;
+    color: $news-title;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 24px;
+  }
+  @include deptop360 {
+    font-size: 16px;
+    font-family: $font;
+    color: $news-title;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 24px;
+  }
 }
 
 .newsItem-thumbnail_txt {
@@ -200,16 +359,128 @@ export default {
   font-weight: bold;
   line-height: 48px;
   color: $bgc-body;
+  @include deptop1024 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop920 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop820 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop412 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop390 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop375 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
+  @include deptop360 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 48px;
+    color: $bgc-body;
+  }
 }
 .newsItem-thumbnail__title {
   font-weight: 600;
   font-size: 20px;
   line-height: 30px;
   color: $titleListID;
+  @include deptop1024 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: $titleListID;
+  }
+  @include deptop920 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: $titleListID;
+  }
+  @include deptop820 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 30px;
+    color: $titleListID;
+  }
+  @include deptop412 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+    color: $titleListID;
+  }
+  @include deptop390 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+    color: $titleListID;
+  }
+  @include deptop375 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+    color: $titleListID;
+  }
+  @include deptop360 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+    color: $titleListID;
+  }
 }
 
 .newsList {
   margin-top: 93px;
+  @include deptop1024 {
+    margin-top: 65px;
+  }
+  @include deptop920 {
+    margin-top: 65px;
+  }
+  @include deptop820 {
+    margin-top: 65px;
+  }
+  @include deptop412 {
+    margin-top: 65px;
+  }
+  @include deptop390 {
+    margin-top: 65px;
+  }
+  @include deptop375 {
+    margin-top: 65px;
+  }
+  @include deptop360 {
+    margin-top: 65px;
+  }
 }
 
 .contener {
