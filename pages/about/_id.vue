@@ -31,19 +31,19 @@
 export default {
   name: 'Managaner',
   props: {},
-  data () {
+  data() {
     return {
       item: {}
     }
   },
   computed: {},
   watch: {},
-  created () {},
-  mounted () {
+  created() {},
+  mounted() {
     this.getDataProductDetail()
   },
   methods: {
-    async getDataProductDetail () {
+    async getDataProductDetail() {
       const res = await this.$axios
         .get(process.env.baseApiUrl +
           `/bod/fe-list-bod?id=${this.$route.params.id}`)

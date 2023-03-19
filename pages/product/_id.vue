@@ -250,21 +250,19 @@ export default {
     btnClickItem(index) {
       this.product = this.productList[index]
       const newSlug = this.isType(this.product.slug)
-      const productRoute = {
-        name: 'product-id',
-        params: { id: newSlug }
+      const newRoute = {
+        path: '/product/' + newSlug
       }
-      this.$router.replace(productRoute)
+      this.$router.replace(newRoute)
     },
-
     /**
      * @description: sau khi click trang sẽ được di chuyển lên đầu
      * Author: NSDThinh 21/02/2023
      */
     scrollToTop() {
       window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+        top: 300,
+        behavior: 'auto'
       })
     },
     async getDataProductDetail() {

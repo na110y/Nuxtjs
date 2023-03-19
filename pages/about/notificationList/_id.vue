@@ -69,29 +69,27 @@ export default {
   methods: {
     scrollToTop() {
       window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+        top: 300,
+        behavior: 'auto'
       })
     },
+    // thay đổi giá trị khi click và thay đổi cả url
     btnClickItem(index) {
-      try {
-        this.itemNews = this.listNews[index]
-        const newSlug = this.isType(this.itemNews.slug)
-        const newRoute = {
-          name: 'notificationList-id',
-          params: { id: newSlug }
-        }
-        this.$router.replace(newRoute)
-      } catch (error) {
-        console.log(error)
+      this.itemNews = this.listNews[index]
+      const newSlug = this.isType(this.itemNews.slug)
+      const newRoute = {
+        path: '/about/notificationList/' + newSlug
       }
+      this.$router.replace(newRoute)
     },
+    // lấy ra danh sách 5 giá trị trong mảng
     async getListPagingNews() {
       const me = this
       const res = await me.$axios.get(
         process.env.baseApiUrl + '/post/fe-latest-press-release')
       me.listNews = res.data.data
     },
+    // lấy ra giá trị item trong mảng thông qua slug
     async getDataNewDetail() {
       const res = await this.$axios
         // eslint-disable-next-line no-undef

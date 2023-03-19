@@ -66,13 +66,17 @@ export default {
   methods: {
     scrollToTop() {
       window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+        top: 300,
+        behavior: 'auto'
       })
     },
     btnClickItem(index) {
       this.itemNews = this.listNews[index]
-      // this.$router.push({ query: { slug: this.$route.params.id } })
+      const newSlug = this.isType(this.itemNews.slug)
+      const newRoute = {
+        path: '/about/video/' + newSlug
+      }
+      this.$router.replace(newRoute)
     },
     async getListPagingNews() {
       const res = await this.$axios.get(
@@ -85,6 +89,18 @@ export default {
         .get(process.env.baseApiUrl + `/library/fe-get-detail?slug=${this.$route.params.id}`)
       if (res) {
         this.itemNews = res.data.data
+      }
+    },
+    isType(string) {
+      try {
+        JSON.parse(string)
+        {
+          const obj = JSON.parse(string)
+          return obj.vn
+        }
+      } catch (err) {
+        console.error(`Failed to parse JSON data: ${err.message}`)
+        return null
       }
     }
 
