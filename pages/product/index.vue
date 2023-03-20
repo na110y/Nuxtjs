@@ -17,17 +17,14 @@
         <div class="SP-list-image">
           <img
             id="body_column-image"
-            :src="
-              'https://api-map-life.grooo.com.vn/files/media/base/' +
-                $validate.jsonParse(item.image)
-            "
+            :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(item.image) "
             alt="error-image"
           >
         </div>
         <div class="list_column-txt">
           <nuxt-link :to="`/product/${ $t($validate.isType(item.slug))}`">
             <div class="list_sp-title">
-              {{ $t($validate.isType(item.name)) }}
+              {{ $t( $validate.isTypeLang(item.name,'en')) }}
             </div>
           </nuxt-link>
           <div class="list_sp-txt">
@@ -40,48 +37,80 @@
       <div class="ask-list">
         <div class="colum-item_ask">
           <div class="item_ask-title">
-            Liên hệ với chúng tôi
+            {{ $t('Contact.ContaNtUs') }}
           </div>
-          <div class="form-ask-item">
-            <label for="ht">Họ và tên <span class="fooAsk">*</span></label>
-            <input id="ht" type="text" placeholder="Nhập họ và tên">
-          </div>
-          <div class="form-ask-colum">
-            <div class="sdt">
-              <label for="sdt">Số điện thoại <span class="fooAsk">*</span></label>
-              <input id="sdt" type="text" placeholder="Nhập họ và tên">
+          <form @submit.prevent="submitForm">
+            <div class="form-ask-item">
+              <label for="ht">{{ $t('Contact.Firstname') }} <span class="fooAsk">*</span></label>
+              <input
+                id="ht"
+                type="text"
+                :placeholder="$t('Contact.EnterName')"
+                required
+                @blur="validateRequired"
+              >
             </div>
-            <div class="city">
-              <label for="tp">Chọn thành phố <span class="fooAsk">*</span></label>
-              <dropdown
-                v-model="item.key"
-                :data="records"
-                :prop-key="item.key"
-                :prop-value="item.value"
-                :placeholder="placeholder"
-              />
-            </div>
-          </div>
-          <div class="form-ask-item">
-            <label for="email">Địa chỉ email <span class="fooAsk">*</span></label>
-            <input id="email" type="email" placeholder="Nhập địa chỉ email">
-          </div>
-          <div class="agree">
-            <div class="btn-radio">
-              <input id="checkBok" type="checkbox">
-              <div class="agree-txt">
-                Tôi đã đọc<span class="checkbox-txt">Chính sách bảo mật</span> và đồng ý để <span class="checkbox-txt">Mirae Asset Prévoir</span> được liên hệ cho các mục đích tư vấn, quảng cáo các sản phẩm, dịch vụ.
+            <div class="form-ask-colum">
+              <div class="sdt">
+                <label for="sdt">{{ $t('Contact.PhoneNumber') }} <span class="fooAsk">*</span></label>
+                <input
+                  id="sdt"
+                  type="text"
+                  :placeholder="$t('Contact.sdt')"
+                  required
+                  @blur="validateRequired"
+                >
+              </div>
+              <div class="city">
+                <label for="tp">{{ $t('Contact.ChooseTheCity') }} <span class="fooAsk">*</span></label>
+                <dropdown
+                  v-model="item.key"
+                  :data="records"
+                  :prop-key="item.key"
+                  :prop-value="item.value"
+                  :placeholder="placeholder"
+                  @blur="validateRequired"
+                />
               </div>
             </div>
-          </div>
-          <div class="btnSubmit">
-            <div class="btn-submit">
-              Gửi thông tin
+            <div class="form-ask-item">
+              <label for="email">{{ $t('Contact.EmailAddress') }} <span class="fooAsk">*</span></label>
+              <input
+                id="email"
+                v-model="email"
+                type="email"
+                :placeholder="$t('Contact.address')"
+                required
+                @blur="validateRequired"
+              >
             </div>
-          </div>
+            <div class="agree">
+              <div class="btn-radio">
+                <input
+                  id="checkBok"
+                  v-model="isChecked"
+                  type="checkbox"
+                  form="checkForm"
+                >
+                <div class="agree-txt">
+                  {{ $t('Contact.IAlreadyRead') }}<span class="checkbox-txt">{{ $t('Contact.Privacy') }}</span> {{ $t('Contact.agree') }}<span class="checkbox-txt">Mirae Asset Prévoir</span> {{ $t('Contact.productsOrServices') }}
+                </div>
+              </div>
+            </div>
+            <div class="btnSubmit">
+              <button
+                class="btn-submit"
+                :class="{ clicked: isChecked }"
+                type="submit"
+                :disabled="!isChecked"
+              >
+                {{ $t('Contact.information') }}
+              </button>
+            </div>
+          </form>
         </div>
         <div class="colum-item">
-          <img id="colum-item_img" src="~/assets/img/lienhe.png" alt="errorLienhe">
+          <img src="~/assets/img/lienhe.png" alt="errorLienhe">
         </div>
       </div>
     </div>
@@ -103,7 +132,8 @@ export default {
   data() {
     return {
       frontVN: null,
-      item: {}
+      item: {},
+      selectedLocale: 'vn'
     }
   },
   computed: {
@@ -151,10 +181,34 @@ export default {
     this.$store.dispatch('setProduct')
   },
   methods: {
+    validateRequired() {
+      const value = event.currentTarget.value
+      if (!value) {
+        // them border mầu đỏ cho mã nhân viên hiện tại
+        event.currentTarget.classList.add('validateInput')
+        // them attr thông báo lỗi cho input hiện tại
+        event.currentTarget.setAttribute(
+          'title',
+          'thông tin này không được phép để trống!'
+        )
+      } else {
+        event.currentTarget.classList.remove('validateInput')
+      }
+    }
   }
 
 }
 </script>
 <style lang="scss">
 @import "../../assets/scss/main";
+.validateInput {
+  border-color: red;
+}
+.btn-submit[disabled] {
+  opacity: 0.5;
+}
+
+.btn-submit:not([disabled]) {
+  opacity: 1;
+}
 </style>

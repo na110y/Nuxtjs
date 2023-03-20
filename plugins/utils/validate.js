@@ -14,7 +14,15 @@ export default ({ app }, inject) => {
       } catch (err) {
       }
     },
-    // thay đổi kiểu giá trị của chữ
+    isTypeLang(string, language) {
+      try {
+        const obj = JSON.parse(string)
+        return obj[language]
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    // lấy giá trị ảnh từ api
     jsonParse(value) {
       try {
         if (value) {

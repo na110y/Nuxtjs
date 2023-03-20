@@ -102,16 +102,7 @@ export default {
   name: 'MyHeader',
   data() {
     return {
-      optionLangs: [
-        {
-          title: 'vn',
-          language: 'vi'
-        },
-        {
-          title: 'en',
-          language: 'en'
-        }
-      ],
+      languageCode: ['vn', 'en'],
       selectedLocale: 'vi'
     }
   },
