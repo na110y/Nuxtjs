@@ -76,7 +76,7 @@
             <div class="condition">
               <div class="condition-list">
                 <div class="condition-title">
-                  {{ $t('service.Conditions') }}
+                  {{ $t('productDetail.Conditions') }}
                 </div>
                 <div class="condition-txt">
                   <ul class="condition-txt_item">
@@ -133,39 +133,39 @@
                   <ul class="condition-txt_item">
                     <li class="colum colum-border">
                       <div class="item_condition insurance-item">
-                        Tạo dựng cho con trẻ điểm tựa vững chắc để tự tin lập nghiệp
+                        {{ $t('Contact.Building') }}
                       </div>
                     </li>
                     <li class="colum colum-border">
                       <div class="item_condition item-colum_txt">
-                        Người được bảo hiểm chính (NĐBH)
+                        {{ $t('Contact.Primary') }}
                       </div>
                       <div class="item_condition item-colum_txt">
-                        Quyền lợi bảo hiểm
+                        {{ $t('productDetail.InsuranceBenefits') }}
                       </div>
                     </li>
                     <li class="colum colum-border">
                       <div class="item_condition">
-                        Quyền lợi tiền mặt hàng năm
+                        {{ $t('Contact.Annual') }}
                       </div>
                       <div class="item_condition">
-                        2% giá trị giải ước
+                        {{ $t('Contact.settlement') }}
                       </div>
                     </li>
                     <li class="colum colum-border">
                       <div class="item_condition">
-                        Tổng quyền lợi giáo dục
+                        {{ $t('Contact.educational') }}
                       </div>
                       <div class="item_condition">
-                        150% số tiền bảo hiểm
+                        {{ $t('Contact.insured') }}
                       </div>
                     </li>
                     <li class="colum">
                       <div class="item_condition">
-                        Quyền lợi thưởng đăng khoa
+                        {{ $t('Contact.benefits') }}
                       </div>
                       <div class="item_condition">
-                        10% số tiền bảo hiểm
+                        {{ $t('Contact.sumInsured') }}
                       </div>
                     </li>
                   </ul>
@@ -249,16 +249,16 @@
             <div class="receive-subsidies">
               <div class="condition-list">
                 <div class="condition-title">
-                  Nhận quyền lợi giáo dục định kỳ 4 năm
+                  {{ $t('Contact.Receive') }}
                 </div>
                 <div class="condition-txt">
                   <ul class="condition-txt_item">
                     <li class="colum colum-border">
                       <div class="item_condition item-colum_txt">
-                        Người được bảo hiểm chính (tuổi)
+                        {{ $t('Contact.Insured') }}
                       </div>
                       <div class="item_condition item-colum_txt">
-                        Quyền lợi giáo dục đảm bảo (% số tiền bảo hiểm)
+                        {{ $t('Contact.Guaranteed') }}
                       </div>
                     </li>
                     <li class="colum colum-border">
@@ -305,7 +305,7 @@
               <div class="product-last_fixed">
                 <div class="website">
                   <div class="title">
-                    Tài liệu & biểu mẫu
+                    {{ $t('Contact.Documents') }}
                   </div>
                   <div class="prodict-posotion">
                     <div class="website-img">
@@ -405,48 +405,48 @@
             <div class="condition">
               <div class="condition-list">
                 <div class="condition-title">
-                  Điều kiện tham gia
+                  {{ $t('productDetail.Conditions') }}
                 </div>
                 <div class="condition-txt">
                   <ul class="condition-txt_item">
                     <li class="colum colum-border">
                       <div class="item_condition">
-                        Người được bảo hiểm chính
+                        {{ $t('service.Primary') }}
                       </div>
                       <div class="item_condition">
-                        180 ngày - 10 tuổi
-                      </div>
-                    </li>
-                    <li class="colum colum-border">
-                      <div class="item_condition">
-                        Bên mua bảo hiểm
-                      </div>
-                      <div class="item_condition">
-                        18 - 62 tuổi (không cao hơn tuổi người được bảo hiểm chính quá 52 tuổi)
+                        {{ $t('service.days') }}
                       </div>
                     </li>
                     <li class="colum colum-border">
                       <div class="item_condition">
-                        Thời hạn hợp đồng
+                        {{ $t('service.Insurance') }}
                       </div>
                       <div class="item_condition">
-                        21 - (trừ) tuổi khi tham gia của người được bảo hiểm chính
+                        {{ $t('service.yearsOld') }}
                       </div>
                     </li>
                     <li class="colum colum-border">
                       <div class="item_condition">
-                        Thời hạn đóng phí
+                        {{ $t('service.Contract') }}
                       </div>
                       <div class="item_condition">
-                        8 năm, hoặc 18 - (trừ) tuổi khi tham gia của Người được bảo hiểm chính
+                        {{ $t('service.insuredPerson') }}
+                      </div>
+                    </li>
+                    <li class="colum colum-border">
+                      <div class="item_condition">
+                        {{ $t('service.paymentDeadline') }}
+                      </div>
+                      <div class="item_condition">
+                        {{ $t('service.PrimaryInsured') }}
                       </div>
                     </li>
                     <li class="colum">
                       <div class="item_condition">
-                        Định kì đóng phí bảo hiểm
+                        {{ $t('service.premiumPayment') }}
                       </div>
                       <div class="item_condition">
-                        Quý/nửa năm/năm
+                        {{ $t('service.Quarter') }}
                       </div>
                     </li>
                   </ul>
@@ -460,45 +460,48 @@
             <div class="insurance">
               <div class="condition-list">
                 <div class="condition-title">
-                  Quyền lợi bảo hiểm
+                  {{ $t('productDetail.Conditions') }}
                 </div>
                 <div class="condition-txt">
                   <ul class="condition-txt_item">
                     <li class="colum colum-border">
-                      <div class="item_condition insurance-item">
-                        Tạo dựng cho con trẻ điểm tựa vững chắc để tự tin lập nghiệp
+                      <div class="item_condition">
+                        {{ $t('service.Primary') }}
                       </div>
-                    </li>
-                    <li class="colum colum-border">
-                      <div class="item_condition item-colum_txt">
-                        Người được bảo hiểm chính (NĐBH)
-                      </div>
-                      <div class="item_condition item-colum_txt">
-                        Quyền lợi bảo hiểm
+                      <div class="item_condition">
+                        {{ $t('service.days') }}
                       </div>
                     </li>
                     <li class="colum colum-border">
                       <div class="item_condition">
-                        Quyền lợi tiền mặt hàng năm
+                        {{ $t('service.Insurance') }}
                       </div>
                       <div class="item_condition">
-                        2% giá trị giải ước
+                        {{ $t('service.yearsOld') }}
                       </div>
                     </li>
                     <li class="colum colum-border">
                       <div class="item_condition">
-                        Tổng quyền lợi giáo dục
+                        {{ $t('service.Contract') }}
                       </div>
                       <div class="item_condition">
-                        150% số tiền bảo hiểm
+                        {{ $t('service.insuredPerson') }}
+                      </div>
+                    </li>
+                    <li class="colum colum-border">
+                      <div class="item_condition">
+                        {{ $t('service.paymentDeadline') }}
+                      </div>
+                      <div class="item_condition">
+                        {{ $t('service.PrimaryInsured') }}
                       </div>
                     </li>
                     <li class="colum">
                       <div class="item_condition">
-                        Quyền lợi thưởng đăng khoa
+                        {{ $t('service.premiumPayment') }}
                       </div>
                       <div class="item_condition">
-                        10% số tiền bảo hiểm
+                        {{ $t('service.Quarter') }}
                       </div>
                     </li>
                   </ul>
