@@ -76,7 +76,7 @@ export default {
     // thay đổi giá trị khi click và thay đổi cả url
     btnClickItem(index) {
       this.itemNews = this.listNews[index]
-      const newSlug = this.isType(this.itemNews.slug)
+      const newSlug = this.$validate.isType(this.itemNews.slug)
       const newRoute = {
         path: '/about/notificationList/' + newSlug
       }
@@ -96,18 +96,6 @@ export default {
         .get(process.env.baseApiUrl + `/post/fe-press-release-detail?slug=${this.$route.params.id}`)
       if (res) {
         this.itemNews = res.data.data
-      }
-    },
-    isType(string) {
-      try {
-        JSON.parse(string)
-        {
-          const obj = JSON.parse(string)
-          return obj.vn
-        }
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
       }
     }
 

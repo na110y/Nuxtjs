@@ -72,7 +72,7 @@ export default {
     },
     btnClickItem(index) {
       this.itemNews = this.listNews[index]
-      const newSlug = this.isType(this.itemNews.slug)
+      const newSlug = this.$validate.isType(this.itemNews.slug)
       const newRoute = {
         path: '/about/video/' + newSlug
       }
@@ -90,20 +90,7 @@ export default {
       if (res) {
         this.itemNews = res.data.data
       }
-    },
-    isType(string) {
-      try {
-        JSON.parse(string)
-        {
-          const obj = JSON.parse(string)
-          return obj.vn
-        }
-      } catch (err) {
-        console.error(`Failed to parse JSON data: ${err.message}`)
-        return null
-      }
     }
-
   }
 }
 </script>

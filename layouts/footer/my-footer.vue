@@ -4,10 +4,10 @@
       <ul class="footer-aboutMe_txt">
         <li class="aboutMe_column aboutMe_column1">
           <div class="aboutMe_column-title">
-            Công ty TNHH Bảo hiểm Nhân thọ Mirae Asset Prévoir
+            {{ $t('footer.TNHH') }}
           </div>
           <div class="aboutMe_column-adder">
-            Tầng 18, Tòa nhà Green Power, 35 Tôn Đức Thắng, Quận 1, Tp.HCM
+            {{ $t('footer.Address') }}
           </div>
           <div class="aboutMe_column-number">
             <img src="@/assets/img/number.png" alt="error-number">
@@ -32,75 +32,75 @@
         </li>
         <li class="aboutMe_column aboutMe_column2">
           <div class="aboutMe_column-title">
-            Sản phẩm
+            {{ $t('footer.product') }}
           </div>
           <div class="aboutMe_column-adder">
-            Sống khỏe mỗi ngày
+            {{ $t('footer.LiveStrong') }}
           </div>
           <div class="aboutMe_column-adder">
-            Bệ phóng tài năng
+            {{ $t('footer.Talent') }}
           </div>
           <div class="aboutMe_column-adder">
-            Hạnh phúc vững bền
+            {{ $t('footer.Sustainable') }}
           </div>
           <div class="aboutMe_column-adder">
-            Đầu tư lâu dài
+            {{ $t('footer.investment') }}
           </div>
           <div class="aboutMe_column-adder">
-            Hưu trí an nhàn
+            {{ $t('footer.Peaceful') }}
           </div>
         </li>
         <li class="aboutMe_column aboutMe_column3">
           <div class="aboutMe_column-title">
-            Dịch vụ
+            {{ $t('footer.service') }}
           </div>
           <div class="aboutMe_column-adder">
-            Chương trình khuyến mãi
+            {{ $t('footer.Promotions') }}
           </div>
           <div class="aboutMe_column-adder">
-            Cổng thông tin khách hàng
+            {{ $t('footer.portal') }}
           </div>
           <div class="aboutMe_column-adder">
-            Thanh toán phí bảo hiểm
+            {{ $t('footer.Insurance') }}
           </div>
           <div class="aboutMe_column-adder">
-            Giải quyết quyền lợi bảo hiểm
+            {{ $t('footer.insuranceBenefits') }}
           </div>
           <div class="aboutMe_column-adder">
-            Thuật ngữ bảo hiểm
+            {{ $t('footer.InsuranceTerm') }}
           </div>
           <div class="aboutMe_column-adder">
-            Thông tin lãi suất
+            {{ $t('footer.rateInfor') }}
           </div>
         </li>
         <li class="aboutMe_column aboutMe_column2">
           <div class="aboutMe_column-title">
-            Về Mirae Asset Prévoir
+            {{ $t('footer.about') }}
           </div>
           <div class="aboutMe_column-adder">
-            Về chúng tôi
+            {{ $t('footer.AboutUs') }}
           </div>
           <div class="aboutMe_column-adder">
-            Báo cáo tài chính
+            {{ $t('footer.Financial') }}
           </div>
           <div class="aboutMe_column-adder">
-            Quỹ liên kết chung
+            {{ $t('footer.General') }}
           </div>
           <div class="aboutMe_column-adder">
-            Kênh phân phối
+            {{ $t('footer.Distribution') }}
           </div>
           <div class="aboutMe_column-adder">
-            Cơ hội nghề nghiệp
+            {{ $t('footer.opportunities') }}
           </div>
           <div class="aboutMe_column-adder">
-            Thông cáo báo chí
+            {{ $t('footer.PressRelease') }}
           </div>
         </li>
       </ul>
     </div>
     <div class="footer-client">
       <div class="footer-client_txt">
-        Ứng dụng di động phục vụ khách hàng
+        {{ $t('footer.MobileApplication') }}
       </div>
       <div class="footer-client_shop">
         <a href="#" class="client_shop-AppStor">
@@ -118,16 +118,16 @@
       <div class="footer-last_rules">
         <div class="rules-title">
           <a href="#" class="txt-footer">
-            Điều khoản sử dụng
+            {{ $t('footer.termsOfUse') }}
           </a>
           <div class="rules-border" />
         </div>
         <div class="rules-title">
-          <a href="#" class="txt-footer"> Bản quyền </a>
+          <a href="#" class="txt-footer"> {{ $t('footer.license') }} </a>
           <div class="rules-border" />
         </div>
         <div class="rules-title">
-          <a href="#" class="txt-footer"> Chính sách bảo mật </a>
+          <a href="#" class="txt-footer"> {{ $t('footer.PrivacyPolicy') }} </a>
         </div>
       </div>
     </div>

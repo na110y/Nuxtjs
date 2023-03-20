@@ -28,18 +28,20 @@
               {{ $t('header.news') }}
             </nuxt-link>
           </div>
-          <div class="menu-link btn ">
-            {{ $t('header.insurance') }}
+          <div class="btn ">
+            <nuxt-link to="/contact/" class="menu-insurance">
+              {{ $t('header.insurance') }}
+            </nuxt-link>
           </div>
           <div v-b-toggle.sidebar-right class="menu-icon_mobile" title="open menu">
             <img id="iconMenum" src="../../assets/img/menu-icon.svg" alt="error">
           </div>
           <div class="menu-link menuLang">
-            <select>
-              <option value="vi" @click.prevent="selectLang">
+            <select v-model="$i18n.locale" @change="changeLanguage">
+              <option value="vi">
                 vn
               </option>
-              <option value="en" @click.prevent="selectLang">
+              <option value="en">
                 en
               </option>
             </select>
@@ -72,13 +74,15 @@
           <li class="mobile-item border-Mobile">
             <div class="btn-buy">
               <div class="btn-buy_insurance mobile-item ">
-                {{ $t('header.insurance') }}
+                <router-link to="/contact/" class="menu-item_news item-link">
+                  {{ $t('header.insurance') }}
+                </router-link>
               </div>
             </div>
           </li>
           <li class="mobile-item">
             <div class="menu-link">
-              <select @change="selectLang">
+              <select v-model="$i18n.locale" @change="changeLanguage">
                 <option value="vi">
                   vn
                 </option>
@@ -107,14 +111,15 @@ export default {
           title: 'en',
           language: 'en'
         }
-      ]
+      ],
+      selectedLocale: 'vi'
     }
   },
   computed: {
   },
   methods: {
-    selectLang(event) {
-      this.$store.dispatch('setLang', event.target.getAttribute('value'))
+    changeLanguage(event) {
+      this.$store.commit('SET_LANG', event.target.value)
     }
   }
 }

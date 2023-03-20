@@ -50,7 +50,7 @@ export default {
       type: String
     }
   },
-  data () {
+  data() {
     return {
       dataApi: [], // dữ liệu lấy từ api
       isShowDrop: false,
@@ -58,23 +58,23 @@ export default {
     }
   },
   methods: {
-    isToggle (isShowDrop) {
+    isToggle(isShowDrop) {
       this.isShowDrop = isShowDrop
     },
-    toggleDrop () {
+    toggleDrop() {
       this.isToggle(true)
     },
     /**
      * @description: Hàm này để hiển thị danh sách thành phố
      */
-    selectItem (key) {
+    selectItem(key) {
       this.item.key = key
       // this.item('update:modelValue', key)
       this.item.key = this.formatEnum(key)
       console.log(this.item.key)
       this.isToggle(false)
     },
-    formatEnum (key) {
+    formatEnum(key) {
       switch (key) {
         case 1:
           return 'Hà Nội'

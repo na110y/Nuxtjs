@@ -29,39 +29,17 @@ export default {
   css: [
   ],
   eslint: {
-    fix: true,
+    fix: true
   },
   prettier: {
-    eslintIntegration: true,
+    eslintIntegration: true
   },
   // build swiper
   plugins: [
     { src: '~/plugins/vue-carousel.js', mode: 'client' },
     '~/plugins/utils/validate.js',
-    { src: '~/plugins/i18n.js', ssr: true }
+    { src: '~/plugins/i18n.js' }
   ],
-  i18n: {
-    locales: [
-      {
-        code: 'en',
-        name: 'English',
-        iso: 'en-US',
-        file: 'en-US.js'
-      },
-      {
-        code: 'vi',
-        name: 'Vietnamese',
-        iso: 'vi-VN',
-        file: 'vi-VN.js'
-      }
-    ],
-    defaultLocale: 'en',
-    lazy: true,
-    langDir: 'lang/',
-    vueI18n: {
-      fallbackLocale: 'en'
-    }
-  },
   router: {
     middleware: ['i18n']
   },
@@ -82,7 +60,7 @@ export default {
   // build library
   modules: [
     '@nuxtjs/axios',
-    'bootstrap-vue/nuxt',
+    'bootstrap-vue/nuxt'
   ],
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308

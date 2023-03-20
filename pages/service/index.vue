@@ -6,23 +6,22 @@
         <div class="slideProductOpa" />
         <div class="slideProduct-txt">
           <div class="slide-title">
-            Khang an thành tài
+            {{ $t('service.KhangAn') }}
           </div>
           <div class="slide-txt">
-            giúp bạn an tâm tận hưởng cuộc sống trọn vẹn bằng cách đảm bảo tương lai của con bạn, tạo
-            dựng cho con trẻ điểm tựa vững chắc để tự tin lập nghiệp
+            {{ $t('service.business') }}
           </div>
         </div>
       </div>
     </div>
     <b-card no-body>
       <b-tabs card>
-        <b-tab title="Đặc điểm sản phẩm" active>
+        <b-tab :title="$t('productDetail.ProductFeatures')" active>
           <b-card-text>
             <div class="contener">
               <div class="product-features">
                 <div class="product-features_title">
-                  Đặc điểm sản phẩm
+                  {{ $t('service.ProductFeatures') }}
                 </div>
                 <div class="product-features_item">
                   <ul class="product-item_features">
@@ -31,10 +30,10 @@
                         <img src="~/assets/img/product1.svg" alt="erorProduct">
                       </div>
                       <div class="item_features-title">
-                        Đảm bảo tài chính
+                        {{ $t('service.FinancialSecurity') }}
                       </div>
                       <div class="item_features-txt">
-                        Cho con theo học những ngành nghề yêu thích với <span>Quyền lợi giáo dục lên đến 150%</span> Số tiền bảo hiểm.
+                        {{ $t('service.LetChildren') }} <span>{{ $t('service.Educational') }}</span> { $t('service.InsuranceMoney') }}
                       </div>
                     </li>
                     <li class="item_features">
@@ -42,10 +41,10 @@
                         <img src="~/assets/img/product2.svg" alt="erorProduct">
                       </div>
                       <div class="item_features-title">
-                        Đảm bảo con đường học vấn
+                        {{ $t('service.Securing') }}
                       </div>
                       <div class="item_features-txt">
-                        tiếp tục hoàn thành con đường học vấn như mong đợi khi rủi ro không may xảy ra: <span>Hợp đồng bảo hiểm được miễn đóng phí</span>
+                        {{ $t('service.continueComplete') }}<span>{{ $t('service.InsurancePolicy') }}</span>
                       </div>
                     </li>
                     <li class="item_features">
@@ -53,10 +52,10 @@
                         <img src="~/assets/img/product3.svg" alt="erorProduct">
                       </div>
                       <div class="item_features-title">
-                        Bảo vệ an toàn
+                        {{ $t('service.Safety') }}
                       </div>
                       <div class="item_features-txt">
-                        Bảo vệ vững chắc cho cả <span>cha/mẹ</span> và <span>con</span> cho đến khi con trưởng thành
+                        {{ $t('service.protectionBoth') }} <span>{{ $t('service.parents') }}</span> {{ $t('service.and') }}<span>con</span> {{ $t('service.untilGrowUp') }}
                       </div>
                     </li>
                     <li class="item_features">
@@ -64,10 +63,10 @@
                         <img src="~/assets/img/product4.svg" alt="erorProduct">
                       </div>
                       <div class="item_features-title">
-                        Tạo động lực cho con trẻ
+                        {{ $t('service.Motivatekids') }}
                       </div>
                       <div class="item_features-txt">
-                        khen thưởng kết quả học tập cho con với khoản tiền mặt <span>tương đương 2% Giá trị giải ước mỗi năm</span>
+                        {{ $t('service.rewardYour') }} <span>{{ $t('service.equivalent') }}</span>
                       </div>
                     </li>
                   </ul>
@@ -77,48 +76,48 @@
             <div class="condition">
               <div class="condition-list">
                 <div class="condition-title">
-                  Điều kiện tham gia
+                  {{ $t('service.Conditions') }}
                 </div>
                 <div class="condition-txt">
                   <ul class="condition-txt_item">
                     <li class="colum colum-border">
                       <div class="item_condition">
-                        Người được bảo hiểm chính
+                        {{ $t('service.Primary') }}
                       </div>
                       <div class="item_condition">
-                        180 ngày - 10 tuổi
-                      </div>
-                    </li>
-                    <li class="colum colum-border">
-                      <div class="item_condition">
-                        Bên mua bảo hiểm
-                      </div>
-                      <div class="item_condition">
-                        18 - 62 tuổi (không cao hơn tuổi người được bảo hiểm chính quá 52 tuổi)
+                        {{ $t('service.days') }}
                       </div>
                     </li>
                     <li class="colum colum-border">
                       <div class="item_condition">
-                        Thời hạn hợp đồng
+                        {{ $t('service.Insurance') }}
                       </div>
                       <div class="item_condition">
-                        21 - (trừ) tuổi khi tham gia của người được bảo hiểm chính
+                        {{ $t('service.yearsOld') }}
                       </div>
                     </li>
                     <li class="colum colum-border">
                       <div class="item_condition">
-                        Thời hạn đóng phí
+                        {{ $t('service.Contract') }}
                       </div>
                       <div class="item_condition">
-                        8 năm, hoặc 18 - (trừ) tuổi khi tham gia của Người được bảo hiểm chính
+                        {{ $t('service.insuredPerson') }}
+                      </div>
+                    </li>
+                    <li class="colum colum-border">
+                      <div class="item_condition">
+                        {{ $t('service.paymentDeadline') }}
+                      </div>
+                      <div class="item_condition">
+                        {{ $t('service.PrimaryInsured') }}
                       </div>
                     </li>
                     <li class="colum">
                       <div class="item_condition">
-                        Định kì đóng phí bảo hiểm
+                        {{ $t('service.premiumPayment') }}
                       </div>
                       <div class="item_condition">
-                        Quý/nửa năm/năm
+                        {{ $t('service.Quarter') }}
                       </div>
                     </li>
                   </ul>
@@ -128,7 +127,7 @@
             <div class="insurance">
               <div class="condition-list">
                 <div class="condition-title">
-                  Quyền lợi bảo hiểm
+                  {{ $t('productDetail.InsuranceBenefits') }}
                 </div>
                 <div class="condition-txt">
                   <ul class="condition-txt_item">
@@ -176,71 +175,71 @@
             <div class="protect">
               <div class="condition-list">
                 <div class="condition-title">
-                  Bảo vệ gia đình trước mọi rủi ro, bất trắc
+                  {{ $t('service.uncertainties') }}
                 </div>
                 <div class="condition-txt">
                   <ul class="condition-txt_item">
                     <li class="colum colum-border">
                       <div class="item_condition item-colum_txt">
-                        Bên mua bảo hiểm
+                        {{ $t('service.InsuranceBuyer') }}
                       </div>
                       <div class="item_condition item-colum_txt">
-                        Quyền lợi bảo hiểm
+                        {{ $t('productDetail.InsuranceBenefits') }}
                       </div>
                     </li>
                     <li class="colum colum-border">
                       <div class="item_condition ">
-                        Quyền lợi TV hoặc TTTBVV*
+                        {{ $t('service.TTTBBVV') }}
                       </div>
                       <div class="item_condition ">
-                        Miễn đóng phí bảo hiểm
+                        {{ $t('service.premium') }}
                       </div>
                     </li>
                     <li class="colum colum-border">
                       <div class="item_condition">
-                        Quyền lợi TV hoặc TTTBVV do tai nạn
+                        {{ $t('service.accident') }}
                       </div>
                       <div class="item_condition">
-                        2% giá trị giải ước
+                        {{ $t('service.settlement') }}
                       </div>
                     </li>
                     <li class="colum colum-border">
                       <div class="item_condition">
-                        Tổng quyền lợi giáo dục
+                        {{ $t('service.educational') }}
                       </div>
                       <div class="item_condition">
-                        100% Số tiền bảo hiểm + Miễn đóng phí bảo hiểm cho đến hết thời hạn đóng phí.
+                        {{ $t('service.paymentTerm') }}
                       </div>
                     </li>
                     <li class="colum flex colum-border">
                       <div class="colum">
                         <div class="item_condition">
-                          Quyền lợi thưởng đăng khoa
+                          {{ $t('service.Enrollment') }}
                         </div>
                         <div class="item_condition">
-                          10% số tiền bảo hiểm
+                          {{ $t('service.insured') }}
                         </div>
                       </div>
                       <div class="colum">
                         <div class="item_condition item-colum_txt">
-                          Người được bảo hiểm
+                          {{ $t('service.Insuredperson') }}
                         </div>
                         <div class="item_condition item-colum_txt">
-                          Quyền lợi bảo hiểm
+                          {{ $t('productDetail.InsuranceBenefits') }}
                         </div>
                       </div>
                       <div class="colum">
                         <div class="item_condition">
-                          Quyền lợi TV hoặc TTTBVV
+                          {{ $t('service.TTTBBVV') }}
                         </div>
                         <div class="item_condition">
-                          Trước khi nhận quyền lợi giáo dục: 150% Số tiền bảo hiểm
+                          {{ $t('service.SumInsured') }}
                         </div>
                       </div>
                     </li>
                     <li class="colum flex-end">
                       <div class="item_condition">
-                        Kể từ khi nhận quyền lợi giáo dục: số tiền tương ứng Tổng Quyền lợi giáo dục còn lại
+                        {{ $t('service.educationalBenefits') }}
                       </div>
                     </li>
                   </ul>
@@ -322,45 +321,77 @@
               <div class="ask-list">
                 <div class="colum-item_ask">
                   <div class="item_ask-title">
-                    Liên hệ với chúng tôi
+                    {{ $t('Contact.ContaNtUs') }}
                   </div>
-                  <div class="form-ask-item">
-                    <label for="ht">Họ và tên <span class="fooAsk">*</span></label>
-                    <input id="ht" type="text" placeholder="Nhập họ và tên">
-                  </div>
-                  <div class="form-ask-colum">
-                    <div class="sdt">
-                      <label for="sdt">Số điện thoại <span class="fooAsk">*</span></label>
-                      <input id="sdt" type="text" placeholder="Nhập họ và tên">
+                  <form @submit.prevent="submitForm">
+                    <div class="form-ask-item">
+                      <label for="ht">{{ $t('Contact.Firstname') }} <span class="fooAsk">*</span></label>
+                      <input
+                        id="ht"
+                        type="text"
+                        :placeholder="$t('Contact.EnterName')"
+                        required
+                        @blur="validateRequired"
+                      >
                     </div>
-                    <div class="city">
-                      <label for="tp">Chọn thành phố <span class="fooAsk">*</span></label>
-                      <dropdown
-                        v-model="item.key"
-                        :data="records"
-                        :prop-key="item.key"
-                        :prop-value="item.value"
-                        :placeholder="placeholder"
-                      />
-                    </div>
-                  </div>
-                  <div class="form-ask-item">
-                    <label for="email">Địa chỉ email <span class="fooAsk">*</span></label>
-                    <input id="email" type="email" placeholder="Nhập địa chỉ email">
-                  </div>
-                  <div class="agree">
-                    <div class="btn-radio">
-                      <input id="checkBok" type="checkbox">
-                      <div class="agree-txt">
-                        Tôi đã đọc<span class="checkbox-txt">Chính sách bảo mật</span> và đồng ý để <span class="checkbox-txt">Mirae Asset Prévoir</span> được liên hệ cho các mục đích tư vấn, quảng cáo các sản phẩm, dịch vụ.
+                    <div class="form-ask-colum">
+                      <div class="sdt">
+                        <label for="sdt">{{ $t('Contact.PhoneNumber') }} <span class="fooAsk">*</span></label>
+                        <input
+                          id="sdt"
+                          type="text"
+                          :placeholder="$t('Contact.sdt')"
+                          required
+                          @blur="validateRequired"
+                        >
+                      </div>
+                      <div class="city">
+                        <label for="tp">{{ $t('Contact.ChooseTheCity') }} <span class="fooAsk">*</span></label>
+                        <dropdown
+                          v-model="item.key"
+                          :data="records"
+                          :prop-key="item.key"
+                          :prop-value="item.value"
+                          :placeholder="placeholder"
+                          @blur="validateRequired"
+                        />
                       </div>
                     </div>
-                  </div>
-                  <div class="btnSubmit">
-                    <div class="btn-submit">
-                      Gửi thông tin
+                    <div class="form-ask-item">
+                      <label for="email">{{ $t('Contact.EmailAddress') }} <span class="fooAsk">*</span></label>
+                      <input
+                        id="email"
+                        v-model="email"
+                        type="email"
+                        placeholder="Nhập địa chỉ email"
+                        required
+                        @blur="validateRequired"
+                      >
                     </div>
-                  </div>
+                    <div class="agree">
+                      <div class="btn-radio">
+                        <input
+                          id="checkBok"
+                          v-model="isChecked"
+                          type="checkbox"
+                          form="checkForm"
+                        >
+                        <div class="agree-txt">
+                          {{ $t('Contact.IAlreadyRead') }}<span class="checkbox-txt">{{ $t('Contact.Privacy') }}</span> {{ $t('Contact.agree') }}<span class="checkbox-txt">Mirae Asset Prévoir</span> {{ $t('Contact.productsOrServices') }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="btnSubmit">
+                      <button
+                        class="btn-submit"
+                        :class="{ clicked: isChecked }"
+                        type="submit"
+                        :disabled="!isChecked"
+                      >
+                        {{ $t('Contact.information') }}
+                      </button>
+                    </div>
+                  </form>
                 </div>
                 <div class="colum-item">
                   <img src="~/assets/img/lienhe.png" alt="errorLienhe">
@@ -369,7 +400,7 @@
             </div>
           </b-card-text>
         </b-tab>
-        <b-tab title="Điều kiện">
+        <b-tab :title="$t('productDetail.condition')">
           <b-card-text>
             <div class="condition">
               <div class="condition-list">
@@ -424,7 +455,7 @@
             </div>
           </b-card-text>
         </b-tab>
-        <b-tab title="Quyền lợi">
+        <b-tab :title="$t('productDetail.power')">
           <b-card-text>
             <div class="insurance">
               <div class="condition-list">
@@ -476,49 +507,25 @@
             </div>
           </b-card-text>
         </b-tab>
-        <b-tab title="Tài liệu & biểu mẫu">
-          <b-card-text>
-            <div class="product-document">
-              <div class="websitee">
-                <div class="ws">
-                  Trang đang được phát triển!
-                </div>
-                <img src="~/assets/img/xx.png" alt="">
-              </div>
-            </div>
-          </b-card-text>
-        </b-tab>
-        <b-tab title="Hỏi đáp">
-          <b-card-text>
-            <div class="websitee">
-              <div class="websitee">
-                <div class="ws">
-                  Trang đang được phát triển!
-                </div>
-                <img src="~/assets/img/xx.png" alt="">
-              </div>
-            </div>
-          </b-card-text>
-        </b-tab>
-        <b-tab id="tuvan" title="Tư vấn ngay">
+        <b-tab id="tuvan" :title="$t('productDetail.ConsultNow')">
           <b-card-text>
             <div class="product-ask">
               <div class="ask-list">
                 <div class="colum-item_ask">
                   <div class="item_ask-title">
-                    Liên hệ với chúng tôi
+                    {{ $t('Contact.ContaNtUs') }}
                   </div>
                   <div class="form-ask-item">
-                    <label for="ht">Họ và tên <span class="fooAsk">*</span></label>
-                    <input id="ht" type="text" placeholder="Nhập họ và tên">
+                    <label for="ht">{{ $t('Contact.Firstname') }} <span class="fooAsk">*</span></label>
+                    <input id="ht" type="text" :placeholder="$t('Contact.EnterName')">
                   </div>
                   <div class="form-ask-colum">
                     <div class="sdt">
-                      <label for="sdt">Số điện thoại <span class="fooAsk">*</span></label>
-                      <input id="sdt" type="text" placeholder="Nhập họ và tên">
+                      <label for="sdt">{{ $t('Contact.PhoneNumber') }} <span class="fooAsk">*</span></label>
+                      <input id="sdt" type="text" :placeholder="$t('Contact.sdt')">
                     </div>
                     <div class="city">
-                      <label for="tp">Chọn thành phố <span class="fooAsk">*</span></label>
+                      <label for="tp">{{ $t('Contact.ChooseTheCity') }} <span class="fooAsk">*</span></label>
                       <dropdown
                         v-model="item.key"
                         :data="records"
@@ -529,20 +536,20 @@
                     </div>
                   </div>
                   <div class="form-ask-item">
-                    <label for="email">Địa chỉ email <span class="fooAsk">*</span></label>
-                    <input id="email" type="email" placeholder="Nhập địa chỉ email">
+                    <label for="email">{{ $t('Contact.EmailAddress') }} <span class="fooAsk">*</span></label>
+                    <input id="email" type="email" :placeholder="$t('Contact.address')">
                   </div>
                   <div class="agree">
                     <div class="btn-radio">
                       <input id="checkBok" type="checkbox">
                       <div class="agree-txt">
-                        Tôi đã đọc<span class="checkbox-txt">Chính sách bảo mật</span> và đồng ý để <span class="checkbox-txt">Mirae Asset Prévoir</span> được liên hệ cho các mục đích tư vấn, quảng cáo các sản phẩm, dịch vụ.
+                        {{ $t('Contact.IAlreadyRead') }}<span class="checkbox-txt">{{ $t('Contact.Privacy') }}</span> {{ $t('Contact.agree') }}<span class="checkbox-txt">Mirae Asset Prévoir</span> {{ $t('Contact.productsOrServices') }}
                       </div>
                     </div>
                   </div>
                   <div class="btnSubmit">
                     <div class="btn-submit">
-                      Gửi thông tin
+                      {{ $t('Contact.information') }}
                     </div>
                   </div>
                 </div>
@@ -579,7 +586,9 @@ export default {
   },
   data() {
     return {
-      item: {}
+      item: {},
+      isChecked: false,
+      email: ''
     }
   },
   computed: {
@@ -623,22 +632,45 @@ export default {
     this.$store.dispatch('setProduct')
   },
   methods: {
-    /**
-     * @description: sau khi click trang sẽ được di chuyển lên đầu
-     * Author: NSDThinh 21/02/2023
-     */
+    submitForm() {},
+    //  sau khi click trang sẽ được di chuyển lên đầu
     scrollToTop() {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       })
+    }, // thực hiện validate dữ liệu
+    validateRequired() {
+      const value = event.currentTarget.value
+      if (!value) {
+        // them border mầu đỏ cho mã nhân viên hiện tại
+        event.currentTarget.classList.add('validateInput')
+        // them attr thông báo lỗi cho input hiện tại
+        event.currentTarget.setAttribute(
+          'title',
+          'thông tin này không được phép để trống!'
+        )
+      } else {
+        event.currentTarget.classList.remove('validateInput')
+      }
     }
+
   }
 
 }
 </script>
 <style lang="scss" scoped>
 @import "../../assets/scss/main";
+.validateInput {
+  border-color: red;
+}
+.btn-submit[disabled] {
+  opacity: 0.5;
+}
+
+.btn-submit:not([disabled]) {
+  opacity: 1;
+}
 ::v-deep .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
   background-color: $bgc-product;
   border: none;

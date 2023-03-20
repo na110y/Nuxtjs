@@ -25,13 +25,13 @@
           >
         </div>
         <div class="list_column-txt">
-          <nuxt-link :to="`/product/${ $validate.isType(item.slug)}`">
+          <nuxt-link :to="`/product/${ $t($validate.isType(item.slug))}`">
             <div class="list_sp-title">
-              {{ $validate.isType(item.name) }}
+              {{ $t($validate.isType(item.name)) }}
             </div>
           </nuxt-link>
           <div class="list_sp-txt">
-            {{ $validate.isType(item.description) }}
+            {{ $t($validate.isType(item.description)) }}
           </div>
         </div>
       </div>

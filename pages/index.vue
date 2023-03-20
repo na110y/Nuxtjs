@@ -27,8 +27,7 @@
           <ul class="content-search">
             <li class="content-search_txt">
               <p>
-                Sản phẩm <span>Bảo hiểm nhân thọ của MAP Life</span> được thiết kế để phù
-                hợp với nhu cầu nhu cầu nhu cầu của bạn
+                {{ $t('header.product') }} <span>{{ $t('content.LifeInsurance') }}</span> {{ $t('content.needsNeeds') }}
               </p>
             </li>
             <li class="content-search_txt">
@@ -75,10 +74,10 @@
       <div class="content-body">
         <div class="body_title">
           <div class="body_title-subject">
-            Sản phẩm nổi bật
+            {{ $t('content.FeaturedProducts') }}
           </div>
           <div class="body_title-txt">
-            Khám phá các giải pháp tài chính
+            {{ $t('content.Discoverfinancial') }}
           </div>
         </div>
         <div class="flex-viewport">
@@ -104,7 +103,7 @@
                 <div class="body_column-last">
                   <nuxt-link to="/product/">
                     <div class="column-last_txt">
-                      Xem chi tiết
+                      {{ $t('content.SeeDetails') }}
                     </div>
                   </nuxt-link>
                 </div>
@@ -118,14 +117,14 @@
           <div class="column_service">
             <div class="column-service">
               <div class="column-service_title">
-                Dịch vụ khách hàng
+                {{ $t('content.CustomerService') }}
               </div>
               <div class="column-service_txt">
-                Giải đáp những thắc mắc của khách hàng, chúng tôi cam kết mang đến trải nghiệm dịch vụ tối ưu: <span>Nhanh chóng - Hữu ích</span>
+                {{ $t('content.answers') }} <span>{{ $t('content.Fast') }}</span>
               </div>
               <div class="column-service_btn">
                 <nuxt-link to="/service/">
-                  <span class="btn-service">Các dịch vụ khác</span>
+                  <span class="btn-service">{{ $t('content.otherServices') }}</span>
                 </nuxt-link>
               </div>
             </div>
@@ -157,7 +156,7 @@
               <div class="serviceLink-item_last">
                 <nuxt-link to="/service/">
                   <p class="serviceLink-item-detail">
-                    Xem chi tiết
+                    {{ $t('content.SeeDetails') }}
                   </p>
                 </nuxt-link>
               </div>
@@ -174,9 +173,9 @@
           <div class="service_title">
             <div class="service_buy_title">
               <div class="service_buy-txt">
-                Mua bảo hiểm trực tuyến
+                {{ $t('content.insuranceNnline') }}
               </div>
-              <span class="service_buy-btn">Mua ngay</span>
+              <span class="service_buy-btn">{{ $t('content.BuyNow') }}</span>
             </div>
           </div>
         </div>
@@ -184,7 +183,7 @@
       <div class="content-news">
         <div class="content-news_title">
           <div class="news_title">
-            Tin tức mới nhất
+            {{ $t('content.LatestNews') }}
           </div>
         </div>
         <div class="content-news_img">
@@ -207,7 +206,7 @@
               </div>
               <a href="#" class="post-item__link">
                 <nuxt-link :to="`/news/${ $validate.isType(news.slug)}`">
-                  <div class="post-item__link-txt">Xem chi tiết</div>
+                  <div class="post-item__link-txt">{{ $t('content.SeeDetails') }}</div>
                 </nuxt-link>
               </a>
             </div>
@@ -217,7 +216,7 @@
           <nuxt-link to="/news/">
             <div class="newsList-All">
               <div class="newsList-all_txt">
-                Xem tất cả tin tức
+                {{ $t('content.ViewAllNews') }}
               </div>
             </div>
           </nuxt-link>
@@ -255,10 +254,10 @@
           </div>
           <div class="content-last_txt">
             <div class="title-review">
-              Dễ dàng quản lý hợp đồng, thanh toán phí bảo hiểm, tích điểm đổi quà cùng nhiều tiện ích khác tại Ứng dụng di động phục vụ khách hàng MAP Life App.
+              {{ $t('content.txtLang') }}
             </div>
             <div class="txt-review">
-              Ứng dụng phục vụ khách hàng
+              {{ $t('content.CustomerSeApplication') }}
             </div>
             <div class="shopPhone">
               <a href="#" class="appStore">
@@ -318,26 +317,26 @@ export default {
       return [
         {
           key: 1,
-          value: 'Sản phẩm nổi bật',
-          placeholder: 'Sản phẩm nổi bật',
+          value: this.$t('combobox.FeaturedProducts'),
+          placeholder: this.$t('combobox.FeaturedProducts'),
           url: '/product/'
         },
         {
           key: 2,
-          value: 'Tin tức mới nhất',
-          placeholder: 'Tin tức mới nhất',
+          value: this.$t('combobox.LatestNews'),
+          placeholder: this.$t('combobox.LatestNews'),
           url: '/news/'
         },
         {
           key: 3,
-          value: 'Dịch vụ khách hàng',
-          placeholder: 'Dịch vụ khách hàng',
+          value: this.$t('combobox.CustomerService'),
+          placeholder: this.$t('combobox.CustomerService'),
           url: '/service/'
         },
         {
           key: 4,
-          value: 'Về Mirae Asset Presvoir',
-          placeholder: 'Về Mirae Asset Presvoir',
+          value: this.$t('combobox.AboutMirae'),
+          placeholder: this.$t('combobox.AboutMirae'),
           url: '/about/'
         }
       ]

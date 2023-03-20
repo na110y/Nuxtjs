@@ -4,14 +4,14 @@
       <div class="product-list_img">
         <img id="spbanner" src="~/assets/img/spbanner.png" alt="error-SPBanner">
         <div class="product-list_title">
-          Danh mục sản phẩm
+          {{ $t('product.ProductPortfolio') }}
         </div>
       </div>
     </div>
     <div class="product-detail_body">
       <b-card no-body class="flex-card">
         <b-tabs card>
-          <b-tab title="Đặc điểm sản phẩm">
+          <b-tab :title="$t('productDetail.ProductFeatures')">
             <b-card-text>
               <div class="product-item_characteristic">
                 <div class="product-charactersitic">
@@ -136,7 +136,7 @@
               </div>
             </b-card-text>
           </b-tab>
-          <b-tab title="Điều kiện tham gia">
+          <b-tab :title="$t('productDetail.Conditions')">
             <b-card-text>
               <div class="product-condition">
                 <div class="product-condition">
@@ -154,7 +154,7 @@
               </div>
             </b-card-text>
           </b-tab>
-          <b-tab title="Quyền lợi bảo hiểm">
+          <b-tab :title="$t('productDetail.InsuranceBenefits')">
             <b-card-text>
               <div class="product-advantage">
                 <div class="product-advantage">

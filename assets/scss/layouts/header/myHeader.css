@@ -68,6 +68,22 @@
   height: auto;
 }
 
+.mobile-item select {
+  background-color: #f8f9fa;
+}
+
+.contac {
+  margin-top: 50px;
+}
+
+.menu-insurance {
+  color: #ffffff;
+}
+
+#iconMenum {
+  margin-right: 30px;
+}
+
 .menu {
   display: flex;
   justify-content: space-between;

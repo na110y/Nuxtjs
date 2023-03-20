@@ -54,9 +54,7 @@ export const mutations = {
     state.bankAbout = bankAbout
   },
   SET_LANG(state, locale) {
-    if (state.locales.includes(locale)) {
-      state.locale = locale
-    }
+    state.locale = locale
   }
 }
 export const actions = {
