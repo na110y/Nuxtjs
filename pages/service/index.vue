@@ -363,7 +363,7 @@
                         id="email"
                         v-model="email"
                         type="email"
-                        placeholder="Nhập địa chỉ email"
+                        :placeholder="$t('Contact.address')"
                         required
                         @blur="validateRequired"
                       >

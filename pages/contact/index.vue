@@ -5,66 +5,75 @@
         <div class="item_ask-title">
           {{ $t('Contact.ContaNtUs') }}
         </div>
-        <div class="form-ask-item">
-          <label for="ht">{{ $t('Contact.Firstname') }} <span class="fooAsk">*</span></label>
-          <input
-            id="ht"
-            type="text"
-            :placeholder="$t('Contact.EnterName')"
-            required
-            @blur="validateRequired"
-          >
-        </div>
-        <div class="form-ask-colum">
-          <div class="sdt">
-            <label for="sdt">{{ $t('Contact.PhoneNumber') }} <span class="fooAsk">*</span></label>
+        <form @submit.prevent="submitForm">
+          <div class="form-ask-item">
+            <label for="ht">{{ $t('Contact.Firstname') }} <span class="fooAsk">*</span></label>
             <input
-              id="sdt"
+              id="ht"
               type="text"
-              :placeholder="$t('Contact.sdt')"
+              :placeholder="$t('Contact.EnterName')"
               required
               @blur="validateRequired"
             >
           </div>
-          <div class="city">
-            <label for="tp">{{ $t('Contact.ChooseTheCity') }} <span class="fooAsk">*</span></label>
-            <dropdown
-              v-model="item.key"
-              :data="records"
-              :prop-key="item.key"
-              :prop-value="item.value"
-              :placeholder="placeholder"
-            />
-          </div>
-        </div>
-        <div class="form-ask-item">
-          <label for="email">{{ $t('Contact.EmailAddress') }} <span class="fooAsk">*</span></label>
-          <input
-            id="email"
-            type="email"
-            :placeholder="$t('Contact.address')"
-            required
-            @blur="validateRequired"
-          >
-        </div>
-        <div class="agree">
-          <div class="btn-radio">
-            <input id="checkBok" type="checkbox">
-            <div class="agree-txt">
-              {{ $t('Contact.IAlreadyRead') }}<span class="checkbox-txt">{{ $t('Contact.Privacy') }}</span> {{ $t('Contact.agree') }}<span class="checkbox-txt">Mirae Asset Prévoir</span> {{ $t('Contact.productsOrServices') }}
+          <div class="form-ask-colum">
+            <div class="sdt">
+              <label for="sdt">{{ $t('Contact.PhoneNumber') }} <span class="fooAsk">*</span></label>
+              <input
+                id="sdt"
+                type="text"
+                :placeholder="$t('Contact.sdt')"
+                required
+                @blur="validateRequired"
+              >
+            </div>
+            <div class="city">
+              <label for="tp">{{ $t('Contact.ChooseTheCity') }} <span class="fooAsk">*</span></label>
+              <dropdown
+                v-model="item.key"
+                :data="records"
+                :prop-key="item.key"
+                :prop-value="item.value"
+                :placeholder="placeholder"
+                @blur="validateRequired"
+              />
             </div>
           </div>
-        </div>
-        <div class="btnSubmit">
-          <button
-            class="btn-submit"
-            :class="{ clicked: isChecked }"
-            type="submit"
-            :disabled="!isChecked"
-          >
-            {{ $t('Contact.information') }}
-          </button>
-        </div>
+          <div class="form-ask-item">
+            <label for="email">{{ $t('Contact.EmailAddress') }} <span class="fooAsk">*</span></label>
+            <input
+              id="email"
+              v-model="email"
+              type="email"
+              :placeholder="$t('Contact.address')"
+              required
+              @blur="validateRequired"
+            >
+          </div>
+          <div class="agree">
+            <div class="btn-radio">
+              <input
+                id="checkBok"
+                v-model="isChecked"
+                type="checkbox"
+                form="checkForm"
+              >
+              <div class="agree-txt">
+                {{ $t('Contact.IAlreadyRead') }}<span class="checkbox-txt">{{ $t('Contact.Privacy') }}</span> {{ $t('Contact.agree') }}<span class="checkbox-txt">Mirae Asset Prévoir</span> {{ $t('Contact.productsOrServices') }}
+              </div>
+            </div>
+          </div>
+          <div class="btnSubmit">
+            <button
+              class="btn-submit"
+              :class="{ clicked: isChecked }"
+              type="submit"
+              :disabled="!isChecked"
+            >
+              {{ $t('Contact.information') }}
+            </button>
+          </div>
+        </form>
       </div>
       <div class="colum-item">
         <img src="~/assets/img/lienhe.png" alt="errorLienhe">
