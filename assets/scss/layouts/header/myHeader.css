@@ -505,4 +505,8 @@ select option img {
   font-weight: 500;
 }
 
+.custom-select {
+  border: 1px solid #ced4da;
+}
+
 /*# sourceMappingURL=myHeader.css.map */

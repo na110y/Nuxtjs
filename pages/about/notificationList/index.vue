@@ -5,7 +5,7 @@
       <div class="banner__title">
         <div class="container">
           <div class="newsSlide-title">
-            Thông cáo báo chí
+            {{ $t('common.Press') }}
           </div>
         </div>
       </div>
@@ -22,18 +22,18 @@
           </div>
           <div class="newsList-body">
             <div class="newsList-item">
-              <nuxt-link :to="`/about/notificationList/${ $validate.isType(item.slug)}`">
+              <nuxt-link :to="`/about/notificationList/${ $t($validate.isType(item.slug,$i18n.locale))}`">
                 <div class="newsList-title">
-                  {{ $validate.isType(item.title) }}
+                  {{ $t($validate.isType(item.title,$i18n.locale)) }}
                 </div>
               </nuxt-link>
               <div class="newsList-txt">
-                {{ $validate.isType(item.description) }}
+                {{ $t($validate.isType(item.description,$i18n.locale)) }}
               </div>
             </div>
             <a href="#" class="post-item__link">
-              <nuxt-link :to="`/about/notificationList/${ $validate.isType(item.slug) }`">
-                <div class="post-item__link-txt">Xem chi tiết</div>
+              <nuxt-link :to="`/about/notificationList/${ $t($validate.isType(item.slug,$i18n.locale)) }`">
+                <div class="post-item__link-txt">{{ $t('content.SeeDetails') }}</div>
               </nuxt-link>
             </a>
           </div>

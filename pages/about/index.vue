@@ -8,7 +8,7 @@
         <div class="aboutme-opa" />
         <div class="aboutme-txt">
           <div class="txt-aboutme">
-            Về chúng tôi
+            {{ $t('maganer.AboutUs') }}
           </div>
         </div>
       </div>
@@ -22,18 +22,14 @@
         </div>
         <div class="aboutSlide-txt_txt">
           <div class="txt-title">
-            Về Mirae Asset Prévoir
+            {{ $t('maganer.About') }}
           </div>
           <div class="container">
             <div class="txt-p">
-              Là thành viên của Công ty bảo hiểm nhân thọ Mirae Asset (Hàn Quốc) và Tập đoàn Prévoir (Pháp), Mirae Asset
-              Prévoir là công ty bảo hiểm nhân thọ hàng đầu, cung cấp tập hợp các giải pháp tài chính toàn diện và bền
-              vững cho khách hàng và đối tác.
+              {{ $t('maganer.AsMember') }}
               <br>
               <br>
-              Mirae Asset Prévoir tập trung nâng cao sự hiểu biết sâu sắc về nhu cầu của khách hàng, xây dựng nền tảng
-              vững mạnh về tài chính và tăng cường xây dựng các kênh phân phối đa dạng giúp khách hàng đưa ra quyết định
-              dễ dàng hơn và sống tốt hơn với phương châm “Cho ngày mai tốt hơn, từ hôm nay".
+              {{ $t('maganer.MiraeAsset') }}
             </div>
           </div>
         </div>
@@ -41,7 +37,7 @@
       <div class="manganer">
         <div class="manganer-target">
           <div class="manganer-target_title">
-            Ban Giám đốc
+            {{ $t('maganer.name') }}
           </div>
         </div>
         <div class="maganer-Icon">
@@ -71,10 +67,10 @@
 
                     <div class="bod-slider_info">
                       <div class="bod-slider_title">
-                        {{ $validate.isType(use.name) }}
+                        {{ $t($validate.isType(use.name,$i18n.locale)) }}
                       </div>
                       <div class="bod-slider_txt">
-                        {{ $validate.isType(use.position) }}
+                        {{ $t($validate.isType(use.position,$i18n.locale)) }}
                       </div>
                     </div>
                   </div>
@@ -88,12 +84,12 @@
       <div class="about-distribution">
         <div class="distribution_txt">
           <div class="distribution-title">
-            Kênh phân phối
+            {{ $t('bank.Distribution') }}
           </div>
         </div>
         <div class="btn_bank">
           <b-tabs card>
-            <b-tab title="Kênh hợp tác ngân hàng">
+            <b-tab :title="$t('bank.bankTitle')">
               <b-card-text>
                 <div class="container">
                   <ul
@@ -105,7 +101,7 @@
                       :key="index"
                       class="bankAbout-item"
                     >
-                      <nuxt-link :to="`/about/bankList/${ $validate.isType(bank.slug)}`">
+                      <nuxt-link :to="`/about/bankList/${ $t($validate.isType(bank.slug,$i18n.locale))}`">
                         <img
                           id="iconBank"
                           :src="'https://api-map-life.grooo.com.vn/files/media/base/'
@@ -115,7 +111,7 @@
                       </nuxt-link>
                       <div class="bankAbout-info">
                         <div class="bankAbout-title">
-                          {{ $validate.isType(bank.name) }}
+                          {{ $t($validate.isType(bank.name,$i18n.locale)) }}
                         </div>
                       </div>
                     </li>
@@ -123,7 +119,7 @@
                 </div>
               </b-card-text>
             </b-tab>
-            <b-tab title="Tổ chức tài chính">
+            <b-tab :title="$t('bank.Financial')">
               <b-card-text>
                 <div class="container">
                   <ul class="bankAbout-List">
@@ -132,7 +128,7 @@
                       :key="index"
                       class="bankAbout-item"
                     >
-                      <nuxt-link :to="`/about/bankList/${ $validate.isType(bankFinance.slug)}`">
+                      <nuxt-link :to="`/about/bankList/${ $t($validate.isType(bankFinance.slug,$i18n.locale))}`">
                         <img
                           id="iconBank"
                           :src="'https://api-map-life.grooo.com.vn/files/media/base/'
@@ -142,7 +138,7 @@
                       </nuxt-link>
                       <div class="bankAbout-info">
                         <div class="bankAbout-title">
-                          {{ $validate.isType(bankFinance.name) }}
+                          {{ $t($validate.isType(bankFinance.name,$i18n.locale)) }}
                         </div>
                       </div>
                     </li>
@@ -150,7 +146,7 @@
                 </div>
               </b-card-text>
             </b-tab>
-            <b-tab title="Tổ chức doanh nghiệp">
+            <b-tab :title="$t('bank.Business')">
               <b-card-text>
                 <div class="container">
                   <ul class="bankAbout-List">
@@ -159,7 +155,7 @@
                       :key="index"
                       class="bankAbout-item"
                     >
-                      <nuxt-link :to="`/about/bankList/${ $validate.isType(bankItem.slug)}`">
+                      <nuxt-link :to="`/about/bankList/${ $t($validate.isType(bankItem.slug,$i18n.locale))}`">
                         <img
                           id="iconBank"
                           :src="'https://api-map-life.grooo.com.vn/files/media/base/'
@@ -169,7 +165,7 @@
                       </nuxt-link>
                       <div class="bankAbout-info">
                         <div class="bankAbout-title">
-                          {{ $validate.isType(bankItem.name) }}
+                          {{ $t($validate.isType(bankItem.name,$i18n.locale)) }}
                         </div>
                       </div>
                     </li>
@@ -182,7 +178,7 @@
         <div class="abou-Notification">
           <div class="abou-Notification_txt">
             <div class="Notificati-title">
-              Thông cáo báo chí
+              {{ $t('common.Press') }}
             </div>
           </div>
           <div class="abou-Notification_img">
@@ -197,29 +193,34 @@
                       $validate.jsonParse(notifi.image)[0]"
                     alt="error-ncb"
                   >
-                  <nuxt-link
-                    v-bind="$attrs"
-                    :title="$validate.isType(notifi.title)"
-                    :to="`/about/notificationList/${ $validate.isType(notifi.slug)}`"
-                  >
-                    <div class="ncb-title Notification-title">
-                      {{ $validate.isType(notifi.title) }}
+                  <div class="Notification-content">
+                    <nuxt-link
+                      v-bind="$attrs"
+                      :title="$t($validate.isType(notifi.title,$i18n.locale))"
+                      :to="`/about/notificationList/${ $t($validate.isType(notifi.slug,$i18n.locale))}`"
+                    >
+                      <div class="ncb-title Notification-title">
+                        {{ $validate.isTypeLang(notifi.title) }}
+                      </div>
+                    </nuxt-link>
+                    <div class="ncb-txt Notification-txt">
+                      {{ $t($validate.isType(notifi.description,$i18n.locale)) }}
                     </div>
-                  </nuxt-link>
-                  <div class="ncb-txt Notification-txt">
-                    {{ $validate.isType(notifi.description) }}
+                    <nuxt-link
+                      :to="`/about/notificationList/${ $t($validate.isType(notifi.slug,$i18n.locale))}`"
+                      class="Notification_link"
+                    >
+                      <div class="Notification-last_txt">
+                        {{ $t('content.SeeDetails') }}
+                      </div>
+                    </nuxt-link>
                   </div>
-                  <nuxt-link :to="`/about/notificationList/${ $validate.isType(notifi.slug)}`" class="Notification_link">
-                    <div class="Notification-last_txt">
-                      Xem chi tiết
-                    </div>
-                  </nuxt-link>
                 </div>
               </li>
             </ul>
             <div class="NotificationAll">
               <nuxt-link to="/about/notificationList/">
-                <a href="#" class="allNotifion">Xem tất cả</a>
+                <a href="#" class="allNotifion">{{ $t('common.SeeAll') }}</a>
               </nuxt-link>
             </div>
           </div>
@@ -232,11 +233,11 @@
                   <img src="https://map-life.grooo.com.vn/images/svg/finance.svg" alt="error-finance">
                 </div>
                 <div class="finance-colum_title">
-                  Báo cáo tài chính
+                  {{ $t('footer.Financial') }}
                 </div>
                 <nuxt-link to="/about/financialReportList/">
                   <div class="finance-colum_txt">
-                    Xem chi tiết
+                    {{ $t('content.SeeDetails') }}
                   </div>
                 </nuxt-link>
               </div>
@@ -247,11 +248,11 @@
                   <img src="https://map-life.grooo.com.vn/images/svg/award.svg" alt="error-finance">
                 </div>
                 <div class="finance-colum_title">
-                  Giải thưởng
+                  {{ $t('common.Prize') }}
                 </div>
                 <nuxt-link to="/about/prizeList/">
                   <div class="finance-colum_txt">
-                    Xem chi tiết
+                    {{ $t('content.SeeDetails') }}
                   </div>
                 </nuxt-link>
               </div>
@@ -262,7 +263,7 @@
           <div class="aboutvideo-item">
             <div class="about-video">
               <div class="about-title">
-                Videos & ảnh
+                {{ $t('common.Videos') }}
               </div>
             </div>
             <carousel
@@ -276,7 +277,7 @@
                 :key="index"
               >
                 <div class="list-video">
-                  <nuxt-link :to="`/about/video/${ $validate.isType(videoItem.slug)}`">
+                  <nuxt-link :to="`/about/video/${ $t($validate.isType(videoItem.slug,$i18n.locale))}`">
                     <img
                       id="imageVideo"
                       :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
@@ -284,9 +285,9 @@
                       alt="errorImage"
                     >
                   </nuxt-link>
-                  <nuxt-link :to="`/about/video/${ $validate.isType(videoItem.slug)}`" class="list_icon-title">
-                    <div class="list_icon-title" :title="$validate.isType(videoItem.name)">
-                      {{ $validate.isType(videoItem.name) }}
+                  <nuxt-link :to="`/about/video/${ $t($validate.isType(videoItem.slug,$i18n.locale))}`" class="list_icon-title">
+                    <div class="list_icon-title" :title="$t($validate.isType(videoItem.name,$i18n.locale))">
+                      {{ $t($validate.isType(videoItem.name,$i18n.locale)) }}
                     </div>
                   </nuxt-link>
                 </div>
@@ -295,7 +296,7 @@
             <div class="NotificationAll">
               <nuxt-link to="/about/video/listVideo/">
                 <div class="centerAllVideo">
-                  <span class="allNotifion">Xem tất cả</span>
+                  <span class="allNotifion">{{ $t('common.SeeAll') }}</span>
                 </div>
               </nuxt-link>
             </div>
@@ -310,6 +311,7 @@
 
 import { Carousel, Slide } from 'vue-carousel'
 import MyModal from '~/plugins/base/modal.vue'
+
 export default {
   components: {
     MyModal,

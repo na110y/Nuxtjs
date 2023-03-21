@@ -5,14 +5,14 @@
       <div class="banner__title">
         <div class="container">
           <div class="newsSlide-title">
-            Giải thưởng
+            {{ $t('common.Prize') }}
           </div>
         </div>
       </div>
     </div>
     <div class="contener">
       <div class="title-Prizelist">
-        Giải thưởng
+        {{ $t('common.Prize') }}
       </div>
       <div class="newsList_img">
         <div v-for="(news,index) in filteredList" :key="index" class="news_imgage-column">
@@ -25,21 +25,21 @@
           </div>
           <div class="newsList-body">
             <div class="newsList-item">
-              <nuxt-link :to="`/about/prizeList/${ $validate.isType(news.slug)}`">
+              <nuxt-link :to="`/about/prizeList/${ $t($validate.isType(news.slug,$i18n.locale))}`">
                 <div class="newsList-title">
-                  {{ $validate.isType(news.title) }}
+                  {{ $t($validate.isType(news.title,$i18n.locale)) }}
                 </div>
               </nuxt-link>
               <div class="newsList-date">
                 {{ $validate.formatDate(news.updated_at) }}
               </div>
               <div class="newsList-txt">
-                {{ $validate.isType(news.description) }}
+                {{ $t($validate.isType(news.description,$i18n.locale)) }}
               </div>
             </div>
             <a href="#" class="post-item__link">
-              <nuxt-link :to="`/about/prizeList/${$validate.isType(news.slug)}`">
-                <div class="post-item__link-txt">Xem chi tiết</div>
+              <nuxt-link :to="`/about/prizeList/${$t($validate.isType(news.slug,$i18n.locale))}`">
+                <div class="post-item__link-txt">{{ $t('content.SeeDetails') }}</div>
               </nuxt-link>
             </a>
           </div>

@@ -5,7 +5,7 @@
       <div class="banner__title">
         <div class="container">
           <div class="newsSlide-title">
-            Thông cáo báo chí
+            {{ $t('common.Press') }}
           </div>
         </div>
       </div>
@@ -14,7 +14,7 @@
       <div class="newsList-thumbnail">
         <div class="newsItem-thumbnail_img">
           <div class="newsItem-thumbnail__title">
-            Thông cáo báo chí gần đây
+            {{ $t('common.RecentPress') }}
           </div>
           <div v-for="(item,index) in listNews" :key="index" class="news_imgage-column">
             <div class="newsList-column">
@@ -26,9 +26,9 @@
             </div>
             <div class="newsList-body" @click="scrollToTop">
               <div class="newsList-item">
-                <nuxt-link :to="`/about/notificationList/${$validate.isType(item.slug)}`">
+                <nuxt-link :to="`/about/notificationList/${$t($validate.isType(item.slug,$i18n.locale))}`">
                   <div class="newsList-title" @click.prevent="btnClickItem(index)">
-                    {{ $validate.isType(item.title) }}
+                    {{ $t($validate.isType(item.title,$i18n.locale)) }}
                   </div>
                 </nuxt-link>
                 <div class="newsList-txt">
@@ -40,12 +40,12 @@
         </div>
         <div class="newsItem-thumbnail-column">
           <div class="newsItem-thumbnail_title">
-            {{ $validate.isType(itemNews.title) }}
+            {{ $t($validate.isType(itemNews.title,$i18n.locale)) }}
           </div>
           <div class="newsItem-thumbnail_txt">
-            {{ $validate.isType(itemNews.description) }}
+            {{ $t($validate.isType(itemNews.description,$i18n.locale)) }}
           </div>
-          <div class="newsItem-thumbnail_txt" v-html="$validate.isType(itemNews.content)" />
+          <div class="newsItem-thumbnail_txt" v-html="$t($validate.isType(itemNews.content,$i18n.locale))" />
         </div>
       </div>
     </div>
@@ -76,7 +76,7 @@ export default {
     // thay đổi giá trị khi click và thay đổi cả url
     btnClickItem(index) {
       this.itemNews = this.listNews[index]
-      const newSlug = this.$validate.isType(this.itemNews.slug)
+      const newSlug = this.$t(this.$validate.isType(this.itemNews.slug, this.$i18n.locale))
       const newRoute = {
         path: '/about/notificationList/' + newSlug
       }

@@ -4,7 +4,7 @@
       <div class="product-list_img">
         <img id="spbanner" src="~/assets/img/spbanner.png" alt="error-SPBanner">
         <div class="product-list_title">
-          {{ $t('product.ProductPortfolio') }}
+          {{ $t('productDetail.ProductPortfolio') }}
         </div>
       </div>
     </div>
@@ -16,10 +16,10 @@
               <div class="product-item_characteristic">
                 <div class="product-charactersitic">
                   <div class="bodyItem_title bodyitem-Header">
-                    {{ $validate.isType(product?.product_features?.[0].name) }}
+                    {{ $t($validate.isType(product?.product_features?.[0].name,$i18n.locale)) }}
                   </div>
                   <div class="bodyItem-txt">
-                    <div class="bodyItem_txt" v-html="$validate.isType(product?.product_features?.[0].content)" />
+                    <div class="bodyItem_txt" v-html="$t($validate.isType(product?.product_features?.[0].content,$i18n.locale))" />
                   </div>
                 </div>
               </div>
@@ -38,61 +38,15 @@
               <div class="product-advantage">
                 <div class="product-charactersitic">
                   <div class="bodyItem_title">
-                    {{ $validate.isType(product?.product_features?.[2].name) }}
+                    {{ $t($validate.isType(product?.product_features?.[2].name,$i18n.locale)) }}
                   </div>
                   <div class="bodyItem-txt">
-                    <div class="bodyItem_txt" v-html="$validate.isType(product?.product_features?.[2].content)" />
+                    <div class="bodyItem_txt" v-html="$t($validate.isType(product?.product_features?.[2].content,$i18n.locale))" />
                   </div>
                 </div>
               </div>
               <div class="product-ask">
-                <div class="ask-list">
-                  <div class="colum-item_ask">
-                    <div class="item_ask-title">
-                      Liên hệ với chúng tôi
-                    </div>
-                    <div class="form-ask-item">
-                      <label for="ht">Họ và tên <span class="fooAsk">*</span></label>
-                      <input id="ht" type="text" placeholder="Nhập họ và tên">
-                    </div>
-                    <div class="form-ask-colum">
-                      <div class="sdt">
-                        <label for="sdt">Số điện thoại <span class="fooAsk">*</span></label>
-                        <input id="sdt" type="text" placeholder="Nhập họ và tên">
-                      </div>
-                      <div class="city">
-                        <label for="tp">Chọn thành phố <span class="fooAsk">*</span></label>
-                        <dropdown
-                          v-model="item.key"
-                          :data="records"
-                          :prop-key="item.key"
-                          :prop-value="item.value"
-                          :placeholder="placeholder"
-                        />
-                      </div>
-                    </div>
-                    <div class="form-ask-item">
-                      <label for="email">Địa chỉ email <span class="fooAsk">*</span></label>
-                      <input id="email" type="email" placeholder="Nhập địa chỉ email">
-                    </div>
-                    <div class="agree">
-                      <div class="btn-radio">
-                        <input id="checkBok" type="checkbox">
-                        <div class="agree-txt">
-                          Tôi đã đọc<span class="checkbox-txt">Chính sách bảo mật</span> và đồng ý để <span class="checkbox-txt">Mirae Asset Prévoir</span> được liên hệ cho các mục đích tư vấn, quảng cáo các sản phẩm, dịch vụ.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="btnSubmit">
-                      <div class="btn-submit">
-                        Gửi thông tin
-                      </div>
-                    </div>
-                  </div>
-                  <div class="colum-item">
-                    <img id="colum-item_img" src="~/assets/img/lienhe.png" alt="errorLienhe">
-                  </div>
-                </div>
+                <contact />
               </div>
               <div class="supplementary">
                 <div class="supplementary-title">
@@ -110,7 +64,7 @@
                       :key="index"
                     >
                       <div class="list-video" @click="scrollToTop">
-                        <nuxt-link :to="`/product/${ $validate.isType(item.slug)}`">
+                        <nuxt-link :to="`/product/${ $t($validate.isType(item.slug,$i18n.locale))}`">
                           <img
                             id="imageVideo"
                             :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
@@ -120,12 +74,12 @@
                           >
                         </nuxt-link>
                         <div class="list_icon-txt">
-                          <nuxt-link :to="`/product/${ $validate.isType(item.slug)}`" class="list_icon-title">
+                          <nuxt-link :to="`/product/${ $t($validate.isType(item.slug,$i18n.locale))}`" class="list_icon-title">
                             <div class="list_icon-title" @click.prevent="btnClickItem(index)">
-                              {{ $validate.isType(item.name) }}
+                              {{ $t($validate.isType(item.name,$i18n.locale)) }}
                             </div>
                             <div class="list_icon-description" @click.prevent="btnClickItem(index)">
-                              {{ $validate.isType(item.description) }}
+                              {{ $t($validate.isType(item.description,$i18n.locale)) }}
                             </div>
                           </nuxt-link>
                         </div>
@@ -143,10 +97,10 @@
                   <div class="contener">
                     <div class="product-charactersitic">
                       <div class="bodyItem_title">
-                        {{ $validate.isType(product?.product_features?.[0].name) }}
+                        {{ $t($validate.isType(product?.product_features?.[0].name,$i18n.locale)) }}
                       </div>
                       <div class="bodyItem-txt">
-                        <div class="bodyItem_txt" v-html="$validate.isType(product?.product_features?.[0].content)" />
+                        <div class="bodyItem_txt" v-html="$t($validate.isType(product?.product_features?.[0].content,$i18n.locale))" />
                       </div>
                     </div>
                   </div>
@@ -160,10 +114,10 @@
                 <div class="product-advantage">
                   <div class="product-charactersitic">
                     <div class="bodyItem_title">
-                      {{ $validate.isType(product?.product_features?.[1].name) }}
+                      {{ $t($validate.isType(product?.product_features?.[1].name,$i18n.locale)) }}
                     </div>
                     <div class="bodyItem-txt">
-                      <div class="bodyItem_txt" v-html="$validate.isType(product?.product_features?.[1].content)" />
+                      <div class="bodyItem_txt" v-html="$t($validate.isType(product?.product_features?.[1].content,$i18n.locale))" />
                     </div>
                   </div>
                 </div>
@@ -182,21 +136,15 @@
 <script>
 // import axios from 'axios'
 import { Carousel, Slide } from 'vue-carousel'
-import dropdown from '~/components/base/dropdown.vue'
+import contact from '~/components/base/contact.vue'
 export default {
   name: 'ProductDetail',
   components: {
-    dropdown,
+    contact,
     // eslint-disable-next-line vue/no-unused-components
     Carousel,
     // eslint-disable-next-line vue/no-unused-components
     Slide
-  },
-  props: {
-    // eslint-disable-next-line vue/require-default-prop
-    placeholder: {
-      type: String
-    }
   },
   data() {
     return {
@@ -205,34 +153,7 @@ export default {
       productList: []
     }
   },
-  computed: {
-    // truyền data cho Combobox
-    records() {
-      return [
-        {
-          key: 1,
-          value: 'Hà Nội',
-          placeholder: 'Hà Nội'
-        },
-        {
-          key: 2,
-          value: 'Đà Nẵng',
-          placeholder: 'Đà Nẵng'
-        },
-        {
-          key: 3,
-          value: 'Sài Gòn',
-          placeholder: 'Sài Gòn'
-        },
-        {
-          key: 4,
-          value: 'Nha Trang',
-          placeholder: 'Nha Trang'
-        }
-      ]
-    }
-
-  },
+  computed: {},
   watch: {
 
   },
@@ -249,7 +170,7 @@ export default {
   methods: {
     btnClickItem(index) {
       this.product = this.productList[index]
-      const newSlug = this.isType(this.product.slug)
+      const newSlug = this.$t(this.$validate.isType(this.product.slug, this.$i18n.locale))
       const newRoute = {
         path: '/product/' + newSlug
       }
@@ -279,17 +200,6 @@ export default {
           '/fe-product-list?paging=1&limit=9&category_id=1&page=1')
       if (res) {
         this.productList = res.data.data.data
-      }
-    },
-    isType(string) {
-      try {
-        JSON.parse(string)
-        {
-          const obj = JSON.parse(string)
-          return obj.vn
-        }
-      } catch (err) {
-        return null
       }
     }
   }

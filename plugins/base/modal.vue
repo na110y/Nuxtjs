@@ -2,7 +2,7 @@
   <div v-if="isShowModal" class="modalItem">
     <div class="modal-use">
       <div class="modalheader">
-        Ban giám đốc
+        {{ $t('maganer.name') }}
       </div>
       <div class="modal-body">
         <div class="modal-img">
@@ -10,19 +10,19 @@
         </div>
         <div class="modal-info">
           <div class="modal-name">
-            {{ $validate.isType(use.name) }}
+            {{ $t($validate.isType(use.name,$i18n.locale)) }}
           </div>
           <div class="modal-position">
             <div class="overflow">
-              {{ $validate.isType(use.position) }}
+              {{ $t($validate.isType(use.position,$i18n.locale)) }}
             </div>
           </div>
-          <div class="modal-content" v-html="$validate.isType(use.content)" />
+          <div class="modal-content" v-html="$t($validate.isType(use.content,$i18n.locale))" />
         </div>
       </div>
       <div class="modal-end">
         <div class="closeModal" @click="btnCloseModal">
-          Đóng
+          {{ $t('common.Close') }}
         </div>
       </div>
     </div>

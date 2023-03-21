@@ -9,8 +9,9 @@ export const state = () => ({
   pressRelease: [], // thông cáo báo trí
   bankAbout: [],
   prizeList: [],
-  locales: ['vi', 'en'],
-  locale: 'vi'
+  locales: ['vn', 'en'],
+  locale: 'vn',
+  selectedLocale: ''
 })
 export const mutations = {
   // SET_SLIDE_HOME
@@ -54,7 +55,7 @@ export const mutations = {
     state.bankAbout = bankAbout
   },
   SET_LANG(state, locale) {
-    state.locale = locale
+    state.selectedLocale = locale
   }
 }
 export const actions = {
@@ -106,6 +107,9 @@ export const actions = {
     const res = await this.$axios
       .get(process.env.baseApiUrl + '/distributor/fe-channel-category')
     commit('SET_BANK', res.data)
+  },
+  changeLanguage({ commit }, lang) {
+    commit('SET_LANGUAGE', lang)
   }
 
 }

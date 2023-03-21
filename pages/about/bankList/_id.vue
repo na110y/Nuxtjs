@@ -12,7 +12,7 @@
     </div>
     <b-card no-body>
       <b-tabs card>
-        <b-tab title="Đặc điểm sản phẩm" active>
+        <b-tab :title="$t('productDetail.ProductFeatures')" active>
           <b-card-text>
             <div class="contener">
               <div class="bank-Item">
@@ -23,15 +23,15 @@
                     alt="error-imgBank"
                   >
                 </div>
-                <div class="bank-txt" v-html="$validate.isType(bankItem.introduction)" />
+                <div class="bank-txt" v-html="$t($validate.isType(bankItem.introduction,$i18n.locale))" />
               </div>
             </div>
           </b-card-text>
         </b-tab>
-        <b-tab title="Điều kiện">
+        <b-tab :title="$t('productDetail.condition')">
           <b-card-text>
             <div class="contener">
-              <div class="bank-contact" v-html="$validate.isType(bankItem.contact_info)" />
+              <div class="bank-contact" v-html="$t($validate.isType(bankItem.contact_info,$i18n.locale))" />
             </div>
           </b-card-text>
         </b-tab>

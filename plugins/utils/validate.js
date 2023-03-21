@@ -4,7 +4,7 @@
  */
 export default ({ app }, inject) => {
   inject('validate', {
-    isType(string) {
+    isTypeLang(string) {
       try {
         JSON.parse(string)
         {
@@ -14,7 +14,7 @@ export default ({ app }, inject) => {
       } catch (err) {
       }
     },
-    isTypeLang(string, language) {
+    isType(string, language) {
       try {
         const obj = JSON.parse(string)
         return obj[language]

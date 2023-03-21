@@ -531,6 +531,10 @@
   }
 }
 
+.bod-slider {
+  cursor: pointer;
+}
+
 .ncb-title {
   font-weight: 600;
   font-size: 16px;
@@ -2044,6 +2048,16 @@ ul, li {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.Notification-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 80px);
+}
+
+.Notification-last_txt {
+  margin-top: auto;
 }
 
 /*# sourceMappingURL=myAbout.css.map */

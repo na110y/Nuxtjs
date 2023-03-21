@@ -29,7 +29,7 @@
             </nuxt-link>
           </div>
           <div class="btn ">
-            <nuxt-link to="/contact/" class="menu-insurance">
+            <nuxt-link to="/onInsurance/" class="menu-insurance">
               {{ $t('header.insurance') }}
             </nuxt-link>
           </div>
@@ -37,11 +37,11 @@
             <img id="iconMenum" src="../../assets/img/menu-icon.svg" alt="error">
           </div>
           <div class="menu-link menuLang">
-            <select v-model="$i18n.locale" @change="changeLanguage">
-              <option value="vi">
+            <select v-model="$i18n.locale" class="custom-select" @change="changeLanguage">
+              <option value="vn" selected class="custom-option">
                 vn
               </option>
-              <option value="en">
+              <option value="en" class="custom-option">
                 en
               </option>
             </select>
@@ -74,7 +74,7 @@
           <li class="mobile-item border-Mobile">
             <div class="btn-buy">
               <div class="btn-buy_insurance mobile-item ">
-                <router-link to="/contact/" class="menu-item_news item-link">
+                <router-link to="/onInsurance/" class="menu-item_news item-link">
                   {{ $t('header.insurance') }}
                 </router-link>
               </div>
@@ -83,11 +83,11 @@
           <li class="mobile-item">
             <div class="menu-link">
               <select v-model="$i18n.locale" @change="changeLanguage">
-                <option value="vi">
-                  vn
+                <option value="vn" selected>
+                  Vietnamese
                 </option>
                 <option value="en">
-                  en
+                  English
                 </option>
               </select>
             </div>
@@ -103,18 +103,22 @@ export default {
   data() {
     return {
       languageCode: ['vn', 'en'],
-      selectedLocale: 'vi'
+      selectedLocale: 'vn'
     }
   },
   computed: {
+
   },
   methods: {
-    changeLanguage(event) {
-      this.$store.commit('SET_LANG', event.target.value)
+    changeLanguage(locale) {
+      // this.$store.commit('SET_LANG', locale)
+      this.$store.dispatch('changeLanguage', locale)
     }
+
   }
 }
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
+
 </style>

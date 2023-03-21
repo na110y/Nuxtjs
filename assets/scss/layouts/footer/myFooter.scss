@@ -1,5 +1,5 @@
-@import "assets/scss/_variables.scss";
-@import "assets/scss/_mixins.scss";
+@import "assets/scss/variables.scss";
+@import "assets/scss/mixins.scss";
 .image {
   max-width: 1920px;
   width: 100%;
@@ -32,10 +32,10 @@
 
 .btn-right {
   opacity: 1;
-  border-radius: 4px 0px 0px 4px;
+  border-radius: 4px 0 0 4px;
 }
 .btn-left {
-  border-radius: 0px 4px 4px 0px;
+  border-radius: 0 4px 4px 0;
 }
 
 .footer {
@@ -44,13 +44,10 @@
   background: #f5f5f5;
   max-width: 1920px;
   width: 100%;
-  &-aboutMe {
-
-  }
   @include deptop820 {
     font-family: $font;
-    padding-top: 0px;
     background: #f5f5f5;
+    padding: 40px 30px 0;
   }
 }
 
@@ -60,23 +57,210 @@
 }
 .aboutMe_column2 {
   width: 200px;
-  margin-right: 30px;
+  margin-right: 0;
+  @include deptop412 {
+    width: 100%;
+    margin-right: 30px;
+  }
+  @include deptop390 {
+    width: 100%;
+    margin-right: 30px;
+
+  }
+  @include deptop375 {
+    width: 100%;
+    margin-right: 30px;
+  }
+  @include deptop360 {
+    width: 100%;
+    margin-right: 30px;
+
+  }
+}
+.borderColum {
+  @include deptop412 {
+
+    padding-bottom: 20px;
+    border-bottom: 1px solid $border !important;
+  }
+  @include deptop390 {
+
+    padding-bottom: 20px;
+    border-bottom: 1px solid $border !important;
+
+  }
+  @include deptop375 {
+
+    padding-bottom: 20px;
+    border-bottom: 1px solid $border !important;
+  }
+  @include deptop360 {
+
+    padding-bottom: 20px;
+    border-bottom: 1px solid $border !important;
+
+  }
+}
+
+.columnMobile {
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+::v-deep .card-body {
+  background-color: #f5f5f5;
+  padding-top: 38px;
+  @include deptop820 {
+    padding-top: 0;
+  }
+  @include deptop412 {
+    padding-top: 0;
+  }
+  @include deptop390 {
+    padding-top: 0;
+  }
+  @include deptop375 {
+    padding-top: 0;
+  }
+  @include deptop360 {
+    padding-top: 0;
+  }
+}
+.aboutMe_column2 {
+  @include deptop1120 {
+  }
+  @include deptop920 {
+    margin-right: 30px;
+  }
+
+  @include deptop820 {
+  }
+  @include deptop412 {
+  }
+  @include deptop390 {
+
+  }
+  @include deptop375 {
+  }
+  @include deptop360 {
+
+  }
+}
+.aboutMe_column2 {
+
+}
+.toggleMobile::after{
+  @include deptop412 {
+    content: "";
+    width: 7px;
+    height: 7px;
+    margin-left: auto;
+    background: transparent;
+    border-right: 2px solid $text-color;
+    border-bottom: 2px solid $text-color;
+    transform: rotate(45deg);
+    margin-top: -3px;
+    top: 50%;
+    right: -16px;
+    font-weight: 400;
+  }
+  @include deptop390 {
+    content: "";
+    width: 7px;
+    height: 7px;
+    margin-left: auto;
+    background: transparent;
+    border-right: 2px solid $text-color;
+    border-bottom: 2px solid $text-color;
+    transform: rotate(45deg);
+    margin-top: -3px;
+    top: 50%;
+    right: -16px;
+    font-weight: 400;
+
+  }
+  @include deptop375 {
+    content: "";
+    width: 7px;
+    height: 7px;
+    margin-left: auto;
+    background: transparent;
+    border-right: 2px solid $text-color;
+    border-bottom: 2px solid $text-color;
+    transform: rotate(45deg);
+    margin-top: -3px;
+    top: 50%;
+    right: -16px;
+    font-weight: 400;
+  }
+  @include deptop360 {
+    content: "";
+    width: 7px;
+    height: 7px;
+    margin-left: auto;
+    background: transparent;
+    border-right: 2px solid $text-color;
+    border-bottom: 2px solid $text-color;
+    transform: rotate(45deg);
+    margin-top: -3px;
+    top: 50%;
+    right: -16px;
+    font-weight: 400;
+
+  }
 }
 .aboutMe_column3 {
   width: 250px;
   margin-right: 30px;
+  @include deptop412 {
+    width: 100%;
+    margin-right: 30px;
+  }
+  @include deptop390 {
+    width: 100%;
+    margin-right: 30px;
+
+  }
+  @include deptop375 {
+    width: 100%;
+    margin-right: 30px;
+  }
+  @include deptop360 {
+    width: 100%;
+    margin-right: 30px;
+
+  }
 }
 .footer-aboutMe {
   max-width: 1170px;
   width: 100%;
   margin: 0 auto;
   @include deptop820 {
-    display: none;
   }
 }
 .footer-aboutMe_txt {
   display: flex;
   margin-bottom: 55px;
+  justify-content: center;
+  @include deptop412 {
+    display: block;
+    margin-bottom: 55px;
+    padding: 0 20px;
+  }
+  @include deptop390 {
+    display: block;
+    margin-bottom: 55px;
+    padding: 0 20px;
+  }
+  @include deptop375 {
+    display: block;
+    margin-bottom: 55px;
+    padding: 0 20px;
+  }
+  @include deptop360 {
+    display: block;
+    margin-bottom: 55px;
+    padding: 0 20px;
+  }
 }
 .aboutMe_column-title {
   font-weight: 500;
@@ -84,6 +268,31 @@
   line-height: 24px;
   color: $text-color;
   margin-bottom: 38px;
+  @include deptop412 {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  @include deptop390 {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  @include deptop375 {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  @include deptop360 {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+  }
 }
 .aboutMe_column-adder {
   font-weight: 400;
@@ -127,7 +336,17 @@
   border-radius: 50%;
   background-color: #ffffff;
 }
-
+.columnDev {
+  @include deptop650 {
+    display: none;
+  }
+}
+.column__Mobile {
+  display: none;
+  @include deptop650 {
+    display: block;
+  }
+}
 .footer-client {
   max-width: 1170px;
   width: 100%;
@@ -136,19 +355,132 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: 84px;
-  @include deptop820 {
-    display: none;
+
+  @include deptop1024 {
+    padding:0 20px 20px;
+  }
+  @include deptop412 {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 20px;
+  }
+  @include deptop390 {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 20px;
+  }
+  @include deptop375 {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 20px;
+  }
+  @include deptop360 {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 20px;
   }
   &_txt {
     font-weight: 600;
     font-size: 24px;
     line-height: 36px;
     color: $text-color;
+    @include deptop412 {
+     padding: 0 20px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    @include deptop390 {
+      padding: 0 20px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    @include deptop375 {
+      padding: 0 20px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    @include deptop360 {
+      padding: 0 20px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
   }
   &_shop {
     display: flex;
     align-items: center;
     padding: 0 75px;
+    @include deptop1024 {
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+    @include deptop412 {
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+    @include deptop390 {
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+    @include deptop375 {
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+    @include deptop360 {
+      display: flex;
+      align-items: center;
+      padding: 0;
+
+    }
+  }
+}
+#google {
+  @include deptop412 {
+    width: 150px;
+    height: auto;
+  }
+  @include deptop390 {
+    width: 150px;
+    height: auto;
+  }
+  @include deptop375 {
+    width: 150px;
+    height: auto;
+  }
+  @include deptop360 {
+    width: 150px;
+    height: auto;
+
+  }
+}
+#app {
+  @include deptop412 {
+    width: 150px;
+    height: auto;
+  }
+  @include deptop390 {
+    width: 150px;
+    height: auto;
+  }
+  @include deptop375 {
+    width: 150px;
+    height: auto;
+  }
+  @include deptop360 {
+    width: 150px;
+    height: auto;
+
   }
 }
 .client_shop-AppStor {
@@ -168,6 +500,19 @@
     justify-content: space-between;
     align-items: center;
   }
+  @include deptop412 {
+    display: block;
+  }
+  @include deptop390 {
+    display: block;
+  }
+  @include deptop375 {
+    display: block;
+  }
+  @include deptop360 {
+    display: block;
+
+  }
   &_rules {
     display: flex;
     justify-content: center;
@@ -180,12 +525,33 @@
   line-height: 21px;
   color: $text-colorRank;
   padding: 0 16px;
+
   @include deptop820 {
-    font-weight: 500;
-    font-size: 14px;
+
+  }
+  @include deptop412 {
+    font-size: 13px;
     line-height: 21px;
     color: #7e7e84;
-    padding: 0 16px;
+    padding: 0 10px;
+  }
+  @include deptop390 {
+    font-size: 12px;
+    line-height: 21px;
+    color: #7e7e84;
+    padding: 0 10px;
+  }
+  @include deptop375 {
+    font-size: 10px;
+    line-height: 21px;
+    color: #7e7e84;
+    padding: 0 10px;
+  }
+  @include deptop360 {
+    font-size: 10px;
+    line-height: 21px;
+    color: #7e7e84;
+    padding: 0 10px;
   }
   &:hover {
     color: #999;
@@ -203,13 +569,40 @@
   margin-right: 170px;
   font-size: 14px;
   @include deptop820 {
-    margin-right: 0px;
+    margin-right: 0;
+  }
+  @include deptop412 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  @include deptop390 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  @include deptop375 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  @include deptop360 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+
   }
 }
 .footer-last_rules {
   margin-left: 150px;
+  @include deptop1024 {
+    margin-left: 0;
+  }
+  @include deptop920 {
+    margin-left: 0;
+  }
   @include deptop820 {
-    margin-left: 0px;
+    margin-left: 0;
   }
 }
 

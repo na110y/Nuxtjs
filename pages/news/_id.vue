@@ -26,9 +26,9 @@
             </div>
             <div class="newsList-body" @click="scrollToTop">
               <div class="newsList-item">
-                <nuxt-link :to="`/news/${ $validate.isType(news.slug)}`">
+                <nuxt-link :to="`/news/${ $t($validate.isType(news.slug,$i18n.locale))}`">
                   <div class="newsList-title" @click.prevent="btnClickItem(index)">
-                    {{ $validate.isType(news.title) }}
+                    {{ $t($validate.isType(news.title,$i18n.locale)) }}
                   </div>
                 </nuxt-link>
                 <div class="newsList-txt">
@@ -40,12 +40,12 @@
         </div>
         <div class="newsItem-thumbnail-column">
           <div class="newsItem-thumbnail_title">
-            {{ $validate.isType(itemNews.title) }}
+            {{ $t($validate.isType(itemNews.title,$i18n.locale)) }}
           </div>
           <div class="newsItem-thumbnail_txt">
-            {{ $validate.isType(itemNews.description) }}
+            {{ $t($validate.isType(itemNews.description,$i18n.locale)) }}
           </div>
-          <div class="newsItem-thumbnail_txt" v-html="$validate.isType(itemNews.content)" />
+          <div class="newsItem-thumbnail_txt" v-html="$t($validate.isType(itemNews.content,$i18n.locale))" />
         </div>
       </div>
     </div>
@@ -79,7 +79,7 @@ export default {
     },
     btnClickItem(index) {
       this.itemNews = this.listNews[index]
-      const newSlug = this.$validate.isType(this.itemNews.slug)
+      const newSlug = this.$t(this.$validate.isType(this.itemNews.slug, this.$i18n.locale))
       const newRoute = {
         path: '/news/' + newSlug
       }

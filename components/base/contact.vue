@@ -82,8 +82,9 @@
   </div>
 </template>
 <script>
-import dropdown from '../../components/base/dropdown.vue'
+import dropdown from './dropdown.vue'
 export default {
+  name: 'MyContact',
   components: {
     // eslint-disable-next-line vue/no-unused-components
     dropdown
@@ -152,7 +153,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import "../../assets/scss/main";
+@import "assets/scss/variables";
+@import "assets/scss/main.css";
 .validateInput {
   border-color: red;
 }

@@ -4,11 +4,11 @@
       <img id="newsSlideList" src="@/assets/img/taichinh.jpg" alt="error-SlideNews">
       <div class="banner__title">
         <div class="newsSlide-title">
-          Báo cáo tài chính
+          {{ $t('footer.Financial') }}
         </div>
       </div>
       <div class="banner__txt">
-        Báo cáo tài chính
+        {{ $t('footer.Financial') }}
       </div>
       <div class="banner__item">
         <table class="banner__item-list">
@@ -19,7 +19,7 @@
                   <img src="@/assets/img/pdf.svg" alt="error-pdf">
                   <a :href="'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(finItem.file_report)">
                     <div class="banner__item-name">
-                      {{ $validate.isType(finItem.name) }}
+                      {{ $t($validate.isType(finItem.name,$i18n.locale)) }}
                     </div>
                   </a>
                 </div>

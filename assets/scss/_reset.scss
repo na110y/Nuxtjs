@@ -38,6 +38,10 @@ li {
 a {
   text-decoration: none;
 }
+
+select,option {
+  cursor: pointer;
+}
 input,
 button,
 select {

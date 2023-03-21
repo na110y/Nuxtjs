@@ -48,7 +48,7 @@
               </div>
 
               <div class="btn-search" @click="goToPage">
-                Khám phá
+                {{ $t('content.discover') }}
               </div>
               <div v-if="isShowDrop" class="combbSlide">
                 <ul
@@ -95,10 +95,10 @@
               </div>
               <div class="column-txt">
                 <div class="body_column-title">
-                  {{ $validate.isType(item.name) }}
+                  {{ $t($validate.isType(item.name,$i18n.locale)) }}
                 </div>
                 <div class="body_column-txt">
-                  {{ $validate.isType(item.description) }}
+                  {{ $t($validate.isType(item.description,$i18n.locale)) }}
                 </div>
                 <div class="body_column-last">
                   <nuxt-link to="/product/">
@@ -145,13 +145,13 @@
             </div>
             <div class="serviceLink-item_body">
               <div class="serviceLink-item_title">
-                {{ $validate.isType(item.name) }}
+                {{ $t($validate.isType(item.name,$i18n.locale)) }}
               </div>
               <div
                 class="serviceLink-item_txt"
                 :class="{ 'activeStyle': activeClick === item.id }"
               >
-                {{ $validate.isType(item.description) }}
+                {{ $t($validate.isType(item.description,$i18n.locale)) }}
               </div>
               <div class="serviceLink-item_last">
                 <nuxt-link to="/service/">
@@ -197,15 +197,15 @@
             </div>
             <div class="news-item_body">
               <div class="news-item">
-                <div class="news-title" :title="$validate.isType(news.title)">
-                  {{ $validate.isType(news.title) }}
+                <div class="news-title" :title="$t($validate.isType(news.title,$i18n.locale))">
+                  {{ $validate.isTypeLang(news.title) }}
                 </div>
                 <div class="news-txt">
-                  {{ $validate.isType(news.description) }}
+                  {{ $validate.isTypeLang(news.description) }}
                 </div>
               </div>
               <a href="#" class="post-item__link">
-                <nuxt-link :to="`/news/${ $validate.isType(news.slug)}`">
+                <nuxt-link :to="`/news/${ $t($validate.isType(news.slug,$i18n.locale))}`">
                   <div class="post-item__link-txt">{{ $t('content.SeeDetails') }}</div>
                 </nuxt-link>
               </a>

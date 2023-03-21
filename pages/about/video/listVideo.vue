@@ -4,7 +4,7 @@
       <img id="newsSlideList" src="@/assets/img/news.png" alt="error-SlideNews">
       <div class="banner__title">
         <div class="newsSlide-title">
-          Video & ảnh gần đây
+          {{ $t('video.videoHeader') }}
         </div>
       </div>
     </div>
@@ -21,15 +21,15 @@
           </div>
           <div class="newsList-body" @click="scrollToTop">
             <div class="newsList-item">
-              <nuxt-link :to="`/about/video/${ $validate.isType(news.slug)}`">
+              <nuxt-link :to="`/about/video/${ $t($validate.isType(news.slug,$i18n.locale))}`">
                 <div class="newsList-title">
-                  {{ $validate.isType(news.name) }}
+                  {{ $t($validate.isType(news.name,$i18n.locale)) }}
                 </div>
               </nuxt-link>
             </div>
             <a href="#" class="post-item__link">
-              <nuxt-link :to="`/about/video/${ $validate.isType(news.slug)}`">
-                <div class="post-item__link-txt">Xem chi tiết</div>
+              <nuxt-link :to="`/about/video/${ $t($validate.isType(news.slug,$i18n.locale))}`">
+                <div class="post-item__link-txt">{{ $t('content.SeeDetails') }}</div>
               </nuxt-link>
             </a>
           </div>

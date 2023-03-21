@@ -30,8 +30,8 @@
             </a>
           </div>
         </li>
-        <li class="aboutMe_column aboutMe_column2">
-          <div class="aboutMe_column-title">
+        <li class="aboutMe_column aboutMe_column2 columnDev">
+          <div v-b-toggle href="#example-collapse" class="aboutMe_column-title toggleMobile" @click.prevent>
             {{ $t('footer.product') }}
           </div>
           <div class="aboutMe_column-adder">
@@ -50,8 +50,8 @@
             {{ $t('footer.Peaceful') }}
           </div>
         </li>
-        <li class="aboutMe_column aboutMe_column3">
-          <div class="aboutMe_column-title">
+        <li class="aboutMe_column aboutMe_column3 columnDev">
+          <div v-b-toggle href="#example-collapse" class="aboutMe_column-title toggleMobile" @click.prevent>
             {{ $t('footer.service') }}
           </div>
           <div class="aboutMe_column-adder">
@@ -73,8 +73,8 @@
             {{ $t('footer.rateInfor') }}
           </div>
         </li>
-        <li class="aboutMe_column aboutMe_column2">
-          <div class="aboutMe_column-title">
+        <li class="aboutMe_column aboutMe_column2 columnDev">
+          <div v-b-toggle href="#example-collapse" class="aboutMe_column-title toggleMobile" @click.prevent>
             {{ $t('footer.about') }}
           </div>
           <div class="aboutMe_column-adder">
@@ -95,6 +95,85 @@
           <div class="aboutMe_column-adder">
             {{ $t('footer.PressRelease') }}
           </div>
+        </li>
+
+        <li class="aboutMe_column aboutMe_column2 column__Mobile">
+          <a v-b-toggle href="#example-collapse" class="aboutMe_column-title toggleMobile" @click.prevent>
+            {{ $t('footer.product') }}
+          </a>
+          <b-collapse id="example-collapse">
+            <b-card>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.LiveStrong') }}
+              </div>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.Talent') }}
+              </div>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.Sustainable') }}
+              </div>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.investment') }}
+              </div>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.Peaceful') }}
+              </div>
+            </b-card>
+          </b-collapse>
+        </li>
+        <li class="aboutMe_column aboutMe_column3 column__Mobile">
+          <a v-b-toggle href="#example-collapse" class="aboutMe_column-title toggleMobile" @click.prevent>
+            {{ $t('footer.service') }}
+          </a>
+          <b-collapse id="example-collapse">
+            <b-card>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.Promotions') }}
+              </div>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.portal') }}
+              </div>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.Insurance') }}
+              </div>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.insuranceBenefits') }}
+              </div>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.InsuranceTerm') }}
+              </div>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.rateInfor') }}
+              </div>
+            </b-card>
+          </b-collapse>
+        </li>
+        <li class="aboutMe_column aboutMe_column2 column__Mobile">
+          <a v-b-toggle href="#example-collapse" class="aboutMe_column-title toggleMobile" @click.prevent>
+            {{ $t('footer.about') }}
+          </a>
+          <b-collapse id="example-collapse">
+            <b-card>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.AboutUs') }}
+              </div>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.Financial') }}
+              </div>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.General') }}
+              </div>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.Distribution') }}
+              </div>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.opportunities') }}
+              </div>
+              <div class="aboutMe_column-adder">
+                {{ $t('footer.PressRelease') }}
+              </div>
+            </b-card>
+          </b-collapse>
         </li>
       </ul>
     </div>
@@ -136,7 +215,11 @@
 
 <script>
 export default {
-  name: 'TheFooter'
+  name: 'TheFooter',
+  data() {
+    return {
+    }
+  }
 }
 </script>
 

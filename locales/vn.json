@@ -1,6 +1,14 @@
 {
   "common" : {
-    "lang": "vietnam"
+    "lang": "vietnam",
+    "Press": "Thông cáo báo chí",
+    "Videos": "Videos & ảnh",
+    "SeeAll": "Xem tất cả",
+    "Prize": "Giải thưởng",
+    "Recent": "Giải thưởng gần đây",
+    "RecentPress": "Thông cáo báo chí gần đây",
+    "Close": "Đóng"
+
   },
   "combobox": {
     "FeaturedProducts": "Sản phẩm nổi bật",
@@ -25,6 +33,7 @@
       "insurance": "Mua bảo hiểm trực tuyến"
   },
   "content": {
+    "discover": "Khám phá",
     "needsNeeds": "được thiết kế để phù hợp với nhu cầu nhu cầu nhu cầu của bạn",
     "LifeInsurance": "Bảo hiểm nhân thọ của MAP Life",
     "answers": " Giải đáp những thắc mắc của khách hàng, chúng tôi cam kết mang đến trải nghiệm dịch vụ tối ưu:",
@@ -40,6 +49,19 @@
     "ViewAllNews": "Xem tất cả tin tức",
     "txtLang": "Dễ dàng quản lý hợp đồng, thanh toán phí bảo hiểm, tích điểm đổi quà cùng nhiều tiện ích khác tại Ứng dụng di động phục vụ khách hàng MAP Life App.",
     "CustomerSeApplication": "Ứng dụng phục vụ khách hàng"
+  },
+  "bank": {
+    "Distribution": "Kênh phân phối",
+    "bankTitle": "Kênh hợp tác ngân hàng",
+    "Financial": "Kênh Tài chính",
+    "Business": "Tổ chức doanh nghiệp"
+  },
+  "maganer": {
+    "name": "Ban giám đốc",
+    "AboutUs": "Về chúng tôi",
+    "About": "Về Mirae Asset Prévoir",
+    "MiraeAsset": "Mirae Asset Prévoir tập trung nâng cao sự hiểu biết sâu sắc về nhu cầu của khách hàng, xây dựng nền tảng vững mạnh về tài chính và tăng cường xây dựng các kênh phân phối đa dạng giúp khách hàng đưa ra quyết định dễ dàng hơn và sống tốt hơn với phương châm “Cho ngày mai tốt hơn, từ hôm nay.",
+    "AsMember": "Là thành viên của Công ty bảo hiểm nhân thọ Mirae Asset (Hàn Quốc) và Tập đoàn Prévoir (Pháp), Mirae Asset Prévoir là công ty bảo hiểm nhân thọ hàng đầu, cung cấp tập hợp các giải pháp tài chính toàn diện và bền vững cho khách hàng và đối tác."
   },
   "service": {
     "ProductFeatures": "Đặc điểm sản phẩm",

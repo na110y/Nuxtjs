@@ -1,6 +1,13 @@
 {
   "common" : {
-    "lang": "English"
+    "lang": "English",
+    "Press": "Press Release",
+    "Videos": "Videos & photos",
+    "SeeAll": "See All",
+    "Prize": "Prize",
+    "Recent": "Recent Awards",
+    "RecentPress": "Recent press release",
+    "Close": "Close"
   },
   "combobox": {
     "FeaturedProducts": "Featured products",
@@ -20,11 +27,12 @@
   "header": {
     "product": "product",
     "service": "Customer service",
-    "about": "Về Mirae Asset Prévoir",
+    "about": "About Mirae Asset Prévoir",
     "news": "news",
     "insurance": "buy insurance online"
   },
   "content": {
+    "discover": "discover",
     "needsNeeds": "designed to fit your needs needs",
     "LifeInsurance": "MAP Life's Life Insurance",
     "answers": "Answering customer's questions, we are committed to providing an optimal service experience: ",
@@ -40,6 +48,22 @@
     "ViewAllNews": "View all news",
     "txtLang": "Easily manage contracts, pay insurance premiums, accumulate points to redeem gifts and many other utilities at the MAP Life App customer service mobile application.",
     "CustomerSeApplication": "Customer service application"
+  },
+  "video": {
+    "videoHeader": "Recent videos & photos"
+  },
+  "bank": {
+    "Distribution": "Distribution channel",
+    "bankTitle": "Banking cooperation channel",
+    "Financial": "Financial institutions",
+    "Business": "Business organization"
+  },
+  "maganer": {
+    "name": "Board of manager",
+    "AboutUs": "About us",
+    "About": "About Mirae Asset Prévoir",
+    "MiraeAsset": "Mirae Asset Prévoir focuses on deepening understanding of customers' needs, building a strong financial foundation and strengthening the building of diversified distribution channels to help customers make easier decisions and Live better with the motto “For a better tomorrow, from today.",
+    "AsMember": "A member of Mirae Asset Life Insurance Company (Korea) and Prévoir Group (France), Mirae Asset Prévoir is a leading life insurance company, providing a comprehensive and durable set of financial solutions. sustainable for customers and partners."
   },
   "service": {
     "ProductFeatures": "Product Features",

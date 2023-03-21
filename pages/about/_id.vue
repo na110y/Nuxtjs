@@ -2,7 +2,7 @@
   <div class="modal">
     <div class="container">
       <div class="banner-header">
-        Ban giám đốc
+        {{ $t('maganer.name') }}
       </div>
       <div class="banner-body">
         <img
@@ -13,12 +13,12 @@
         <ul class="banner-use">
           <li class="banner-info">
             <div class="banner-name">
-              {{ $validate.isType(item.name) }}
+              {{ $t($validate.isType(item.name,$i18n.locale)) }}
             </div>
             <div class="banner-position">
-              {{ $validate.isType(item.position) }}
+              {{ $t($validate.isType(item.position,$i18n.locale)) }}
             </div>
-            <div class="banner-txt" v-html="$validate.isType(item.content)" />
+            <div class="banner-txt" v-html="$t($validate.isType(item.content,$i18n.locale))" />
           </li>
         </ul>
       </div>

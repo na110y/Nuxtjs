@@ -318,85 +318,7 @@
               </div>
             </div>
             <div class="product-ask">
-              <div class="ask-list">
-                <div class="colum-item_ask">
-                  <div class="item_ask-title">
-                    {{ $t('Contact.ContaNtUs') }}
-                  </div>
-                  <form @submit.prevent="submitForm">
-                    <div class="form-ask-item">
-                      <label for="ht">{{ $t('Contact.Firstname') }} <span class="fooAsk">*</span></label>
-                      <input
-                        id="ht"
-                        type="text"
-                        :placeholder="$t('Contact.EnterName')"
-                        required
-                        @blur="validateRequired"
-                      >
-                    </div>
-                    <div class="form-ask-colum">
-                      <div class="sdt">
-                        <label for="sdt">{{ $t('Contact.PhoneNumber') }} <span class="fooAsk">*</span></label>
-                        <input
-                          id="sdt"
-                          type="text"
-                          :placeholder="$t('Contact.sdt')"
-                          required
-                          @blur="validateRequired"
-                        >
-                      </div>
-                      <div class="city">
-                        <label for="tp">{{ $t('Contact.ChooseTheCity') }} <span class="fooAsk">*</span></label>
-                        <dropdown
-                          v-model="item.key"
-                          :data="records"
-                          :prop-key="item.key"
-                          :prop-value="item.value"
-                          :placeholder="placeholder"
-                          @blur="validateRequired"
-                        />
-                      </div>
-                    </div>
-                    <div class="form-ask-item">
-                      <label for="email">{{ $t('Contact.EmailAddress') }} <span class="fooAsk">*</span></label>
-                      <input
-                        id="email"
-                        v-model="email"
-                        type="email"
-                        :placeholder="$t('Contact.address')"
-                        required
-                        @blur="validateRequired"
-                      >
-                    </div>
-                    <div class="agree">
-                      <div class="btn-radio">
-                        <input
-                          id="checkBok"
-                          v-model="isChecked"
-                          type="checkbox"
-                          form="checkForm"
-                        >
-                        <div class="agree-txt">
-                          {{ $t('Contact.IAlreadyRead') }}<span class="checkbox-txt">{{ $t('Contact.Privacy') }}</span> {{ $t('Contact.agree') }}<span class="checkbox-txt">Mirae Asset Prévoir</span> {{ $t('Contact.productsOrServices') }}
-                        </div>
-                      </div>
-                    </div>
-                    <div class="btnSubmit">
-                      <button
-                        class="btn-submit"
-                        :class="{ clicked: isChecked }"
-                        type="submit"
-                        :disabled="!isChecked"
-                      >
-                        {{ $t('Contact.information') }}
-                      </button>
-                    </div>
-                  </form>
-                </div>
-                <div class="colum-item">
-                  <img src="~/assets/img/lienhe.png" alt="errorLienhe">
-                </div>
-              </div>
+              <contact />
             </div>
           </b-card-text>
         </b-tab>
@@ -513,53 +435,7 @@
         <b-tab id="tuvan" :title="$t('productDetail.ConsultNow')">
           <b-card-text>
             <div class="product-ask">
-              <div class="ask-list">
-                <div class="colum-item_ask">
-                  <div class="item_ask-title">
-                    {{ $t('Contact.ContaNtUs') }}
-                  </div>
-                  <div class="form-ask-item">
-                    <label for="ht">{{ $t('Contact.Firstname') }} <span class="fooAsk">*</span></label>
-                    <input id="ht" type="text" :placeholder="$t('Contact.EnterName')">
-                  </div>
-                  <div class="form-ask-colum">
-                    <div class="sdt">
-                      <label for="sdt">{{ $t('Contact.PhoneNumber') }} <span class="fooAsk">*</span></label>
-                      <input id="sdt" type="text" :placeholder="$t('Contact.sdt')">
-                    </div>
-                    <div class="city">
-                      <label for="tp">{{ $t('Contact.ChooseTheCity') }} <span class="fooAsk">*</span></label>
-                      <dropdown
-                        v-model="item.key"
-                        :data="records"
-                        :prop-key="item.key"
-                        :prop-value="item.value"
-                        :placeholder="placeholder"
-                      />
-                    </div>
-                  </div>
-                  <div class="form-ask-item">
-                    <label for="email">{{ $t('Contact.EmailAddress') }} <span class="fooAsk">*</span></label>
-                    <input id="email" type="email" :placeholder="$t('Contact.address')">
-                  </div>
-                  <div class="agree">
-                    <div class="btn-radio">
-                      <input id="checkBok" type="checkbox">
-                      <div class="agree-txt">
-                        {{ $t('Contact.IAlreadyRead') }}<span class="checkbox-txt">{{ $t('Contact.Privacy') }}</span> {{ $t('Contact.agree') }}<span class="checkbox-txt">Mirae Asset Prévoir</span> {{ $t('Contact.productsOrServices') }}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="btnSubmit">
-                    <div class="btn-submit">
-                      {{ $t('Contact.information') }}
-                    </div>
-                  </div>
-                </div>
-                <div class="colum-item">
-                  <img src="~/assets/img/lienhe.png" alt="errorLienhe">
-                </div>
-              </div>
+              <contact />
             </div>
           </b-card-text>
         </b-tab>
@@ -571,56 +447,18 @@
   </div>
 </template>
 <script>
-// import { VueperSlides, VueperSlide } from 'vueperslides'
-
-import dropdown from '../../components/base/dropdown.vue'
+import contact from '~/components/base/contact.vue'
 import 'vueperslides/dist/vueperslides.css'
 export default {
   components: {
-    // eslint-disable-next-line vue/no-unused-components
-    dropdown
-
-  },
-  props: {
-    // eslint-disable-next-line vue/require-default-prop
-    placeholder: {
-      type: String
-    }
+    contact
   },
   data() {
     return {
-      item: {},
-      isChecked: false,
-      email: ''
+      item: {}
     }
   },
   computed: {
-    // truyền data cho Combobox
-    records() {
-      return [
-        {
-          key: 1,
-          value: 'Hà Nội',
-          placeholder: 'Hà Nội'
-        },
-        {
-          key: 2,
-          value: 'Đà Nẵng',
-          placeholder: 'Đà Nẵng'
-        },
-        {
-          key: 3,
-          value: 'Sài Gòn',
-          placeholder: 'Sài Gòn'
-        },
-        {
-          key: 4,
-          value: 'Nha Trang',
-          placeholder: 'Nha Trang'
-        }
-      ]
-    }
-
   },
   mounted() {
     /**
@@ -642,20 +480,6 @@ export default {
         top: 0,
         behavior: 'smooth'
       })
-    }, // thực hiện validate dữ liệu
-    validateRequired() {
-      const value = event.currentTarget.value
-      if (!value) {
-        // them border mầu đỏ cho mã nhân viên hiện tại
-        event.currentTarget.classList.add('validateInput')
-        // them attr thông báo lỗi cho input hiện tại
-        event.currentTarget.setAttribute(
-          'title',
-          'thông tin này không được phép để trống!'
-        )
-      } else {
-        event.currentTarget.classList.remove('validateInput')
-      }
     }
 
   }
@@ -663,7 +487,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import "../../assets/scss/main";
+@import "assets/scss/main";
+@import "assets/scss/variables";
 .validateInput {
   border-color: red;
 }
