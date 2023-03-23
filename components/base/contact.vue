@@ -21,7 +21,7 @@
               <label for="sdt">{{ $t('Contact.PhoneNumber') }} <span class="fooAsk">*</span></label>
               <input
                 id="sdt"
-                type="text"
+                type="number"
                 :placeholder="$t('Contact.sdt')"
                 required
                 @blur="validateRequired"
@@ -54,16 +54,18 @@
             <div class="btn-radio">
               <input
                 id="checkBok"
+                ref="link"
                 v-model="isChecked"
                 type="checkbox"
                 form="checkForm"
+                tabindex="2"
               >
               <div class="agree-txt">
                 {{ $t('Contact.IAlreadyRead') }}<span class="checkbox-txt">{{ $t('Contact.Privacy') }}</span> {{ $t('Contact.agree') }}<span class="checkbox-txt">Mirae Asset Prévoir</span> {{ $t('Contact.productsOrServices') }}
               </div>
             </div>
           </div>
-          <div class="btnSubmit">
+          <div class="btnSubmit" tabindex="2">
             <button
               class="btn-submit"
               :class="{ clicked: isChecked }"
@@ -133,6 +135,13 @@ export default {
   mounted() {
   },
   methods: {
+    handleKeyDown(event) {
+      if (event.keyCode === 13) { // Enter key
+        if (this.$refs.link && this.$refs.link.$el) { // check if $el is defined
+          this.$refs.link.$el.click() // simulate click on nuxt-link component
+        }
+      }
+    },
     submitForm() {},
     // thực hiện validate dữ liệu
     validateRequired() {

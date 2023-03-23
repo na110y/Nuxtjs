@@ -15,33 +15,33 @@
             <b-card-text>
               <div class="product-item_characteristic">
                 <div class="product-charactersitic">
-                  <div class="bodyItem_title bodyitem-Header">
-                    {{ $t($validate.isType(product?.product_features?.[0].name,$i18n.locale)) }}
+                  <div class="bodyItem_title bodyitem-Header" tabindex="1">
+                    {{ $t($vali.isType(product?.product_features?.[0].name,$i18n.locale)) }}
                   </div>
                   <div class="bodyItem-txt">
-                    <div class="bodyItem_txt" v-html="$t($validate.isType(product?.product_features?.[0].content,$i18n.locale))" />
+                    <div class="bodyItem_txt" v-html="$t($vali.isType(product?.product_features?.[0].content,$i18n.locale))" />
                   </div>
                 </div>
               </div>
               <div class="product-condition">
                 <div class="contener">
                   <div class="product-charactersitic">
-                    <div class="bodyItem_title">
-                      {{ $validate.isType(product?.product_features?.[1].name) }}
+                    <div class="bodyItem_title" tabindex="1">
+                      {{ $vali.isType(product?.product_features?.[1].name) }}
                     </div>
                     <div class="bodyItem-txt">
-                      <div class="bodyItem_txt" v-html="$validate.isType(product?.product_features?.[1].content)" />
+                      <div class="bodyItem_txt" v-html="$vali.isType(product?.product_features?.[1].content)" />
                     </div>
                   </div>
                 </div>
               </div>
               <div class="product-advantage">
                 <div class="product-charactersitic">
-                  <div class="bodyItem_title">
-                    {{ $t($validate.isType(product?.product_features?.[2].name,$i18n.locale)) }}
+                  <div class="bodyItem_title" tabindex="1">
+                    {{ $t($vali.isType(product?.product_features?.[2].name,$i18n.locale)) }}
                   </div>
                   <div class="bodyItem-txt">
-                    <div class="bodyItem_txt" v-html="$t($validate.isType(product?.product_features?.[2].content,$i18n.locale))" />
+                    <div class="bodyItem_txt" v-html="$t($vali.isType(product?.product_features?.[2].content,$i18n.locale))" />
                   </div>
                 </div>
               </div>
@@ -64,22 +64,22 @@
                       :key="index"
                     >
                       <div class="list-video" @click="scrollToTop">
-                        <nuxt-link :to="`/product/${ $t($validate.isType(item.slug,$i18n.locale))}`">
+                        <nuxt-link :to="`/product/${ $t($vali.isType(item.slug,$i18n.locale))}`">
                           <img
                             id="imageVideo"
                             :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
-                              $validate.jsonParse(item.image)"
+                              $vali.jsonParse(item.image)"
                             alt="errorImage"
                             @click.prevent="btnClickItem(index)"
                           >
                         </nuxt-link>
                         <div class="list_icon-txt">
-                          <nuxt-link :to="`/product/${ $t($validate.isType(item.slug,$i18n.locale))}`" class="list_icon-title">
-                            <div class="list_icon-title" @click.prevent="btnClickItem(index)">
-                              {{ $t($validate.isType(item.name,$i18n.locale)) }}
+                          <nuxt-link :to="`/product/${ $t($vali.isType(item.slug,$i18n.locale))}`" class="list_icon-title">
+                            <div class="list_icon-title" tabindex="2" @click.prevent="btnClickItem(index)" @keydown.enter="handleProduct(index, $event)">
+                              {{ $t($vali.isType(item.name,$i18n.locale)) }}
                             </div>
                             <div class="list_icon-description" @click.prevent="btnClickItem(index)">
-                              {{ $t($validate.isType(item.description,$i18n.locale)) }}
+                              {{ $t($vali.isType(item.description,$i18n.locale)) }}
                             </div>
                           </nuxt-link>
                         </div>
@@ -96,11 +96,11 @@
                 <div class="product-condition">
                   <div class="contener">
                     <div class="product-charactersitic">
-                      <div class="bodyItem_title">
-                        {{ $t($validate.isType(product?.product_features?.[0].name,$i18n.locale)) }}
+                      <div class="bodyItem_title" tabindex="1">
+                        {{ $t($vali.isType(product?.product_features?.[0].name,$i18n.locale)) }}
                       </div>
                       <div class="bodyItem-txt">
-                        <div class="bodyItem_txt" v-html="$t($validate.isType(product?.product_features?.[0].content,$i18n.locale))" />
+                        <div class="bodyItem_txt" v-html="$t($vali.isType(product?.product_features?.[0].content,$i18n.locale))" />
                       </div>
                     </div>
                   </div>
@@ -113,11 +113,11 @@
               <div class="product-advantage">
                 <div class="product-advantage">
                   <div class="product-charactersitic">
-                    <div class="bodyItem_title">
-                      {{ $t($validate.isType(product?.product_features?.[1].name,$i18n.locale)) }}
+                    <div class="bodyItem_title" tabindex="1">
+                      {{ $t($vali.isType(product?.product_features?.[1].name,$i18n.locale)) }}
                     </div>
                     <div class="bodyItem-txt">
-                      <div class="bodyItem_txt" v-html="$t($validate.isType(product?.product_features?.[1].content,$i18n.locale))" />
+                      <div class="bodyItem_txt" v-html="$t($vali.isType(product?.product_features?.[1].content,$i18n.locale))" />
                     </div>
                   </div>
                 </div>
@@ -168,9 +168,20 @@ export default {
     this.getDataProductDetail()
   },
   methods: {
+    handleProduct(index, event) {
+      if (event.keyCode === 13) {
+        this.product = this.productList[index]
+        const newSlug = this.$t(this.$vali.isType(this.product.slug, this.$i18n.locale))
+        const newRoute = {
+          path: '/product/' + newSlug
+        }
+        this.$router.replace(newRoute)
+      }
+      this.scrollToTop()
+    },
     btnClickItem(index) {
       this.product = this.productList[index]
-      const newSlug = this.$t(this.$validate.isType(this.product.slug, this.$i18n.locale))
+      const newSlug = this.$t(this.$vali.isType(this.product.slug, this.$i18n.locale))
       const newRoute = {
         path: '/product/' + newSlug
       }

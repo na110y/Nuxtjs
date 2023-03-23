@@ -16,26 +16,34 @@
           <div class="newsList-column">
             <img
               id="img-column"
-              :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(news.image)[0]"
+              :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $vali.jsonParse(news.image)[0]"
               alt="error-imgFamily"
             >
           </div>
           <div class="newsList-body">
-            <div class="newsList-item">
-              <nuxt-link :to="`/news/${ $t($validate.isType(news.slug,$i18n.locale))}`">
-                <div class="newsList-title">
-                  {{ $t($validate.isType(news.title,$i18n.locale)) }}
+            <div class="newsList-item" tabindex="1">
+              <nuxt-link :to="`/news/${ $t($vali.isType(news.slug,$i18n.locale))}`">
+                <div
+                  class="newsList-title"
+                  tabindex="1"
+                  @keydown.enter="handleNew(news, $event)"
+                >
+                  {{ $t($vali.isType(news.title, $i18n.locale)) }}
                 </div>
               </nuxt-link>
               <div class="newsList-txt">
-                {{ $t($validate.isType(news.description,$i18n.locale)) }}
+                {{ $t($vali.isType(news.description, $i18n.locale)) }}
               </div>
             </div>
-            <a href="#" class="post-item__link">
-              <nuxt-link :to="`/news/${$t($validate.isType(news.slug,$i18n.locale))}`">
-                <div class="post-item__link-txt">{{ $t('content.SeeDetails') }}</div>
-              </nuxt-link>
-            </a>
+            <nuxt-link :to="`/news/${$t($vali.isType(news.slug,$i18n.locale))}`" :attrs="{ tabindex: '2' }">
+              <div
+                class="post-item__link-txt"
+                tabindex="2"
+                @keydown.enter="handleNew(news, $event)"
+              >
+                {{ $t('content.SeeDetails') }}
+              </div>
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -59,8 +67,7 @@
 <script>
 
 export default {
-  components: {
-  },
+  components: {},
   props: {},
   data() {
     return {
@@ -83,8 +90,14 @@ export default {
   created() {
     this.getListPagingNews()
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {
+    handleNew(news, event) {
+      if (event.keyCode === 13) {
+        this.$router.push('/news/' + this.$t(this.$vali.isType(news.slug, this.$i18n.locale)))
+      }
+    },
     async getListPagingNews() {
       const me = this
       try {
@@ -100,11 +113,13 @@ export default {
 <style lang="scss" scoped>
 @import "assets/scss/variables";
 @import "assets/scss/mixins";
+
 #newsSlideList {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
+
 .banner__title {
   position: absolute;
   z-index: 1;
@@ -113,13 +128,16 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .contener {
   max-width: 1170px;
   margin: auto;
 }
+
 .newsSlide {
   position: relative;
 }
+
 .newsSlide-title {
   text-align: center;
   font-size: 32px;
@@ -177,6 +195,7 @@ export default {
     color: $bgc-body;
   }
 }
+
 .newsList {
   margin-top: 93px;
   @include deptop1024 {
@@ -201,11 +220,13 @@ export default {
     margin-top: 65px;
   }
 }
+
 .contener {
   max-width: 1170px;
   width: 100%;
   margin: 0 auto;
 }
+
 .news_imgage-column {
   margin-top: 30px;
   display: flex;
@@ -244,7 +265,7 @@ export default {
   @include deptop375 {
     margin-top: 20px;
     display: block;
-    gap: 0 20px ;
+    gap: 0 20px;
     margin-bottom: 20px;
   }
   @include deptop360 {
@@ -254,6 +275,7 @@ export default {
     margin-bottom: 20px;
   }
 }
+
 .newsList-column {
   width: 25%;
   @include deptop1024 {
@@ -278,6 +300,7 @@ export default {
     width: 100%;
   }
 }
+
 #img-column {
   width: 100%;
   height: 210px;
@@ -318,6 +341,7 @@ export default {
     object-fit: cover;
   }
 }
+
 .newsList-title {
   margin-top: 10px;
   font-weight: 600;
@@ -328,10 +352,12 @@ export default {
   overflow: hidden;
   -webkit-line-clamp: 2;
   height: 60px;
+
   &:hover {
     transition: all .5s ease-in-out;
     color: $text-colorRank;
   }
+
   @include deptop1024 {
     margin-top: 10px;
     font-weight: 600;
@@ -410,6 +436,7 @@ export default {
     height: 60px;
   }
 }
+
 .newsList-body {
   width: 75%;
   @include deptop1024 {
@@ -434,6 +461,7 @@ export default {
     width: 100%;
   }
 }
+
 .newsList-txt {
   margin-top: 8px;
   font-size: 14px;
@@ -522,27 +550,32 @@ export default {
     margin-bottom: 10px;
   }
 }
+
 ::v-deep .pagination {
   display: flex;
   justify-content: center;
   margin-top: 20px;
   gap: 0 8px;
 }
+
 ::v-deep .page-item:not(:first-child) .page-link {
   background-color: $bgc-body;
   color: $news-title;
   border-radius: 4px;
 }
+
 ::v-deep .page-item.active .page-link {
   background-color: $text-color;
   color: $bgc-body;
   border-color: $text-color;
 }
+
 ::v-deep .page-item:not(:first-child) .page-link .active {
   background-color: $bgc-body;
   color: $news-title;
   border-radius: 4px;
 }
+
 ::v-deep .active > .page-link {
   background-color: $text-color;
   color: $bgc-body;

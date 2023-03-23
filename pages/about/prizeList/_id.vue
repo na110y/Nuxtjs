@@ -20,19 +20,19 @@
             <div class="newsList-column">
               <img
                 id="img-column"
-                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(news.image)[0]"
+                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $vali.jsonParse(news.image)[0]"
                 alt="error-imgFamily"
               >
             </div>
             <div class="newsList-body" @click="scrollToTop">
               <div class="newsList-item">
-                <nuxt-link :to="`/about/prizeList/${ $t($validate.isType(news.slug,$i18n.locale))}`">
+                <nuxt-link :to="`/about/prizeList/${ $t($vali.isType(news.slug,$i18n.locale))}`">
                   <div class="newsList-title" @click.prevent="btnClickItem(index)">
-                    {{ $t($validate.isType(news.title,$i18n.locale)) }}
+                    {{ $t($vali.isType(news.title,$i18n.locale)) }}
                   </div>
                 </nuxt-link>
                 <div class="newsList-txt">
-                  {{ $validate.formatDate(news.updated_at) }}
+                  {{ $vali.formatDate(news.updated_at) }}
                 </div>
               </div>
             </div>
@@ -40,12 +40,12 @@
         </div>
         <div class="newsItem-thumbnail-column">
           <div class="newsItem-thumbnail_title">
-            {{ $t($validate.isType(itemNews.title,$i18n.locale)) }}
+            {{ $t($vali.isType(itemNews.title,$i18n.locale)) }}
           </div>
           <div class="newsItem-thumbnail_txt">
-            {{ $t($validate.isType(itemNews.description,$i18n.locale)) }}
+            {{ $t($vali.isType(itemNews.description,$i18n.locale)) }}
           </div>
-          <div class="newsItem-thumbnail_txt" v-html="$t($validate.isType(itemNews.content,$i18n.locale))" />
+          <div class="newsItem-thumbnail_txt" v-html="$t($vali.isType(itemNews.content,$i18n.locale))" />
         </div>
       </div>
     </div>
@@ -83,7 +83,7 @@ export default {
 
     btnClickItem(index) {
       this.itemNews = this.listNews[index]
-      const newSlug = this.$t(this.$validate.isType(this.itemNews.slug, this.$i18n.locale))
+      const newSlug = this.$t(this.$vali.isType(this.itemNews.slug, this.$i18n.locale))
       const newRoute = {
         path: '/about/prizeList/' + newSlug
       }

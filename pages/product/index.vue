@@ -14,21 +14,21 @@
         :key="index.id"
         class="SP-list-link"
       >
-        <div class="SP-list-image">
+        <div class="SP-list-image" tabindex="1" @keydown.enter="handleProduct(item, $event)">
           <img
             id="body_column-image"
-            :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(item.image) "
+            :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $vali.jsonParse(item.image) "
             alt="error-image"
           >
         </div>
         <div class="list_column-txt">
-          <nuxt-link :to="`/product/${ $t($validate.isType(item.slug,$i18n.locale))}`">
-            <div class="list_sp-title">
-              {{ $t( $validate.isType(item.name,$i18n.locale)) }}
+          <nuxt-link :to="`/product/${ $t($vali.isType(item.slug,$i18n.locale))}`" :attrs="{ tabindex: '1' }">
+            <div class="list_sp-title" tabindex="1" @keydown.enter="handleProduct(item, $event)">
+              {{ $t( $vali.isType(item.name,$i18n.locale)) }}
             </div>
           </nuxt-link>
           <div class="list_sp-txt">
-            {{ $t($validate.isType(item.description,$i18n.locale)) }}
+            {{ $t($vali.isType(item.description,$i18n.locale)) }}
           </div>
         </div>
       </div>
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import contact from '~/components/base/contact.vue'
 export default {
   name: 'ProductList',
@@ -59,6 +60,9 @@ export default {
     }
   },
   computed: {
+    ...mapState({
+      productPage: state => state.productImage // dùng để giá trị sản phẩm từ store
+    }),
     /**
      * @description: hàm này dùng để lấy ảnh sản phẩm từ store
      * Author: NSDThinh 21/02/2023
@@ -66,22 +70,24 @@ export default {
     // eslint-disable-next-line vue/no-dupe-keys
     productPage() {
       return this.$store.state.productImage
-    },
-    // lấy ngôn ngữ đã chọn
-    selectedLocale() {
-      return this.$store.state.selectedLocale
     }
+
   },
   created() {
   },
   mounted() {
-    /**
-     * @description: product
-     * Author: NSDThinh 21/02/2023
-     */
-    this.$store.dispatch('setProduct')
+    this.setProduct() // sản phẩm nổi bật
   },
-  methods: {}
+  methods: {
+    handleProduct(item, event) {
+      if (event.keyCode === 13) {
+        this.$router.push('/product/' + this.$t(this.$vali.isType(item.slug, this.$i18n.locale)))
+      }
+    },
+    ...mapActions({
+      setProduct: 'setProduct'
+    })
+  }
 }
 </script>
 <style lang="scss">

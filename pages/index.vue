@@ -15,7 +15,7 @@
             <div class="slideHome">
               <img
                 id="homeSlide"
-                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(slidePage.image)[0]"
+                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $vali.jsonParse(slidePage.image)[0]"
                 alt="errorSlide"
               >
             </div>
@@ -47,7 +47,7 @@
                 >
               </div>
 
-              <div class="btn-search" @click="goToPage">
+              <div class="btn-search">
                 {{ $t('content.discover') }}
               </div>
               <div v-if="isShowDrop" class="combbSlide">
@@ -82,27 +82,27 @@
         </div>
         <div class="flex-viewport">
           <div class="body_column">
-            <div v-for="(item, index) in productPage.data" :key="index" class="body_column-link" @click="activeClickType(item.id)">
-              <div class="body_column-image">
+            <div v-for="(item, index) in productPage.data" :key="index" class="body_column-link">
+              <div class="body_column-image" tabindex="1" @keydown.enter="handleProduct">
                 <img
                   id="body_column-image"
                   :src="
                     'https://api-map-life.grooo.com.vn/files/media/base/' +
-                      $validate.jsonParse(item.image)[0]
+                      $vali.jsonParse(item.image)[0]
                   "
                   alt="error-image"
                 >
               </div>
               <div class="column-txt">
                 <div class="body_column-title">
-                  {{ $t($validate.isType(item.name,$i18n.locale)) }}
+                  {{ $t($vali.isType(item.name,$i18n.locale)) }}
                 </div>
                 <div class="body_column-txt">
-                  {{ $t($validate.isType(item.description,$i18n.locale)) }}
+                  {{ $t($vali.isType(item.description,$i18n.locale)) }}
                 </div>
                 <div class="body_column-last">
-                  <nuxt-link to="/product/">
-                    <div class="column-last_txt">
+                  <nuxt-link to="/product/" :attrs="{ tabindex: '1' }">
+                    <div class="column-last_txt" tabindex="2" @keydown.enter="handleProduct">
                       {{ $t('content.SeeDetails') }}
                     </div>
                   </nuxt-link>
@@ -123,8 +123,8 @@
                 {{ $t('content.answers') }} <span>{{ $t('content.Fast') }}</span>
               </div>
               <div class="column-service_btn">
-                <nuxt-link to="/service/">
-                  <span class="btn-service">{{ $t('content.otherServices') }}</span>
+                <nuxt-link to="/service/" :attrs="{ tabindex: '1' }">
+                  <span class="btn-service" tabindex="2" @keydown.enter="handleService">{{ $t('content.otherServices') }}</span>
                 </nuxt-link>
               </div>
             </div>
@@ -133,27 +133,25 @@
             v-for="(item,index) in ClientPage.data"
             :key="index"
             class="serviceLink-item serviceLink-item2"
-            @click="activeClickType(item.id)"
           >
             <div class="serviceLink-item_icon">
               <img
                 id="serviceLink-item_icon"
                 :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
-                  $validate.jsonParse(item.icon)[0]"
+                  $vali.jsonParse(item.icon)[0]"
                 alt="error-insurance"
               >
             </div>
             <div class="serviceLink-item_body">
               <div class="serviceLink-item_title">
-                {{ $t($validate.isType(item.name,$i18n.locale)) }}
+                {{ $t($vali.isType(item.name,$i18n.locale)) }}
               </div>
               <div
                 class="serviceLink-item_txt"
-                :class="{ 'activeStyle': activeClick === item.id }"
               >
-                {{ $t($validate.isType(item.description,$i18n.locale)) }}
+                {{ $t($vali.isType(item.description,$i18n.locale)) }}
               </div>
-              <div class="serviceLink-item_last">
+              <div class="serviceLink-item_last" tabindex="2" @keydown.enter="handleService">
                 <nuxt-link to="/service/">
                   <p class="serviceLink-item-detail">
                     {{ $t('content.SeeDetails') }}
@@ -175,7 +173,9 @@
               <div class="service_buy-txt">
                 {{ $t('content.insuranceNnline') }}
               </div>
-              <span class="service_buy-btn">{{ $t('content.BuyNow') }}</span>
+              <nuxt-link to="/onInsurance/">
+                <span class="service_buy-btn" tabindex="3" @keydown.enter="handleonInsurance">{{ $t('content.BuyNow') }}</span>
+              </nuxt-link>
             </div>
           </div>
         </div>
@@ -191,21 +191,21 @@
             <div class="img-column">
               <img
                 id="img-column"
-                :src="'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(news.image)[0]"
+                :src="'https://api-map-life.grooo.com.vn/files/media/base/' + $vali.jsonParse(news.image)[0]"
                 alt="error-imgFamily"
               >
             </div>
             <div class="news-item_body">
               <div class="news-item">
-                <div class="news-title" :title="$t($validate.isType(news.title,$i18n.locale))">
-                  {{ $validate.isTypeLang(news.title) }}
+                <div class="news-title" :title="$t($vali.isType(news.title,$i18n.locale))">
+                  {{ $vali.isTypeLang(news.title) }}
                 </div>
                 <div class="news-txt">
-                  {{ $validate.isTypeLang(news.description) }}
+                  {{ $vali.isTypeLang(news.description) }}
                 </div>
               </div>
               <a href="#" class="post-item__link">
-                <nuxt-link :to="`/news/${ $t($validate.isType(news.slug,$i18n.locale))}`">
+                <nuxt-link :to="`/news/${ $t($vali.isType(news.slug,$i18n.locale))}`">
                   <div class="post-item__link-txt">{{ $t('content.SeeDetails') }}</div>
                 </nuxt-link>
               </a>
@@ -286,10 +286,11 @@
   </div>
 </template>
 <script>
-// import validate from '../utils/validate'
+// eslint-disable-next-line import/order
 import dropdown from '~/components/base/dropdown.vue'
-// import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'vueperslides/dist/vueperslides.css'
+// eslint-disable-next-line import/order
+import { mapState, mapActions } from 'vuex'
 export default {
   components: {
     // eslint-disable-next-line vue/no-unused-components
@@ -304,11 +305,11 @@ export default {
   data() {
     return {
       frontVN: null,
-      activeClick: null,
       item: {
         key: ''
       },
-      isShowDrop: false
+      isShowDrop: false,
+      tabindex: false
     }
   },
   computed: {
@@ -341,65 +342,44 @@ export default {
         }
       ]
     },
-    /**
-     * @description: hàm này dùng để lấy dữ liệu khách hàng từ store
-     * Author: NSDThinh 21/02/2023
-     */
-    ClientPage() {
-      return this.$store.state.clientPage
-    },
-    /**
-     * @description: hàm này dùng để lấy ảnh slide page từ store
-     * Author: NSDThinh 21/02/2023
-     */
-    homePage() {
-      return this.$store.state.homeSlide
-    },
-    /**
-     * @description: hàm này dùng để giá trị sản phẩm từ store
-     * Author: NSDThinh 21/02/2023
-     */
-    productPage() {
-      return this.$store.state.productImage
-    },
-    /**
-     * @description: hàm này dùng để giá trị từ store
-     * Author: NSDThinh 25/02/2023
-     */
-    newsPage() {
-      return this.$store.state.newsPage
-    }
+    ...mapState({
+      ClientPage: state => state.clientPage, // dùng để lấy dữ liệu khách hàng từ store
+      homePage: state => state.homeSlide, // dùng để lấy ảnh slide page từ stor
+      productPage: state => state.productImage, // dùng để giá trị sản phẩm từ store
+      newsPage: state => state.newsPage // dùng để giá trị từ store
+    })
   },
   created() {
   },
   mounted() {
-    /**
-     * @description: client ( khách hàng )
-     * Author: NSDThinh 24/02/2023
-     */
-    this.$store.dispatch('setClient')
-    /**
-     * @description: homeslide ( imageSlide )
-     * Author: NSDThinh 21/02/2023
-     */
-    this.$store.dispatch('setSlideHome')
-    /**
-     * @description: product ( sản phẩm )
-     * Author: NSDThinh 21/02/2023
-     */
-    this.$store.dispatch('setProduct')
-    /**
-     * @description: news ( tin tức mới nhất )
-     * Author: NSDThinh 25/02/2023
-     */
-    this.$store.dispatch('setNewsPage')
+    // eslint-disable-next-line no-unused-expressions
+    this.setClient() // dịch vụ sản phẩm
+    this.setSlideHome() // slide page
+    this.setProduct() // sản phẩm nổi bật
+    this.setNewsPage() // tin tức mới nhất
   },
   methods: {
-
-    goToPage(key) {
-      const record = this.records.find(r => r.key === key)
-      this.$router.push(record.url)
+    handleProduct(event) {
+      if (event.keyCode === 13) {
+        this.$router.push('/product/')
+      }
     },
+    handleService(event) {
+      if (event.keyCode === 13) {
+        this.$router.push('/service/')
+      }
+    },
+    handleonInsurance(event) {
+      if (event.keyCode === 13) {
+        this.$router.push('/onInsurance/')
+      }
+    },
+    ...mapActions({
+      setClient: 'setClient',
+      setSlideHome: 'setSlideHome',
+      setProduct: 'setProduct',
+      setNewsPage: 'setNewsPage'
+    }),
     // sau khi click trang sẽ được di chuyển lên đầu
     scrollToTop() {
       window.scrollTo({
@@ -417,20 +397,11 @@ export default {
     // click chuột chọn đến danh sách tìm kiếm sản phẩm
     selectItem(key) {
       this.item.key = key
-      this.item.key = this.$validate.formatEnum(key)
+      this.item.key = this.$vali.formatEnum(key)
       const record = this.records.find(r => r.key === key)
       this.$router.push(record.url)
       this.isToggle(false)
-    },
-
-    /**
-     * @description: hàm này dùng để hiển thị hết tất cả dòng chữ của text
-     * Author: NSDThinh 21/02/2023
-     */
-    activeClickType(id) {
-      this.activeClick = id
     }
-
   }
 }
 </script>

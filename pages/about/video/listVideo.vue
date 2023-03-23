@@ -15,20 +15,20 @@
             <img
               id="img-column"
               :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
-                $validate.jsonParse(news.poster)[0]"
+                $vali.jsonParse(news.poster)[0]"
               alt="error-imgFamily"
             >
           </div>
           <div class="newsList-body" @click="scrollToTop">
             <div class="newsList-item">
-              <nuxt-link :to="`/about/video/${ $t($validate.isType(news.slug,$i18n.locale))}`">
+              <nuxt-link :to="`/about/video/${ $t($vali.isType(news.slug,$i18n.locale))}`">
                 <div class="newsList-title">
-                  {{ $t($validate.isType(news.name,$i18n.locale)) }}
+                  {{ $t($vali.isType(news.name,$i18n.locale)) }}
                 </div>
               </nuxt-link>
             </div>
             <a href="#" class="post-item__link">
-              <nuxt-link :to="`/about/video/${ $t($validate.isType(news.slug,$i18n.locale))}`">
+              <nuxt-link :to="`/about/video/${ $t($vali.isType(news.slug,$i18n.locale))}`">
                 <div class="post-item__link-txt">{{ $t('content.SeeDetails') }}</div>
               </nuxt-link>
             </a>

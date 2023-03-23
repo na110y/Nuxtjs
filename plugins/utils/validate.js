@@ -3,7 +3,7 @@
  * Author: NSDThinh 22/02/2023
  */
 export default ({ app }, inject) => {
-  inject('validate', {
+  inject('vali', {
     isTypeLang(string) {
       try {
         JSON.parse(string)

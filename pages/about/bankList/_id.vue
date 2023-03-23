@@ -19,11 +19,11 @@
                 <div class="bank-img">
                   <img
                     id="img-column"
-                    :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(bankItem.image)"
+                    :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $vali.jsonParse(bankItem.image)"
                     alt="error-imgBank"
                   >
                 </div>
-                <div class="bank-txt" v-html="$t($validate.isType(bankItem.introduction,$i18n.locale))" />
+                <div class="bank-txt" v-html="$t($vali.isType(bankItem.introduction,$i18n.locale))" />
               </div>
             </div>
           </b-card-text>
@@ -31,7 +31,7 @@
         <b-tab :title="$t('productDetail.condition')">
           <b-card-text>
             <div class="contener">
-              <div class="bank-contact" v-html="$t($validate.isType(bankItem.contact_info,$i18n.locale))" />
+              <div class="bank-contact" v-html="$t($vali.isType(bankItem.contact_info,$i18n.locale))" />
             </div>
           </b-card-text>
         </b-tab>

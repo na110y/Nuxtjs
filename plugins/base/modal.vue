@@ -6,18 +6,18 @@
       </div>
       <div class="modal-body">
         <div class="modal-img">
-          <img id="itemImg" :src="'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(use.image)[0]" alt="">
+          <img id="itemImg" :src="'https://api-map-life.grooo.com.vn/files/media/base/' + $vali.jsonParse(use.image)[0]" alt="">
         </div>
         <div class="modal-info">
           <div class="modal-name">
-            {{ $t($validate.isType(use.name,$i18n.locale)) }}
+            {{ $t($vali.isType(use.name,$i18n.locale)) }}
           </div>
           <div class="modal-position">
             <div class="overflow">
-              {{ $t($validate.isType(use.position,$i18n.locale)) }}
+              {{ $t($vali.isType(use.position,$i18n.locale)) }}
             </div>
           </div>
-          <div class="modal-content" v-html="$t($validate.isType(use.content,$i18n.locale))" />
+          <div class="modal-content" v-html="$t($vali.isType(use.content,$i18n.locale))" />
         </div>
       </div>
       <div class="modal-end">
@@ -55,9 +55,17 @@ export default {
       }
     }
   },
+  mounted() {
+    window.addEventListener('keydown', this.closeModalOnEsc)
+  },
   methods: {
     btnCloseModal() {
       this.$emit('closeModal', false)
+    },
+    closeModalOnEsc(event) {
+      if (event.key === 'Escape') {
+        this.$emit('closeModal', false)
+      }
     }
   }
 }

@@ -20,15 +20,15 @@
             <div class="newsList-column">
               <img
                 id="img-column"
-                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(news.poster)[0]"
+                :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $vali.jsonParse(news.poster)[0]"
                 alt="error-imgFamily"
               >
             </div>
             <div class="newsList-body" @click="scrollToTop">
               <div class="newsList-item">
-                <nuxt-link :to="`${ $t($validate.isType(news.slug,$i18n.locale))}`">
+                <nuxt-link :to="`${ $t($vali.isType(news.slug,$i18n.locale))}`">
                   <div class="newVideo-txt" @click.prevent="btnClickItem(index)">
-                    {{ $t($validate.isType(news.name,$i18n.locale)) }}
+                    {{ $t($vali.isType(news.name,$i18n.locale)) }}
                   </div>
                 </nuxt-link>
               </div>
@@ -37,7 +37,7 @@
         </div>
         <div class="newsItem-thumbnail-column">
           <div class="newsItem-thumbnail_title">
-            {{ $t($validate.isType(itemNews.name,$i18n.locale)) }}
+            {{ $t($vali.isType(itemNews.name,$i18n.locale)) }}
           </div>
           <iframe :src="itemNews.video" />
         </div>
@@ -72,7 +72,7 @@ export default {
     },
     btnClickItem(index) {
       this.itemNews = this.listNews[index]
-      const newSlug = this.$t(this.$validate.isType(this.itemNews.slug, this.$i18n.locale))
+      const newSlug = this.$t(this.$vali.isType(this.itemNews.slug, this.$i18n.locale))
       const newRoute = {
         path: '/about/video/' + newSlug
       }

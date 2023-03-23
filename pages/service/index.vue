@@ -447,6 +447,7 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 import contact from '~/components/base/contact.vue'
 import 'vueperslides/dist/vueperslides.css'
 export default {
@@ -461,18 +462,14 @@ export default {
   computed: {
   },
   mounted() {
-    /**
-     * @description: homeslide
-     * Author: NSDThinh 21/02/2023
-     */
-    this.$store.dispatch('setSlideHome')
-    /**
-     * @description: product
-     * Author: NSDThinh 21/02/2023
-     */
-    this.$store.dispatch('setProduct')
+    this.setProduct() // sản phẩm nổi bật
+    this.setSlideHome() // slide page
   },
   methods: {
+    ...mapActions({
+      setSlideHome: 'setSlideHome',
+      setProduct: 'setProduct'
+    }),
     submitForm() {},
     //  sau khi click trang sẽ được di chuyển lên đầu
     scrollToTop() {

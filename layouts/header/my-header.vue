@@ -84,10 +84,10 @@
             <div class="menu-link">
               <select v-model="$i18n.locale" @change="changeLanguage">
                 <option value="vn" selected>
-                  Vietnamese
+                  vn
                 </option>
                 <option value="en">
-                  English
+                  en
                 </option>
               </select>
             </div>
@@ -102,19 +102,14 @@ export default {
   name: 'MyHeader',
   data() {
     return {
-      languageCode: ['vn', 'en'],
-      selectedLocale: 'vn'
     }
   },
   computed: {
-
   },
   methods: {
     changeLanguage(locale) {
-      // this.$store.commit('SET_LANG', locale)
       this.$store.dispatch('changeLanguage', locale)
     }
-
   }
 }
 </script>

@@ -7,18 +7,18 @@
       <div class="banner-body">
         <img
           id="img-column"
-          :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(item.image)[0]"
+          :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $vali.jsonParse(item.image)[0]"
           alt="error-imgFamily"
         >
         <ul class="banner-use">
           <li class="banner-info">
             <div class="banner-name">
-              {{ $t($validate.isType(item.name,$i18n.locale)) }}
+              {{ $t($vali.isType(item.name,$i18n.locale)) }}
             </div>
             <div class="banner-position">
-              {{ $t($validate.isType(item.position,$i18n.locale)) }}
+              {{ $t($vali.isType(item.position,$i18n.locale)) }}
             </div>
-            <div class="banner-txt" v-html="$t($validate.isType(item.content,$i18n.locale))" />
+            <div class="banner-txt" v-html="$t($vali.isType(item.content,$i18n.locale))" />
           </li>
         </ul>
       </div>

@@ -17,9 +17,9 @@
               <td>
                 <div class="body-header">
                   <img src="@/assets/img/pdf.svg" alt="error-pdf">
-                  <a :href="'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(finItem.file_report)">
+                  <a :href="'https://api-map-life.grooo.com.vn/files/media/base/' + $vali.jsonParse(finItem.file_report)">
                     <div class="banner__item-name">
-                      {{ $t($validate.isType(finItem.name,$i18n.locale)) }}
+                      {{ $t($vali.isType(finItem.name,$i18n.locale)) }}
                     </div>
                   </a>
                 </div>
@@ -28,11 +28,11 @@
             <tr class="space-between">
               <td>
                 <div class="banner__item-date">
-                  {{ $validate.formatDate(finItem.updated_at) }}
+                  {{ $vali.formatDate(finItem.updated_at) }}
                 </div>
               </td>
               <td>
-                <a :href="'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(finItem.file_report)">
+                <a :href="'https://api-map-life.grooo.com.vn/files/media/base/' + $vali.jsonParse(finItem.file_report)">
                   <div class="export">
                     <img src="@/assets/img/execl.svg" alt="error-export">
                   </div>

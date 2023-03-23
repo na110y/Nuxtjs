@@ -59,18 +59,20 @@
                     <div class="bod-slider_img" @click="btnShowModal(use)">
                       <img
                         id="iconManganer"
-                        :src="'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(use.image)[0]"
+                        :src="'https://api-map-life.grooo.com.vn/files/media/base/' + $vali.jsonParse(use.image)[0]"
                         alt="error-manganer"
                         class="carousel-image"
+                        tabindex="1"
+                        @keydown.enter="handleMangan(use, $event)"
                       >
                     </div>
 
                     <div class="bod-slider_info">
                       <div class="bod-slider_title">
-                        {{ $t($validate.isType(use.name,$i18n.locale)) }}
+                        {{ $t($vali.isType(use.name,$i18n.locale)) }}
                       </div>
                       <div class="bod-slider_txt">
-                        {{ $t($validate.isType(use.position,$i18n.locale)) }}
+                        {{ $t($vali.isType(use.position,$i18n.locale)) }}
                       </div>
                     </div>
                   </div>
@@ -92,26 +94,23 @@
             <b-tab :title="$t('bank.bankTitle')">
               <b-card-text>
                 <div class="container">
-                  <ul
-
-                    class="bankAbout-List"
-                  >
+                  <ul class="bankAbout-List">
                     <li
                       v-for="(bank,index) in bankAboutApi?.data?.[0].channels"
                       :key="index"
                       class="bankAbout-item"
                     >
-                      <nuxt-link :to="`/about/bankList/${ $t($validate.isType(bank.slug,$i18n.locale))}`">
+                      <nuxt-link :to="`/about/bankList/${ $t($vali.isType(bank.slug,$i18n.locale))}`">
                         <img
                           id="iconBank"
                           :src="'https://api-map-life.grooo.com.vn/files/media/base/'
-                            + $validate.jsonParse(bank.image)"
+                            + $vali.jsonParse(bank.image)"
                           alt="errorBank"
                         >
                       </nuxt-link>
                       <div class="bankAbout-info">
                         <div class="bankAbout-title">
-                          {{ $t($validate.isType(bank.name,$i18n.locale)) }}
+                          {{ $t($vali.isType(bank.name,$i18n.locale)) }}
                         </div>
                       </div>
                     </li>
@@ -128,17 +127,17 @@
                       :key="index"
                       class="bankAbout-item"
                     >
-                      <nuxt-link :to="`/about/bankList/${ $t($validate.isType(bankFinance.slug,$i18n.locale))}`">
+                      <nuxt-link :to="`/about/bankList/${ $t($vali.isType(bankFinance.slug,$i18n.locale))}`">
                         <img
                           id="iconBank"
                           :src="'https://api-map-life.grooo.com.vn/files/media/base/'
-                            + $validate.jsonParse(bankFinance.image)"
+                            + $vali.jsonParse(bankFinance.image)"
                           alt="errorBank"
                         >
                       </nuxt-link>
                       <div class="bankAbout-info">
                         <div class="bankAbout-title">
-                          {{ $t($validate.isType(bankFinance.name,$i18n.locale)) }}
+                          {{ $t($vali.isType(bankFinance.name,$i18n.locale)) }}
                         </div>
                       </div>
                     </li>
@@ -155,17 +154,17 @@
                       :key="index"
                       class="bankAbout-item"
                     >
-                      <nuxt-link :to="`/about/bankList/${ $t($validate.isType(bankItem.slug,$i18n.locale))}`">
+                      <nuxt-link :to="`/about/bankList/${ $t($vali.isType(bankItem.slug,$i18n.locale))}`">
                         <img
                           id="iconBank"
                           :src="'https://api-map-life.grooo.com.vn/files/media/base/'
-                            + $validate.jsonParse(bankItem.image)"
+                            + $vali.jsonParse(bankItem.image)"
                           alt="errorBank"
                         >
                       </nuxt-link>
                       <div class="bankAbout-info">
                         <div class="bankAbout-title">
-                          {{ $t($validate.isType(bankItem.name,$i18n.locale)) }}
+                          {{ $t($vali.isType(bankItem.name,$i18n.locale)) }}
                         </div>
                       </div>
                     </li>
@@ -190,24 +189,24 @@
                   <img
                     id="Notification-img"
                     :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
-                      $validate.jsonParse(notifi.image)[0]"
+                      $vali.jsonParse(notifi.image)[0]"
                     alt="error-ncb"
                   >
                   <div class="Notification-content">
                     <nuxt-link
                       v-bind="$attrs"
-                      :title="$t($validate.isType(notifi.title,$i18n.locale))"
-                      :to="`/about/notificationList/${ $t($validate.isType(notifi.slug,$i18n.locale))}`"
+                      :title="$t($vali.isType(notifi.title,$i18n.locale))"
+                      :to="`/about/notificationList/${ $t($vali.isType(notifi.slug,$i18n.locale))}`"
                     >
                       <div class="ncb-title Notification-title">
-                        {{ $validate.isTypeLang(notifi.title) }}
+                        {{ $vali.isTypeLang(notifi.title) }}
                       </div>
                     </nuxt-link>
                     <div class="ncb-txt Notification-txt">
-                      {{ $t($validate.isType(notifi.description,$i18n.locale)) }}
+                      {{ $t($vali.isType(notifi.description,$i18n.locale)) }}
                     </div>
                     <nuxt-link
-                      :to="`/about/notificationList/${ $t($validate.isType(notifi.slug,$i18n.locale))}`"
+                      :to="`/about/notificationList/${ $t($vali.isType(notifi.slug,$i18n.locale))}`"
                       class="Notification_link"
                     >
                       <div class="Notification-last_txt">
@@ -277,17 +276,17 @@
                 :key="index"
               >
                 <div class="list-video">
-                  <nuxt-link :to="`/about/video/${ $t($validate.isType(videoItem.slug,$i18n.locale))}`">
+                  <nuxt-link :to="`/about/video/${ $t($vali.isType(videoItem.slug,$i18n.locale))}`">
                     <img
                       id="imageVideo"
                       :src="'https://api-map-life.grooo.com.vn/files/media/base/' +
-                        $validate.jsonParse(videoItem.poster)[0]"
+                        $vali.jsonParse(videoItem.poster)[0]"
                       alt="errorImage"
                     >
                   </nuxt-link>
-                  <nuxt-link :to="`/about/video/${ $t($validate.isType(videoItem.slug,$i18n.locale))}`" class="list_icon-title">
-                    <div class="list_icon-title" :title="$t($validate.isType(videoItem.name,$i18n.locale))">
-                      {{ $t($validate.isType(videoItem.name,$i18n.locale)) }}
+                  <nuxt-link :to="`/about/video/${ $t($vali.isType(videoItem.slug,$i18n.locale))}`" class="list_icon-title">
+                    <div class="list_icon-title" :title="$t($vali.isType(videoItem.name,$i18n.locale))">
+                      {{ $t($vali.isType(videoItem.name,$i18n.locale)) }}
                     </div>
                   </nuxt-link>
                 </div>
@@ -310,6 +309,7 @@
 <script lang="ts">
 
 import { Carousel, Slide } from 'vue-carousel'
+import { mapState, mapActions } from 'vuex'
 import MyModal from '~/plugins/base/modal.vue'
 
 export default {
@@ -329,31 +329,27 @@ export default {
     }
   },
   computed: {
-    manganerAbout() {
-      return this.$store.state.manganer
-    },
-    pressReleaseAbout() {
-      return this.$store.state.pressRelease
-    },
-    bankAboutApi() {
-      return this.$store.state.bankAbout
-    }
+    ...mapState({
+      manganerAbout: state => state.manganer, // dùng để lấy dữ liệu giám đốc
+      pressReleaseAbout: state => state.pressRelease, // dùng để lấy giá trị thông cáo báo trí
+      bankAboutApi: state => state.bankAbout // dùng để giá trị ngân hàng
+    })
   },
   mounted() {
-    this.$store.dispatch('setManganAbout')
-    this.$store.dispatch('setPressRelease')
-    this.$store.dispatch('setBank')
+    this.setManganAbout()
+    this.setPressRelease()
+    this.setBank()
   },
   created() {
     this.getListVideo()
   },
   methods: {
-    btnClickItem(index) {
-      this.itemSelected = this.listVideo[index]
-      this.$router.push({ query: { slug: index } })
-    },
-    showModal(isShowModal) {
-      this.isShowModal = isShowModal
+    handleMangan(use, event) {
+      if (event.keyCode === 13) {
+        this.itemSelected = use
+        this.itemSelectedID = use.id
+        this.showModal(true)
+      }
     },
     // hàm này dùng để hiển thị chi tiết giám đốc khi chọn
     btnShowModal(use) {
@@ -361,6 +357,19 @@ export default {
       this.itemSelectedID = use.id
       this.showModal(true)
     },
+    ...mapActions({
+      setManganAbout: 'setManganAbout',
+      setPressRelease: 'setPressRelease',
+      setBank: 'setBank'
+    }),
+    btnClickItem(index) {
+      this.itemSelected = this.listVideo[index]
+      this.$router.push({ query: { slug: index } })
+    },
+    showModal(isShowModal) {
+      this.isShowModal = isShowModal
+    },
+
     async getListVideo() {
       const res = await this.$axios.get(
         process.env.baseApiUrl + '/library/fe-get-libraries?limit=9')

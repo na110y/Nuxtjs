@@ -16,23 +16,23 @@
           <div class="newsList-column">
             <img
               id="img-column"
-              :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $validate.jsonParse(item.image)[0]"
+              :src=" 'https://api-map-life.grooo.com.vn/files/media/base/' + $vali.jsonParse(item.image)[0]"
               alt="error-imgFamily"
             >
           </div>
           <div class="newsList-body">
             <div class="newsList-item">
-              <nuxt-link :to="`/about/notificationList/${ $t($validate.isType(item.slug,$i18n.locale))}`">
+              <nuxt-link :to="`/about/notificationList/${ $t($vali.isType(item.slug,$i18n.locale))}`">
                 <div class="newsList-title">
-                  {{ $t($validate.isType(item.title,$i18n.locale)) }}
+                  {{ $t($vali.isType(item.title,$i18n.locale)) }}
                 </div>
               </nuxt-link>
               <div class="newsList-txt">
-                {{ $t($validate.isType(item.description,$i18n.locale)) }}
+                {{ $t($vali.isType(item.description,$i18n.locale)) }}
               </div>
             </div>
             <a href="#" class="post-item__link">
-              <nuxt-link :to="`/about/notificationList/${ $t($validate.isType(item.slug,$i18n.locale)) }`">
+              <nuxt-link :to="`/about/notificationList/${ $t($vali.isType(item.slug,$i18n.locale)) }`">
                 <div class="post-item__link-txt">{{ $t('content.SeeDetails') }}</div>
               </nuxt-link>
             </a>

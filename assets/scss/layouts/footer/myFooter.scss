@@ -47,7 +47,7 @@
   @include deptop820 {
     font-family: $font;
     background: #f5f5f5;
-    padding: 40px 30px 0;
+    padding: 40px 20px 0;
   }
 }
 
@@ -111,18 +111,23 @@
   padding-top: 38px;
   @include deptop820 {
     padding-top: 0;
+    background-color: #f5f5f5;
   }
   @include deptop412 {
     padding-top: 0;
+    background-color: #f5f5f5;
   }
   @include deptop390 {
     padding-top: 0;
+    background-color: #f5f5f5;
   }
   @include deptop375 {
     padding-top: 0;
+    background-color: #f5f5f5;
   }
   @include deptop360 {
     padding-top: 0;
+    background-color: #f5f5f5;
   }
 }
 .aboutMe_column2 {
@@ -455,11 +460,11 @@
     height: auto;
   }
   @include deptop375 {
-    width: 150px;
+    width: 130px;
     height: auto;
   }
   @include deptop360 {
-    width: 150px;
+    width: 130px;
     height: auto;
 
   }
@@ -474,11 +479,11 @@
     height: auto;
   }
   @include deptop375 {
-    width: 150px;
+    width: 130px;
     height: auto;
   }
   @include deptop360 {
-    width: 150px;
+    width: 130px;
     height: auto;
 
   }
